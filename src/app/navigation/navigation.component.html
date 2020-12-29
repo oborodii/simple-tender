@@ -7,9 +7,12 @@
                class="sidenav">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item href="#" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        Main page
+      </a>
+      <a mat-list-item href="#" routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        Create a new Tender
+      </a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -23,12 +26,11 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>tender</span>
+      <span>Tenders</span>
     </mat-toolbar>
 
     <!-- Add Content Here -->
-    <app-test-address-form>Loading address form...</app-test-address-form>
-    <app-my-table>Loading table...</app-my-table>
+    <router-outlet></router-outlet>
 
   </mat-sidenav-content>
 
