@@ -22,6 +22,7 @@ import { AppComponent } from './app.component';
 import { TestAddressFormComponent } from './test-address-form/test-address-form.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MyTableComponent } from './my-table/my-table.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { MyTableComponent } from './my-table/my-table.component';
     TestAddressFormComponent,
     NavigationComponent,
     MyTableComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
