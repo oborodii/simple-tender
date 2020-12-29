@@ -23,6 +23,8 @@ import { TestAddressFormComponent } from './test-address-form/test-address-form.
 import { NavigationComponent } from './navigation/navigation.component';
 import { MyTableComponent } from './my-table/my-table.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TreeComponent } from './tree/tree.component';
+import { MatTreeModule } from '@angular/material/tree';
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NavigationComponent,
     MyTableComponent,
     NotFoundComponent,
+    TreeComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
