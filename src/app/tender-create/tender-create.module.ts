@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
+import { TenderCreateRoutingModule } from './tender-create-routing.module';
 import { TestAddressFormComponent } from './components/test-address-form/test-address-form.component';
-
-const routes: Routes = [
-  {path: '', component: TestAddressFormComponent},
-];
 
 
 @NgModule({
@@ -14,7 +10,7 @@ const routes: Routes = [
     TestAddressFormComponent
   ],
   imports: [
-    RouterModule.forChild(routes),
+    TenderCreateRoutingModule,
     SharedModule
   ],
   exports: []
