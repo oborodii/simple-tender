@@ -16,6 +16,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +26,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { MyTableComponent } from './my-table/my-table.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TreeComponent } from './tree/tree.component';
-import { MatTreeModule } from '@angular/material/tree';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { MatTreeModule } from '@angular/material/tree';
     MyTableComponent,
     NotFoundComponent,
     TreeComponent,
+    SnackBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { MatTreeModule } from '@angular/material/tree';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTreeModule
+    MatTreeModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
