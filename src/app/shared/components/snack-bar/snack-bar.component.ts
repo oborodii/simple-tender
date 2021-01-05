@@ -4,7 +4,7 @@ import { MatSnackBarRef } from '@angular/material/snack-bar/snack-bar-ref';
 import { TextOnlySnackBar } from '@angular/material/snack-bar/simple-snack-bar';
 import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
-import { TenderService } from '../tender.service';
+import { TenderService } from '../../../tender.service';
 
 
 @Component({
