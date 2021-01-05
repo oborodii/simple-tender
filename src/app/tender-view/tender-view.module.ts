@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
+import { TenderViewRoutingModule } from './tender-view-routing.module';
 import { TreeComponent } from './components/tree/tree.component';
-
-const routes: Routes = [
-  {path: '', component: TreeComponent}
-];
 
 
 @NgModule({
@@ -14,7 +10,7 @@ const routes: Routes = [
     TreeComponent
   ],
   imports: [
-    RouterModule.forChild(routes),
+    TenderViewRoutingModule,
     SharedModule
   ],
   exports: []
