@@ -19,14 +19,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 
 
 @NgModule({
   declarations: [
-    NotFoundComponent,
     SnackBarComponent,
     NavigationComponent
   ],
@@ -55,7 +53,6 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     CommonModule,
     ReactiveFormsModule,
 
-    NotFoundComponent,
     SnackBarComponent,
     NavigationComponent,
 
