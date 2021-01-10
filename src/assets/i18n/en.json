@@ -1,0 +1,22 @@
+{
+	"LIST": {
+		"TABLE": {
+			"TITLE": "Table title"
+		}
+	},
+	"SNACK-BAR": {
+		"BUTTON": {
+			"TITLE": "Show snack-bar"
+		},
+		"DURATION": {
+			"BUTTON": {
+				"TITLE": "Duration"
+			}
+		}
+	},
+	"TENDER": {
+		"CREATE-FORM": {
+			"TITLE": "Form title"
+		}
+	}
+}

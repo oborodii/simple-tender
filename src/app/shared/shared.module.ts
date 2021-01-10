@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,19 +20,37 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateStore } from '@ngx-translate/core';
+
+import { environment } from '../../environments/environment';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { createTranslateLoader } from './classes/create-translate-loader.function';
+import { MissingTranslationService } from './classes/missing-translation-service.class';
 
 
 @NgModule({
   declarations: [
     SnackBarComponent,
-    NavigationComponent
+    NavigationComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    HttpClientModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      },
+      missingTranslationHandler: {
+        provide: MissingTranslationHandler,
+        useClass: MissingTranslationService
+      },
+      defaultLanguage: environment.defaultLocale
+    }),
 
     MatInputModule,
     MatButtonModule,
@@ -52,6 +71,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
   exports: [
     CommonModule,
     ReactiveFormsModule,
+    TranslateModule,
 
     SnackBarComponent,
     NavigationComponent,
@@ -71,6 +91,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     MatSortModule,
     MatTreeModule,
     MatSnackBarModule
+  ],
+  providers: [
+    TranslateStore
   ]
 })
 export class SharedModule {

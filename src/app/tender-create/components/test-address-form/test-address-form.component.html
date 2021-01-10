@@ -8,7 +8,9 @@
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()" style="width: 400px;">
   <mat-card class="shipping-card">
     <mat-card-header>
-      <mat-card-title>Shipping Information</mat-card-title>
+      <mat-card-title>
+        <p><label>{{ 'TENDER.CREATE-FORM.TITLE' | translate }}</label></p>
+      </mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="row">

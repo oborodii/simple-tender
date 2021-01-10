@@ -26,7 +26,7 @@
   </mat-select>
 </mat-form-field>
 <mat-form-field>
-  <mat-label>Duration</mat-label>
+  <mat-label>{{ 'SNACK-BAR.DURATION.BUTTON.TITLE' | translate }}</mat-label>
   <mat-select [(value)]="duration">
     <mat-option value="2000">2000</mat-option>
     <mat-option value="3000">3000</mat-option>
@@ -36,6 +36,6 @@
 </mat-form-field>
 
 <button mat-raised-button color="accent" (click)="openSnackBar(message.value, action.value)">
-  Show snack-bar
+  {{ 'SNACK-BAR.BUTTON.TITLE' | translate }}
 </button>
 

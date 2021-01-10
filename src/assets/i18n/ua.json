@@ -1,0 +1,22 @@
+{
+	"LIST": {
+		"TABLE": {
+			"TITLE": "Заголовок таблицi"
+		}
+	},
+	"SNACK-BAR": {
+		"BUTTON": {
+			"TITLE": "Показати"
+		},
+		"DURATION": {
+			"BUTTON": {
+				"TITLE": "Тривалiсть"
+			}
+		}
+	},
+	"TENDER": {
+		"CREATE-FORM": {
+			"TITLE": "Заголовок форми створення тендера"
+		}
+	}
+}

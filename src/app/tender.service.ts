@@ -18,6 +18,7 @@ export class TenderService {
                duration: string = '3000',
                horizontalPosition: MatSnackBarHorizontalPosition = 'right',
                verticalPosition: MatSnackBarVerticalPosition = 'top'): MatSnackBarRef<TextOnlySnackBar> {
+
     const snackBarRef: MatSnackBarRef<TextOnlySnackBar> = this.snackBar.open(message, action, {
       duration: Number(duration),
       horizontalPosition: horizontalPosition,
