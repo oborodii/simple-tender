@@ -4,6 +4,12 @@
 			"TITLE": "Table title"
 		}
 	},
+	"MENU": {
+		"LABEL": "Menu"
+	},
+	"SELECT-LANGUAGE": {
+		"LABEL": "Select language"
+	},
 	"SNACK-BAR": {
 		"BUTTON": {
 			"TITLE": "Show snack-bar"

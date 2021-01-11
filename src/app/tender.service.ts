@@ -10,6 +10,8 @@ import { TextOnlySnackBar } from '@angular/material/snack-bar/simple-snack-bar';
 })
 export class TenderService {
 
+  currentLocale: string;
+
   constructor(private snackBar: MatSnackBar) {
   }
 

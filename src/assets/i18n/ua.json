@@ -4,6 +4,12 @@
 			"TITLE": "Заголовок таблицi"
 		}
 	},
+	"MENU": {
+		"LABEL": "Меню"
+	},
+	"SELECT-LANGUAGE": {
+		"LABEL": "Виберiть мову"
+	},
 	"SNACK-BAR": {
 		"BUTTON": {
 			"TITLE": "Показати"

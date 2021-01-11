@@ -5,7 +5,9 @@
                [opened]="(isHandset$ | async) === false"
                #drawer
                class="sidenav">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>
+      {{ 'MENU.LABEL' | translate }}
+    </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#" routerLink="/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
         Main page
@@ -31,6 +33,8 @@
       </button>
       <span>Tenders</span>
     </mat-toolbar>
+
+    <app-language-toggle>Loading...</app-language-toggle>
 
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

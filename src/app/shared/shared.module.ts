@@ -23,16 +23,18 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateStore } from '@ngx-translate/core';
 
 import { environment } from '../../environments/environment';
-import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { createTranslateLoader } from './classes/create-translate-loader.function';
 import { MissingTranslationService } from './classes/missing-translation-service.class';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { LanguageToggleComponent } from './components/language-toggle/language-toggle.component';
 
 
 @NgModule({
   declarations: [
     SnackBarComponent,
     NavigationComponent,
+    LanguageToggleComponent
   ],
   imports: [
     CommonModule,
@@ -75,6 +77,7 @@ import { MissingTranslationService } from './classes/missing-translation-service
 
     SnackBarComponent,
     NavigationComponent,
+    LanguageToggleComponent,
 
     MatInputModule,
     MatButtonModule,
@@ -90,7 +93,7 @@ import { MissingTranslationService } from './classes/missing-translation-service
     MatPaginatorModule,
     MatSortModule,
     MatTreeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [
     TranslateStore

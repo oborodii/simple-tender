@@ -1,0 +1,15 @@
+<div class="lang-toggle-component">
+  <label>
+    {{ 'SELECT-LANGUAGE.LABEL' | translate }}
+
+    <mat-form-field appearance="standard" class="mat-form-field">
+      <select matNativeControl (change)="translate(langSelect.value)" #langSelect>
+        <option *ngFor="let local of locales"
+                [value]="local"
+                [selected]="local === currentLocale">
+          {{ local }}
+        </option>
+      </select>
+    </mat-form-field>
+  </label>
+</div>

@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
+
+import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
+import { TenderService } from '../../../tender.service';
+
 
 @Component({
   selector: 'app-test-address-form',
   templateUrl: './test-address-form.component.html',
   styleUrls: ['./test-address-form.component.scss']
 })
-export class TestAddressFormComponent {
+export class TestAddressFormComponent extends AbstractTenderComponent implements OnInit {
 
   hasUnitNumber = false;
 
@@ -84,11 +90,19 @@ export class TestAddressFormComponent {
     shipping: new FormControl('nextday', [Validators.required])
   });
 
-  constructor() {
+  constructor(protected translateService: TranslateService,
+              protected tenderService: TenderService,
+              protected router: Router) {
+    super(translateService, tenderService, router);
+  }
+
+  ngOnInit(): void {
+    // super.ngOnInit();
   }
 
   onSubmit(): void {
     console.log(`this.addressForm =`);
     console.log(this.addressForm);
   }
+
 }
