@@ -9,10 +9,10 @@ import { TenderService } from '../../../tender.service';
 
 @Component({
   selector: 'app-test-address-form',
-  templateUrl: './test-address-form.component.html',
-  styleUrls: ['./test-address-form.component.scss']
+  templateUrl: './create-tender-form.component.html',
+  styleUrls: ['./create-tender-form.component.scss']
 })
-export class TestAddressFormComponent extends AbstractTenderComponent implements OnInit {
+export class CreateTenderFormComponent extends AbstractTenderComponent implements OnInit {
 
   hasUnitNumber = false;
 
@@ -86,7 +86,8 @@ export class TestAddressFormComponent extends AbstractTenderComponent implements
     address2: new FormControl(null),
     city: new FormControl(null, [Validators.required]),
     state: new FormControl(null, [Validators.required]),
-    postalCode: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+    postalCode: new FormControl(null,
+      [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
     shipping: new FormControl('nextday', [Validators.required])
   });
 

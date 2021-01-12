@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TestAddressFormComponent } from './components/test-address-form/test-address-form.component';
+import { CreateTenderFormComponent } from './components/create-tender-form/create-tender-form.component';
 
 
 const routes: Routes = [
-  {path: '', component: TestAddressFormComponent}
+  {path: '', component: CreateTenderFormComponent}
 ];
 
 

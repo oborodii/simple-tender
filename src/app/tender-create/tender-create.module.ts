@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
 import { TenderCreateRoutingModule } from './tender-create-routing.module';
-import { TestAddressFormComponent } from './components/test-address-form/test-address-form.component';
+import { CreateTenderFormComponent } from './components/create-tender-form/create-tender-form.component';
 
 
 @NgModule({
   declarations: [
-    TestAddressFormComponent
+    CreateTenderFormComponent
   ],
   imports: [
     TenderCreateRoutingModule,

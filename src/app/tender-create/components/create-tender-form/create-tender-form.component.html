@@ -1,9 +1,7 @@
-<div *ngIf="addressForm">
+<div *ngIf="addressForm" style="float: right;">
   <pre>{{ addressForm.value | json }}</pre>
 </div>
 
-
-<app-snack-bar>Loading snack bar...</app-snack-bar>
 
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()" style="width: 400px;">
   <mat-card class="shipping-card">
