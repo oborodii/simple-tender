@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { FlatTreeControl } from '@angular/cdk/tree';
+import { Router } from '@angular/router';
+
+import { TranslateService } from '@ngx-translate/core';
 
 import { files } from './example-data';
+import { TenderService } from '../../../tender.service';
+import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 
 
 /** File node data with possible child nodes */
@@ -28,7 +33,7 @@ export interface FlatTreeNode {
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss']
 })
-export class TreeComponent {
+export class TreeComponent extends AbstractTenderComponent {
 
   /** The TreeControl controls the expand/collapse state of tree nodes.  */
   treeControl: FlatTreeControl<FlatTreeNode>;
@@ -39,7 +44,12 @@ export class TreeComponent {
   /** The MatTreeFlatDataSource connects the control and flattener to provide data. */
   dataSource: MatTreeFlatDataSource<FileNode, FlatTreeNode>;
 
-  constructor() {
+
+  constructor(protected translateService: TranslateService,
+              protected tenderService: TenderService,
+              protected router: Router) {
+    super(translateService, tenderService, router);
+
     this.treeFlattener = new MatTreeFlattener(
       this.transformer,
       this.getLevel,
@@ -80,4 +90,13 @@ export class TreeComponent {
   getChildren(node: FileNode): FileNode[] | null | undefined {
     return node.children;
   }
+
+  click(): void {
+    this.translateService.get(['LIST.TABLE.TITLE', 'MENU.LABEL'])
+      .subscribe((translations: any) => {
+        console.log(translations['LIST.TABLE.TITLE']);
+        console.log(translations['MENU.LABEL']);
+      });
+  }
+
 }
