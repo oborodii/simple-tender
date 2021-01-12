@@ -1,10 +1,9 @@
 export interface TenderUser {
-  id?: number;
-  login: string;
-  email?: string[];
-  name: string;
-  surname: string;
-  phone?: string;
-  companyName?: string;
-  dateCreate: number | Date;
+  id?: number;                    // id in database
+  login: string;                  // user login (email)
+  name: string;                   // user name
+  surname: string;                // user surname
+  phone?: string;                 // user phone
+  companyName?: string;           // the company the user works for
+  dateCreate: number | Date;      // date when this user was created
 }

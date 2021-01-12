@@ -79,10 +79,10 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
   ];
 
   addressForm: FormGroup = new FormGroup({
-    company: new FormControl(),
+    title: new FormControl(),
+    description: new FormControl(null, [Validators.required]),
     firstName: new FormControl(null, [Validators.required]),
     lastName: new FormControl(null, [Validators.required]),
-    address: new FormControl(null, [Validators.required]),
     address2: new FormControl(null),
     city: new FormControl(null, [Validators.required]),
     state: new FormControl(null, [Validators.required]),

@@ -11,13 +11,28 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
+
+      <!-- Title -->
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Company" formControlName="company">
+            <input matInput placeholder="Tender title" formControlName="title">
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Description -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Description" formControlName="description"></textarea>
+            <mat-error *ngIf="addressForm.controls['description'].hasError('required')">
+              Description is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
@@ -36,16 +51,8 @@
           </mat-form-field>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <textarea matInput placeholder="Address" formControlName="address"></textarea>
-            <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
-              Address is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
+
+
       <div class="row" *ngIf="!hasUnitNumber">
         <div class="col">
           <button mat-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
@@ -53,6 +60,7 @@
           </button>
         </div>
       </div>
+
       <div class="row" *ngIf="hasUnitNumber">
         <div class="col">
           <mat-form-field class="full-width">
@@ -60,6 +68,7 @@
           </mat-form-field>
         </div>
       </div>
+
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
@@ -82,6 +91,7 @@
           </mat-form-field>
         </div>
       </div>
+
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
@@ -91,6 +101,7 @@
           </mat-form-field>
         </div>
       </div>
+
       <div class="row">
         <div class="col">
           <mat-radio-group formControlName="shipping">
@@ -106,6 +117,7 @@
           </mat-radio-group>
         </div>
       </div>
+
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button type="submit" color="primary">
