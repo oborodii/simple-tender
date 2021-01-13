@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { environment } from '../../../../environments/environment';
 import { TenderService } from '../../../tender.service';
+import { TenderCurrency } from '../../../types/tender-currency.type';
 
 
 @Component({
@@ -35,6 +36,14 @@ export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
                         protected tenderService: TenderService,
                         protected router: Router) {
     this.translateService.use(this.currentLocale);
+  }
+
+  getLocalCurrencyName(currency: TenderCurrency): string {
+    if (this.tenderService.currentLocale === 'ua') {
+      return currency.nameUA;
+    } else {
+      return currency.nameEN;
+    }
   }
 
 

@@ -1,14 +1,28 @@
 {
+	"CREATE-FORM": {
+		"CURRENCY": "Валюта",
+		"ERROR": {
+			"DESCRIPTION": "Опис тендера треба заповнити",
+			"TITLE": "Заголовок тендера треба заповнити"
+		},
+		"FORM_TITLE": "Cтворити новий тендер",
+		"HINT": {
+			"CURRENCY": "Розрахунок за курсом НБУ на день завершення тендеру"
+		},
+		"IS_SHOW_BEST_BET": "Показувати кращу ставку",
+		"TENDER_DESCRIPTION": "Опис тендера",
+		"TENDER_TITLE": "Заголовок"
+	},
 	"LIST": {
 		"TABLE": {
-			"TITLE": "Заголовок таблицi"
+			"TITLE": "Заголовок таблиці"
 		}
 	},
 	"MENU": {
 		"LABEL": "Меню"
 	},
 	"SELECT-LANGUAGE": {
-		"LABEL": "Виберiть мову"
+		"LABEL": "Виберіть мову"
 	},
 	"SNACK-BAR": {
 		"BUTTON": {
@@ -16,13 +30,8 @@
 		},
 		"DURATION": {
 			"BUTTON": {
-				"TITLE": "Тривалiсть"
+				"TITLE": "Тривалість"
 			}
-		}
-	},
-	"TENDER": {
-		"CREATE-FORM": {
-			"TITLE": "Заголовок форми створення тендера"
 		}
 	}
 }

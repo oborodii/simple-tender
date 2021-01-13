@@ -1,4 +1,18 @@
 {
+	"CREATE-FORM": {
+		"CURRENCY": "Currency",
+		"ERROR": {
+			"DESCRIPTION": "Description is required",
+			"TITLE": "Title is required"
+		},
+		"FORM_TITLE": "Create a new tender",
+		"HINT": {
+			"CURRENCY": "Payment at the NBU exchange rate on the day of tender completion"
+		},
+		"IS_SHOW_BEST_BET": "Show the best bet",
+		"TENDER_DESCRIPTION": "Description",
+		"TENDER_TITLE": "Tender title"
+	},
 	"LIST": {
 		"TABLE": {
 			"TITLE": "Table title"
@@ -18,11 +32,6 @@
 			"BUTTON": {
 				"TITLE": "Duration"
 			}
-		}
-	},
-	"TENDER": {
-		"CREATE-FORM": {
-			"TITLE": "Form title"
 		}
 	}
 }
