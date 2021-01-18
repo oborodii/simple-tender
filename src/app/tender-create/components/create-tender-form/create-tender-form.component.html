@@ -41,7 +41,7 @@
       </div>
 
       <!-- Currency -->
-      <div class="row">
+      <div class="row currency">
         <div class="col">
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>
@@ -55,7 +55,7 @@
             <mat-error *ngIf="createTenderForm.controls['currency'].hasError('required')">
               {{ 'CREATE-FORM.ERROR.DESCRIPTION' | translate }}
             </mat-error>
-            <mat-hint *ngIf="createTenderForm.controls['currency'].value?.code !== 'UAH'">
+            <mat-hint *ngIf="createTenderForm.controls['currency'].value?.code !== currencies[0].code">
               {{ 'CREATE-FORM.HINT.CURRENCY' | translate }}
             </mat-hint>
           </mat-form-field>
@@ -66,18 +66,33 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput type="number"
-                   maxlength="5"
-                   placeholder="Expected Value"
+            <span matPrefix>{{ createTenderForm.controls['currency'].value?.code }} &nbsp;</span>
+            <input matInput
+                   type="number"
+                   required
+                   [placeholder]="'CREATE-FORM.EXPECTED_VALUE' | translate"
                    formControlName="expectedValue">
             <mat-error *ngIf="createTenderForm.controls['expectedValue'].hasError('required')">
               {{ 'CREATE-FORM.ERROR.EXPECTED_VALUE' | translate }}
             </mat-error>
-            <mat-hint align="end"> {{ createTenderForm.controls['currency'].value?.length }} / 5</mat-hint>
           </mat-form-field>
         </div>
+      </div>
+
+      <!-- Step Value -->
+      <div class="row">
         <div class="col">
-          {{ createTenderForm.controls['currency'].value.code }}
+          <mat-form-field class="full-width">
+            <span matPrefix>{{ createTenderForm.controls['currency'].value?.code }} &nbsp;</span>
+            <input matInput
+                   type="number"
+                   required
+                   [placeholder]="'CREATE-FORM.STEP_VALUE' | translate"
+                   formControlName="stepValue">
+            <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('required')">
+              {{ 'CREATE-FORM.ERROR.STEP_VALUE' | translate }}
+            </mat-error>
+          </mat-form-field>
         </div>
       </div>
 
@@ -85,7 +100,7 @@
       <div class="row">
         <div class="col">
           <mat-slide-toggle [color]="color" formControlName="isShowBestBet">
-            {{ 'CREATE-FORM.IS_SHOW_BEST_BET' | translate }}?
+            {{ 'CREATE-FORM.IS_SHOW_BEST_BET' | translate }}
           </mat-slide-toggle>
         </div>
       </div>

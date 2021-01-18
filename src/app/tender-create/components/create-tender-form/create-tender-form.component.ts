@@ -30,6 +30,8 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
     isShowBestBet: new FormControl(true),
     expectedValue: new FormControl(100,
       [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+    stepValue: new FormControl(1,
+      [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
 
     firstName: new FormControl(null, [Validators.required]),
     lastName: new FormControl(null, [Validators.required]),

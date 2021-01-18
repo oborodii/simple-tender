@@ -20,19 +20,19 @@ export class TenderService {
   currencies: TenderCurrency[] = [
     {
       id: 1,
-      code: 'UAH',
+      code: '₴',
       nameUA: 'Українська гривня',
       nameEN: 'Ukrainian hryvnia'
     },
     {
       id: 2,
-      code: 'USD',
+      code: '$',
       nameUA: 'Долар США',
       nameEN: 'U.S. dollar'
     },
     {
       id: 3,
-      code: 'EUR',
+      code: '€',
       nameUA: 'Євро',
       nameEN: 'Euro'
     }

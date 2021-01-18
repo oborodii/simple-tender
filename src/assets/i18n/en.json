@@ -4,13 +4,16 @@
 		"ERROR": {
 			"DESCRIPTION": "Description is required",
 			"EXPECTED_VALUE": "The amount you plan to receive as a result of the auction is not specified",
+			"STEP_VALUE": "Bet step required",
 			"TITLE": "Title is required"
 		},
+		"EXPECTED_VALUE": "Expected amount",
 		"FORM_TITLE": "Create a new tender",
 		"HINT": {
 			"CURRENCY": "Payment at the NBU exchange rate on the day of tender completion"
 		},
-		"IS_SHOW_BEST_BET": "Show the best bet",
+		"IS_SHOW_BEST_BET": "Show the best bet?",
+		"STEP_VALUE": "Bet step",
 		"TENDER_DESCRIPTION": "Description",
 		"TENDER_TITLE": "Tender title"
 	},
