@@ -1,9 +1,4 @@
-<div *ngIf="createTenderForm" style="float: right;">
-  <pre>{{ createTenderForm.value | json }}</pre>
-</div>
-
-
-<form [formGroup]="createTenderForm" novalidate (ngSubmit)="onSubmit()" style="width: 400px;">
+<form [formGroup]="createTenderForm" novalidate (ngSubmit)="onSubmit()" class="form-style">
   <mat-card class="shipping-card">
     <mat-card-header>
       <mat-card-title>
@@ -43,7 +38,7 @@
       <!-- Currency -->
       <div class="row currency">
         <div class="col">
-          <mat-form-field appearance="fill" class="full-width">
+          <mat-form-field appearance="legacy" class="full-width">
             <mat-label>
               {{ 'CREATE-FORM.CURRENCY' | translate }}
             </mat-label>
@@ -53,7 +48,7 @@
               </mat-option>
             </mat-select>
             <mat-error *ngIf="createTenderForm.controls['currency'].hasError('required')">
-              {{ 'CREATE-FORM.ERROR.DESCRIPTION' | translate }}
+              {{ 'CREATE-FORM.ERROR.CURRENCY' | translate }}
             </mat-error>
             <mat-hint *ngIf="createTenderForm.controls['currency'].value?.code !== currencies[0].code">
               {{ 'CREATE-FORM.HINT.CURRENCY' | translate }}
@@ -62,8 +57,8 @@
         </div>
       </div>
 
-      <!-- Expected Value -->
       <div class="row">
+        <!-- Expected Value -->
         <div class="col">
           <mat-form-field class="full-width">
             <span matPrefix>{{ createTenderForm.controls['currency'].value?.code }} &nbsp;</span>
@@ -77,10 +72,8 @@
             </mat-error>
           </mat-form-field>
         </div>
-      </div>
 
-      <!-- Step Value -->
-      <div class="row">
+        <!-- Step Value -->
         <div class="col">
           <mat-form-field class="full-width">
             <span matPrefix>{{ createTenderForm.controls['currency'].value?.code }} &nbsp;</span>
@@ -96,6 +89,40 @@
         </div>
       </div>
 
+
+      <div class="row">
+        <!-- quantity of goods -->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput
+                   type="number"
+                   required
+                   [placeholder]="'CREATE-FORM.QUANTITY' | translate"
+                   formControlName="quantity">
+            <mat-error *ngIf="createTenderForm.controls['quantity'].hasError('required')">
+              {{ 'CREATE-FORM.ERROR.QUANTITY' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- in what units the goods are measured -->
+        <div class="col">
+          <mat-form-field appearance="legacy" class="full-width">
+            <mat-label>
+              {{ 'CREATE-FORM.UNIT' | translate }}
+            </mat-label>
+            <mat-select formControlName="unit" required>
+              <mat-option *ngFor="let unit of units" [value]="unit">
+                {{ getLocalUnitCode(unit) + ' (' + getLocalUnitFullName(unit) + ')' }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="createTenderForm.controls['unit'].hasError('required')">
+              {{ 'CREATE-FORM.ERROR.UNIT' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
       <!-- Show the best bet or not -->
       <div class="row">
         <div class="col">
@@ -105,25 +132,6 @@
         </div>
       </div>
 
-
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="First name" formControlName="firstName">
-            <mat-error *ngIf="createTenderForm.controls['firstName'].hasError('required')">
-              First name is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Last name" formControlName="lastName">
-            <mat-error *ngIf="createTenderForm.controls['lastName'].hasError('required')">
-              Last name is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
 
       <div class="row">
         <div class="col">
@@ -155,10 +163,19 @@
       </div>
 
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button type="submit" color="primary">
+
+    <mat-card-actions align="right">
+      <button mat-raised-button
+              type="submit"
+              color="primary">
         Submit
       </button>
     </mat-card-actions>
+
   </mat-card>
 </form>
+
+
+<div *ngIf="createTenderForm" style="float: right;">
+  <pre>{{ createTenderForm.value | json }}</pre>
+</div>

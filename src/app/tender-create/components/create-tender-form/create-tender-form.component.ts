@@ -8,6 +8,7 @@ import { ThemePalette } from '@angular/material/core';
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../tender.service';
 import { TenderCurrency } from '../../../types/tender-currency.type';
+import { TenderUnit } from '../../../types/tender-unit.type';
 
 
 @Component({
@@ -23,15 +24,19 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
     return this.tenderService.currencies;
   }
 
+  get units(): TenderUnit[] {
+    return this.tenderService.units;
+  }
+
   createTenderForm: FormGroup = new FormGroup({
     title: new FormControl(null, [Validators.required]),
     description: new FormControl(null, [Validators.required]),
     currency: new FormControl(this.currencies[0], [Validators.required]),
     isShowBestBet: new FormControl(true),
-    expectedValue: new FormControl(100,
-      [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
-    stepValue: new FormControl(1,
-      [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+    expectedValue: new FormControl(100, [Validators.required]),
+    stepValue: new FormControl(1, [Validators.required]),
+    quantity: new FormControl(1, [Validators.required]),
+    unit: new FormControl(this.units[0], [Validators.required]),
 
     firstName: new FormControl(null, [Validators.required]),
     lastName: new FormControl(null, [Validators.required]),

@@ -43,7 +43,7 @@ export class TenderService {
     {
       id: 1,
       codeUA: 'кг',
-      codeEN: 'кг',
+      codeEN: 'kg',
       nameUA: 'кілограм',
       nameEN: 'kilogram'
     },

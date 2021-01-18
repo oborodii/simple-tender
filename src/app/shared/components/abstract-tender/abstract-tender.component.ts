@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { TenderService } from '../../../tender.service';
 import { TenderCurrency } from '../../../types/tender-currency.type';
+import { TenderUnit } from '../../../types/tender-unit.type';
 
 
 @Component({
@@ -43,6 +44,22 @@ export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
       return currency.nameUA;
     } else {
       return currency.nameEN;
+    }
+  }
+
+  getLocalUnitCode(unit: TenderUnit): string {
+    if (this.tenderService.currentLocale === 'ua') {
+      return unit.codeUA;
+    } else {
+      return unit.codeEN;
+    }
+  }
+
+  getLocalUnitFullName(unit: TenderUnit): string {
+    if (this.tenderService.currentLocale === 'ua') {
+      return unit.nameUA;
+    } else {
+      return unit.nameEN;
     }
   }
 
