@@ -28,6 +28,9 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
     description: new FormControl(null, [Validators.required]),
     currency: new FormControl(this.currencies[0], [Validators.required]),
     isShowBestBet: new FormControl(true),
+    expectedValue: new FormControl(100,
+      [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+
     firstName: new FormControl(null, [Validators.required]),
     lastName: new FormControl(null, [Validators.required]),
     postalCode: new FormControl(null,

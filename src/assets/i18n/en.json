@@ -3,6 +3,7 @@
 		"CURRENCY": "Currency",
 		"ERROR": {
 			"DESCRIPTION": "Description is required",
+			"EXPECTED_VALUE": "The amount you plan to receive as a result of the auction is not specified",
 			"TITLE": "Title is required"
 		},
 		"FORM_TITLE": "Create a new tender",
