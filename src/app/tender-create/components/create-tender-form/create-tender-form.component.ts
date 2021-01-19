@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 
-import { ThemePalette } from '@angular/material/core';
+import { TranslateService } from '@ngx-translate/core';
 
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../tender.service';
-import { TenderCurrency } from '../../../types/tender-currency.type';
-import { TenderUnit } from '../../../types/tender-unit.type';
 
 
 @Component({
@@ -17,19 +14,6 @@ import { TenderUnit } from '../../../types/tender-unit.type';
   styleUrls: ['./create-tender-form.component.scss']
 })
 export class CreateTenderFormComponent extends AbstractTenderComponent implements OnInit {
-
-  color: ThemePalette = 'primary';
-
-  MIN_MONEY_EXPECTED_VALUE: number = 1;
-  MAX_MONEY_EXPECTED_VALUE: number = 1000000000;
-
-  get currencies(): TenderCurrency[] {
-    return this.tenderService.currencies;
-  }
-
-  get units(): TenderUnit[] {
-    return this.tenderService.units;
-  }
 
   createTenderForm: FormGroup = new FormGroup({
     title: new FormControl(null,

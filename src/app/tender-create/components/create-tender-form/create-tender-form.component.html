@@ -157,7 +157,7 @@
       <!-- Show the best bet or not -->
       <div class="row">
         <div class="col">
-          <mat-slide-toggle [color]="color" formControlName="isShowBestBet">
+          <mat-slide-toggle [color]="currentThemePalette" formControlName="isShowBestBet">
             {{ 'CREATE-FORM.IS_SHOW_BEST_BET' | translate }}
           </mat-slide-toggle>
         </div>
@@ -166,7 +166,7 @@
     </mat-card-content>
 
     <mat-card-actions align="right">
-      <button mat-raised-button type="submit" [color]="color">
+      <button mat-raised-button type="submit" [color]="currentThemePalette">
         {{ 'CREATE-FORM.SUBMIT_BUTTON' | translate }}
       </button>
     </mat-card-actions>
