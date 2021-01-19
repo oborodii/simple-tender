@@ -5,12 +5,16 @@
 			"CURRENCY": "Currency is required",
 			"DESCRIPTION": "Description is required",
 			"EXPECTED_VALUE": "The amount you plan to receive as a result of the auction is not specified",
+			"INCORRECT_MAX_MONEY_VALUE": "Entered amount is too large",
+			"INCORRECT_MIN_MONEY_VALUE": "The value of this field must be greater than zero",
+			"MAX_LENGTH": "The title is too long",
+			"MIN_LENGTH": "The title is too short",
 			"QUANTITY": "Quantity of goods is required",
 			"STEP_VALUE": "Bet step is required",
 			"TITLE": "Title is required",
 			"UNIT": "Unit is required"
 		},
-		"EXPECTED_VALUE": "Expected amount",
+		"EXPECTED_MONEY_VALUE": "Expected money value",
 		"FORM_TITLE": "Create a new tender",
 		"HINT": {
 			"CURRENCY": "Payment at the NBU exchange rate on the day of tender completion"
@@ -18,6 +22,7 @@
 		"IS_SHOW_BEST_BET": "Show the best bet?",
 		"QUANTITY": "Quantity of goods",
 		"STEP_VALUE": "Bet step",
+		"SUBMIT_BUTTON": "Create",
 		"TENDER_DESCRIPTION": "Description",
 		"TENDER_TITLE": "Tender title",
 		"UNIT": "Units of goods"

@@ -1,5 +1,5 @@
 <form [formGroup]="createTenderForm" novalidate (ngSubmit)="onSubmit()" class="form-style">
-  <mat-card class="shipping-card">
+  <mat-card class="create-tender-card">
     <mat-card-header>
       <mat-card-title>
         <label>{{ 'CREATE-FORM.FORM_TITLE' | translate }}</label>
@@ -14,12 +14,26 @@
             <input matInput required
                    [placeholder]="'CREATE-FORM.TENDER_TITLE' | translate"
                    formControlName="title">
+
             <mat-error *ngIf="createTenderForm.controls['title'].hasError('required')">
               {{ 'CREATE-FORM.ERROR.TITLE' | translate }}
+            </mat-error>
+
+            <mat-error *ngIf="createTenderForm.controls['title'].hasError('minlength')">
+              {{ ('CREATE-FORM.ERROR.MIN_LENGTH' | translate) +
+            ' (' + createTenderForm.get('title').errors.minlength['actualLength'] + '/' +
+            createTenderForm.get('title').errors.minlength['requiredLength'] + ')' }}
+            </mat-error>
+
+            <mat-error *ngIf="createTenderForm.controls['title'].hasError('maxlength')">
+              {{ ('CREATE-FORM.ERROR.MAX_LENGTH' | translate) +
+            ' (' + createTenderForm.get('title').errors.maxlength['actualLength'] + '/' +
+            createTenderForm.get('title').errors.maxlength['requiredLength'] + ')' }}
             </mat-error>
           </mat-form-field>
         </div>
       </div>
+
 
       <!-- Description -->
       <div class="row">
@@ -34,6 +48,7 @@
           </mat-form-field>
         </div>
       </div>
+
 
       <!-- Currency -->
       <div class="row currency">
@@ -57,6 +72,7 @@
         </div>
       </div>
 
+
       <div class="row">
         <!-- Expected Value -->
         <div class="col">
@@ -64,11 +80,24 @@
             <span matPrefix>{{ createTenderForm.controls['currency'].value?.code }} &nbsp;</span>
             <input matInput
                    type="number"
+                   [min]="MIN_MONEY_EXPECTED_VALUE"
+                   [max]="MAX_MONEY_EXPECTED_VALUE"
+                   max="3"
                    required
-                   [placeholder]="'CREATE-FORM.EXPECTED_VALUE' | translate"
+                   (change)="minMaxMoneySetError(createTenderForm.value['expectedValue'])"
+                   [placeholder]="'CREATE-FORM.EXPECTED_MONEY_VALUE' | translate"
                    formControlName="expectedValue">
+
             <mat-error *ngIf="createTenderForm.controls['expectedValue'].hasError('required')">
               {{ 'CREATE-FORM.ERROR.EXPECTED_VALUE' | translate }}
+            </mat-error>
+
+            <mat-error *ngIf="createTenderForm.controls['expectedValue'].hasError('incorrectMinMoneyValue')">
+              {{ 'CREATE-FORM.ERROR.INCORRECT_MIN_MONEY_VALUE' | translate }}
+            </mat-error>
+
+            <mat-error *ngIf="createTenderForm.controls['expectedValue'].hasError('incorrectMaxMoneyValue')">
+              {{ 'CREATE-FORM.ERROR.INCORRECT_MAX_MONEY_VALUE' | translate }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -82,6 +111,7 @@
                    required
                    [placeholder]="'CREATE-FORM.STEP_VALUE' | translate"
                    formControlName="stepValue">
+
             <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('required')">
               {{ 'CREATE-FORM.ERROR.STEP_VALUE' | translate }}
             </mat-error>
@@ -123,6 +153,7 @@
         </div>
       </div>
 
+
       <!-- Show the best bet or not -->
       <div class="row">
         <div class="col">
@@ -132,43 +163,11 @@
         </div>
       </div>
 
-
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput type="number"
-                   maxlength="5"
-                   placeholder="Postal Code"
-                   formControlName="postalCode"
-                   #postalCode>
-            <mat-hint align="end"> {{ postalCode.value.length }} / 5</mat-hint>
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <mat-radio-group formControlName="shipping">
-            <mat-radio-button value="free">
-              Free Shipping
-            </mat-radio-button>
-            <mat-radio-button value="priority">
-              Priority Shipping
-            </mat-radio-button>
-            <mat-radio-button value="nextday">
-              Next Day Shipping
-            </mat-radio-button>
-          </mat-radio-group>
-        </div>
-      </div>
-
     </mat-card-content>
 
     <mat-card-actions align="right">
-      <button mat-raised-button
-              type="submit"
-              color="primary">
-        Submit
+      <button mat-raised-button type="submit" [color]="color">
+        {{ 'CREATE-FORM.SUBMIT_BUTTON' | translate }}
       </button>
     </mat-card-actions>
 

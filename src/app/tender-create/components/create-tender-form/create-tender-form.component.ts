@@ -20,6 +20,9 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
 
   color: ThemePalette = 'primary';
 
+  MIN_MONEY_EXPECTED_VALUE: number = 1;
+  MAX_MONEY_EXPECTED_VALUE: number = 1000000000;
+
   get currencies(): TenderCurrency[] {
     return this.tenderService.currencies;
   }
@@ -29,20 +32,16 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
   }
 
   createTenderForm: FormGroup = new FormGroup({
-    title: new FormControl(null, [Validators.required]),
-    description: new FormControl(null, [Validators.required]),
+    title: new FormControl(null,
+      [Validators.required, Validators.minLength(3), Validators.maxLength(6)]),
+    description: new FormControl(null,
+      [Validators.required, Validators.minLength(3), Validators.maxLength(6)]),
     currency: new FormControl(this.currencies[0], [Validators.required]),
     isShowBestBet: new FormControl(true),
     expectedValue: new FormControl(100, [Validators.required]),
     stepValue: new FormControl(1, [Validators.required]),
     quantity: new FormControl(1, [Validators.required]),
-    unit: new FormControl(this.units[0], [Validators.required]),
-
-    firstName: new FormControl(null, [Validators.required]),
-    lastName: new FormControl(null, [Validators.required]),
-    postalCode: new FormControl(null,
-      [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
-    shipping: new FormControl('nextday', [Validators.required])
+    unit: new FormControl(this.units[0], [Validators.required])
   });
 
   constructor(protected translateService: TranslateService,
@@ -57,8 +56,23 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
 
 
   onSubmit(): void {
-    console.log(`this.addressForm =`);
+    console.log(`this.createTenderForm =`);
     console.log(this.createTenderForm);
+  }
+
+
+  minMaxMoneySetError(value: number): void {
+    if (value < this.MIN_MONEY_EXPECTED_VALUE) {
+      this.createTenderForm.controls.expectedValue.setErrors({
+        incorrectMinMoneyValue: true,
+      });
+    } else {
+      if (value > this.MAX_MONEY_EXPECTED_VALUE) {
+        this.createTenderForm.controls.expectedValue.setErrors({
+          incorrectMaxMoneyValue: true,
+        });
+      }
+    }
   }
 
 }
