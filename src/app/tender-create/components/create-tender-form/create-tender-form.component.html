@@ -20,13 +20,13 @@
             </mat-error>
 
             <mat-error *ngIf="createTenderForm.controls['title'].hasError('minlength')">
-              {{ ('CREATE-FORM.ERROR.MIN_LENGTH' | translate) +
+              {{ ('CREATE-FORM.ERROR.MIN_LENGTH_TITLE' | translate) +
             ' (' + createTenderForm.get('title')?.errors?.minlength['actualLength'] + '/' +
             createTenderForm.get('title')?.errors?.minlength['requiredLength'] + ')' }}
             </mat-error>
 
             <mat-error *ngIf="createTenderForm.controls['title'].hasError('maxlength')">
-              {{ ('CREATE-FORM.ERROR.MAX_LENGTH' | translate) +
+              {{ ('CREATE-FORM.ERROR.MAX_LENGTH_TITLE' | translate) +
             ' (' + createTenderForm.get('title')?.errors?.maxlength['actualLength'] + '/' +
             createTenderForm.get('title')?.errors?.maxlength['requiredLength'] + ')' }}
             </mat-error>
@@ -41,9 +41,23 @@
           <mat-form-field class="full-width">
             <textarea matInput required
                       [placeholder]="'CREATE-FORM.TENDER_DESCRIPTION' | translate"
-                      formControlName="description"></textarea>
+                      formControlName="description">
+            </textarea>
+
             <mat-error *ngIf="createTenderForm.controls['description'].hasError('required')">
               {{ 'CREATE-FORM.ERROR.DESCRIPTION' | translate }}
+            </mat-error>
+
+            <mat-error *ngIf="createTenderForm.controls['description'].hasError('minlength')">
+              {{ ('CREATE-FORM.ERROR.MIN_LENGTH_DESCRIPTION' | translate) +
+            ' (' + createTenderForm.get('description')?.errors?.minlength['actualLength'] + '/' +
+            createTenderForm.get('description')?.errors?.minlength['requiredLength'] + ')' }}
+            </mat-error>
+
+            <mat-error *ngIf="createTenderForm.controls['description'].hasError('maxlength')">
+              {{ ('CREATE-FORM.ERROR.MAX_LENGTH_DESCRIPTION' | translate) +
+            ' (' + createTenderForm.get('description')?.errors?.maxlength['actualLength'] + '/' +
+            createTenderForm.get('description')?.errors?.maxlength['requiredLength'] + ')' }}
             </mat-error>
           </mat-form-field>
         </div>

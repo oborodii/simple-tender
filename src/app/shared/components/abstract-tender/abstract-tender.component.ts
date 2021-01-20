@@ -2,12 +2,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ThemePalette } from '@angular/material/core';
+
 import { environment } from '../../../../environments/environment';
 import { TenderConfig } from '../../../tender.config';
 import { TenderService } from '../../../tender.service';
 import { TenderCurrency } from '../../../types/tender-currency.type';
 import { TenderUnit } from '../../../types/tender-unit.type';
-import { ThemePalette } from '@angular/material/core';
 
 
 @Component({
