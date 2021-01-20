@@ -45,17 +45,25 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
   }
 
 
-  minMaxMoneySetError(value: number): void {
-    if (value < this.MIN_MONEY_EXPECTED_VALUE) {
-      this.createTenderForm.controls.expectedValue.setErrors({
-        incorrectMinMoneyValue: true,
-      });
-    } else {
-      if (value > this.MAX_MONEY_EXPECTED_VALUE) {
-        this.createTenderForm.controls.expectedValue.setErrors({
+  minMaxMoneySetError(formControlName: string): void {
+    const value: number = this.createTenderForm.value[formControlName];
+
+    switch (true) {
+      case value == null:
+        this.createTenderForm.controls[formControlName].setErrors({
+          required: true,
+        });
+        break;
+      case value < this.MIN_MONEY_EXPECTED_VALUE:
+        this.createTenderForm.controls[formControlName].setErrors({
+          incorrectMinMoneyValue: true,
+        });
+        break;
+      case value > this.MAX_MONEY_EXPECTED_VALUE:
+        this.createTenderForm.controls[formControlName].setErrors({
           incorrectMaxMoneyValue: true,
         });
-      }
+        break;
     }
   }
 

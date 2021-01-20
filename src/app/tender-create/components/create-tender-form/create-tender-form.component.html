@@ -91,14 +91,16 @@
         <!-- Expected Value -->
         <div class="col">
           <mat-form-field class="full-width">
-            <span matPrefix>{{ createTenderForm.controls['currency'].value?.code }} &nbsp;</span>
+            <span matPrefix>
+              {{ createTenderForm.controls['currency'].value?.code }}
+            </span>
             <input matInput
                    type="number"
                    [min]="MIN_MONEY_EXPECTED_VALUE"
                    [max]="MAX_MONEY_EXPECTED_VALUE"
                    max="3"
                    required
-                   (change)="minMaxMoneySetError(createTenderForm.value['expectedValue'])"
+                   (change)="minMaxMoneySetError('expectedValue')"
                    [placeholder]="'CREATE-FORM.EXPECTED_MONEY_VALUE' | translate"
                    formControlName="expectedValue">
 
@@ -119,15 +121,26 @@
         <!-- Step Value -->
         <div class="col">
           <mat-form-field class="full-width">
-            <span matPrefix>{{ createTenderForm.controls['currency'].value?.code }} &nbsp;</span>
+            <span matPrefix>
+              {{ createTenderForm.controls['currency'].value?.code }}
+            </span>
             <input matInput
                    type="number"
                    required
+                   (change)="minMaxMoneySetError('stepValue')"
                    [placeholder]="'CREATE-FORM.STEP_VALUE' | translate"
                    formControlName="stepValue">
 
             <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('required')">
               {{ 'CREATE-FORM.ERROR.STEP_VALUE' | translate }}
+            </mat-error>
+
+            <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('incorrectMinMoneyValue')">
+              {{ 'CREATE-FORM.ERROR.INCORRECT_MIN_MONEY_VALUE' | translate }}
+            </mat-error>
+
+            <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('incorrectMaxMoneyValue')">
+              {{ 'CREATE-FORM.ERROR.INCORRECT_MAX_MONEY_VALUE' | translate }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -143,6 +156,7 @@
                    required
                    [placeholder]="'CREATE-FORM.QUANTITY' | translate"
                    formControlName="quantity">
+
             <mat-error *ngIf="createTenderForm.controls['quantity'].hasError('required')">
               {{ 'CREATE-FORM.ERROR.QUANTITY' | translate }}
             </mat-error>
