@@ -14,7 +14,7 @@ import { NewTenderDefaultValue } from '../../../types/new-tender-default-value.t
 
 
 @Component({
-  selector: 'app-abstract-tender',
+  selector: 'st-abstract-tender',
   template: ''
 })
 export abstract class AbstractTenderComponent extends TenderConfig implements OnInit, OnDestroy {

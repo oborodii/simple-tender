@@ -8,7 +8,7 @@ import { TenderService } from '../../../tender.service';
 
 
 @Component({
-  selector: 'app-snack-bar',
+  selector: 'st-snack-bar',
   templateUrl: './snack-bar.component.html',
   styleUrls: ['./snack-bar.component.scss']
 })

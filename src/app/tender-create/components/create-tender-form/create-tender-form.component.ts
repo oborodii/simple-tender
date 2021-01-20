@@ -9,7 +9,7 @@ import { TenderService } from '../../../tender.service';
 
 
 @Component({
-  selector: 'app-test-address-form',
+  selector: 'st-test-address-form',
   templateUrl: './create-tender-form.component.html',
   styleUrls: ['./create-tender-form.component.scss']
 })

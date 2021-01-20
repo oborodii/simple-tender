@@ -6,7 +6,7 @@ import { MatTable } from '@angular/material/table';
 import { MyTableDataSource, MyTableItem } from './my-table-datasource';
 
 @Component({
-  selector: 'app-my-table',
+  selector: 'st-my-table',
   templateUrl: './my-table.component.html',
   styleUrls: ['./my-table.component.scss']
 })

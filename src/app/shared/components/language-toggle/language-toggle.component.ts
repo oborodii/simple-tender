@@ -7,7 +7,7 @@ import { TenderService } from '../../../tender.service';
 
 
 @Component({
-  selector: 'app-language-toggle',
+  selector: 'st-language-toggle',
   templateUrl: './language-toggle.component.html',
   styleUrls: ['./language-toggle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

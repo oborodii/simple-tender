@@ -1,5 +1,5 @@
 {
-  "name": "tender",
+  "name": "simple-tender",
   "version": "0.0.1",
   "scripts": {
     "start": "ng serve --open --port=4201",

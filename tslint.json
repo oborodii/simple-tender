@@ -140,13 +140,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "st",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "st",
       "kebab-case"
     ],
     "object-literal-shorthand": false
