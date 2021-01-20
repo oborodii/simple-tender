@@ -4,8 +4,7 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { MatSnackBarRef } from '@angular/material/snack-bar/snack-bar-ref';
 import { TextOnlySnackBar } from '@angular/material/snack-bar/simple-snack-bar';
 
-import { TenderCurrency } from './types/tender-currency.type';
-import { TenderUnit } from './types/tender-unit.type';
+import { environment } from '../environments/environment';
 
 
 @Injectable({
@@ -13,63 +12,11 @@ import { TenderUnit } from './types/tender-unit.type';
 })
 export class TenderService {
 
+  // all locals from environment.ts
+  locales: string[] = environment.locales;
+
   // selected by the user application language
   currentLocale: string;
-
-  // all currencies used in the application
-  currencies: TenderCurrency[] = [
-    {
-      id: 1,
-      code: '₴',
-      nameUA: 'Українська гривня',
-      nameEN: 'Ukrainian hryvnia'
-    },
-    {
-      id: 2,
-      code: '$',
-      nameUA: 'Долар США',
-      nameEN: 'U.S. dollar'
-    },
-    {
-      id: 3,
-      code: '€',
-      nameUA: 'Євро',
-      nameEN: 'Euro'
-    }
-  ];
-
-  // in what units the goods are measured
-  units: TenderUnit[] = [
-    {
-      id: 1,
-      codeUA: 'кг',
-      codeEN: 'kg',
-      nameUA: 'кілограм',
-      nameEN: 'kilogram'
-    },
-    {
-      id: 2,
-      codeUA: 'шт',
-      codeEN: 'pcs',
-      nameUA: 'штука',
-      nameEN: 'piece'
-    },
-    {
-      id: 3,
-      codeUA: 'л',
-      codeEN: 'L',
-      nameUA: 'літр',
-      nameEN: 'liter'
-    },
-    {
-      id: 4,
-      codeUA: 'м',
-      codeEN: 'm',
-      nameUA: 'метр',
-      nameEN: 'meter'
-    }
-  ];
-
 
 
   constructor(private snackBar: MatSnackBar) {

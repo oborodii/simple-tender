@@ -16,16 +16,27 @@ import { TenderService } from '../../../tender.service';
 export class CreateTenderFormComponent extends AbstractTenderComponent implements OnInit {
 
   createTenderForm: FormGroup = new FormGroup({
-    title: new FormControl(null,
-      [Validators.required, Validators.minLength(3), Validators.maxLength(6)]),
-    description: new FormControl(null,
-      [Validators.required, Validators.minLength(3), Validators.maxLength(6)]),
-    currency: new FormControl(this.currencies[0], [Validators.required]),
-    isShowBestBet: new FormControl(true),
-    expectedValue: new FormControl(100, [Validators.required]),
-    stepValue: new FormControl(1, [Validators.required]),
-    quantity: new FormControl(1, [Validators.required]),
-    unit: new FormControl(this.units[0], [Validators.required])
+    title: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.TITLE, [
+      Validators.required,
+      Validators.minLength(this.MIN_LENGTH_TITLE),
+      Validators.maxLength(this.MAX_LENGTH_TITLE)
+    ]),
+    description: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.DESCRIPTION, [
+      Validators.required,
+      Validators.minLength(this.MIN_LENGTH_DESCRIPTION),
+      Validators.maxLength(this.MAX_LENGTH_DESCRIPTION)
+    ]),
+    currency: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.CURRENCY,
+      [Validators.required]),
+    isShowBestBet: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.IS_SHOW_BEST_BET),
+    expectedValue: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.EXPECTED_VALUE,
+      [Validators.required]),
+    stepValue: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.STEP_VALUE,
+      [Validators.required]),
+    quantity: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.QUANTITY,
+      [Validators.required]),
+    unit: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.UNIT,
+      [Validators.required])
   });
 
   constructor(protected translateService: TranslateService,
@@ -54,14 +65,14 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
           required: true,
         });
         break;
-      case value < this.MIN_MONEY_EXPECTED_VALUE:
+      case value < this.MIN_EXPECTED_VALUE:
         this.createTenderForm.controls[formControlName].setErrors({
-          incorrectMinMoneyValue: true,
+          incorrectMinValue: true,
         });
         break;
-      case value > this.MAX_MONEY_EXPECTED_VALUE:
+      case value > this.MAX_EXPECTED_VALUE:
         this.createTenderForm.controls[formControlName].setErrors({
-          incorrectMaxMoneyValue: true,
+          incorrectMaxValue: true,
         });
         break;
     }

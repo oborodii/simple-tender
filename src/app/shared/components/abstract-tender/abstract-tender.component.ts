@@ -9,6 +9,8 @@ import { TenderConfig } from '../../../tender.config';
 import { TenderService } from '../../../tender.service';
 import { TenderCurrency } from '../../../types/tender-currency.type';
 import { TenderUnit } from '../../../types/tender-unit.type';
+import { TenderLocale } from '../../../types/tender-locale.type';
+import { NewTenderDefaultValue } from '../../../types/new-tender-default-value.type';
 
 
 @Component({
@@ -17,8 +19,13 @@ import { TenderUnit } from '../../../types/tender-unit.type';
 })
 export abstract class AbstractTenderComponent extends TenderConfig implements OnInit, OnDestroy {
 
-  // all locals from environment.ts
-  locales: string[] = environment.locales;
+  get LOCALE(): TenderLocale {
+    return this._LOCALE;
+  }
+
+  get locales(): string[] {
+    return this.tenderService.locales;
+  }
 
   get currentLocale(): string {
     if (localStorage.getItem('locale')) {
@@ -36,23 +43,59 @@ export abstract class AbstractTenderComponent extends TenderConfig implements On
   }
 
   get currencies(): TenderCurrency[] {
-    return this.tenderService.currencies;
+    return this._currencies;
   }
 
   get units(): TenderUnit[] {
-    return this.tenderService.units;
+    return this._units;
   }
 
   get currentThemePalette(): ThemePalette {
     return this._currentThemePalette;
   }
 
-  get MIN_MONEY_EXPECTED_VALUE(): number {
-    return this._MIN_MONEY_EXPECTED_VALUE;
+  get MIN_EXPECTED_VALUE(): number {
+    return this._MIN_EXPECTED_VALUE;
   }
 
-  get MAX_MONEY_EXPECTED_VALUE(): number {
-    return this._MAX_MONEY_EXPECTED_VALUE;
+  get MAX_EXPECTED_VALUE(): number {
+    return this._MAX_EXPECTED_VALUE;
+  }
+
+  get MIN_STEP_VALUE(): number {
+    return this._MIN_STEP_VALUE;
+  }
+
+  get MAX_STEP_VALUE(): number {
+    return this._MAX_STEP_VALUE;
+  }
+
+  get MIN_QUANTITY(): number {
+    return this._MIN_QUANTITY;
+  }
+
+  get MAX_QUANTITY(): number {
+    return this._MAX_QUANTITY;
+  }
+
+  get MIN_LENGTH_TITLE(): number {
+    return this._MIN_LENGTH_TITLE;
+  }
+
+  get MAX_LENGTH_TITLE(): number {
+    return this._MAX_LENGTH_TITLE;
+  }
+
+  get MIN_LENGTH_DESCRIPTION(): number {
+    return this._MIN_LENGTH_DESCRIPTION;
+  }
+
+  get MAX_LENGTH_DESCRIPTION(): number {
+    return this._MAX_LENGTH_DESCRIPTION;
+  }
+
+  get NEW_TENDER_DEFAULT_VALUE(): NewTenderDefaultValue {
+    return this._NEW_TENDER_DEFAULT_VALUE;
   }
 
 
@@ -64,7 +107,7 @@ export abstract class AbstractTenderComponent extends TenderConfig implements On
   }
 
   getLocalCurrencyName(currency: TenderCurrency): string {
-    if (this.tenderService.currentLocale === 'ua') {
+    if (this.tenderService.currentLocale === this.LOCALE.UA) {
       return currency.nameUA;
     } else {
       return currency.nameEN;
@@ -72,7 +115,7 @@ export abstract class AbstractTenderComponent extends TenderConfig implements On
   }
 
   getLocalUnitCode(unit: TenderUnit): string {
-    if (this.tenderService.currentLocale === 'ua') {
+    if (this.tenderService.currentLocale === this.LOCALE.UA) {
       return unit.codeUA;
     } else {
       return unit.codeEN;
@@ -80,7 +123,7 @@ export abstract class AbstractTenderComponent extends TenderConfig implements On
   }
 
   getLocalUnitFullName(unit: TenderUnit): string {
-    if (this.tenderService.currentLocale === 'ua') {
+    if (this.tenderService.currentLocale === this.LOCALE.UA) {
       return unit.nameUA;
     } else {
       return unit.nameEN;

@@ -96,11 +96,10 @@
             </span>
             <input matInput
                    type="number"
-                   [min]="MIN_MONEY_EXPECTED_VALUE"
-                   [max]="MAX_MONEY_EXPECTED_VALUE"
-                   max="3"
                    required
-                   (change)="minMaxMoneySetError('expectedValue')"
+                   [min]="MIN_EXPECTED_VALUE"
+                   [max]="MAX_EXPECTED_VALUE"
+                   (input)="minMaxMoneySetError('expectedValue')"
                    [placeholder]="'CREATE-FORM.EXPECTED_MONEY_VALUE' | translate"
                    formControlName="expectedValue">
 
@@ -108,11 +107,11 @@
               {{ 'CREATE-FORM.ERROR.EXPECTED_VALUE' | translate }}
             </mat-error>
 
-            <mat-error *ngIf="createTenderForm.controls['expectedValue'].hasError('incorrectMinMoneyValue')">
+            <mat-error *ngIf="createTenderForm.controls['expectedValue'].hasError('incorrectMinValue')">
               {{ 'CREATE-FORM.ERROR.INCORRECT_MIN_MONEY_VALUE' | translate }}
             </mat-error>
 
-            <mat-error *ngIf="createTenderForm.controls['expectedValue'].hasError('incorrectMaxMoneyValue')">
+            <mat-error *ngIf="createTenderForm.controls['expectedValue'].hasError('incorrectMaxValue')">
               {{ 'CREATE-FORM.ERROR.INCORRECT_MAX_MONEY_VALUE' | translate }}
             </mat-error>
           </mat-form-field>
@@ -127,7 +126,9 @@
             <input matInput
                    type="number"
                    required
-                   (change)="minMaxMoneySetError('stepValue')"
+                   [min]="MIN_STEP_VALUE"
+                   [max]="MAX_STEP_VALUE"
+                   (input)="minMaxMoneySetError('stepValue')"
                    [placeholder]="'CREATE-FORM.STEP_VALUE' | translate"
                    formControlName="stepValue">
 
@@ -135,11 +136,11 @@
               {{ 'CREATE-FORM.ERROR.STEP_VALUE' | translate }}
             </mat-error>
 
-            <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('incorrectMinMoneyValue')">
+            <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('incorrectMinValue')">
               {{ 'CREATE-FORM.ERROR.INCORRECT_MIN_MONEY_VALUE' | translate }}
             </mat-error>
 
-            <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('incorrectMaxMoneyValue')">
+            <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('incorrectMaxValue')">
               {{ 'CREATE-FORM.ERROR.INCORRECT_MAX_MONEY_VALUE' | translate }}
             </mat-error>
           </mat-form-field>
@@ -154,11 +155,22 @@
             <input matInput
                    type="number"
                    required
+                   [min]="MIN_QUANTITY"
+                   [max]="MAX_QUANTITY"
+                   (input)="minMaxMoneySetError('quantity')"
                    [placeholder]="'CREATE-FORM.QUANTITY' | translate"
                    formControlName="quantity">
 
             <mat-error *ngIf="createTenderForm.controls['quantity'].hasError('required')">
               {{ 'CREATE-FORM.ERROR.QUANTITY' | translate }}
+            </mat-error>
+
+            <mat-error *ngIf="createTenderForm.controls['quantity'].hasError('incorrectMinValue')">
+              {{ 'CREATE-FORM.ERROR.INCORRECT_MIN_QUANTITY' | translate }}
+            </mat-error>
+
+            <mat-error *ngIf="createTenderForm.controls['quantity'].hasError('incorrectMaxValue')">
+              {{ 'CREATE-FORM.ERROR.INCORRECT_MAX_QUANTITY' | translate }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -194,6 +206,7 @@
     </mat-card-content>
 
     <mat-card-actions align="end">
+      <!-- submit button -->
       <button mat-raised-button type="submit" [color]="currentThemePalette">
         {{ 'CREATE-FORM.SUBMIT_BUTTON' | translate }}
       </button>

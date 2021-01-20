@@ -6,7 +6,9 @@
 			"DESCRIPTION": "Опис тендера треба заповнити",
 			"EXPECTED_VALUE": "Не вказана сума, яку плануєте отримати у результаті торгів",
 			"INCORRECT_MAX_MONEY_VALUE": "Вказана сумма надто велика",
+			"INCORRECT_MAX_QUANTITY": "Надто велика кількість товару",
 			"INCORRECT_MIN_MONEY_VALUE": "Значення цього поля має бути більшим за нуль",
+			"INCORRECT_MIN_QUANTITY": "Кількість товару має бути більша за нуль",
 			"MAX_LENGTH_DESCRIPTION": "Опис тендера має бути коротший",
 			"MAX_LENGTH_TITLE": "Заголовок надто довгий",
 			"MIN_LENGTH_DESCRIPTION": "Напишіть більш розгорнутий опис для тендера",
@@ -27,7 +29,7 @@
 		"SUBMIT_BUTTON": "Створити",
 		"TENDER_DESCRIPTION": "Опис тендера",
 		"TENDER_TITLE": "Заголовок",
-		"UNIT": "Одиниці товару"
+		"UNIT": "Одиниці вимірювання товару"
 	},
 	"LIST": {
 		"TABLE": {
