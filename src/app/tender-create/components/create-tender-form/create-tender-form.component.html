@@ -21,14 +21,14 @@
 
             <mat-error *ngIf="createTenderForm.controls['title'].hasError('minlength')">
               {{ ('CREATE-FORM.ERROR.MIN_LENGTH' | translate) +
-            ' (' + createTenderForm.get('title').errors.minlength['actualLength'] + '/' +
-            createTenderForm.get('title').errors.minlength['requiredLength'] + ')' }}
+            ' (' + createTenderForm.get('title')?.errors?.minlength['actualLength'] + '/' +
+            createTenderForm.get('title')?.errors?.minlength['requiredLength'] + ')' }}
             </mat-error>
 
             <mat-error *ngIf="createTenderForm.controls['title'].hasError('maxlength')">
               {{ ('CREATE-FORM.ERROR.MAX_LENGTH' | translate) +
-            ' (' + createTenderForm.get('title').errors.maxlength['actualLength'] + '/' +
-            createTenderForm.get('title').errors.maxlength['requiredLength'] + ')' }}
+            ' (' + createTenderForm.get('title')?.errors?.maxlength['actualLength'] + '/' +
+            createTenderForm.get('title')?.errors?.maxlength['requiredLength'] + ')' }}
             </mat-error>
           </mat-form-field>
         </div>
@@ -165,7 +165,7 @@
 
     </mat-card-content>
 
-    <mat-card-actions align="right">
+    <mat-card-actions align="end">
       <button mat-raised-button type="submit" [color]="currentThemePalette">
         {{ 'CREATE-FORM.SUBMIT_BUTTON' | translate }}
       </button>
