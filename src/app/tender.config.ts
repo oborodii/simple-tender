@@ -93,8 +93,8 @@ export class TenderConfig {
 
   /** Default values when creating a new tender  */
   protected readonly _NEW_TENDER_DEFAULT_VALUE: NewTenderDefaultValue = {
-    DATE_START: new Date(),
-    DATE_END: new Date(),
+    DATE_START: '2021-01-21T22:06:02',
+    DATE_END: '2021-01-21T22:06:02',
     TITLE: 'Test tender title',
     DESCRIPTION: null,
     CURRENCY: this._currencies[0],

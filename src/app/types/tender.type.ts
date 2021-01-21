@@ -9,8 +9,6 @@ export interface Tender {
   dateCreate?: number | Date;           // date of tender creation
   dateStart: string | number | Date;    // launch date of the tender
   dateEnd: string | number | Date;      // end date of the tender
-  timeStart?: string | number | Date;   // launch time of the tender
-  timeEnd?: string | number | Date;     // end time of the tender
   title: string;                        // title
   description: string;                  // description
   status?: TenderStatus;                // 'draft' | 'active' | 'closed' | 'planned' | 'all'

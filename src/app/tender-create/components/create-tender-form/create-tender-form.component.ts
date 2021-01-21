@@ -6,6 +6,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../tender.service';
+import { TenderCurrency } from '../../../types/tender-currency.type';
+import { TenderUnit } from '../../../types/tender-unit.type';
 
 
 @Component({
@@ -15,7 +17,11 @@ import { TenderService } from '../../../tender.service';
 })
 export class CreateTenderFormComponent extends AbstractTenderComponent implements OnInit {
 
+  testDate: string = '2021-01-21T22:06:02';
+
   createTenderForm: FormGroup = new FormGroup({
+    dateStart: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.DATE_START),
+    dateEnd: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.DATE_END),
     title: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.TITLE, [
       Validators.required,
       Validators.minLength(this.MIN_LENGTH_TITLE),
@@ -39,11 +45,13 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
       [Validators.required])
   });
 
+
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               protected router: Router) {
     super(translateService, tenderService, router);
   }
+
 
   ngOnInit(): void {
     // super.ngOnInit();
@@ -53,6 +61,39 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
   onSubmit(): void {
     console.log(`this.createTenderForm =`);
     console.log(this.createTenderForm);
+  }
+
+
+  getLocalCurrencyName(currency: TenderCurrency): string {
+    if (this.tenderService.currentLocale === this.LOCALE.UA) {
+      return currency.nameUA;
+    } else {
+      return currency.nameEN;
+    }
+  }
+
+
+  getLocalUnitCode(unit: TenderUnit): string {
+    if (this.tenderService.currentLocale === this.LOCALE.UA) {
+      return unit.codeUA;
+    } else {
+      return unit.codeEN;
+    }
+  }
+
+  getLocalUnitFullName(unit: TenderUnit): string {
+    if (this.tenderService.currentLocale === this.LOCALE.UA) {
+      return unit.nameUA;
+    } else {
+      return unit.nameEN;
+    }
+  }
+
+
+  /**  Prevent Saturday and Sunday from being selected in Material Datepicker  */
+  disableRestDayFilter(d: Date | null): boolean {
+    const day = (d || new Date()).getDay();
+    return day !== 0 && day !== 6;
   }
 
 

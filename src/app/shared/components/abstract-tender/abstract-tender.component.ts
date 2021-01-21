@@ -106,30 +106,6 @@ export abstract class AbstractTenderComponent extends TenderConfig implements On
     this.translateService.use(this.currentLocale);
   }
 
-  getLocalCurrencyName(currency: TenderCurrency): string {
-    if (this.tenderService.currentLocale === this.LOCALE.UA) {
-      return currency.nameUA;
-    } else {
-      return currency.nameEN;
-    }
-  }
-
-  getLocalUnitCode(unit: TenderUnit): string {
-    if (this.tenderService.currentLocale === this.LOCALE.UA) {
-      return unit.codeUA;
-    } else {
-      return unit.codeEN;
-    }
-  }
-
-  getLocalUnitFullName(unit: TenderUnit): string {
-    if (this.tenderService.currentLocale === this.LOCALE.UA) {
-      return unit.nameUA;
-    } else {
-      return unit.nameEN;
-    }
-  }
-
 
   ngOnInit(): void {
   }

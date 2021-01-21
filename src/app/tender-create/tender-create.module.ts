@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { SharedModule } from '../shared/shared.module';
 import { TenderCreateRoutingModule } from './tender-create-routing.module';
@@ -15,9 +18,15 @@ import { CreateTenderFormComponent } from './components/create-tender-form/creat
     TenderCreateRoutingModule,
     SharedModule,
 
-  MatSlideToggleModule
-],
-  exports: []
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule
+  ],
+  exports: [],
+  providers: [
+    MatDatepickerModule
+  ]
 })
 export class TenderCreateModule {
 }

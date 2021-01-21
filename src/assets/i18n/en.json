@@ -2,6 +2,9 @@
 	"APP_TITLE": "Simple Tender 1.0",
 	"CREATE-FORM": {
 		"CURRENCY": "Currency",
+		"DATE_END": "Tender end date and time",
+		"DATE_PICKER_HINT": "Click on the icon to the right of the field to bring up the date and time picker",
+		"DATE_START": "Date and time of the beginning of the tender",
 		"ERROR": {
 			"CURRENCY": "Currency is required",
 			"DESCRIPTION": "Description is required",
