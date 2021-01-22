@@ -13,13 +13,13 @@ export interface Tender {
   description: string;                  // description
   status?: TenderStatus;                // 'draft' | 'active' | 'closed' | 'planned' | 'all'
   user?: TenderUser;                    // user who created this tender
-  isShowBestBet?: boolean;              // to show the best bet or not
-  expectedValue?: number;               // expected amount
-  stepValue?: number;                   // step of the bet
+  isShowBestBet: boolean;               // to show the best bet or not
+  expectedValue: number;                // expected amount
+  stepValue: number;                    // step of the bet
   bestBet?: TenderBet;                  // the best bet
   currentBet?: TenderBet;               // the bet entered but not yet saved by the user
   bets?: TenderBet[];                   // all bets for this tender
   currency: TenderCurrency;             // currency
-  quantity?: number;                    // quantity of goods
-  unit?: TenderUnit;                    // in what units the goods are measured
+  quantity: number;                     // quantity of goods
+  unit: TenderUnit;                     // in what units the goods are measured
 }

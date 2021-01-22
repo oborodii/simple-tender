@@ -124,8 +124,8 @@
             <input matInput
                    type="number"
                    required
-                   [min]="MIN_EXPECTED_VALUE"
-                   [max]="MAX_EXPECTED_VALUE"
+                   [min]="NEW_TENDER_DEFAULT_VALUE.MIN_EXPECTED_VALUE"
+                   [max]="NEW_TENDER_DEFAULT_VALUE.MAX_EXPECTED_VALUE"
                    (input)="minMaxMoneySetError('expectedValue')"
                    formControlName="expectedValue">
 
@@ -153,8 +153,8 @@
             <input matInput
                    type="number"
                    required
-                   [min]="MIN_STEP_VALUE"
-                   [max]="MAX_STEP_VALUE"
+                   [min]="NEW_TENDER_DEFAULT_VALUE.MIN_STEP_VALUE"
+                   [max]="NEW_TENDER_DEFAULT_VALUE.MAX_STEP_VALUE"
                    (input)="minMaxMoneySetError('stepValue')"
                    formControlName="stepValue">
 
@@ -182,8 +182,8 @@
             <input matInput
                    type="number"
                    required
-                   [min]="MIN_QUANTITY"
-                   [max]="MAX_QUANTITY"
+                   [min]="NEW_TENDER_DEFAULT_VALUE.MIN_QUANTITY"
+                   [max]="NEW_TENDER_DEFAULT_VALUE.MAX_QUANTITY"
                    (input)="minMaxMoneySetError('quantity')"
                    formControlName="quantity">
             <span matSuffix>

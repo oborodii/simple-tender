@@ -17,20 +17,18 @@ import { TenderUnit } from '../../../types/tender-unit.type';
 })
 export class CreateTenderFormComponent extends AbstractTenderComponent implements OnInit {
 
-  testDate: string = '2021-01-21T22:06:02';
-
   createTenderForm: FormGroup = new FormGroup({
     dateStart: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.DATE_START),
     dateEnd: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.DATE_END),
     title: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.TITLE, [
       Validators.required,
-      Validators.minLength(this.MIN_LENGTH_TITLE),
-      Validators.maxLength(this.MAX_LENGTH_TITLE)
+      Validators.minLength(this.NEW_TENDER_DEFAULT_VALUE.MIN_LENGTH_TITLE),
+      Validators.maxLength(this.NEW_TENDER_DEFAULT_VALUE.MAX_LENGTH_TITLE)
     ]),
     description: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.DESCRIPTION, [
       Validators.required,
-      Validators.minLength(this.MIN_LENGTH_DESCRIPTION),
-      Validators.maxLength(this.MAX_LENGTH_DESCRIPTION)
+      Validators.minLength(this.NEW_TENDER_DEFAULT_VALUE.MIN_LENGTH_DESCRIPTION),
+      Validators.maxLength(this.NEW_TENDER_DEFAULT_VALUE.MAX_LENGTH_DESCRIPTION)
     ]),
     currency: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.CURRENCY,
       [Validators.required]),
@@ -81,6 +79,7 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
     }
   }
 
+
   getLocalUnitFullName(unit: TenderUnit): string {
     if (this.tenderService.currentLocale === this.LOCALE.UA) {
       return unit.nameUA;
@@ -106,12 +105,12 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
           required: true,
         });
         break;
-      case value < this.MIN_EXPECTED_VALUE:
+      case value < this.NEW_TENDER_DEFAULT_VALUE.MIN_EXPECTED_VALUE:
         this.createTenderForm.controls[formControlName].setErrors({
           incorrectMinValue: true,
         });
         break;
-      case value > this.MAX_EXPECTED_VALUE:
+      case value > this.NEW_TENDER_DEFAULT_VALUE.MAX_EXPECTED_VALUE:
         this.createTenderForm.controls[formControlName].setErrors({
           incorrectMaxValue: true,
         });

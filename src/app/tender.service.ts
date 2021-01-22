@@ -5,12 +5,13 @@ import { MatSnackBarRef } from '@angular/material/snack-bar/snack-bar-ref';
 import { TextOnlySnackBar } from '@angular/material/snack-bar/simple-snack-bar';
 
 import { environment } from '../environments/environment';
+import { TenderConfig } from './tender.config';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class TenderService {
+export class TenderService extends TenderConfig {
 
   // all locals from environment.ts
   locales: string[] = environment.locales;
@@ -20,6 +21,7 @@ export class TenderService {
 
 
   constructor(private snackBar: MatSnackBar) {
+    super();
   }
 
   openSnackBar(message: string,

@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
 
 import { environment } from '../../../../environments/environment';
-import { TenderConfig } from '../../../tender.config';
 import { TenderService } from '../../../tender.service';
 import { TenderCurrency } from '../../../types/tender-currency.type';
 import { TenderUnit } from '../../../types/tender-unit.type';
@@ -17,10 +16,10 @@ import { NewTenderDefaultValue } from '../../../types/new-tender-default-value.t
   selector: 'st-abstract-tender',
   template: ''
 })
-export abstract class AbstractTenderComponent extends TenderConfig implements OnInit, OnDestroy {
+export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
 
   get LOCALE(): TenderLocale {
-    return this._LOCALE;
+    return this.tenderService._LOCALE;
   }
 
   get locales(): string[] {
@@ -43,66 +42,25 @@ export abstract class AbstractTenderComponent extends TenderConfig implements On
   }
 
   get currencies(): TenderCurrency[] {
-    return this._currencies;
+    return this.tenderService._currencies;
   }
 
   get units(): TenderUnit[] {
-    return this._units;
+    return this.tenderService._units;
   }
 
   get currentThemePalette(): ThemePalette {
-    return this._currentThemePalette;
-  }
-
-  get MIN_EXPECTED_VALUE(): number {
-    return this._MIN_EXPECTED_VALUE;
-  }
-
-  get MAX_EXPECTED_VALUE(): number {
-    return this._MAX_EXPECTED_VALUE;
-  }
-
-  get MIN_STEP_VALUE(): number {
-    return this._MIN_STEP_VALUE;
-  }
-
-  get MAX_STEP_VALUE(): number {
-    return this._MAX_STEP_VALUE;
-  }
-
-  get MIN_QUANTITY(): number {
-    return this._MIN_QUANTITY;
-  }
-
-  get MAX_QUANTITY(): number {
-    return this._MAX_QUANTITY;
-  }
-
-  get MIN_LENGTH_TITLE(): number {
-    return this._MIN_LENGTH_TITLE;
-  }
-
-  get MAX_LENGTH_TITLE(): number {
-    return this._MAX_LENGTH_TITLE;
-  }
-
-  get MIN_LENGTH_DESCRIPTION(): number {
-    return this._MIN_LENGTH_DESCRIPTION;
-  }
-
-  get MAX_LENGTH_DESCRIPTION(): number {
-    return this._MAX_LENGTH_DESCRIPTION;
+    return this.tenderService._currentThemePalette;
   }
 
   get NEW_TENDER_DEFAULT_VALUE(): NewTenderDefaultValue {
-    return this._NEW_TENDER_DEFAULT_VALUE;
+    return this.tenderService._NEW_TENDER_DEFAULT_VALUE;
   }
 
 
   protected constructor(protected translateService: TranslateService,
                         protected tenderService: TenderService,
                         protected router: Router) {
-    super();
     this.translateService.use(this.currentLocale);
   }
 
