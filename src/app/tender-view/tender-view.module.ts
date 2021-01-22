@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 
+import { MatTreeModule } from '@angular/material/tree';
+
 import { SharedModule } from '../shared/shared.module';
 import { TenderViewRoutingModule } from './tender-view-routing.module';
 import { TreeComponent } from './components/tree/tree.component';
@@ -11,7 +13,9 @@ import { TreeComponent } from './components/tree/tree.component';
   ],
   imports: [
     TenderViewRoutingModule,
-    SharedModule
+    SharedModule,
+
+    MatTreeModule
   ],
   exports: []
 })
