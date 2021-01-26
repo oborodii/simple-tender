@@ -24,17 +24,15 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+    <mat-toolbar [color]="currentThemePalette">
+      <button type="button" aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="drawer.toggle()"
+              *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>{{ 'APP_TITLE' | translate }}</span>
-      <span class="spacer"></span>
+      <div>{{ 'APP_TITLE' | translate }}</div>
+      <div class="spacer"></div>
       <st-language-toggle>Loading...</st-language-toggle>
     </mat-toolbar>
 

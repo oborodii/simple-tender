@@ -14,7 +14,7 @@
             <div class="row">
               <!-- Date Start -->
               <div class="col">
-                <mat-form-field class="full-width" appearance="outline">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
                   <mat-label>
                     {{ 'CREATE-FORM.DATE_START' | translate }}
                   </mat-label>
@@ -27,7 +27,7 @@
 
               <!-- Date End -->
               <div class="col">
-                <mat-form-field class="full-width" appearance="outline">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
                   <mat-label>
                     {{ 'CREATE-FORM.DATE_END' | translate }}
                   </mat-label>
@@ -42,7 +42,7 @@
             <!-- Title -->
             <div class="row">
               <div class="col">
-                <mat-form-field class="full-width" appearance="standard">
+                <mat-form-field class="full-width" appearance="standard" [color]="currentThemePalette">
                   <mat-label>{{ 'CREATE-FORM.TENDER_TITLE' | translate }}</mat-label>
                   <input matInput required formControlName="title">
 
@@ -69,7 +69,7 @@
             <!-- Description -->
             <div class="row">
               <div class="col">
-                <mat-form-field class="full-width" appearance="standard">
+                <mat-form-field class="full-width" appearance="standard" [color]="currentThemePalette">
                   <mat-label>{{ 'CREATE-FORM.TENDER_DESCRIPTION' | translate }}</mat-label>
                   <textarea matInput required rows="5" formControlName="description">
             </textarea>
@@ -97,7 +97,7 @@
             <!-- Currency -->
             <div class="row currency">
               <div class="col">
-                <mat-form-field class="full-width" appearance="outline">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
                   <mat-label>
                     {{ 'CREATE-FORM.CURRENCY' | translate }}
                   </mat-label>
@@ -120,10 +120,10 @@
             <div class="row">
               <!-- Expected Value -->
               <div class="col">
-                <mat-form-field class="full-width" appearance="standard">
-            <span matPrefix>
-              {{ createTenderForm.controls['currency'].value?.code }}
-            </span>
+                <mat-form-field class="full-width" appearance="standard" [color]="currentThemePalette">
+                  <div matPrefix>
+                    {{ createTenderForm.controls['currency'].value?.code }}
+                  </div>
                   <mat-label>{{ 'CREATE-FORM.EXPECTED_MONEY_VALUE' | translate }}</mat-label>
                   <input matInput
                          type="number"
@@ -149,10 +149,10 @@
 
               <!-- Step Value -->
               <div class="col">
-                <mat-form-field class="full-width" appearance="standard">
-            <span matPrefix>
-              {{ createTenderForm.controls['currency'].value?.code }}
-            </span>
+                <mat-form-field class="full-width" appearance="standard" [color]="currentThemePalette">
+                  <div matPrefix>
+                    {{ createTenderForm.controls['currency'].value?.code }}
+                  </div>
                   <mat-label>{{ 'CREATE-FORM.STEP_VALUE' | translate }}</mat-label>
                   <input matInput
                          type="number"
@@ -181,7 +181,7 @@
             <div class="row">
               <!-- Quantity of goods -->
               <div class="col">
-                <mat-form-field class="full-width" appearance="standard">
+                <mat-form-field class="full-width" appearance="standard" [color]="currentThemePalette">
                   <mat-label>{{ 'CREATE-FORM.QUANTITY' | translate }}</mat-label>
                   <input matInput
                          type="number"
@@ -210,7 +210,7 @@
 
               <!-- in what Units the goods are measured -->
               <div class="col">
-                <mat-form-field class="full-width" appearance="outline">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
                   <mat-label>
                     {{ 'CREATE-FORM.UNIT' | translate }}
                   </mat-label>
@@ -253,7 +253,6 @@
         <p>createTenderForm.value:</p>
         <pre>{{ createTenderForm.value | json }}</pre>
       </div>
-
 
     </div>
   </div>

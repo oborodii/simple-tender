@@ -9,7 +9,7 @@ import { TenderUnit } from './types/tender-unit.type';
 export class TenderConfig {
 
   /** Possible color palette values: 'primary' | 'accent' | 'warn' */
-  readonly _currentThemePalette: ThemePalette = 'primary';
+  readonly _currentThemePalette: ThemePalette = 'warn';
 
   /** All locales in application */
   readonly _LOCALE: TenderLocale = {
