@@ -25,13 +25,15 @@ import { MissingTranslationService } from './classes/missing-translation-service
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LanguageToggleComponent } from './components/language-toggle/language-toggle.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     SnackBarComponent,
     NavigationComponent,
-    LanguageToggleComponent
+    LanguageToggleComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
