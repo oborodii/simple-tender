@@ -236,6 +236,13 @@
               </div>
             </div>
 
+            <!--            <div class="row" *ngIf="createTenderForm">-->
+            <!--              <div class="col" style="margin-top: 15px; color: orangered;">-->
+            <!--                <p><strong>createTenderForm.value:</strong></p>-->
+            <!--                <pre style="color: orangered;">{{ createTenderForm.value | json }}</pre>-->
+            <!--              </div>-->
+            <!--            </div>-->
+
           </mat-card-content>
 
           <mat-card-actions align="end">
@@ -248,11 +255,6 @@
         </mat-card>
       </form>
 
-
-      <div *ngIf="createTenderForm" style="float: right;">
-        <p>createTenderForm.value:</p>
-        <pre>{{ createTenderForm.value | json }}</pre>
-      </div>
 
     </div>
   </div>
