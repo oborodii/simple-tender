@@ -11,11 +11,11 @@ import { TenderService } from '../../../tender.service';
 
 
 @Component({
-  selector: 'st-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  selector: 'st-layout',
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class LayoutComponent implements OnInit {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

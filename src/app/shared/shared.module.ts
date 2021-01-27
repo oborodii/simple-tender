@@ -23,7 +23,6 @@ import { environment } from '../../environments/environment';
 import { createTranslateLoader } from './classes/create-translate-loader.function';
 import { MissingTranslationService } from './classes/missing-translation-service.class';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { LanguageToggleComponent } from './components/language-toggle/language-toggle.component';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -31,7 +30,6 @@ import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     SnackBarComponent,
-    NavigationComponent,
     LanguageToggleComponent,
     FooterComponent
   ],
@@ -72,8 +70,8 @@ import { FooterComponent } from './components/footer/footer.component';
     TranslateModule,
 
     SnackBarComponent,
-    NavigationComponent,
     LanguageToggleComponent,
+    FooterComponent,
 
     MatInputModule,
     MatButtonModule,
@@ -86,7 +84,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MatListModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSnackBarModule,
+    MatSnackBarModule
   ],
   providers: [
     TranslateStore
