@@ -1,3 +1,5 @@
+@import "src/app/shared/styles/variables";
+
 .lang-toggle-component {
   font-size: 0.6em;
   font-weight: normal;
@@ -11,5 +13,5 @@
 
 .mat-label {
   font-size: 1.2em;
-  color: white;
+  color: $mat-sidenav-txt-color;
 }

@@ -1,4 +1,4 @@
-//@import "src/styles";
+@import "src/app/shared/styles/variables";
 
 .sidenav-container {
   height: 100%;
@@ -19,7 +19,6 @@
 }
 
 .active {
-  //color: $warn-bg-color;
   font-weight: bolder;
 }
 

@@ -1,12 +1,12 @@
+@import "src/app/shared/styles/variables";
+
 .full-width {
   width: 100%;
 }
 
 .form-style {
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 600px;
-  float: left;
+  margin-bottom: 60px;
+  width: 100%;
 }
 
 .create-tender-card {
@@ -21,7 +21,6 @@
 
 .col {
   flex: 1;
-  margin-right: 20px;
 }
 
 .col:last-child {
@@ -32,6 +31,6 @@
   margin-bottom: 20px;
 }
 
-span[matPrefix] {
+*[matPrefix] {
   margin-right: 3px;
 }
