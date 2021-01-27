@@ -1,22 +1,32 @@
 <div class="footer-toolbar">
   <mat-toolbar [color]="currentThemePalette">
     <mat-toolbar-row>
-      <span>First Line</span>
-      <span class="spacer"></span>
-      <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-        verified_user
-      </mat-icon>
-    </mat-toolbar-row>
+      <div class="footer-txt">
+        © 2021
+        {{ 'APP_TITLE' | translate }}.
+        {{ 'FOOTER.COPYRIGHT' | translate }}
+      </div>
 
-    <mat-toolbar-row>
-      <span>Second Line</span>
-      <span class="spacer"></span>
-      <mat-icon class="icons" aria-hidden="false" aria-label="Example heart icon">
-        favorite
-      </mat-icon>
-      <mat-icon class="icons" aria-hidden="false" aria-label="Example delete icon">
-        delete
-      </mat-icon>
+      <div class="spacer"></div>
+
+      <mat-nav-list class="list-horizontal">
+        <a mat-list-item routerLink="/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
+            format_list_numbered
+          </mat-icon>
+          <span class="menu-txt">
+            {{ 'MENU.LIST_OF_TENDERS' | translate }}
+          </span>
+        </a>
+        <a mat-list-item routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
+            add
+          </mat-icon>
+          <span class="menu-txt">
+            {{ 'MENU.CREATE_NEW_TENDER' | translate }}
+          </span>
+        </a>
+      </mat-nav-list>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>

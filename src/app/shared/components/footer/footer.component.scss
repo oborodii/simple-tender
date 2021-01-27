@@ -1,3 +1,5 @@
+$footer-font-size: 0.6em;
+
 .footer-toolbar {
   position: fixed;
   width: 100%;
@@ -7,10 +9,51 @@
   z-index: 1;
 }
 
-.spacer {
-  flex: 1 1 auto;
+.footer-txt {
+  font-size: $footer-font-size;
+  font-weight: normal;
+  font-style: normal;
+
+  a {
+    color: unset;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
-.icons {
-  padding: 0 14px;
+mat-nav-list.list-horizontal {
+  margin-top: 0;
+  padding-top: 0;
+
+  a[mat-list-item] {
+    display: inline-block;
+    height: auto;
+    width: auto;
+    font-size: $footer-font-size;
+    font-weight: normal;
+    font-style: normal;
+    color: unset;
+
+    mat-icon.icons {
+      padding-top: 4px;
+      padding-right: 0;
+      font-size: 1.2em;
+    }
+
+    .menu-txt {
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+.spacer {
+  flex: 1 1 auto;
 }

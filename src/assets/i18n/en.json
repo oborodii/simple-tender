@@ -35,6 +35,9 @@
 		"TENDER_TITLE": "Tender title",
 		"UNIT": "Units of goods"
 	},
+	"FOOTER": {
+		"COPYRIGHT": "All rights reserved"
+	},
 	"LIST": {
 		"TABLE": {
 			"TITLE": "Table title"
@@ -43,6 +46,7 @@
 	"MENU": {
 		"CREATE_NEW_TENDER": "Create a new Tender",
 		"LABEL": "Menu",
+		"LIST_OF_TENDERS": "List of tenders",
 		"MAIN_PAGE": "Main page",
 		"VIEW_TENDER": "View tender"
 	},
