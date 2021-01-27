@@ -1,6 +1,8 @@
 <div class="lang-toggle-component">
-  <mat-form-field appearance="fill">
-    <mat-label>{{ 'SELECT-LANGUAGE.LABEL' | translate }}</mat-label>
+  <mat-form-field class="mat-form-field" appearance="outline" [color]="currentThemePalette">
+    <mat-label class="mat-label">
+      {{ 'SELECT-LANGUAGE.LABEL' | translate }}
+    </mat-label>
     <mat-select [(value)]="currentLocale" (selectionChange)="translate(langSelect.value)" #langSelect>
       <mat-option *ngFor="let local of locales" [value]="local">
         {{ local }}
