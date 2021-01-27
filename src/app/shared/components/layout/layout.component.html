@@ -6,10 +6,7 @@
                #drawer
                class="sidenav">
 
-    <mat-toolbar>
-      {{ 'MENU.LABEL' | translate }}
-    </mat-toolbar>
-
+    <!-- Vertical menu -->
     <mat-nav-list>
       <a mat-list-item routerLink="/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
         {{ 'MENU.MAIN_PAGE' | translate }}
@@ -24,6 +21,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
+    <!-- Header -->
     <mat-toolbar [color]="currentThemePalette">
       <button type="button" aria-label="Toggle sidenav"
               mat-icon-button
@@ -36,7 +34,7 @@
       <st-language-toggle>Loading...</st-language-toggle>
     </mat-toolbar>
 
-    <!-- Add Content Here -->
+    <!-- Content -->
     <router-outlet></router-outlet>
 
   </mat-sidenav-content>

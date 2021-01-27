@@ -37,5 +37,4 @@ export class LayoutComponent implements OnInit {
     this.translateService.use(environment.defaultLocale);
   }
 
-
 }
