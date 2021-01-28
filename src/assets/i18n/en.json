@@ -43,10 +43,23 @@
 			"TITLE": "Table title"
 		}
 	},
+	"LOGIN": {
+		"ERROR": {
+			"LOGIN_EMAIL": "Login is email",
+			"LOGIN_REQUIRED": "Login is required",
+			"PASSWORD": "Password is required",
+			"PASSWORD_MIN_LENGTH": "Password is too short"
+		},
+		"FORM_TITLE": "Login",
+		"LOGIN_LABEL": "Your login (email)",
+		"PASSWORD_LABEL": "Your password",
+		"SUBMIT": "Submit"
+	},
 	"MENU": {
 		"CREATE_NEW_TENDER": "Create a new Tender",
 		"LABEL": "Menu",
 		"LIST_OF_TENDERS": "List of tenders",
+		"LOGIN": "Login",
 		"MAIN_PAGE": "Main page",
 		"VIEW_TENDER": "View tender"
 	},

@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()" class="form-style">
+        <mat-card class="login-mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              <label>{{ 'LOGIN.FORM_TITLE' | translate }}</label>
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <!-- Login (email) -->
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+                  <mat-label>{{ 'LOGIN.LOGIN_LABEL' | translate }}</mat-label>
+                  <input matInput type="email" required formControlName="login">
+
+                  <mat-error *ngIf="loginForm.controls['login'].hasError('required')">
+                    {{ 'LOGIN.ERROR.LOGIN_REQUIRED' | translate }}
+                  </mat-error>
+
+                  <mat-error *ngIf="loginForm.controls['login'].hasError('email')">
+                    {{ 'LOGIN.ERROR.LOGIN_EMAIL' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+                  <mat-label>{{ 'LOGIN.PASSWORD_LABEL' | translate }}</mat-label>
+                  <input matInput type="password" required formControlName="password">
+
+                  <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                    {{ 'LOGIN.ERROR.PASSWORD' | translate }}
+                  </mat-error>
+
+                  <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">
+                    {{ ('LOGIN.ERROR.PASSWORD_MIN_LENGTH' | translate) +
+                  ' (' + loginForm.get('password')?.errors?.minlength['actualLength'] + '/' +
+                  loginForm.get('password')?.errors?.minlength['requiredLength'] + ')' }}
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <!-- submit button -->
+            <button mat-raised-button type="submit" [color]="currentThemePalette">
+              {{ 'LOGIN.SUBMIT' | translate }}
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

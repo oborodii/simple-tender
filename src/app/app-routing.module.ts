@@ -9,6 +9,7 @@ const routes: Routes = [
   {path: 'list', loadChildren: () => import('./tender-list/tender-list.module').then(m => m.TenderListModule)},
   {path: 'create', loadChildren: () => import('./tender-create/tender-create.module').then(m => m.TenderCreateModule)},
   {path: 'view', loadChildren: () => import('./tender-view/tender-view.module').then(m => m.TenderViewModule)},
+  {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
   {path: '**', component: NotFoundComponent}
 ];
 
