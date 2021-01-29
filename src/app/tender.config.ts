@@ -4,6 +4,7 @@ import { TenderLocale } from './types/tender-locale.type';
 import { NewTenderDefaultValue } from './types/new-tender-default-value.type';
 import { TenderCurrency } from './types/tender-currency.type';
 import { TenderUnit } from './types/tender-unit.type';
+import { LoginDefaultValue } from './types/login-default-value.type';
 
 
 export class TenderConfig {
@@ -122,6 +123,20 @@ export class TenderConfig {
 
     /** To show the best bet or not */
     IS_SHOW_BEST_BET: true
+  };
+
+
+  /** Default values when creating a new tender */
+  readonly _LOGIN_DEFAULT_VALUE: LoginDefaultValue = {
+    /** Min/Max password length */
+    MIN_PASSWORD_LENGTH: 6,
+    MAX_PASSWORD_LENGTH: 100,
+
+    /** Login default value */
+    LOGIN: null,
+
+    /** Password default value */
+    PASSWORD: null
   };
 
 }

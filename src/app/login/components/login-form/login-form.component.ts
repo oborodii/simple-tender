@@ -15,13 +15,14 @@ import { TenderService } from '../../../tender.service';
 })
 export class LoginFormComponent extends AbstractTenderComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
-    login: new FormControl(null, [
+    login: new FormControl(this.LOGIN_DEFAULT_VALUE.LOGIN, [
       Validators.required,
       Validators.email
     ]),
-    password: new FormControl(null, [
+    password: new FormControl(this.LOGIN_DEFAULT_VALUE.PASSWORD, [
       Validators.required,
-      Validators.minLength(this.NEW_TENDER_DEFAULT_VALUE.MIN_LENGTH_TITLE),
+      Validators.minLength(this.LOGIN_DEFAULT_VALUE.MIN_PASSWORD_LENGTH),
+      Validators.maxLength(this.LOGIN_DEFAULT_VALUE.MAX_PASSWORD_LENGTH),
     ])
   });
 

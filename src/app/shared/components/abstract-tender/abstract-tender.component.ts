@@ -10,6 +10,7 @@ import { TenderCurrency } from '../../../types/tender-currency.type';
 import { TenderUnit } from '../../../types/tender-unit.type';
 import { TenderLocale } from '../../../types/tender-locale.type';
 import { NewTenderDefaultValue } from '../../../types/new-tender-default-value.type';
+import { LoginDefaultValue } from '../../../types/login-default-value.type';
 
 
 @Component({
@@ -55,6 +56,10 @@ export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
 
   get NEW_TENDER_DEFAULT_VALUE(): NewTenderDefaultValue {
     return this.tenderService._NEW_TENDER_DEFAULT_VALUE;
+  }
+
+  get LOGIN_DEFAULT_VALUE(): LoginDefaultValue {
+    return this.tenderService._LOGIN_DEFAULT_VALUE;
   }
 
 
