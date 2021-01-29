@@ -19,6 +19,7 @@
 			"MIN_LENGTH_TITLE": "The title is too short",
 			"QUANTITY": "Quantity of goods is required",
 			"STEP_VALUE": "Bet step is required",
+			"SUBMIT_BUTTON_DISABLED": "Not all form fields are correctly filled",
 			"TITLE": "Title is required",
 			"UNIT": "Unit is required"
 		},
@@ -57,7 +58,7 @@
 		"SUBMIT": "Submit"
 	},
 	"MENU": {
-		"CREATE_NEW_TENDER": "Create a new Tender",
+		"CREATE_NEW_TENDER": "Create a new tender",
 		"LABEL": "Menu",
 		"LIST_OF_TENDERS": "List of tenders",
 		"LOGIN": "Login",
