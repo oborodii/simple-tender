@@ -48,7 +48,8 @@
 			"LOGIN_EMAIL": "Логіном має бути емайл",
 			"LOGIN_REQUIRED": "Логін треба заповнити",
 			"PASSWORD": "Пароль треба заповнити",
-			"PASSWORD_MIN_LENGTH": "Пароль надто короткий"
+			"PASSWORD_MIN_LENGTH": "Пароль надто короткий",
+			"SUBMIT_BUTTON_DISABLED": "Введіть коректні значення логіну и паролю"
 		},
 		"FORM_TITLE": "Логін",
 		"LOGIN_LABEL": "Ваш логін (email)",

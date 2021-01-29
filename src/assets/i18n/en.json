@@ -48,7 +48,8 @@
 			"LOGIN_EMAIL": "Login is email",
 			"LOGIN_REQUIRED": "Login is required",
 			"PASSWORD": "Password is required",
-			"PASSWORD_MIN_LENGTH": "Password is too short"
+			"PASSWORD_MIN_LENGTH": "Password is too short",
+			"SUBMIT_BUTTON_DISABLED": "The login and password values are incorrect"
 		},
 		"FORM_TITLE": "Login",
 		"LOGIN_LABEL": "Your login (email)",
