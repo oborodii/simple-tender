@@ -9,3 +9,26 @@ body {
   color: $main-txt-color;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.full-width {
+  width: 100%;
+}
+
+.form-style {
+  margin: 20px auto 60px auto;
+  width: 100%;
+  max-width: 800px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+}
+
+*[matPrefix] {
+  margin-right: 3px;
+}
