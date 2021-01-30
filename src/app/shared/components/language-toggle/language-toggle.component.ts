@@ -21,7 +21,7 @@ export class LanguageToggleComponent extends AbstractTenderComponent implements 
   }
 
 
-  translate(language: string): void {
+  selectionChange(language: string): void {
     this.currentLocale = language;
     this.translateService.use(language);
     this.translateService.setDefaultLang(language);
