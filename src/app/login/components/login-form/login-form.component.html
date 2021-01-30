@@ -10,19 +10,19 @@
           </mat-card-header>
 
           <mat-card-content>
-            <!-- Login (email) -->
+            <!-- Email as Login -->
             <div class="row">
               <div class="col">
                 <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
-                  <mat-label>{{ 'LOGIN.LOGIN_LABEL' | translate }}</mat-label>
-                  <input matInput type="email" required formControlName="login">
+                  <mat-label>{{ 'LOGIN.EMAIL_LABEL' | translate }}</mat-label>
+                  <input matInput type="email" required formControlName="email">
 
-                  <mat-error *ngIf="loginForm.controls['login'].hasError('required')">
-                    {{ 'LOGIN.ERROR.LOGIN_REQUIRED' | translate }}
+                  <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+                    {{ 'LOGIN.ERROR.EMAIL_REQUIRED' | translate }}
                   </mat-error>
 
-                  <mat-error *ngIf="loginForm.controls['login'].hasError('email')">
-                    {{ 'LOGIN.ERROR.LOGIN_EMAIL' | translate }}
+                  <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+                    {{ 'LOGIN.ERROR.EMAIL' | translate }}
                   </mat-error>
                 </mat-form-field>
               </div>

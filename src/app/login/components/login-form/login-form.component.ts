@@ -19,7 +19,7 @@ import { TenderUser } from '../../../types/tender-user.type';
 export class LoginFormComponent extends AbstractTenderComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup = new FormGroup({
-    login: new FormControl(this.LOGIN_DEFAULT_VALUE.LOGIN, [
+    email: new FormControl(this.LOGIN_DEFAULT_VALUE.EMAIL, [
       Validators.required,
       Validators.email
     ]),
@@ -45,8 +45,8 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
       console.log(this.loginForm);
 
       const user: TenderUser = {
-        email: String(this.loginForm.value.login),
-        password: String(this.loginForm.value.password)
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password
       };
 
       this.login(user);
@@ -60,13 +60,28 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
         (response: any) => {
           console.log(`response =`);
           console.log(response);
-          this.loginForm.reset();
           this.router.navigate(['/list']);
         },
         (error: HttpErrorResponse) => {
-          console.log(`error = `);
-          console.log(error);
-          console.log(`Login Error!`);
+          const errorMessage: string = error.error.error.message;
+
+          switch (true) {
+            case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.EMAIL_NOT_FOUND):
+              console.log(`EMAIL_NOT_FOUND = `);
+              console.log(error);
+              break;
+            case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.INVALID_PASSWORD):
+              console.log(`INVALID_PASSWORD = `);
+              console.log(error);
+              break;
+            case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.TOO_MANY_ATTEMPTS):
+              console.log(`TOO_MANY_ATTEMPTS_TRY_LATER = `);
+              console.log(error);
+              break;
+            default:
+              console.log(`Unknown login error`);
+              console.log(error);
+          }
         }
       ));
   }

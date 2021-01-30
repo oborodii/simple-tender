@@ -12,6 +12,7 @@ import { TenderUnit } from '../../../types/tender-unit.type';
 import { TenderLocale } from '../../../types/tender-locale.type';
 import { NewTenderDefaultValue } from '../../../types/new-tender-default-value.type';
 import { LoginDefaultValue } from '../../../types/login-default-value.type';
+import { FirebaseErrorMessage } from '../../../types/firebase-error-message.type';
 
 
 @Component({
@@ -63,6 +64,10 @@ export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
 
   get LOGIN_DEFAULT_VALUE(): LoginDefaultValue {
     return this.tenderService._LOGIN_DEFAULT_VALUE;
+  }
+
+  get FIREBASE_ERROR_MESSAGE(): FirebaseErrorMessage {
+    return this.tenderService._FIREBASE_ERROR_MESSAGE;
   }
 
 

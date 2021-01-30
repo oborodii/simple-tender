@@ -3,8 +3,8 @@ export interface LoginDefaultValue {
   readonly MIN_PASSWORD_LENGTH: number;
   readonly MAX_PASSWORD_LENGTH: number;
 
-  /** Login default value */
-  readonly LOGIN: string | null;
+  /** Email default value */
+  readonly EMAIL: string | null;
 
   /** Password default value */
   readonly PASSWORD: string | null;

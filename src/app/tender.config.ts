@@ -6,6 +6,7 @@ import { NewTenderDefaultValue } from './types/new-tender-default-value.type';
 import { TenderCurrency } from './types/tender-currency.type';
 import { TenderUnit } from './types/tender-unit.type';
 import { LoginDefaultValue } from './types/login-default-value.type';
+import { FirebaseErrorMessage } from './types/firebase-error-message.type';
 
 
 export class TenderConfig {
@@ -136,11 +137,18 @@ export class TenderConfig {
     MIN_PASSWORD_LENGTH: 6,
     MAX_PASSWORD_LENGTH: 100,
 
-    /** Login default value */
-    LOGIN: null,
+    /** Email default value */
+    EMAIL: null,
 
     /** Password default value */
     PASSWORD: null
+  };
+
+
+  readonly _FIREBASE_ERROR_MESSAGE: FirebaseErrorMessage = {
+    EMAIL_NOT_FOUND: 'EMAIL_NOT_FOUND',
+    INVALID_PASSWORD: 'INVALID_PASSWORD',
+    TOO_MANY_ATTEMPTS: 'TOO_MANY_ATTEMPTS'
   };
 
 }

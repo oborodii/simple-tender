@@ -35,9 +35,6 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.translateService.use(environment.defaultLocale);
-    console.log(`environment.firebase_login_url =`);
-    console.log(environment.firebase_login_url + environment.apiKey);
-
   }
 
 }

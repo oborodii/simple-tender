@@ -1,6 +1,6 @@
 export interface TenderUser {
   id?: number;                    // id in database
-  email: string;                 // user login (email)
+  email: string;                  // user login (email)
   password: string;               // user password
   name?: string;                  // user name
   surname?: string;               // user surname
