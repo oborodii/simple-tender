@@ -7,6 +7,7 @@ import { TenderCurrency } from './types/tender-currency.type';
 import { TenderUnit } from './types/tender-unit.type';
 import { LoginDefaultValue } from './types/login-default-value.type';
 import { FirebaseErrorMessage } from './types/firebase-error-message.type';
+import { FirebaseConst } from './types/firebase-const.type';
 import { SnackBarTxtColor } from './types/snack-bar-txt-color.type';
 
 
@@ -151,6 +152,11 @@ export class TenderConfig {
     INVALID_PASSWORD: 'INVALID_PASSWORD',
     TOO_MANY_ATTEMPTS: 'TOO_MANY_ATTEMPTS',
     USER_DISABLED: 'USER_DISABLED'
+  };
+
+  readonly _FIREBASE: FirebaseConst = {
+    LOCAL_STORAGE_TOKEN_NAME: 'firebase-token',
+    LOCAL_STORAGE_EXPIRES_TOKEN_NAME: 'firebase-token-expires',
   };
 
 

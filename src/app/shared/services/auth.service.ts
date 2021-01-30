@@ -12,9 +12,18 @@ import { FirebaseAuthResponse } from '../../types/firebase-response.type';
 })
 export class AuthService extends TenderConfig {
 
-  get token(): string {
-    return '';
+  get token(): string | null {
+    const tokenFromLocalStorage: string = JSON.stringify(localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME));
+    const expiresDate: Date = new Date(tokenFromLocalStorage);
+
+    if (new Date() > expiresDate) {
+      this.logout();
+      return null;
+    }
+
+    return JSON.stringify(localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME));
   }
+
 
   constructor(private http: HttpClient) {
     super();
@@ -31,6 +40,7 @@ export class AuthService extends TenderConfig {
 
 
   logout(): void {
+    this.setToken(null);
   }
 
 
@@ -39,9 +49,16 @@ export class AuthService extends TenderConfig {
   }
 
 
-  private setToken(res: FirebaseAuthResponse): void {
-    console.log(`setToken res = `);
-    console.log(res);
+  private setToken(response: FirebaseAuthResponse | null): void {
+    if (response) {
+      const tokenExpiresInMs: number = Number(response.expiresIn) * 1000;
+      const expiresDate: number = new Date().getTime() + tokenExpiresInMs;
+
+      localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME, response.idToken);
+      localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME, String(expiresDate));
+    } else {
+      localStorage.clear();
+    }
   }
 
 }
