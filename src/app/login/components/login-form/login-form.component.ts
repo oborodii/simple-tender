@@ -19,6 +19,8 @@ import { FirebaseAuthResponse } from '../../../types/firebase-response.type';
 })
 export class LoginFormComponent extends AbstractTenderComponent implements OnInit, OnDestroy {
 
+  loading: boolean = false;
+
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(this.LOGIN_DEFAULT_VALUE.EMAIL, [
       Validators.required,
@@ -53,12 +55,16 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
 
 
   private login(user: TenderUser): void {
+    this.loading = true;
+
     this.subscriptions.add(
       this.authService.login(user).subscribe(
         (response: FirebaseAuthResponse) => {
+          this.authService.setToken(response);
           this.loginSuccessHandler(response);
         },
         (error: HttpErrorResponse) => {
+          this.authService.logout();
           this.loginErrorHandler(error);
         }
       ));
@@ -70,6 +76,7 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
     console.log(response);
     this.tenderService.openSnackBar(this.translate('LOGIN.LOGIN_SUCCESS'), this.SNACKBAR.SUCCESS);
     this.router.navigate(['/list']);
+    this.loading = false;
   }
 
 
@@ -92,6 +99,8 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
       default:
         this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_UNKNOWN_LOGIN_ERROR'));
     }
+
+    this.loading = false;
   }
 
 
