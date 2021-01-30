@@ -1,8 +1,9 @@
-import { TranslateService } from '@ngx-translate/core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { ThemePalette } from '@angular/material/core';
+import { TranslateService } from '@ngx-translate/core';
 
 import { environment } from '../../../../environments/environment';
 import { TenderService } from '../../../tender.service';
@@ -18,6 +19,8 @@ import { LoginDefaultValue } from '../../../types/login-default-value.type';
   template: ''
 })
 export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
+
+  protected subscriptions: Subscription = new Subscription();
 
   get LOCALE(): TenderLocale {
     return this.tenderService._LOCALE;
@@ -75,6 +78,9 @@ export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
+    if (this.subscriptions) {
+      this.subscriptions.unsubscribe();
+    }
   }
 
 }

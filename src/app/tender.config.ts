@@ -1,5 +1,6 @@
 import { ThemePalette } from '@angular/material/core';
 
+import { environment } from '../environments/environment';
 import { TenderLocale } from './types/tender-locale.type';
 import { NewTenderDefaultValue } from './types/new-tender-default-value.type';
 import { TenderCurrency } from './types/tender-currency.type';
@@ -8,6 +9,9 @@ import { LoginDefaultValue } from './types/login-default-value.type';
 
 
 export class TenderConfig {
+
+  /** URLs */
+  readonly _FIREBASE_LOGIN_URL: string = environment.firebase_login_url + environment.apiKey;
 
   /** Possible color palette values: 'primary' | 'accent' | 'warn' */
   readonly _currentThemePalette: ThemePalette = 'primary';
