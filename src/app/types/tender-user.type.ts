@@ -7,4 +7,5 @@ export interface TenderUser {
   phone?: string;                 // user phone
   companyName?: string;           // the company the user works for
   dateCreate?: number | Date;     // date when this user was created
+  returnSecureToken?: boolean;    // whether or not to return an ID and refresh token (should always be true for Firebase)
 }

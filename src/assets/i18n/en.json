@@ -57,6 +57,7 @@
 		"FIREBASE_INVALID_PASSWORD": "Invalid password",
 		"FIREBASE_TOO_MANY_ATTEMPTS": "Too many incorrect login attempts",
 		"FIREBASE_UNKNOWN_LOGIN_ERROR": "Unknown login error",
+		"FIREBASE_USER_DISABLED": "The user account has been disabled by an administrator",
 		"FORM_TITLE": "Login",
 		"LOGIN_SUCCESS": "Welcome to the site!",
 		"PASSWORD_LABEL": "Your password",

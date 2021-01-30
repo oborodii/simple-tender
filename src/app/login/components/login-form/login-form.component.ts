@@ -86,6 +86,9 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
       case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.TOO_MANY_ATTEMPTS):
         this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_TOO_MANY_ATTEMPTS'));
         break;
+      case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.USER_DISABLED):
+        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_USER_DISABLED'));
+        break;
       default:
         this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_UNKNOWN_LOGIN_ERROR'));
     }

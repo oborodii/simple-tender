@@ -22,6 +22,10 @@ export class AuthService extends TenderConfig {
 
 
   login(user: TenderUser): Observable<FirebaseAuthResponse> {
+    // whether or not to return an ID and refresh token
+    // (should always be true for Firebase)
+    user.returnSecureToken = true;
+
     return this.http.post<FirebaseAuthResponse>(this._FIREBASE_LOGIN_URL, user);
   }
 

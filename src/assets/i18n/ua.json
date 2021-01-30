@@ -57,6 +57,7 @@
 		"FIREBASE_INVALID_PASSWORD": "Невірний пароль",
 		"FIREBASE_TOO_MANY_ATTEMPTS": "Занадто багато неправильних спроб входу",
 		"FIREBASE_UNKNOWN_LOGIN_ERROR": "Невідома помилка входу",
+		"FIREBASE_USER_DISABLED": "Адміністратор вимкнув даний обліковий запис користувача",
 		"FORM_TITLE": "Логін",
 		"LOGIN_SUCCESS": "Ласкаво просимо на сайт!",
 		"PASSWORD_LABEL": "Ваш пароль",
