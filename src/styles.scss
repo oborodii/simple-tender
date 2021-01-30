@@ -32,3 +32,19 @@ body {
 *[matPrefix] {
   margin-right: 3px;
 }
+
+.snack-bar-default {
+  color: $snack-bar-txt-color-default;
+}
+
+.snack-bar-success {
+  color: $snack-bar-txt-color-success;
+}
+
+.snack-bar-error {
+  color: $snack-bar-txt-color-error;
+}
+
+.snack-bar-warning {
+  color: $snack-bar-txt-color-warning;
+}

@@ -9,6 +9,7 @@ import { AbstractTenderComponent } from '../../../shared/components/abstract-ten
 import { TenderService } from '../../../tender.service';
 import { AuthService } from '../../../shared/services/auth.service';
 import { TenderUser } from '../../../types/tender-user.type';
+import { FirebaseAuthResponse } from '../../../types/firebase-response.type';
 
 
 @Component({
@@ -41,9 +42,6 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      console.log(`this.loginForm =`);
-      console.log(this.loginForm);
-
       const user: TenderUser = {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password
@@ -57,33 +55,40 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
   private login(user: TenderUser): void {
     this.subscriptions.add(
       this.authService.login(user).subscribe(
-        (response: any) => {
-          console.log(`response =`);
-          console.log(response);
-          this.router.navigate(['/list']);
+        (response: FirebaseAuthResponse) => {
+          this.loginSuccessHandler(response);
         },
         (error: HttpErrorResponse) => {
-          const errorMessage: string = error.error.error.message;
-
-          switch (true) {
-            case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.EMAIL_NOT_FOUND):
-              console.log(`EMAIL_NOT_FOUND = `);
-              console.log(error);
-              break;
-            case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.INVALID_PASSWORD):
-              console.log(`INVALID_PASSWORD = `);
-              console.log(error);
-              break;
-            case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.TOO_MANY_ATTEMPTS):
-              console.log(`TOO_MANY_ATTEMPTS_TRY_LATER = `);
-              console.log(error);
-              break;
-            default:
-              console.log(`Unknown login error`);
-              console.log(error);
-          }
+          this.loginErrorHandler(error);
         }
       ));
+  }
+
+
+  private loginSuccessHandler(response: FirebaseAuthResponse): void {
+    console.log(`FirebaseAuthResponse =`);
+    console.log(response);
+    this.tenderService.openSnackBar(this.translate('LOGIN.LOGIN_SUCCESS'), this.SNACKBAR.SUCCESS);
+    this.router.navigate(['/list']);
+  }
+
+
+  private loginErrorHandler(error: HttpErrorResponse): void {
+    const errorMessage: string = error.error.error.message;
+
+    switch (true) {
+      case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.EMAIL_NOT_FOUND):
+        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_EMAIL_NOT_FOUND'));
+        break;
+      case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.INVALID_PASSWORD):
+        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_INVALID_PASSWORD'));
+        break;
+      case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.TOO_MANY_ATTEMPTS):
+        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_TOO_MANY_ATTEMPTS'));
+        break;
+      default:
+        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_UNKNOWN_LOGIN_ERROR'));
+    }
   }
 
 

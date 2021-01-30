@@ -13,6 +13,7 @@ import { TenderLocale } from '../../../types/tender-locale.type';
 import { NewTenderDefaultValue } from '../../../types/new-tender-default-value.type';
 import { LoginDefaultValue } from '../../../types/login-default-value.type';
 import { FirebaseErrorMessage } from '../../../types/firebase-error-message.type';
+import { SnackBarTxtColor } from '../../../types/snack-bar-txt-color.type';
 
 
 @Component({
@@ -70,11 +71,20 @@ export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
     return this.tenderService._FIREBASE_ERROR_MESSAGE;
   }
 
+  get SNACKBAR(): SnackBarTxtColor {
+    return this.tenderService._SNACKBAR;
+  }
+
 
   protected constructor(protected translateService: TranslateService,
                         protected tenderService: TenderService,
                         protected router: Router) {
     this.translateService.use(this.currentLocale);
+  }
+
+
+  translate(key: string): string {
+    return this.translateService.instant(key);
   }
 
 

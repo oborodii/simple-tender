@@ -25,7 +25,7 @@ export class SnackBarComponent implements OnInit {
   }
 
   openSnackBar(message: string,
-               action: string,
+               action?: string,
                duration: string = this.duration,
                horizontalPosition: MatSnackBarHorizontalPosition = this.horizontalPosition,
                verticalPosition: MatSnackBarVerticalPosition = this.verticalPosition

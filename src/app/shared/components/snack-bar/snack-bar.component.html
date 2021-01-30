@@ -5,7 +5,7 @@
 
 <mat-form-field>
   <mat-label>Action</mat-label>
-  <input matInput value="Закрыть" #action>
+  <input matInput value="x" #action>
 </mat-form-field>
 
 <mat-form-field>
@@ -35,7 +35,7 @@
   </mat-select>
 </mat-form-field>
 
-<button mat-raised-button color="accent" (click)="openSnackBar(message.value, action.value)">
+<button mat-raised-button color="accent" (click)="openSnackBar(message.value)">
   {{ 'SNACK-BAR.BUTTON.TITLE' | translate }}
 </button>
 

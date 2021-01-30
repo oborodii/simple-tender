@@ -53,7 +53,12 @@
 			"PASSWORD_MIN_LENGTH": "Password is too short",
 			"SUBMIT_BUTTON_DISABLED": "The login and password values are incorrect"
 		},
+		"FIREBASE_EMAIL_NOT_FOUND": "No user was found with this email",
+		"FIREBASE_INVALID_PASSWORD": "Invalid password",
+		"FIREBASE_TOO_MANY_ATTEMPTS": "Too many incorrect login attempts",
+		"FIREBASE_UNKNOWN_LOGIN_ERROR": "Unknown login error",
 		"FORM_TITLE": "Login",
+		"LOGIN_SUCCESS": "Welcome to the site!",
 		"PASSWORD_LABEL": "Your password",
 		"SUBMIT": "Submit"
 	},

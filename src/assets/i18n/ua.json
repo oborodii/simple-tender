@@ -53,7 +53,12 @@
 			"PASSWORD_MIN_LENGTH": "Пароль надто короткий",
 			"SUBMIT_BUTTON_DISABLED": "Введіть коректні значення логіну и паролю"
 		},
+		"FIREBASE_EMAIL_NOT_FOUND": "Користувача с таким email не знайдено",
+		"FIREBASE_INVALID_PASSWORD": "Невірний пароль",
+		"FIREBASE_TOO_MANY_ATTEMPTS": "Занадто багато неправильних спроб входу",
+		"FIREBASE_UNKNOWN_LOGIN_ERROR": "Невідома помилка входу",
 		"FORM_TITLE": "Логін",
+		"LOGIN_SUCCESS": "Ласкаво просимо на сайт!",
 		"PASSWORD_LABEL": "Ваш пароль",
 		"SUBMIT": "Увійти"
 	},

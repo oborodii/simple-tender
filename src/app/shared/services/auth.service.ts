@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 import { TenderUser } from '../../types/tender-user.type';
 import { TenderConfig } from '../../tender.config';
+import { FirebaseAuthResponse } from '../../types/firebase-response.type';
 
 
 @Injectable({
@@ -21,10 +21,8 @@ export class AuthService extends TenderConfig {
   }
 
 
-  login(user: TenderUser): Observable<any> {
-    return this.http.post(this._FIREBASE_LOGIN_URL, user).pipe(
-      tap(this.setToken)
-    );
+  login(user: TenderUser): Observable<FirebaseAuthResponse> {
+    return this.http.post<FirebaseAuthResponse>(this._FIREBASE_LOGIN_URL, user);
   }
 
 
@@ -37,7 +35,7 @@ export class AuthService extends TenderConfig {
   }
 
 
-  private setToken(res: any): void {
+  private setToken(res: FirebaseAuthResponse): void {
     console.log(`setToken res = `);
     console.log(res);
   }
