@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { TenderUser } from '../../types/tender-user.type';
@@ -12,20 +13,13 @@ import { FirebaseAuthResponse } from '../../types/firebase-response.type';
 })
 export class AuthService extends TenderConfig {
 
-  get token(): string | null {
-    const tokenFromLocalStorage: string = JSON.stringify(localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME));
-    const expiresDate: Date = new Date(tokenFromLocalStorage);
-
-    if (new Date() > expiresDate) {
-      this.logout();
-      return null;
-    }
-
-    return JSON.stringify(localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME));
+  get isUserAuth(): boolean {
+    return Boolean(this.getToken());
   }
 
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router,
+  ) {
     super();
   }
 
@@ -41,11 +35,23 @@ export class AuthService extends TenderConfig {
 
   logout(): void {
     this.setToken(null);
+    this.router.navigate(['/login']);
   }
 
 
-  isUserAuth(): boolean {
-    return Boolean(this.token);
+  getToken(): string | null {
+    const tokenFromLocalStorage: string | null = localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME);
+
+    if (tokenFromLocalStorage) {
+      const expiresDate: Date = new Date(tokenFromLocalStorage);
+      if (new Date() > expiresDate) {
+        this.logout();
+        return null;
+      }
+      return localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME);
+    } else {
+      return null;
+    }
   }
 
 

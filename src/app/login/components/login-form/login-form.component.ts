@@ -74,7 +74,6 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
   private loginSuccessHandler(response: FirebaseAuthResponse): void {
     console.log(`FirebaseAuthResponse =`);
     console.log(response);
-    this.tenderService.openSnackBar(this.translate('LOGIN.LOGIN_SUCCESS'), this.SNACKBAR.SUCCESS);
     this.router.navigate(['/list']);
     this.loading = false;
   }

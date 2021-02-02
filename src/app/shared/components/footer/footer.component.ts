@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { TenderService } from '../../../tender.service';
 import { AbstractTenderComponent } from '../abstract-tender/abstract-tender.component';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class FooterComponent extends AbstractTenderComponent implements OnInit {
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
+              private authService: AuthService,
               protected router: Router) {
     super(translateService, tenderService, router);
   }
@@ -23,6 +25,11 @@ export class FooterComponent extends AbstractTenderComponent implements OnInit {
 
   ngOnInit(): void {
     // super.ngOnInit();
+  }
+
+
+  get isUserAuth(): boolean {
+    return this.authService.isUserAuth;
   }
 
 }

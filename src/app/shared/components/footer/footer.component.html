@@ -18,15 +18,20 @@
             {{ 'MENU.LIST_OF_TENDERS' | translate }}
           </span>
         </a>
-        <a mat-list-item routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-          <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-            add
-          </mat-icon>
-          <span class="menu-txt">
+        <ng-container *ngIf="isUserAuth">
+          <a mat-list-item routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
+              add
+            </mat-icon>
+            <span class="menu-txt">
             {{ 'MENU.CREATE_NEW_TENDER' | translate }}
           </span>
-        </a>
+          </a>
+        </ng-container>
       </mat-nav-list>
+
+      <st-language-toggle>Loading...</st-language-toggle>
+
     </mat-toolbar-row>
   </mat-toolbar>
 </div>

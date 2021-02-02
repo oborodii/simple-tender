@@ -11,14 +11,12 @@
       <a mat-list-item routerLink="/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
         {{ 'MENU.MAIN_PAGE' | translate }}
       </a>
-      <a mat-list-item routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <a *ngIf="isUserAuth" mat-list-item routerLink="/create" routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact:true}">
         {{ 'MENU.CREATE_NEW_TENDER' | translate }}
       </a>
       <a mat-list-item routerLink="/view" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
         {{ 'MENU.VIEW_TENDER' | translate }}
-      </a>
-      <a mat-list-item routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-        {{ 'MENU.LOGIN' | translate }}
       </a>
     </mat-nav-list>
   </mat-sidenav>
@@ -33,8 +31,41 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <div>{{ 'APP_TITLE' | translate }}</div>
+
       <div class="spacer"></div>
-      <st-language-toggle>Loading...</st-language-toggle>
+
+      <!-- Login/Logout -->
+      <mat-nav-list class="list-horizontal">
+        <ng-container *ngIf="!isUserAuth">
+          <a mat-list-item routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
+              login
+            </mat-icon>
+            <span class="menu-txt">
+            {{ 'MENU.LOGIN' | translate }}
+          </span>
+          </a>
+        </ng-container>
+
+        <ng-container *ngIf="isUserAuth">
+          <a mat-list-item routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
+              add
+            </mat-icon>
+            <span class="menu-txt">
+            {{ 'MENU.CREATE_NEW_TENDER' | translate }}
+          </span>
+          </a>
+          <a mat-list-item (click)="logout($event)">
+            <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
+              logout
+            </mat-icon>
+            <span class="menu-txt">
+            {{ 'MENU.LOGOUT' | translate }}
+          </span>
+          </a>
+        </ng-container>
+      </mat-nav-list>
     </mat-toolbar>
 
     <!-- Content -->

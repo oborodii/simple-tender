@@ -1,4 +1,4 @@
-$footer-font-size: 0.6em;
+@import "src/app/shared/styles/variables";
 
 .footer-toolbar {
   position: fixed;
@@ -22,37 +22,4 @@ $footer-font-size: 0.6em;
       text-decoration: none;
     }
   }
-}
-
-mat-nav-list.list-horizontal {
-  margin-top: 0;
-  padding-top: 0;
-
-  a[mat-list-item] {
-    display: inline-block;
-    height: auto;
-    width: auto;
-    font-size: $footer-font-size;
-    font-weight: normal;
-    font-style: normal;
-    color: unset;
-
-    mat-icon.icons {
-      padding-top: 4px;
-      padding-right: 0;
-      font-size: 1.2em;
-    }
-
-    .menu-txt {
-      text-decoration: underline;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
-}
-
-.spacer {
-  flex: 1 1 auto;
 }

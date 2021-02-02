@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { environment } from '../../../../environments/environment';
 import { TenderService } from '../../../tender.service';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -23,6 +24,12 @@ export class LayoutComponent implements OnInit {
       shareReplay()
     );
 
+
+  get isUserAuth(): boolean {
+    return this.authService.isUserAuth;
+  }
+
+
   get currentThemePalette(): ThemePalette {
     return this.tenderService._currentThemePalette;
   }
@@ -30,11 +37,20 @@ export class LayoutComponent implements OnInit {
 
   constructor(private tenderService: TenderService,
               private translateService: TranslateService,
-              private breakpointObserver: BreakpointObserver) {
+              private authService: AuthService,
+              private breakpointObserver: BreakpointObserver
+  ) {
   }
+
 
   ngOnInit(): void {
     this.translateService.use(environment.defaultLocale);
+  }
+
+
+  logout(event: Event): void {
+    event.preventDefault();
+    this.authService.logout();
   }
 
 }
