@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { TranslateService } from '@ngx-translate/core';
 
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../tender.service';
+import { Tender } from '../../../types/tender.type';
 import { TenderCurrency } from '../../../types/tender-currency.type';
 import { TenderUnit } from '../../../types/tender-unit.type';
 
@@ -55,8 +57,28 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
 
 
   onSubmit(): void {
-    console.log(`this.createTenderForm =`);
-    console.log(this.createTenderForm);
+    const tender: Tender = {
+      dateStart: this.createTenderForm.value.dateStart,
+      dateEnd: this.createTenderForm.value.dateEnd,
+      title: this.createTenderForm.value.title,
+      description: this.createTenderForm.value.description,
+      status: 'draft',
+      isShowBestBet: this.createTenderForm.value.isShowBestBet,
+      expectedValue: this.createTenderForm.value.expectedValue,
+      stepValue: this.createTenderForm.value.stepValue,
+      currency: this.createTenderForm.value.currency,
+      quantity: this.createTenderForm.value.quantity,
+      unit: this.createTenderForm.value.unit
+    };
+
+    this.tenderService.createTender(tender).subscribe((data: any) => {
+        console.log(`data from server = `);
+        console.log(data);
+      },
+      (err: HttpErrorResponse) => {
+        console.log(`HttpErrorResponse = `);
+        console.log(err);
+      });
   }
 
 

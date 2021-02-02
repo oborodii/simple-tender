@@ -16,6 +16,7 @@ export class TenderConfig {
 
   /** URLs */
   readonly _FIREBASE_LOGIN_URL: string = environment.firebase_login_url + environment.apiKey;
+  readonly _FIREBASE_DB_URL: string = environment.firebase_DB_url + 'tenders.json';
 
   /** Possible color palette values: 'primary' | 'accent' | 'warn' */
   readonly _currentThemePalette: ThemePalette = 'primary';
@@ -112,7 +113,7 @@ export class TenderConfig {
     TITLE: 'Test tender title',
 
     /** Tender description */
-    DESCRIPTION: null,
+    DESCRIPTION: 'Description for tender (test)',
 
     /** Default currency */
     CURRENCY: this._currencies[0],

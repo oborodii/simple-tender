@@ -5,7 +5,7 @@ import { TenderCurrency } from './tender-currency.type';
 import { TenderBet } from './tender-bet.type';
 
 export interface Tender {
-  id?: number;                          // id in the database
+  id?: string;                          // id in the database
   dateCreate?: number | Date;           // date of tender creation
   dateStart: string | number | Date;    // launch date of the tender
   dateEnd: string | number | Date;      // end date of the tender
