@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -17,9 +16,9 @@ export class FooterComponent extends AbstractTenderComponent implements OnInit {
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
-              private authService: AuthService,
-              protected router: Router) {
-    super(translateService, tenderService, router);
+              private authService: AuthService
+  ) {
+    super(translateService, tenderService);
   }
 
 

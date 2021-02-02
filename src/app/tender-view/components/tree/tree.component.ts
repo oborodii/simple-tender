@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -46,9 +45,8 @@ export class TreeComponent extends AbstractTenderComponent {
 
 
   constructor(protected translateService: TranslateService,
-              protected tenderService: TenderService,
-              protected router: Router) {
-    super(translateService, tenderService, router);
+              protected tenderService: TenderService) {
+    super(translateService, tenderService);
 
     this.treeFlattener = new MatTreeFlattener(
       this.transformer,

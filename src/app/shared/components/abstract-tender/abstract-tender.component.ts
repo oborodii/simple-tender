@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ThemePalette } from '@angular/material/core';
@@ -82,8 +81,8 @@ export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
 
 
   protected constructor(protected translateService: TranslateService,
-                        protected tenderService: TenderService,
-                        protected router: Router) {
+                        protected tenderService: TenderService
+  ) {
     this.translateService.use(this.currentLocale);
   }
 

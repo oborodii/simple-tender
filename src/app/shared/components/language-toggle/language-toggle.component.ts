@@ -17,7 +17,7 @@ export class LanguageToggleComponent extends AbstractTenderComponent implements 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               protected router: Router) {
-    super(translateService, tenderService, router);
+    super(translateService, tenderService);
   }
 
 

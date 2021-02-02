@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -45,9 +44,8 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
 
 
   constructor(protected translateService: TranslateService,
-              protected tenderService: TenderService,
-              protected router: Router) {
-    super(translateService, tenderService, router);
+              protected tenderService: TenderService) {
+    super(translateService, tenderService);
   }
 
 
