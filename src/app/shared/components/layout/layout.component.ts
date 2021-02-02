@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -9,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { environment } from '../../../../environments/environment';
 import { TenderService } from '../../../tender.service';
 import { AuthService } from '../../services/auth.service';
+import { AbstractTenderComponent } from '../abstract-tender/abstract-tender.component';
 
 
 @Component({
@@ -16,7 +18,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent extends AbstractTenderComponent implements OnInit {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -35,11 +37,13 @@ export class LayoutComponent implements OnInit {
   }
 
 
-  constructor(private tenderService: TenderService,
-              private translateService: TranslateService,
+  constructor(protected tenderService: TenderService,
+              protected translateService: TranslateService,
               private authService: AuthService,
+              protected router: Router,
               private breakpointObserver: BreakpointObserver
   ) {
+    super(translateService, tenderService, router);
   }
 
 

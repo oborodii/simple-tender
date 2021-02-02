@@ -12,7 +12,7 @@
       <mat-nav-list class="list-horizontal">
         <a mat-list-item routerLink="/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
           <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-            format_list_numbered
+            {{ MATERIAL_ICONS.LIST }}
           </mat-icon>
           <span class="menu-txt">
             {{ 'MENU.LIST_OF_TENDERS' | translate }}
@@ -21,7 +21,7 @@
         <ng-container *ngIf="isUserAuth">
           <a mat-list-item routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
             <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-              add
+              {{ MATERIAL_ICONS.ADD }}
             </mat-icon>
             <span class="menu-txt">
             {{ 'MENU.CREATE_NEW_TENDER' | translate }}

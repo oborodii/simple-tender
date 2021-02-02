@@ -14,6 +14,7 @@ import { NewTenderDefaultValue } from '../../../types/new-tender-default-value.t
 import { LoginDefaultValue } from '../../../types/login-default-value.type';
 import { FirebaseErrorMessage } from '../../../types/firebase-error-message.type';
 import { SnackBarTxtColor } from '../../../types/snack-bar-txt-color.type';
+import { MaterialIcons } from '../../../types/material-icons.type';
 
 
 @Component({
@@ -73,6 +74,10 @@ export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
 
   get SNACKBAR(): SnackBarTxtColor {
     return this.tenderService._SNACKBAR;
+  }
+
+  get MATERIAL_ICONS(): MaterialIcons {
+    return this.tenderService._MATERIAL_ICONS;
   }
 
 

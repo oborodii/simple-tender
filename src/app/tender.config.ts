@@ -9,6 +9,7 @@ import { LoginDefaultValue } from './types/login-default-value.type';
 import { FirebaseErrorMessage } from './types/firebase-error-message.type';
 import { FirebaseConst } from './types/firebase-const.type';
 import { SnackBarTxtColor } from './types/snack-bar-txt-color.type';
+import { MaterialIcons } from './types/material-icons.type';
 
 
 export class TenderConfig {
@@ -165,6 +166,13 @@ export class TenderConfig {
     SUCCESS: 'snack-bar-success',
     ERROR: 'snack-bar-error',
     WARNING: 'snack-bar-warning'
+  };
+
+  readonly _MATERIAL_ICONS: MaterialIcons = {
+    ADD: 'add',
+    LOGIN: 'login',
+    LOGOUT: 'logout',
+    LIST: 'format_list_numbered'
   };
 
 }

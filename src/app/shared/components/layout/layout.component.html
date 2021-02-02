@@ -39,7 +39,7 @@
         <ng-container *ngIf="!isUserAuth">
           <a mat-list-item routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
             <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-              login
+              {{ MATERIAL_ICONS.LOGIN }}
             </mat-icon>
             <span class="menu-txt">
             {{ 'MENU.LOGIN' | translate }}
@@ -50,7 +50,7 @@
         <ng-container *ngIf="isUserAuth">
           <a mat-list-item routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
             <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-              add
+              {{ MATERIAL_ICONS.ADD }}
             </mat-icon>
             <span class="menu-txt">
             {{ 'MENU.CREATE_NEW_TENDER' | translate }}
@@ -58,7 +58,7 @@
           </a>
           <a mat-list-item (click)="logout($event)">
             <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-              logout
+              {{ MATERIAL_ICONS.LOGOUT }}
             </mat-icon>
             <span class="menu-txt">
             {{ 'MENU.LOGOUT' | translate }}
