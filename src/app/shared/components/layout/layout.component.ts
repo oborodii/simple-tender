@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -39,7 +40,8 @@ export class LayoutComponent extends AbstractTenderComponent implements OnInit {
   constructor(protected tenderService: TenderService,
               protected translateService: TranslateService,
               private authService: AuthService,
-              private breakpointObserver: BreakpointObserver
+              private breakpointObserver: BreakpointObserver,
+              private router: Router
   ) {
     super(translateService, tenderService);
   }
@@ -53,6 +55,7 @@ export class LayoutComponent extends AbstractTenderComponent implements OnInit {
   logout(event: Event): void {
     event.preventDefault();
     this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

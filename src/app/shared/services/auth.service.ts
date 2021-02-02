@@ -35,7 +35,6 @@ export class AuthService extends TenderConfig {
 
   logout(): void {
     this.setToken(null);
-    this.router.navigate(['/login']);
   }
 
 
@@ -46,6 +45,7 @@ export class AuthService extends TenderConfig {
       const expiresDate: Date = new Date(tokenFromLocalStorage);
       if (new Date() > expiresDate) {
         this.logout();
+        this.router.navigate(['/login']);
         return null;
       }
       return localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME);

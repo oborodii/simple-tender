@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -20,6 +20,7 @@ import { FirebaseAuthResponse } from '../../../types/firebase-response.type';
 export class LoginFormComponent extends AbstractTenderComponent implements OnInit, OnDestroy {
 
   loading: boolean = false;
+  isNeedAuth: boolean = false;
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(this.LOGIN_DEFAULT_VALUE.EMAIL, [
@@ -37,8 +38,19 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               private authService: AuthService,
-              protected router: Router) {
+              protected router: Router,
+              private route: ActivatedRoute
+  ) {
     super(translateService, tenderService);
+  }
+
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params && params.needAuth) {
+        this.isNeedAuth = true;
+      }
+    });
   }
 
 
@@ -100,6 +112,11 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
     }
 
     this.loading = false;
+  }
+
+
+  closeWarningMessage(): void {
+    this.isNeedAuth = false;
   }
 
 
