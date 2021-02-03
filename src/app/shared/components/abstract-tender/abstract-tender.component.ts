@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { ThemePalette } from '@angular/material/core';
@@ -20,9 +20,11 @@ import { MaterialIcons } from '../../../types/material-icons.type';
   selector: 'st-abstract-tender',
   template: ''
 })
-export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
+export abstract class AbstractTenderComponent implements OnDestroy {
 
-  protected subscriptions: Subscription = new Subscription();
+  get subscriptions(): Subscription {
+    return this.tenderService.subscriptions;
+  }
 
   get LOCALE(): TenderLocale {
     return this.tenderService._LOCALE;
@@ -89,10 +91,6 @@ export abstract class AbstractTenderComponent implements OnInit, OnDestroy {
 
   translate(key: string): string {
     return this.translateService.instant(key);
-  }
-
-
-  ngOnInit(): void {
   }
 
 

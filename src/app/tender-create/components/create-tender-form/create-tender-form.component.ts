@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -16,7 +15,7 @@ import { TenderUnit } from '../../../types/tender-unit.type';
   templateUrl: './create-tender-form.component.html',
   styleUrls: ['./create-tender-form.component.scss']
 })
-export class CreateTenderFormComponent extends AbstractTenderComponent implements OnInit {
+export class CreateTenderFormComponent extends AbstractTenderComponent {
 
   createTenderForm: FormGroup = new FormGroup({
     dateStart: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.DATE_START),
@@ -51,13 +50,9 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
   }
 
 
-  ngOnInit(): void {
-    // super.ngOnInit();
-  }
-
-
   onSubmit(): void {
     const tender: Tender = {
+      dateCreate: new Date(),
       dateStart: this.createTenderForm.value.dateStart,
       dateEnd: this.createTenderForm.value.dateEnd,
       title: this.createTenderForm.value.title,
@@ -71,14 +66,19 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
       unit: this.createTenderForm.value.unit
     };
 
-    this.tenderService.createTender(tender).subscribe((data: any) => {
-        console.log(`data from server = `);
-        console.log(data);
-      },
-      (err: HttpErrorResponse) => {
-        console.log(`HttpErrorResponse = `);
-        console.log(err);
-      });
+    this.subscriptions.add(
+      this.tenderService.createTender(tender).subscribe(
+        (newTender: Tender) => {
+          const prefixMessage: string = this.translate('CREATE-FORM.NEW_TENDER');
+          const suffixMessage: string = this.translate('CREATE-FORM.SUCCESSFULLY_CREATED');
+          const message: string = prefixMessage + ' "' + newTender.title + '" ' + suffixMessage;
+          this.tenderService.openSnackBar(message, this.SNACKBAR.SUCCESS);
+        },
+        () => {
+          const message: string = this.translate('CREATE-FORM.ERROR.CREATE_SERVER_ERROR');
+          this.tenderService.openSnackBar(message, this.SNACKBAR.ERROR);
+        }
+      ));
   }
 
 
@@ -106,13 +106,6 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
     } else {
       return unit.nameEN;
     }
-  }
-
-
-  /**  Prevent Saturday and Sunday from being selected in Material Datepicker  */
-  disableRestDayFilter(d: Date | null): boolean {
-    const day = (d || new Date()).getDay();
-    return day !== 0 && day !== 6;
   }
 
 

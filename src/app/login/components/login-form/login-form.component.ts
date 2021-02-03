@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,7 +17,7 @@ import { FirebaseAuthResponse } from '../../../types/firebase-response.type';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent extends AbstractTenderComponent implements OnInit, OnDestroy {
+export class LoginFormComponent extends AbstractTenderComponent implements OnInit {
 
   loading: boolean = false;
   isNeedAuth: boolean = false;
@@ -46,11 +46,7 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
 
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params: Params) => {
-      if (params && params.needAuth) {
-        this.isNeedAuth = true;
-      }
-    });
+    this.isShowWarningMessage();
   }
 
 
@@ -63,6 +59,11 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
 
       this.login(user);
     }
+  }
+
+
+  closeWarningMessage(): void {
+    this.isNeedAuth = false;
   }
 
 
@@ -115,13 +116,16 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
   }
 
 
-  closeWarningMessage(): void {
-    this.isNeedAuth = false;
-  }
-
-
-  ngOnDestroy(): void {
-    super.ngOnDestroy();
+  private isShowWarningMessage(): void {
+    this.subscriptions.add(
+      this.route.queryParams.subscribe((params: Params) => {
+          if (params) {
+            if (params.needAuth || params.permissionDeniedUnauthorized) {
+              this.isNeedAuth = true;
+            }
+          }
+        }
+      ));
   }
 
 }

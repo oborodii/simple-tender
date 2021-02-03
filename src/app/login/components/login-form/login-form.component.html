@@ -3,13 +3,13 @@
     <div class="col">
 
       <!-- Warning message -->
-      <div class="warning-message" *ngIf="isNeedAuth" (click)="closeWarningMessage()">
+      <div class="warning-message" *ngIf="isNeedAuth">
         <mat-toolbar color="warn">
           <span class="warning-text">
             {{ 'LOGIN.NEED_AUTH' | translate }}
           </span>
           <span class="spacer"></span>
-          <button mat-icon-button class="icon" aria-label="Clear">
+          <button mat-icon-button (click)="closeWarningMessage()" class="icon" aria-label="Clear">
             <mat-icon>clear</mat-icon>
           </button>
         </mat-toolbar>

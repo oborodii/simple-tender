@@ -6,9 +6,9 @@ import { TenderBet } from './tender-bet.type';
 
 export interface Tender {
   id?: string;                          // id in the database
-  dateCreate?: number | Date;           // date of tender creation
-  dateStart: string | number | Date;    // launch date of the tender
-  dateEnd: string | number | Date;      // end date of the tender
+  dateCreate?: string | Date;           // date of tender creation
+  dateStart: string | Date;             // launch date of the tender
+  dateEnd: string | Date;               // end date of the tender
   title: string;                        // title
   description: string;                  // description
   status?: TenderStatus;                // 'draft' | 'active' | 'closed' | 'planned' | 'all'

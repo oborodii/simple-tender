@@ -6,6 +6,7 @@
 		"DATE_PICKER_HINT": "Click on the icon to the right of the field to bring up the date and time picker",
 		"DATE_START": "Date and time of the beginning of the tender",
 		"ERROR": {
+			"CREATE_SERVER_ERROR": "Failed to save tender on server. Try to create it later",
 			"CURRENCY": "Currency is required",
 			"DESCRIPTION": "Description is required",
 			"EXPECTED_VALUE": "The amount you plan to receive as a result of the auction is not specified",
@@ -29,9 +30,11 @@
 			"CURRENCY": "Payment at the NBU exchange rate on the day of tender completion"
 		},
 		"IS_SHOW_BEST_BET": "Show the best bet?",
+		"NEW_TENDER": "New tender",
 		"QUANTITY": "Quantity of goods",
 		"STEP_VALUE": "Bet step",
 		"SUBMIT_BUTTON": "Create",
+		"SUCCESSFULLY_CREATED": "successfully created",
 		"TENDER_DESCRIPTION": "Description",
 		"TENDER_TITLE": "Tender title",
 		"UNIT": "Units of goods"

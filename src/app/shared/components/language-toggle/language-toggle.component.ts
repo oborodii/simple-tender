@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { TenderService } from '../../../tender.service';
   styleUrls: ['./language-toggle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LanguageToggleComponent extends AbstractTenderComponent implements OnInit {
+export class LanguageToggleComponent extends AbstractTenderComponent {
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,

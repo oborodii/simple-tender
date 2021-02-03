@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
@@ -17,6 +17,8 @@ import { CreateTenderFirebaseResponse } from './types/create-tender-firebase-res
   providedIn: 'root'
 })
 export class TenderService extends TenderConfig {
+
+  subscriptions: Subscription = new Subscription();
 
   // all locals from environment.ts
   locales: string[] = environment.locales;
