@@ -6,7 +6,7 @@
 		"DATE_PICKER_HINT": "Click on the icon to the right of the field to bring up the date and time picker",
 		"DATE_START": "Date and time of the beginning of the tender",
 		"ERROR": {
-			"CREATE_SERVER_ERROR": "Failed to save tender on server. Try to create it later",
+			"CREATE_SERVER_ERROR": "Failed to save tender on server",
 			"CURRENCY": "Currency is required",
 			"DESCRIPTION": "Description is required",
 			"EXPECTED_VALUE": "The amount you plan to receive as a result of the auction is not specified",

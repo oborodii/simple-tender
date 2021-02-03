@@ -11,8 +11,8 @@ import { MyTableDataSource, MyTableItem } from './my-table-datasource';
   styleUrls: ['./my-table.component.scss']
 })
 export class MyTableComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatTable) table: MatTable<MyTableItem>;
 
   dataSource: MyTableDataSource;

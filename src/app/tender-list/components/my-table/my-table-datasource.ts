@@ -6,8 +6,8 @@ import { Observable, of, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface MyTableItem {
-  name: string;
   id: number;
+  name: string;
 }
 
 // TODO: replace this with real data from your application
@@ -40,6 +40,7 @@ const EXAMPLE_DATA: MyTableItem[] = [
  * (including sorting, pagination and filtering).
  */
 export class MyTableDataSource extends DataSource<MyTableItem> {
+
   data: MyTableItem[] = EXAMPLE_DATA;
   paginator: MatPaginator;
   sort: MatSort;
@@ -47,6 +48,7 @@ export class MyTableDataSource extends DataSource<MyTableItem> {
   constructor() {
     super();
   }
+
 
   /**
    * Connect this data source to the table. The table will only update when
@@ -67,12 +69,14 @@ export class MyTableDataSource extends DataSource<MyTableItem> {
     }));
   }
 
+
   /**
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
   disconnect(): void {
   }
+
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -82,6 +86,7 @@ export class MyTableDataSource extends DataSource<MyTableItem> {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
+
 
   /**
    * Sort the data (client-side). If you're using server-side sorting,

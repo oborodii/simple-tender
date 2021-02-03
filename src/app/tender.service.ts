@@ -33,6 +33,11 @@ export class TenderService extends TenderConfig {
   }
 
 
+  getTenders(): Observable<Tender[]> {
+    return this.http.get<Tender[]>(this._FIREBASE_DB_URL);
+  }
+
+
   createTender(tender: Tender): Observable<Tender> {
     return this.http.post<any>(this._FIREBASE_DB_URL, tender).pipe(
       map((response: CreateTenderFirebaseResponse) => {
