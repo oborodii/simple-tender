@@ -18,15 +18,32 @@ import { CreateTenderFirebaseResponse } from './types/create-tender-firebase-res
 })
 export class TenderService extends TenderConfig {
 
-  subscriptions: Subscription = new Subscription();
-
+  // all tenders
   tenders: Tender[];
 
   // all locals from environment.ts
   locales: string[] = environment.locales;
 
   // selected by the user application language
-  currentLocale: string;
+  private _currentLocale: string;
+
+  get currentLocale(): string {
+    if (localStorage.getItem('locale')) {
+      this._currentLocale = String(localStorage.getItem('locale'));
+    } else {
+      this._currentLocale = environment.defaultLocale;
+    }
+    localStorage.setItem('locale', this._currentLocale);
+
+    return this._currentLocale;
+  }
+
+  set currentLocale(value: string) {
+    this._currentLocale = value;
+  }
+
+  // subscriptions for Observable
+  subscriptions: Subscription = new Subscription();
 
 
   constructor(private http: HttpClient,

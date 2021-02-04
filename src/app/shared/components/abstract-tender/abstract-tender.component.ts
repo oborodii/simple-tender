@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { ThemePalette } from '@angular/material/core';
 import { TranslateService } from '@ngx-translate/core';
 
-import { environment } from '../../../../environments/environment';
 import { TenderService } from '../../../tender.service';
 import { TenderCurrency } from '../../../types/tender-currency.type';
 import { TenderUnit } from '../../../types/tender-unit.type';
@@ -35,13 +34,6 @@ export abstract class AbstractTenderComponent implements OnDestroy {
   }
 
   get currentLocale(): string {
-    if (localStorage.getItem('locale')) {
-      this.tenderService.currentLocale = String(localStorage.getItem('locale'));
-    } else {
-      this.tenderService.currentLocale = environment.defaultLocale;
-    }
-    localStorage.setItem('locale', this.tenderService.currentLocale);
-
     return this.tenderService.currentLocale;
   }
 

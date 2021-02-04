@@ -43,8 +43,11 @@
 		"COPYRIGHT": "All rights reserved"
 	},
 	"LIST": {
+		"ERROR": {
+			"GET_TENDERS_SERVER_ERROR": "Failed to load the list of tenders from the server"
+		},
 		"TABLE": {
-			"TITLE": "Table title"
+			"TITLE": "All tenders"
 		}
 	},
 	"LOGIN": {

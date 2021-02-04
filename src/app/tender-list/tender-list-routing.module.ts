@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MyTableComponent } from './components/my-table/my-table.component';
+import { TenderTableComponent } from './components/tender-table/tender-table.component';
 
 
 const routes: Routes = [
-  {path: '', component: MyTableComponent},
+  {path: '', component: TenderTableComponent},
 ];
 
 

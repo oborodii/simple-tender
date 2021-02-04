@@ -4,12 +4,12 @@ import { MatTableModule } from '@angular/material/table';
 
 import { SharedModule } from '../shared/shared.module';
 import { TenderListRoutingModule } from './tender-list-routing.module';
-import { MyTableComponent } from './components/my-table/my-table.component';
+import { TenderTableComponent } from './components/tender-table/tender-table.component';
 
 
 @NgModule({
   declarations: [
-    MyTableComponent
+    TenderTableComponent
   ],
   imports: [
     TenderListRoutingModule,
