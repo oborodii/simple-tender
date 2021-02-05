@@ -83,29 +83,17 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
 
 
   getLocalCurrencyName(currency: TenderCurrency): string {
-    if (this.tenderService.currentLocale === this.LOCALE.UA) {
-      return currency.nameUA;
-    } else {
-      return currency.nameEN;
-    }
+    return this.tenderService.getLocalCurrencyName(currency);
   }
 
 
   getLocalUnitCode(unit: TenderUnit): string {
-    if (this.tenderService.currentLocale === this.LOCALE.UA) {
-      return unit.codeUA;
-    } else {
-      return unit.codeEN;
-    }
+    return this.tenderService.getLocalUnitCode(unit);
   }
 
 
   getLocalUnitFullName(unit: TenderUnit): string {
-    if (this.tenderService.currentLocale === this.LOCALE.UA) {
-      return unit.nameUA;
-    } else {
-      return unit.nameEN;
-    }
+    return this.tenderService.getLocalUnitFullName(unit);
   }
 
 

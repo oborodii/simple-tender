@@ -10,6 +10,8 @@ import { TextOnlySnackBar } from '@angular/material/snack-bar/simple-snack-bar';
 import { environment } from '../environments/environment';
 import { TenderConfig } from './tender.config';
 import { Tender } from './types/tender.type';
+import { TenderCurrency } from './types/tender-currency.type';
+import { TenderUnit } from './types/tender-unit.type';
 import { CreateTenderFirebaseResponse } from './types/create-tender-firebase-response.type';
 
 
@@ -49,6 +51,33 @@ export class TenderService extends TenderConfig {
   constructor(private http: HttpClient,
               private snackBar: MatSnackBar) {
     super();
+  }
+
+
+  getLocalCurrencyName(currency: TenderCurrency): string {
+    if (this.currentLocale === this._LOCALE.UA) {
+      return currency.nameUA;
+    } else {
+      return currency.nameEN;
+    }
+  }
+
+
+  getLocalUnitCode(unit: TenderUnit): string {
+    if (this.currentLocale === this._LOCALE.UA) {
+      return unit.codeUA;
+    } else {
+      return unit.codeEN;
+    }
+  }
+
+
+  getLocalUnitFullName(unit: TenderUnit): string {
+    if (this.currentLocale === this._LOCALE.UA) {
+      return unit.nameUA;
+    } else {
+      return unit.nameEN;
+    }
   }
 
 

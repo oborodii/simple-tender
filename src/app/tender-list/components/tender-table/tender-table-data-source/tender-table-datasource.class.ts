@@ -134,12 +134,6 @@ export class TenderTableDataSource extends DataSource<Tender> {
             return compare(Number(t1.stepValue), Number(t2.stepValue), isAsc);
           case 'quantity':
             return compare(Number(t1.stepValue), Number(t2.stepValue), isAsc);
-          case 'id':
-            if (t1.id && t2.id) {
-              return compare(t1.id, t2.id, isAsc);
-            } else {
-              return 0;
-            }
           default:
             return 0;
         }

@@ -8,6 +8,7 @@ import { MatTable } from '@angular/material/table';
 import { Tender } from '../../../types/tender.type';
 import { TenderService } from '../../../tender.service';
 import { TenderTableDataSource } from './tender-table-data-source/tender-table-datasource.class';
+import { TenderUnit } from '../../../types/tender-unit.type';
 
 
 @Component({
@@ -46,8 +47,7 @@ export class TenderTableComponent implements AfterViewInit, OnInit {
     'description',
     'expectedValue',
     'stepValue',
-    'quantity',
-    'id'
+    'quantity'
   ];
 
 
@@ -65,6 +65,11 @@ export class TenderTableComponent implements AfterViewInit, OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+
+  getLocalUnitCode(unit: TenderUnit): string {
+    return this.tenderService.getLocalUnitCode(unit);
   }
 
 }

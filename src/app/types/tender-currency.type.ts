@@ -1,6 +1,6 @@
 export interface TenderCurrency {
   id: number;
-  code: string;         // 'UAH', 'USD', 'EUR'
+  code: string;         // '₴', '$', '€'
   nameUA: string;       // 'гривня', 'долар', 'євро'
   nameEN: string;       // 'hryvnia', 'dollar', 'euro'
 }
