@@ -47,6 +47,16 @@
 			"GET_TENDERS_SERVER_ERROR": "Не вдалося завантажити список усіх тендерів з сервера"
 		},
 		"TABLE": {
+			"TH": {
+				"DATE_END": "Дата завершення",
+				"DATE_START": "Дата початку",
+				"DESCRIPTION": "Опис",
+				"EXPECTED_VALUE": "На суму",
+				"INDEX": "№",
+				"QUANTITY": "Кількість",
+				"STEP_VALUE": "Крок ставки",
+				"TITLE": "Назва тендеру"
+			},
 			"TITLE": "Всі тендери"
 		}
 	},

@@ -47,6 +47,16 @@
 			"GET_TENDERS_SERVER_ERROR": "Failed to load the list of tenders from the server"
 		},
 		"TABLE": {
+			"TH": {
+				"DATE_END": "End Date",
+				"DATE_START": "Start Date",
+				"DESCRIPTION": "Description",
+				"EXPECTED_VALUE": "Expected Value",
+				"INDEX": "#",
+				"QUANTITY": "Quantity",
+				"STEP_VALUE": "Step Value",
+				"TITLE": "Title of tender"
+			},
 			"TITLE": "All tenders"
 		}
 	},
