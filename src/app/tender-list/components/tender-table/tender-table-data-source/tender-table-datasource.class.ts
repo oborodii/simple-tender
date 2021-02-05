@@ -20,11 +20,21 @@ import { TenderService } from '../../../../tender.service';
  */
 export class TenderTableDataSource extends DataSource<Tender> {
 
-  data: Tender[];
+  get tenders(): Tender[] {
+    return this.tenderService.tenders;
+  }
+
+  set tenders(value: Tender[]) {
+    this.tenderService.tenders = value;
+  }
+
   paginator: MatPaginator;
   sort: MatSort;
   subscription: Subscription = new Subscription();
-  SNACKBAR_ERROR_TYPE: string = 'snack-bar-error';
+
+  get SNACKBAR_ERROR_TYPE(): string {
+    return this.tenderService._SNACKBAR.ERROR;
+  }
 
   get currentLocale(): string {
     return this.tenderService.currentLocale;
@@ -34,27 +44,15 @@ export class TenderTableDataSource extends DataSource<Tender> {
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService) {
     super();
-
     this.translateService.use(this.currentLocale);
-
-    this.subscription.add(
-      this.tenderService.getTenders().subscribe(
-        (tenders: Tender[]) => {
-          this.tenderService.tenders = tenders;
-          this.data = this.tenderService.tenders;
-        },
-        () => {
-          const message: string = this.translateService.instant('LIST.ERROR.GET_TENDERS_SERVER_ERROR');
-          this.tenderService.openSnackBar(message, this.SNACKBAR_ERROR_TYPE);
-        })
-    );
+    this.getTenders();
   }
 
 
   /**
    * Connect this data source to the table. The table will only update when
    * the returned stream emits new items.
-   * @returns A stream of the items to be rendered.
+   * Return a stream of the items to be rendered.
    */
   connect(): Observable<Tender[]> {
     // Combine everything that affects the rendered data into one update
@@ -67,7 +65,7 @@ export class TenderTableDataSource extends DataSource<Tender> {
 
     return merge(...dataMutations).pipe(
       map(() => {
-        return this.getPagedData(this.getSortedData([...this.data]));
+        return this.getPagedData(this.getSortedData([...this.tenders]));
       })
     );
   }
@@ -81,6 +79,21 @@ export class TenderTableDataSource extends DataSource<Tender> {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+
+  /** Load an array of all tenders from the server */
+  private getTenders(): void {
+    this.subscription.add(
+      this.tenderService.getTenders().subscribe(
+        (tenders: Tender[]) => {
+          this.tenders = tenders;
+        },
+        () => {
+          const message: string = this.translateService.instant('LIST.ERROR.GET_TENDERS_SERVER_ERROR');
+          this.tenderService.openSnackBar(message, this.SNACKBAR_ERROR_TYPE);
+        })
+    );
   }
 
 

@@ -20,9 +20,24 @@ export class TenderTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatTable) table: MatTable<Tender>;
 
+  /** The zero-based page index of the displayed list of items. Defaulted to 0 */
+  PAGE_INDEX: number = 0;
+
+  /** Number of items to display on a page. Defaulted to 10 */
+  PAGE_SIZE: number = 5;
+
+  /** The set of provided page size options to display to the user */
+  PAGE_SIZE_OPTION: number[] = [5, 10, 20, 25];
+
+  /** Real number of rows in the table */
+  get dataLength(): number {
+    return this.dataSource.tenders ? this.dataSource.tenders.length : 0;
+  }
+
+  /** Data source for table */
   dataSource: TenderTableDataSource;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered */
   displayedColumns: string[] = [
     'index',
     'dateStart',

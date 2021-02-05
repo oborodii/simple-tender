@@ -10,12 +10,12 @@
         <th mat-header-cell *matHeaderCellDef>
           #
         </th>
-        <td mat-cell *matCellDef="let i = index;">
-          {{ i + 1 }}
+        <td mat-cell *matCellDef="let idx = index;">
+          {{ idx + 1 }}
         </td>
       </ng-container>
 
-      <!-- dateStart Column -->
+      <!-- Start Date Column -->
       <ng-container matColumnDef="dateStart">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           Start date
@@ -25,7 +25,7 @@
         </td>
       </ng-container>
 
-      <!-- dateEnd Column -->
+      <!-- End Date Column -->
       <ng-container matColumnDef="dateEnd">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           End date
@@ -55,7 +55,7 @@
         </td>
       </ng-container>
 
-      <!-- expectedValue Column -->
+      <!-- Expected Value Column -->
       <ng-container matColumnDef="expectedValue">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           Expected Value
@@ -65,7 +65,7 @@
         </td>
       </ng-container>
 
-      <!-- stepValue Column -->
+      <!-- Step Value Column -->
       <ng-container matColumnDef="stepValue">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           Step Value
@@ -85,16 +85,14 @@
         </td>
       </ng-container>
 
-
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator #paginator
-                   [length]="dataSource.data ? dataSource.data.length : 0"
-                   [pageIndex]="0"
-                   [pageSize]="5"
-                   [pageSizeOptions]="[5, 10, 20, 25]">
+    <mat-paginator [length]="dataLength"
+                   [pageIndex]="PAGE_INDEX"
+                   [pageSize]="PAGE_SIZE"
+                   [pageSizeOptions]="PAGE_SIZE_OPTION">
     </mat-paginator>
   </div>
 </mat-card>
