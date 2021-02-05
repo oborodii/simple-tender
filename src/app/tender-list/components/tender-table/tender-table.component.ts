@@ -46,6 +46,7 @@ export class TenderTableComponent implements AfterViewInit, OnInit {
     'description',
     'expectedValue',
     'stepValue',
+    'quantity',
     'id'
   ];
 
