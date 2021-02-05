@@ -70,6 +70,13 @@
 		"PASSWORD_LABEL": "Ваш пароль",
 		"SUBMIT": "Увійти"
 	},
+	"MAT_PAGINATOR": {
+		"FIRST_PAGE": "Перша сторінка",
+		"ITEMS_PER_PAGE": "Рядків у таблиці:",
+		"LAST_PAGE": "Остання сторінка",
+		"NEXT_PAGE": "Наступна сторінка",
+		"PREV_PAGE": "Попередня сторінка"
+	},
 	"MENU": {
 		"CREATE_NEW_TENDER": "Cтворити новий тендер",
 		"LABEL": "Меню",

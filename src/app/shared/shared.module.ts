@@ -13,7 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -25,6 +25,7 @@ import { MissingTranslationService } from './classes/missing-translation-service
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { LanguageToggleComponent } from './components/language-toggle/language-toggle.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MatPaginatorNgxTranslateService } from './services/mat-paginator-ngx-translate.service';
 
 
 @NgModule({
@@ -87,7 +88,11 @@ import { FooterComponent } from './components/footer/footer.component';
     MatSnackBarModule
   ],
   providers: [
-    TranslateStore
+    TranslateStore,
+    {
+      provide: MatPaginatorIntl,
+      useClass: MatPaginatorNgxTranslateService
+    }
   ]
 })
 export class SharedModule {

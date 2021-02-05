@@ -70,6 +70,13 @@
 		"PASSWORD_LABEL": "Your password",
 		"SUBMIT": "Submit"
 	},
+	"MAT_PAGINATOR": {
+		"FIRST_PAGE": "First page",
+		"ITEMS_PER_PAGE": "Items per page:",
+		"LAST_PAGE": "Last page",
+		"NEXT_PAGE": "Next page",
+		"PREV_PAGE": "Previous page"
+	},
 	"MENU": {
 		"CREATE_NEW_TENDER": "Create a new tender",
 		"LABEL": "Menu",
