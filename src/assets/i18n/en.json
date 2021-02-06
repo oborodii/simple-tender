@@ -47,6 +47,10 @@
 			"GET_TENDERS_SERVER_ERROR": "Failed to load the list of tenders from the server"
 		},
 		"TABLE": {
+			"FILTER": {
+				"LABEL": "Filter",
+				"NO_DATA": "No data matching the filter"
+			},
 			"TH": {
 				"DATE_END": "End Date",
 				"DATE_START": "Start Date",

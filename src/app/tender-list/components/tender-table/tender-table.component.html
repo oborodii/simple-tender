@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>
     {{ 'LIST.TABLE.TITLE' | translate }}
-    <div *ngIf="!dataSource?.tenders" class="loading">
+    <div *ngIf="!dataSource" class="loading">
       <mat-spinner [color]="currentThemePalette"
                    [diameter]="SPINNER_DIAMETER"
                    [strokeWidth]="SPINNER_STROKE_WIDTH"
@@ -11,8 +11,16 @@
     </div>
   </mat-card-title>
 
+  <!-- Filter -->
+  <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+    <mat-label>
+      {{ 'LIST.TABLE.FILTER.LABEL' | translate }}
+    </mat-label>
+    <input matInput (keyup)="applyFilter($event)" #inputFilter>
+  </mat-form-field>
+
   <div class="mat-elevation-z0">
-    <table mat-table matSort class="full-width-table" aria-label="Tenders">
+    <table mat-table matSort [dataSource]="dataSource" class="full-width-table" aria-label="Tenders">
       <!-- Index Column -->
       <ng-container matColumnDef="index">
         <th mat-header-cell *matHeaderCellDef>
@@ -95,6 +103,14 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+          {{ ('LIST.TABLE.FILTER.NO_DATA' | translate) + ' "' + inputFilter.value + '"'}}
+        </td>
+      </tr>
+
     </table>
 
     <mat-paginator [length]="dataLength"

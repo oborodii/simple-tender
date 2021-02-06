@@ -21,9 +21,7 @@ import { MaterialIcons } from '../../../types/material-icons.type';
 })
 export abstract class AbstractTenderComponent implements OnDestroy {
 
-  get subscriptions(): Subscription {
-    return this.tenderService.subscriptions;
-  }
+  subscriptions: Subscription = new Subscription();
 
   get LOCALE(): TenderLocale {
     return this.tenderService._LOCALE;

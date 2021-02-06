@@ -1,14 +1,14 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 
 import { TranslateService } from '@ngx-translate/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { Tender } from '../../../types/tender.type';
+import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../tender.service';
-import { TenderTableDataSource } from './tender-table-data-source/tender-table-datasource.class';
 import { TenderUnit } from '../../../types/tender-unit.type';
 
 
@@ -17,10 +17,9 @@ import { TenderUnit } from '../../../types/tender-unit.type';
   templateUrl: './tender-table.component.html',
   styleUrls: ['./tender-table.component.scss']
 })
-export class TenderTableComponent implements AfterViewInit, OnInit {
+export class TenderTableComponent extends AbstractTenderComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatTable) table: MatTable<Tender>;
 
   /** The zero-based page index of the displayed list of items. Defaulted to 0 */
   readonly PAGE_INDEX: number = 0;
@@ -40,11 +39,19 @@ export class TenderTableComponent implements AfterViewInit, OnInit {
 
   /** Real number of rows in the table */
   get dataLength(): number {
-    return this.dataSource.tenders ? this.dataSource.tenders.length : 0;
+    return this.tenders ? this.tenders.length : 0;
+  }
+
+  get tenders(): Tender[] {
+    return this.tenderService.tenders;
+  }
+
+  set tenders(value: Tender[]) {
+    this.tenderService.tenders = value;
   }
 
   /** Data source for table */
-  dataSource: TenderTableDataSource;
+  dataSource: MatTableDataSource<Tender>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered */
   displayedColumns: string[] = [
@@ -61,18 +68,40 @@ export class TenderTableComponent implements AfterViewInit, OnInit {
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService) {
-  }
-
-
-  ngOnInit(): void {
-    this.dataSource = new TenderTableDataSource(this.translateService, this.tenderService);
+    super(translateService, tenderService);
   }
 
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+    this.getTenders();
+  }
+
+
+  /** Load an array of all tenders from the server */
+  private getTenders(): void {
+    this.subscriptions.add(
+      this.tenderService.getTenders().subscribe(
+        (tenders: Tender[]) => {
+          this.dataSource = new MatTableDataSource(tenders);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          this.tenders = tenders;
+        },
+        () => {
+          const message: string = this.translateService.instant('LIST.ERROR.GET_TENDERS_SERVER_ERROR');
+          this.tenderService.openSnackBar(message, this.SNACKBAR.ERROR);
+        })
+    );
+  }
+
+
+  applyFilter(event: Event): void {
+    const filterValue: string = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 
