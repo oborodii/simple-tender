@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { MatSnackBarRef } from '@angular/material/snack-bar/snack-bar-ref';
@@ -83,6 +83,7 @@ export class TenderService extends TenderConfig {
 
   getTenders(): Observable<Tender[]> {
     return this.http.get<Tender[]>(this._FIREBASE_DB_URL).pipe(
+      delay(1000),
       map((response: { [key: string]: any }) => {
         return Object.keys(response)
           .map((key: string) => ({

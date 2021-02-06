@@ -20,6 +20,10 @@ import { TenderService } from '../../../../tender.service';
  */
 export class TenderTableDataSource extends DataSource<Tender> {
 
+  paginator: MatPaginator;
+  sort: MatSort;
+  subscription: Subscription = new Subscription();
+
   get tenders(): Tender[] {
     return this.tenderService.tenders;
   }
@@ -27,10 +31,6 @@ export class TenderTableDataSource extends DataSource<Tender> {
   set tenders(value: Tender[]) {
     this.tenderService.tenders = value;
   }
-
-  paginator: MatPaginator;
-  sort: MatSort;
-  subscription: Subscription = new Subscription();
 
   get SNACKBAR_ERROR_TYPE(): string {
     return this.tenderService._SNACKBAR.ERROR;

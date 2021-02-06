@@ -1,6 +1,14 @@
 <mat-card>
   <mat-card-title>
     {{ 'LIST.TABLE.TITLE' | translate }}
+    <div *ngIf="!dataSource?.tenders" class="loading">
+      <mat-spinner [color]="currentThemePalette"
+                   [diameter]="SPINNER_DIAMETER"
+                   [strokeWidth]="SPINNER_STROKE_WIDTH"
+                   class="mat-spinner">
+      </mat-spinner>
+      {{ 'LOADING' | translate }}
+    </div>
   </mat-card-title>
 
   <div class="mat-elevation-z0">

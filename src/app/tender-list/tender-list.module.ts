@@ -9,7 +9,7 @@ import { TenderTableComponent } from './components/tender-table/tender-table.com
 
 @NgModule({
   declarations: [
-    TenderTableComponent
+    TenderTableComponent,
   ],
   imports: [
     TenderListRoutingModule,

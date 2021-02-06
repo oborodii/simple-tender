@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateStore } from '@ngx-translate/core';
 
@@ -64,6 +65,7 @@ import { MatPaginatorNgxTranslateService } from './services/mat-paginator-ngx-tr
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -85,7 +87,8 @@ import { MatPaginatorNgxTranslateService } from './services/mat-paginator-ngx-tr
     MatListModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     TranslateStore,

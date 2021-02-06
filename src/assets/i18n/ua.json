@@ -60,6 +60,7 @@
 			"TITLE": "Всі тендери"
 		}
 	},
+	"LOADING": "Завантажуємо дані...",
 	"LOGIN": {
 		"EMAIL_LABEL": "Ваш email",
 		"ERROR": {

@@ -60,6 +60,7 @@
 			"TITLE": "All tenders"
 		}
 	},
+	"LOADING": "Loading...",
 	"LOGIN": {
 		"EMAIL_LABEL": "Your email",
 		"ERROR": {

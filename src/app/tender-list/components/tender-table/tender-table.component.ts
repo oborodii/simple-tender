@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 
 import { TranslateService } from '@ngx-translate/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -22,13 +23,20 @@ export class TenderTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable) table: MatTable<Tender>;
 
   /** The zero-based page index of the displayed list of items. Defaulted to 0 */
-  PAGE_INDEX: number = 0;
+  readonly PAGE_INDEX: number = 0;
 
   /** Number of items to display on a page. Defaulted to 10 */
-  PAGE_SIZE: number = 5;
+  readonly PAGE_SIZE: number = 5;
 
   /** The set of provided page size options to display to the user */
-  PAGE_SIZE_OPTION: number[] = [5, 10, 20, 25];
+  readonly PAGE_SIZE_OPTION: number[] = [5, 10, 20, 25];
+
+  readonly SPINNER_DIAMETER: number = 19;
+  readonly SPINNER_STROKE_WIDTH: number = 1;
+
+  get currentThemePalette(): ThemePalette {
+    return this.tenderService._currentThemePalette;
+  }
 
   /** Real number of rows in the table */
   get dataLength(): number {
