@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -13,7 +14,7 @@ import { TenderUnit } from '../../../types/tender-unit.type';
 
 
 @Component({
-  selector: 'st-my-table',
+  selector: 'st-tenders-table',
   templateUrl: './tender-table.component.html',
   styleUrls: ['./tender-table.component.scss']
 })
@@ -67,7 +68,8 @@ export class TenderTableComponent extends AbstractTenderComponent implements Aft
 
 
   constructor(protected translateService: TranslateService,
-              protected tenderService: TenderService) {
+              protected tenderService: TenderService,
+              private router: Router) {
     super(translateService, tenderService);
   }
 
@@ -105,8 +107,11 @@ export class TenderTableComponent extends AbstractTenderComponent implements Aft
   }
 
 
-  getLocalUnitCode(unit: TenderUnit): string {
-    return this.tenderService.getLocalUnitCode(unit);
+  selectTender(row: Tender): void {
+    this.selectedTender = row;
+    console.log(`this.selectedTender =`);
+    console.log(this.selectedTender);
+    this.router.navigate(['/view', this.selectedTender.id]);
   }
 
 }

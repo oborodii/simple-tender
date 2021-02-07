@@ -113,5 +113,12 @@
 				"TITLE": "Duration"
 			}
 		}
+	},
+	"VIEW_TENDER": {
+		"DESCRIPTION": "Description",
+		"DURATION": "Duration",
+		"EXPECTED_VALUE": "Expected value",
+		"QUANTITY": "Quantity",
+		"STEP_VALUE": "Step value"
 	}
 }

@@ -113,5 +113,12 @@
 				"TITLE": "Тривалість"
 			}
 		}
+	},
+	"VIEW_TENDER": {
+		"DESCRIPTION": "Опис тендера",
+		"DURATION": "Тривалість",
+		"EXPECTED_VALUE": "На суму",
+		"QUANTITY": "Кількість",
+		"STEP_VALUE": "Крок ставки"
 	}
 }

@@ -1,7 +1,6 @@
-/* Text colors */
+/* Text color */
 $main-txt-color: black;
 $mat-sidenav-txt-color: white;
-
 
 /* Material Snack bar */
 $snack-bar-txt-color-default: white;
@@ -9,8 +8,7 @@ $snack-bar-txt-color-success: #0bcd0b;
 $snack-bar-txt-color-error: #ff7373;
 $snack-bar-txt-color-warning: #ffd740;
 
-
-/* Background colors */
+/* Background color */
 $primary-bg-color: #673ab7;
 $accent-bg-color: #ffd740;
 $warn-bg-color: #f44336;
@@ -19,4 +17,6 @@ $warn-bg-color: #f44336;
 $form-width: 100%;
 $form-max-width: 800px;
 
+/* Form size */
+$default-font-size: 1.0em;
 $footer-font-size: 0.6em;

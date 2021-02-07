@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <mat-card *ngIf="selectedTender" class="form-style">
+        <mat-card-header>
+          <mat-card-title>
+            {{ selectedTender.title }}
+          </mat-card-title>
+          <mat-card-subtitle>
+            id: {{ selectedTender.id }}
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <strong>{{ 'VIEW_TENDER.DURATION' | translate }}</strong>:
+              {{ selectedTender.dateStart | date:'dd.MM.YYYY HH:mm' }} -
+              {{ selectedTender.dateEnd | date:'dd.MM.YYYY HH:mm' }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item>
+              <strong>{{ 'VIEW_TENDER.DESCRIPTION' | translate }}</strong>:
+              {{ selectedTender.description }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item>
+              <strong>{{ 'VIEW_TENDER.EXPECTED_VALUE' | translate }}</strong>:
+              {{ selectedTender.expectedValue + ' ' + selectedTender.currency.code }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item>
+              <strong>{{ 'VIEW_TENDER.STEP_VALUE' | translate }}</strong>:
+              {{ selectedTender.stepValue + ' ' + selectedTender.currency.code }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item>
+              <strong>{{ 'VIEW_TENDER.QUANTITY' | translate }}</strong>:
+              {{ selectedTender.quantity + ' ' + getLocalUnitCode(selectedTender.unit) }}
+            </mat-list-item>
+          </mat-list>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

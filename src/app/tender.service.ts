@@ -23,6 +23,9 @@ export class TenderService extends TenderConfig {
   // all tenders
   tenders: Tender[];
 
+  // one selected tender
+  selectedTender: Tender;
+
   // all locals from environment.ts
   locales: string[] = environment.locales;
 
@@ -83,7 +86,6 @@ export class TenderService extends TenderConfig {
 
   getTenders(): Observable<Tender[]> {
     return this.http.get<Tender[]>(this._FIREBASE_DB_URL).pipe(
-      delay(1000),
       map((response: { [key: string]: any }) => {
         return Object.keys(response)
           .map((key: string) => ({

@@ -70,8 +70,7 @@
               <div class="col">
                 <mat-form-field class="full-width" appearance="standard" [color]="currentThemePalette">
                   <mat-label>{{ 'CREATE-FORM.TENDER_DESCRIPTION' | translate }}</mat-label>
-                  <textarea matInput required rows="5" formControlName="description">
-            </textarea>
+                  <textarea matInput required rows="5" formControlName="description"></textarea>
 
                   <mat-error *ngIf="createTenderForm.controls['description'].hasError('required')">
                     {{ 'CREATE-FORM.ERROR.DESCRIPTION' | translate }}
@@ -234,14 +233,6 @@
                 </mat-slide-toggle>
               </div>
             </div>
-
-            <!--            <div class="row" *ngIf="createTenderForm">-->
-            <!--              <div class="col" style="margin-top: 15px; color: orangered;">-->
-            <!--                <p><strong>createTenderForm.value:</strong></p>-->
-            <!--                <pre style="color: orangered;">{{ createTenderForm.value | json }}</pre>-->
-            <!--              </div>-->
-            <!--            </div>-->
-
           </mat-card-content>
 
           <mat-card-actions align="end">

@@ -1,0 +1,10 @@
+@import "src/app/shared/styles/variables";
+
+mat-card-content {
+  mat-list {
+    mat-list-item {
+      font-size: $default-font-size;
+      color: $main-txt-color;
+    }
+  }
+}

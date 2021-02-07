@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TreeComponent } from './components/tree/tree.component';
+import { SelectedTenderComponent } from './components/selected-tender/selected-tender.component';
 
 
 const routes: Routes = [
-  {path: '', component: TreeComponent}
+  {path: '', redirectTo: '0', pathMatch: 'full'},
+  {path: ':id', component: SelectedTenderComponent}
 ];
 
 

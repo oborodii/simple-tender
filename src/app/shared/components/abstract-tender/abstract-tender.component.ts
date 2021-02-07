@@ -5,6 +5,7 @@ import { ThemePalette } from '@angular/material/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { TenderService } from '../../../tender.service';
+import { Tender } from '../../../types/tender.type';
 import { TenderCurrency } from '../../../types/tender-currency.type';
 import { TenderUnit } from '../../../types/tender-unit.type';
 import { TenderLocale } from '../../../types/tender-locale.type';
@@ -69,6 +70,18 @@ export abstract class AbstractTenderComponent implements OnDestroy {
 
   get MATERIAL_ICONS(): MaterialIcons {
     return this.tenderService._MATERIAL_ICONS;
+  }
+
+  get selectedTender(): Tender {
+    return this.tenderService.selectedTender;
+  }
+
+  set selectedTender(value: Tender) {
+    this.tenderService.selectedTender = value;
+  }
+
+  getLocalUnitCode(unit: TenderUnit): string {
+    return this.tenderService.getLocalUnitCode(unit);
   }
 
 
