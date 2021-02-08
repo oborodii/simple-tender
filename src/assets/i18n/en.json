@@ -9,7 +9,6 @@
 			"CREATE_SERVER_ERROR": "Failed to save tender on server",
 			"CURRENCY": "Currency is required",
 			"DESCRIPTION": "Description is required",
-			"EXPECTED_VALUE": "The amount you plan to receive as a result of the auction is not specified",
 			"INCORRECT_MAX_MONEY_VALUE": "Entered amount is too large",
 			"INCORRECT_MAX_QUANTITY": "Too many items of goods",
 			"INCORRECT_MIN_MONEY_VALUE": "The value of this field must be greater than zero",
@@ -24,7 +23,6 @@
 			"TITLE": "Title is required",
 			"UNIT": "Unit is required"
 		},
-		"EXPECTED_MONEY_VALUE": "Expected money value",
 		"FORM_TITLE": "Create a new tender",
 		"HINT": {
 			"CURRENCY": "Payment at the NBU exchange rate on the day of tender completion"
@@ -52,11 +50,13 @@
 				"NO_DATA": "No data matching the filter"
 			},
 			"TH": {
+				"BEST_BET": "Best bet",
 				"DATE_END": "End Date",
 				"DATE_START": "Start Date",
 				"DESCRIPTION": "Description",
-				"EXPECTED_VALUE": "Expected Value",
+				"ID": "id",
 				"INDEX": "#",
+				"NO_BEST_BET": "-",
 				"QUANTITY": "Quantity",
 				"STEP_VALUE": "Step Value",
 				"TITLE": "Title of tender"
@@ -115,9 +115,11 @@
 		}
 	},
 	"VIEW_TENDER": {
+		"BEST_BET": "Best bet",
 		"DESCRIPTION": "Description",
 		"DURATION": "Duration",
-		"EXPECTED_VALUE": "Expected value",
+		"ID": "id",
+		"NO_BEST_BET": "There are no bets yet",
 		"QUANTITY": "Quantity",
 		"STEP_VALUE": "Step value"
 	}

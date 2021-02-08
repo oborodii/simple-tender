@@ -41,7 +41,7 @@
             <!-- Title -->
             <div class="row">
               <div class="col">
-                <mat-form-field class="full-width" appearance="standard" [color]="currentThemePalette">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
                   <mat-label>{{ 'CREATE-FORM.TENDER_TITLE' | translate }}</mat-label>
                   <input matInput required formControlName="title">
 
@@ -68,7 +68,7 @@
             <!-- Description -->
             <div class="row">
               <div class="col">
-                <mat-form-field class="full-width" appearance="standard" [color]="currentThemePalette">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
                   <mat-label>{{ 'CREATE-FORM.TENDER_DESCRIPTION' | translate }}</mat-label>
                   <textarea matInput required rows="5" formControlName="description"></textarea>
 
@@ -92,8 +92,37 @@
             </div>
 
 
-            <!-- Currency -->
-            <div class="row currency">
+            <div class="row">
+              <!-- Step Value -->
+              <div class="col">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+                  <div matPrefix>
+                    {{ createTenderForm.controls['currency'].value?.code }}
+                  </div>
+                  <mat-label>{{ 'CREATE-FORM.STEP_VALUE' | translate }}</mat-label>
+                  <input matInput
+                         type="number"
+                         required
+                         [min]="NEW_TENDER_DEFAULT_VALUE.MIN_STEP_VALUE"
+                         [max]="NEW_TENDER_DEFAULT_VALUE.MAX_STEP_VALUE"
+                         (input)="minMaxSetError('stepValue')"
+                         formControlName="stepValue">
+
+                  <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('required')">
+                    {{ 'CREATE-FORM.ERROR.STEP_VALUE' | translate }}
+                  </mat-error>
+
+                  <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('incorrectMinValue')">
+                    {{ 'CREATE-FORM.ERROR.INCORRECT_MIN_MONEY_VALUE' | translate }}
+                  </mat-error>
+
+                  <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('incorrectMaxValue')">
+                    {{ 'CREATE-FORM.ERROR.INCORRECT_MAX_MONEY_VALUE' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <!-- Currency -->
               <div class="col">
                 <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
                   <mat-label>
@@ -116,81 +145,20 @@
 
 
             <div class="row">
-              <!-- Expected Value -->
-              <div class="col">
-                <mat-form-field class="full-width" appearance="standard" [color]="currentThemePalette">
-                  <div matPrefix>
-                    {{ createTenderForm.controls['currency'].value?.code }}
-                  </div>
-                  <mat-label>{{ 'CREATE-FORM.EXPECTED_MONEY_VALUE' | translate }}</mat-label>
-                  <input matInput
-                         type="number"
-                         required
-                         [min]="NEW_TENDER_DEFAULT_VALUE.MIN_EXPECTED_VALUE"
-                         [max]="NEW_TENDER_DEFAULT_VALUE.MAX_EXPECTED_VALUE"
-                         (input)="minMaxMoneySetError('expectedValue')"
-                         formControlName="expectedValue">
-
-                  <mat-error *ngIf="createTenderForm.controls['expectedValue'].hasError('required')">
-                    {{ 'CREATE-FORM.ERROR.EXPECTED_VALUE' | translate }}
-                  </mat-error>
-
-                  <mat-error *ngIf="createTenderForm.controls['expectedValue'].hasError('incorrectMinValue')">
-                    {{ 'CREATE-FORM.ERROR.INCORRECT_MIN_MONEY_VALUE' | translate }}
-                  </mat-error>
-
-                  <mat-error *ngIf="createTenderForm.controls['expectedValue'].hasError('incorrectMaxValue')">
-                    {{ 'CREATE-FORM.ERROR.INCORRECT_MAX_MONEY_VALUE' | translate }}
-                  </mat-error>
-                </mat-form-field>
-              </div>
-
-              <!-- Step Value -->
-              <div class="col">
-                <mat-form-field class="full-width" appearance="standard" [color]="currentThemePalette">
-                  <div matPrefix>
-                    {{ createTenderForm.controls['currency'].value?.code }}
-                  </div>
-                  <mat-label>{{ 'CREATE-FORM.STEP_VALUE' | translate }}</mat-label>
-                  <input matInput
-                         type="number"
-                         required
-                         [min]="NEW_TENDER_DEFAULT_VALUE.MIN_STEP_VALUE"
-                         [max]="NEW_TENDER_DEFAULT_VALUE.MAX_STEP_VALUE"
-                         (input)="minMaxMoneySetError('stepValue')"
-                         formControlName="stepValue">
-
-                  <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('required')">
-                    {{ 'CREATE-FORM.ERROR.STEP_VALUE' | translate }}
-                  </mat-error>
-
-                  <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('incorrectMinValue')">
-                    {{ 'CREATE-FORM.ERROR.INCORRECT_MIN_MONEY_VALUE' | translate }}
-                  </mat-error>
-
-                  <mat-error *ngIf="createTenderForm.controls['stepValue'].hasError('incorrectMaxValue')">
-                    {{ 'CREATE-FORM.ERROR.INCORRECT_MAX_MONEY_VALUE' | translate }}
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
-
-
-            <div class="row">
               <!-- Quantity of goods -->
               <div class="col">
-                <mat-form-field class="full-width" appearance="standard" [color]="currentThemePalette">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
                   <mat-label>{{ 'CREATE-FORM.QUANTITY' | translate }}</mat-label>
                   <input matInput
                          type="number"
                          required
                          [min]="NEW_TENDER_DEFAULT_VALUE.MIN_QUANTITY"
                          [max]="NEW_TENDER_DEFAULT_VALUE.MAX_QUANTITY"
-                         (input)="minMaxMoneySetError('quantity')"
+                         (input)="minMaxSetError('quantity')"
                          formControlName="quantity">
-                  <span matSuffix>
-              {{ getLocalUnitCode(createTenderForm.controls['unit']?.value) }}
-            </span>
+                  <div matSuffix>
+                    {{ getLocalUnitCode(createTenderForm.controls['unit']?.value) }}
+                  </div>
 
                   <mat-error *ngIf="createTenderForm.controls['quantity'].hasError('required')">
                     {{ 'CREATE-FORM.ERROR.QUANTITY' | translate }}

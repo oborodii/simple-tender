@@ -14,7 +14,6 @@ export interface Tender {
   status?: TenderStatus;                // 'draft' | 'active' | 'closed' | 'planned' | 'all'
   user?: TenderUser;                    // user who created this tender
   isShowBestBet: boolean;               // to show the best bet or not
-  expectedValue: number;                // expected amount
   stepValue: number;                    // step of the bet
   bestBet?: TenderBet;                  // the best bet
   currentBet?: TenderBet;               // the bet entered but not yet saved by the user

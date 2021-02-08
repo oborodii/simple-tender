@@ -1,11 +1,8 @@
 import { TenderCurrency } from './tender-currency.type';
 import { TenderUnit } from './tender-unit.type';
 
-export interface NewTenderDefaultValue {
-  /** Min/Max value of the 'expectedValue' field when creating a new tender */
-  readonly MIN_EXPECTED_VALUE: number;
-  readonly MAX_EXPECTED_VALUE: number;
 
+export interface NewTenderDefaultValue {
   /** Min/Max value of the 'stepValue' field when creating a new tender */
   readonly MIN_STEP_VALUE: number;
   readonly MAX_STEP_VALUE: number;
@@ -36,9 +33,6 @@ export interface NewTenderDefaultValue {
 
   /** Default currency */
   readonly CURRENCY: TenderCurrency;
-
-  /** Expected amount */
-  readonly EXPECTED_VALUE: number;
 
   /** Step of the bet */
   readonly STEP_VALUE: number;

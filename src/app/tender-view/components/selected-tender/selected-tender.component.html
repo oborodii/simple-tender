@@ -7,7 +7,8 @@
             {{ selectedTender.title }}
           </mat-card-title>
           <mat-card-subtitle>
-            id: {{ selectedTender.id }}
+            {{ 'VIEW_TENDER.ID' | translate }}:
+            {{ selectedTender.id }}
           </mat-card-subtitle>
         </mat-card-header>
 
@@ -27,8 +28,13 @@
             <mat-divider></mat-divider>
 
             <mat-list-item>
-              <strong>{{ 'VIEW_TENDER.EXPECTED_VALUE' | translate }}</strong>:
-              {{ selectedTender.expectedValue + ' ' + selectedTender.currency.code }}
+              <strong>{{ 'VIEW_TENDER.BEST_BET' | translate }}</strong>:
+              <div *ngIf="selectedTender.bestBet; else noBestBet">
+                {{ selectedTender.bestBet + ' ' + selectedTender.currency.code }}
+              </div>
+              <ng-template #noBestBet>
+                {{ 'VIEW_TENDER.NO_BEST_BET' | translate }}
+              </ng-template>
             </mat-list-item>
             <mat-divider></mat-divider>
 

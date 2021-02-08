@@ -82,3 +82,8 @@ mat-nav-list.list-horizontal {
 .snack-bar-warning {
   color: $snack-bar-txt-color-warning;
 }
+
+.mat-form-field-appearance-outline .mat-form-field-prefix,
+.mat-form-field-appearance-outline .mat-form-field-suffix {
+  top: 0 !important;
+}

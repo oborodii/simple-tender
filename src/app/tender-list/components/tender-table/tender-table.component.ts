@@ -10,7 +10,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Tender } from '../../../types/tender.type';
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../tender.service';
-import { TenderUnit } from '../../../types/tender-unit.type';
 
 
 @Component({
@@ -61,9 +60,10 @@ export class TenderTableComponent extends AbstractTenderComponent implements Aft
     'dateEnd',
     'title',
     'description',
-    'expectedValue',
+    'bestBet',
     'stepValue',
-    'quantity'
+    'quantity',
+    'id'
   ];
 
 

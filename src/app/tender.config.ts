@@ -83,10 +83,6 @@ export class TenderConfig {
 
   /** Default values when creating a new tender */
   readonly _NEW_TENDER_DEFAULT_VALUE: NewTenderDefaultValue = {
-    /** Min/Max value of the 'expectedValue' field when creating a new tender */
-    MIN_EXPECTED_VALUE: 1,
-    MAX_EXPECTED_VALUE: 1000000000,
-
     /** Min/Max value of the 'stepValue' field when creating a new tender */
     MIN_STEP_VALUE: 1,
     MAX_STEP_VALUE: 1000000000,
@@ -117,9 +113,6 @@ export class TenderConfig {
 
     /** Default currency */
     CURRENCY: this._currencies[0],
-
-    /** Expected amount */
-    EXPECTED_VALUE: 100,
 
     /** Step of the bet */
     STEP_VALUE: 1,

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -34,8 +33,6 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
     currency: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.CURRENCY,
       [Validators.required]),
     isShowBestBet: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.IS_SHOW_BEST_BET),
-    expectedValue: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.EXPECTED_VALUE,
-      [Validators.required]),
     stepValue: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.STEP_VALUE,
       [Validators.required]),
     quantity: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.QUANTITY,
@@ -60,7 +57,6 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
       description: this.createTenderForm.value.description,
       status: 'draft',
       isShowBestBet: this.createTenderForm.value.isShowBestBet,
-      expectedValue: this.createTenderForm.value.expectedValue,
       stepValue: this.createTenderForm.value.stepValue,
       currency: this.createTenderForm.value.currency,
       quantity: this.createTenderForm.value.quantity,
@@ -98,7 +94,7 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
   }
 
 
-  minMaxMoneySetError(formControlName: string): void {
+  minMaxSetError(formControlName: string): void {
     const value: number = this.createTenderForm.value[formControlName];
 
     switch (true) {
@@ -107,12 +103,12 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
           required: true,
         });
         break;
-      case value < this.NEW_TENDER_DEFAULT_VALUE.MIN_EXPECTED_VALUE:
+      case value < this.NEW_TENDER_DEFAULT_VALUE.MIN_STEP_VALUE:
         this.createTenderForm.controls[formControlName].setErrors({
           incorrectMinValue: true,
         });
         break;
-      case value > this.NEW_TENDER_DEFAULT_VALUE.MAX_EXPECTED_VALUE:
+      case value > this.NEW_TENDER_DEFAULT_VALUE.MAX_STEP_VALUE:
         this.createTenderForm.controls[formControlName].setErrors({
           incorrectMaxValue: true,
         });

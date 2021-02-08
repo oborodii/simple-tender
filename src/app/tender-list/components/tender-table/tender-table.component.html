@@ -72,12 +72,17 @@
       </ng-container>
 
       <!-- Expected Value Column -->
-      <ng-container matColumnDef="expectedValue">
+      <ng-container matColumnDef="bestBet">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          {{ 'LIST.TABLE.TH.EXPECTED_VALUE' | translate }}
+          {{ 'LIST.TABLE.TH.BEST_BET' | translate }}
         </th>
         <td mat-cell *matCellDef="let row">
-          {{ row.expectedValue + ' ' + row.currency.code }}
+          <div *ngIf="row.bestBet; else noBestBet">
+            {{ row.bestBet + ' ' + row.currency.code }}
+          </div>
+          <ng-template #noBestBet>
+            {{ 'LIST.TABLE.TH.NO_BEST_BET' | translate }}
+          </ng-template>
         </td>
       </ng-container>
 
@@ -98,6 +103,16 @@
         </th>
         <td mat-cell *matCellDef="let row">
           {{ row.quantity + ' ' + getLocalUnitCode(row.unit) }}
+        </td>
+      </ng-container>
+
+      <!-- id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'LIST.TABLE.TH.ID' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.id }}
         </td>
       </ng-container>
 
