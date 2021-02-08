@@ -3,4 +3,6 @@ export interface FirebaseErrorMessage {
   INVALID_PASSWORD: string;
   TOO_MANY_ATTEMPTS: string;
   USER_DISABLED: string;
+  EMAIL_EXISTS: string;
+  OPERATION_NOT_ALLOWED: string;
 }

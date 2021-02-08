@@ -1,0 +1,11 @@
+@import "src/app/shared/styles/variables";
+
+.warning-message {
+  margin: 20px auto 0 auto;
+  width: $form-width;
+  max-width: $form-max-width;
+}
+
+.warning-text {
+  font-size: $footer-font-size;
+}

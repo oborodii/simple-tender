@@ -1,0 +1,111 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+
+      <!-- Sign up Form -->
+      <form [formGroup]="signupForm" novalidate (ngSubmit)="onSubmit()" class="form-style">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
+              <label>{{ 'SIGNUP.FORM_TITLE' | translate }}</label>
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <!-- Email as Login -->
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+                  <mat-label>{{ 'SIGNUP.EMAIL_LABEL' | translate }}</mat-label>
+                  <input matInput type="email" required formControlName="email">
+
+                  <mat-error *ngIf="signupForm.controls['email'].hasError('required')">
+                    {{ 'SIGNUP.ERROR.EMAIL_REQUIRED' | translate }}
+                  </mat-error>
+
+                  <mat-error *ngIf="signupForm.controls['email'].hasError('email')">
+                    {{ 'SIGNUP.ERROR.EMAIL' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+                  <mat-label>{{ 'SIGNUP.PASSWORD_LABEL' | translate }}</mat-label>
+                  <input matInput type="password" required formControlName="password">
+
+                  <mat-error *ngIf="signupForm.controls['password'].hasError('required')">
+                    {{ 'SIGNUP.ERROR.PASSWORD_REQUIRED' | translate }}
+                  </mat-error>
+
+                  <mat-error *ngIf="signupForm.controls['password'].hasError('minlength')">
+                    {{ ('SIGNUP.ERROR.PASSWORD_MIN_LENGTH' | translate) +
+                  ' (' + signupForm.get('password')?.errors?.minlength['actualLength'] + '/' +
+                  signupForm.get('password')?.errors?.minlength['requiredLength'] + ')' }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Name -->
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+                  <mat-label>{{ 'SIGNUP.NAME_LABEL' | translate }}</mat-label>
+                  <input matInput type="text" required formControlName="name">
+
+                  <mat-error *ngIf="signupForm.controls['name'].hasError('required')">
+                    {{ 'SIGNUP.ERROR.NAME_REQUIRED' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Surname -->
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+                  <mat-label>{{ 'SIGNUP.SURNAME_LABEL' | translate }}</mat-label>
+                  <input matInput type="text" required formControlName="surname">
+
+                  <mat-error *ngIf="signupForm.controls['surname'].hasError('required')">
+                    {{ 'SIGNUP.ERROR.SURNAME_REQUIRED' | translate }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+                  <mat-label>{{ 'SIGNUP.PHONE_LABEL' | translate }}</mat-label>
+                  <input matInput type="tel" formControlName="phone">
+
+                  <mat-error *ngIf="signupForm.controls['phone'].hasError('pattern')">
+                    {{ ('SIGNUP.ERROR.PHONE_PATTERN' | translate) }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <!-- Sign up button -->
+            <button mat-raised-button
+                    type="submit"
+                    [disabled]="signupForm.invalid || loading"
+                    [title]="signupForm.invalid ? ('SIGNUP.ERROR.SUBMIT_BUTTON_DISABLED' | translate) : ''"
+                    [color]="currentThemePalette">
+              {{ 'SIGNUP.SUBMIT' | translate }}
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

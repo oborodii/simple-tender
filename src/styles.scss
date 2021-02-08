@@ -58,6 +58,7 @@ mat-nav-list.list-horizontal {
     }
 
     .menu-txt {
+      display: inline-block;
       text-decoration: underline;
 
       &:hover {

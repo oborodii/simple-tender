@@ -6,5 +6,5 @@ export interface FirebaseAuthResponse {
   displayName?: string;         // user display name
   kind?: string;                // for example: "identitytoolkit#VerifyPasswordResponse"
   localId: string;              // the uid of the authenticated user
-  registered: boolean;          // whether the email is for an existing account
+  registered?: boolean;         // whether the email is for an existing account
 }

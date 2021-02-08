@@ -24,6 +24,16 @@ export class AuthService extends TenderConfig {
   }
 
 
+  /** Create a new email and password user by issuing an HTTP POST request */
+  signup(user: TenderUser): Observable<FirebaseAuthResponse> {
+    // whether or not to return an ID and refresh token
+    // (should always be true for Firebase)
+    user.returnSecureToken = true;
+
+    return this.http.post<FirebaseAuthResponse>(this._FIREBASE_SIGNUP_URL, user);
+  }
+
+
   login(user: TenderUser): Observable<FirebaseAuthResponse> {
     // whether or not to return an ID and refresh token
     // (should always be true for Firebase)

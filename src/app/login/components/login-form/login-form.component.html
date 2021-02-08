@@ -66,6 +66,15 @@
           </mat-card-content>
 
           <mat-card-actions align="end">
+            <!-- Sign Up button -->
+            <a mat-button routerLink="/signup"
+               routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact:true}"
+               [disabled]="loading"
+               [color]="currentThemePalette">
+              {{ 'MENU.SIGNUP' | translate }}
+            </a>
+
             <!-- Submit button -->
             <button mat-raised-button
                     type="submit"

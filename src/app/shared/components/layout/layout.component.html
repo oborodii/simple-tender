@@ -37,13 +37,22 @@
       <!-- Login/Logout -->
       <mat-nav-list class="list-horizontal">
         <ng-container *ngIf="!isUserAuth">
+          <a mat-list-item routerLink="/signup" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
+              {{ MATERIAL_ICONS.SIGNUP }}
+            </mat-icon>
+            <div class="menu-txt">
+              {{ 'MENU.SIGNUP' | translate }}
+            </div>
+          </a>
+
           <a mat-list-item routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
             <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
               {{ MATERIAL_ICONS.LOGIN }}
             </mat-icon>
-            <span class="menu-txt">
-            {{ 'MENU.LOGIN' | translate }}
-          </span>
+            <div class="menu-txt">
+              {{ 'MENU.LOGIN' | translate }}
+            </div>
           </a>
         </ng-container>
 

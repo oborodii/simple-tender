@@ -72,10 +72,12 @@
 			"EMAIL_REQUIRED": "Логін треба заповнити",
 			"PASSWORD": "Пароль треба заповнити",
 			"PASSWORD_MIN_LENGTH": "Пароль надто короткий",
-			"SUBMIT_BUTTON_DISABLED": "Введіть коректні значення логіну и паролю"
+			"SUBMIT_BUTTON_DISABLED": "Введіть коректні значення логіну та паролю"
 		},
+		"FIREBASE_EMAIL_EXISTS": "Цей email вже використовується іншим обліковим записом",
 		"FIREBASE_EMAIL_NOT_FOUND": "Користувача с таким email не знайдено",
 		"FIREBASE_INVALID_PASSWORD": "Невірний пароль",
+		"FIREBASE_OPERATION_NOT_ALLOWED": "Вхід за допомогою пароля для цього проекту вимкнено",
 		"FIREBASE_TOO_MANY_ATTEMPTS": "Занадто багато неправильних спроб входу",
 		"FIREBASE_UNKNOWN_LOGIN_ERROR": "Невідома помилка входу",
 		"FIREBASE_USER_DISABLED": "Адміністратор вимкнув даний обліковий запис користувача",
@@ -99,10 +101,31 @@
 		"LOGIN": "Логін",
 		"LOGOUT": "Вийти",
 		"MAIN_PAGE": "Головна сторінка",
+		"SIGNUP": "Реєстрація",
 		"VIEW_TENDER": "Перегляд тендера"
 	},
 	"SELECT-LANGUAGE": {
 		"LABEL": "Виберіть мову"
+	},
+	"SIGNUP": {
+		"EMAIL_LABEL": "Ваш email",
+		"ERROR": {
+			"EMAIL": "Некоректний формат email",
+			"EMAIL_REQUIRED": "Email треба заповнити",
+			"NAME_REQUIRED": "WARN_NO_TRANSLATION",
+			"PASSWORD_MIN_LENGTH": "Пароль надто короткий",
+			"PASSWORD_REQUIRED": "Пароль треба заповнити",
+			"PHONE_PATTERN": "Телефон заповнено неправильно",
+			"SUBMIT_BUTTON_DISABLED": "Введіть коректні значення логіну та паролю, заповніть поля, позначені зірочкою",
+			"SURNAME_REQUIRED": "Прізвище треба заповнити"
+		},
+		"FORM_TITLE": "Реєстрація",
+		"NAME_LABEL": "Ваше Ім'я",
+		"NEED_AUTH": "Для перегляду цієї сторінки потрібно зареєструватися",
+		"PASSWORD_LABEL": "Пароль",
+		"PHONE_LABEL": "Телефон",
+		"SUBMIT": "Зареєструватися",
+		"SURNAME_LABEL": "Прізвище"
 	},
 	"SNACK-BAR": {
 		"BUTTON": {

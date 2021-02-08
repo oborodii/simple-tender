@@ -74,8 +74,10 @@
 			"PASSWORD_MIN_LENGTH": "Password is too short",
 			"SUBMIT_BUTTON_DISABLED": "The login and password values are incorrect"
 		},
+		"FIREBASE_EMAIL_EXISTS": "The email address is already in use by another account",
 		"FIREBASE_EMAIL_NOT_FOUND": "No user was found with this email",
 		"FIREBASE_INVALID_PASSWORD": "Invalid password",
+		"FIREBASE_OPERATION_NOT_ALLOWED": "Password sign-in is disabled for this project",
 		"FIREBASE_TOO_MANY_ATTEMPTS": "Too many incorrect login attempts",
 		"FIREBASE_UNKNOWN_LOGIN_ERROR": "Unknown login error",
 		"FIREBASE_USER_DISABLED": "The user account has been disabled by an administrator",
@@ -99,10 +101,31 @@
 		"LOGIN": "Login",
 		"LOGOUT": "Logout",
 		"MAIN_PAGE": "Main page",
+		"SIGNUP": "Sign Up",
 		"VIEW_TENDER": "View tender"
 	},
 	"SELECT-LANGUAGE": {
 		"LABEL": "Select language"
+	},
+	"SIGNUP": {
+		"EMAIL_LABEL": "Your email",
+		"ERROR": {
+			"EMAIL": "Incorrect email format",
+			"EMAIL_REQUIRED": "Email is required",
+			"NAME_REQUIRED": "Name is required",
+			"PASSWORD_MIN_LENGTH": "Password is too short",
+			"PASSWORD_REQUIRED": "Password is required",
+			"PHONE_PATTERN": "The phone is filled incorrectly",
+			"SUBMIT_BUTTON_DISABLED": "Enter the correct login and password values, fill required fields",
+			"SURNAME_REQUIRED": "Surname is required"
+		},
+		"FORM_TITLE": "Sign Up",
+		"NAME_LABEL": "Your name",
+		"NEED_AUTH": "You need to register to view this page",
+		"PASSWORD_LABEL": "Password",
+		"PHONE_LABEL": "Phone",
+		"SUBMIT": "Sign Up",
+		"SURNAME_LABEL": "Surname"
 	},
 	"SNACK-BAR": {
 		"BUTTON": {

@@ -16,6 +16,7 @@ export class TenderConfig {
 
   /** URLs */
   readonly _FIREBASE_LOGIN_URL: string = environment.firebase_login_url + environment.apiKey;
+  readonly _FIREBASE_SIGNUP_URL: string = environment.firebase_signup_url + environment.apiKey;
   readonly _FIREBASE_DB_URL: string = environment.firebase_DB_url + 'tenders.json';
 
   /** Possible color palette values: 'primary' | 'accent' | 'warn' */
@@ -146,7 +147,9 @@ export class TenderConfig {
     EMAIL_NOT_FOUND: 'EMAIL_NOT_FOUND',
     INVALID_PASSWORD: 'INVALID_PASSWORD',
     TOO_MANY_ATTEMPTS: 'TOO_MANY_ATTEMPTS',
-    USER_DISABLED: 'USER_DISABLED'
+    USER_DISABLED: 'USER_DISABLED',
+    EMAIL_EXISTS: 'EMAIL_EXISTS',
+    OPERATION_NOT_ALLOWED: 'OPERATION_NOT_ALLOWED'
   };
 
   readonly _FIREBASE: FirebaseConst = {
@@ -164,6 +167,7 @@ export class TenderConfig {
 
   readonly _MATERIAL_ICONS: MaterialIcons = {
     ADD: 'add',
+    SIGNUP: 'face',
     LOGIN: 'login',
     LOGOUT: 'logout',
     LIST: 'format_list_numbered'

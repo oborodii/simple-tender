@@ -14,6 +14,7 @@ const routes: Routes = [
   },
   {path: 'view', loadChildren: () => import('./tender-view/tender-view.module').then(m => m.TenderViewModule)},
   {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
+  {path: 'signup', loadChildren: () => import('./signup/signup.module').then(m => m.SignUpModule)},
   {path: '**', component: NotFoundComponent}
 ];
 

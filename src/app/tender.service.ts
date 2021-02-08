@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { MatSnackBarRef } from '@angular/material/snack-bar/snack-bar-ref';
@@ -46,9 +46,6 @@ export class TenderService extends TenderConfig {
   set currentLocale(value: string) {
     this._currentLocale = value;
   }
-
-  // subscriptions for Observable
-  subscriptions: Subscription = new Subscription();
 
 
   constructor(private http: HttpClient,
