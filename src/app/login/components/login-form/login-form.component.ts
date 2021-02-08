@@ -97,19 +97,19 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
 
     switch (true) {
       case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.EMAIL_NOT_FOUND):
-        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_EMAIL_NOT_FOUND'));
+        this.tenderService.openSnackBar(this.translate('FIREBASE.EMAIL_NOT_FOUND'));
         break;
       case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.INVALID_PASSWORD):
-        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_INVALID_PASSWORD'));
+        this.tenderService.openSnackBar(this.translate('FIREBASE.INVALID_PASSWORD'));
         break;
       case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.TOO_MANY_ATTEMPTS):
-        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_TOO_MANY_ATTEMPTS'));
+        this.tenderService.openSnackBar(this.translate('FIREBASE.TOO_MANY_ATTEMPTS'));
         break;
       case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.USER_DISABLED):
-        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_USER_DISABLED'));
+        this.tenderService.openSnackBar(this.translate('FIREBASE.USER_DISABLED'));
         break;
       default:
-        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_UNKNOWN_LOGIN_ERROR'));
+        this.tenderService.openSnackBar(this.translate('FIREBASE.UNKNOWN_LOGIN_ERROR'));
     }
 
     this.loading = false;

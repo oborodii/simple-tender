@@ -37,6 +37,15 @@
 		"TENDER_TITLE": "Tender title",
 		"UNIT": "Units of goods"
 	},
+	"FIREBASE": {
+		"EMAIL_EXISTS": "The email address is already in use by another account",
+		"EMAIL_NOT_FOUND": "No user was found with this email",
+		"INVALID_PASSWORD": "Invalid password",
+		"OPERATION_NOT_ALLOWED": "Password sign-in is disabled for this project",
+		"TOO_MANY_ATTEMPTS": "Too many incorrect login attempts",
+		"UNKNOWN_LOGIN_ERROR": "Unknown login error",
+		"USER_DISABLED": "The user account has been disabled by an administrator"
+	},
 	"FOOTER": {
 		"COPYRIGHT": "All rights reserved"
 	},
@@ -74,13 +83,6 @@
 			"PASSWORD_MIN_LENGTH": "Password is too short",
 			"SUBMIT_BUTTON_DISABLED": "The login and password values are incorrect"
 		},
-		"FIREBASE_EMAIL_EXISTS": "The email address is already in use by another account",
-		"FIREBASE_EMAIL_NOT_FOUND": "No user was found with this email",
-		"FIREBASE_INVALID_PASSWORD": "Invalid password",
-		"FIREBASE_OPERATION_NOT_ALLOWED": "Password sign-in is disabled for this project",
-		"FIREBASE_TOO_MANY_ATTEMPTS": "Too many incorrect login attempts",
-		"FIREBASE_UNKNOWN_LOGIN_ERROR": "Unknown login error",
-		"FIREBASE_USER_DISABLED": "The user account has been disabled by an administrator",
 		"FORM_TITLE": "Login",
 		"LOGIN_SUCCESS": "Welcome to the site!",
 		"NEED_AUTH": "You have to enter your login and password to view this page",

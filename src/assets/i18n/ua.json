@@ -37,6 +37,15 @@
 		"TENDER_TITLE": "Заголовок",
 		"UNIT": "Одиниці вимірювання товару"
 	},
+	"FIREBASE": {
+		"EMAIL_EXISTS": "Цей email вже використовується іншим обліковим записом",
+		"EMAIL_NOT_FOUND": "Користувача с таким email не знайдено",
+		"INVALID_PASSWORD": "Невірний пароль",
+		"OPERATION_NOT_ALLOWED": "Вхід за допомогою пароля для цього проекту вимкнено",
+		"TOO_MANY_ATTEMPTS": "Занадто багато неправильних спроб входу",
+		"UNKNOWN_LOGIN_ERROR": "Невідома помилка входу",
+		"USER_DISABLED": "Адміністратор вимкнув даний обліковий запис користувача"
+	},
 	"FOOTER": {
 		"COPYRIGHT": "Всі права захищені"
 	},
@@ -74,13 +83,6 @@
 			"PASSWORD_MIN_LENGTH": "Пароль надто короткий",
 			"SUBMIT_BUTTON_DISABLED": "Введіть коректні значення логіну та паролю"
 		},
-		"FIREBASE_EMAIL_EXISTS": "Цей email вже використовується іншим обліковим записом",
-		"FIREBASE_EMAIL_NOT_FOUND": "Користувача с таким email не знайдено",
-		"FIREBASE_INVALID_PASSWORD": "Невірний пароль",
-		"FIREBASE_OPERATION_NOT_ALLOWED": "Вхід за допомогою пароля для цього проекту вимкнено",
-		"FIREBASE_TOO_MANY_ATTEMPTS": "Занадто багато неправильних спроб входу",
-		"FIREBASE_UNKNOWN_LOGIN_ERROR": "Невідома помилка входу",
-		"FIREBASE_USER_DISABLED": "Адміністратор вимкнув даний обліковий запис користувача",
 		"FORM_TITLE": "Логін",
 		"LOGIN_SUCCESS": "Ласкаво просимо на сайт!",
 		"NEED_AUTH": "Для перегляду цієї сторінки потрібно ввести логін та пароль",

@@ -103,16 +103,16 @@ export class SignUpComponent extends AbstractTenderComponent implements OnInit {
 
     switch (true) {
       case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.EMAIL_EXISTS):
-        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_EMAIL_EXISTS'));
+        this.tenderService.openSnackBar(this.translate('FIREBASE.EMAIL_EXISTS'));
         break;
       case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.OPERATION_NOT_ALLOWED):
-        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_OPERATION_NOT_ALLOWED'));
+        this.tenderService.openSnackBar(this.translate('FIREBASE.OPERATION_NOT_ALLOWED'));
         break;
       case errorMessage.includes(this.FIREBASE_ERROR_MESSAGE.TOO_MANY_ATTEMPTS):
-        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_TOO_MANY_ATTEMPTS'));
+        this.tenderService.openSnackBar(this.translate('FIREBASE.TOO_MANY_ATTEMPTS'));
         break;
       default:
-        this.tenderService.openSnackBar(this.translate('LOGIN.FIREBASE_UNKNOWN_LOGIN_ERROR'));
+        this.tenderService.openSnackBar(this.translate('FIREBASE.UNKNOWN_LOGIN_ERROR'));
     }
 
     this.loading = false;
