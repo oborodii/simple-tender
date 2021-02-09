@@ -58,6 +58,7 @@
 				"LABEL": "Filter",
 				"NO_DATA": "No data matching the filter"
 			},
+			"NO_TENDER": "There is no tender",
 			"TH": {
 				"BEST_BET": "Best bet",
 				"DATE_END": "End Date",

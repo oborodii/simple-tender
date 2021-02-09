@@ -92,6 +92,7 @@ export class TenderTableComponent extends AbstractTenderComponent implements Aft
         () => {
           const message: string = this.translateService.instant('LIST.ERROR.GET_TENDERS_SERVER_ERROR');
           this.tenderService.openSnackBar(message, this.SNACKBAR.ERROR);
+          this.dataSource = new MatTableDataSource();
         })
     );
   }
