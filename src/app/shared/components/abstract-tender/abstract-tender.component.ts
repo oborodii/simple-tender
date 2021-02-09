@@ -72,11 +72,11 @@ export abstract class AbstractTenderComponent implements OnDestroy {
     return this.tenderService._MATERIAL_ICONS;
   }
 
-  get selectedTender(): Tender {
+  get selectedTender(): Tender | null {
     return this.tenderService.selectedTender;
   }
 
-  set selectedTender(value: Tender) {
+  set selectedTender(value: Tender | null) {
     this.tenderService.selectedTender = value;
   }
 

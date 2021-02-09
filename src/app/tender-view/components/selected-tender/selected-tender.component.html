@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
-      <mat-card *ngIf="selectedTender" class="form-style">
+      <mat-card *ngIf="selectedTender && !loading; else spinner" class="form-style">
         <mat-card-header>
           <mat-card-title>
             {{ selectedTender.title }}
@@ -52,6 +52,20 @@
 
         </mat-card-content>
       </mat-card>
+
+      <ng-template #spinner>
+        <mat-card class="form-style">
+          <mat-card-subtitle>
+            {{ 'LOADING' | translate }}
+            <mat-spinner [color]="currentThemePalette"
+                         [diameter]="SPINNER_DIAMETER"
+                         [strokeWidth]="SPINNER_STROKE_WIDTH"
+                         class="mat-spinner">
+            </mat-spinner>
+          </mat-card-subtitle>
+        </mat-card>
+      </ng-template>
+
     </div>
   </div>
 </div>

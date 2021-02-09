@@ -108,11 +108,10 @@ export class TenderTableComponent extends AbstractTenderComponent implements Aft
   }
 
 
-  selectTender(row: Tender): void {
-    this.selectedTender = row;
-    console.log(`this.selectedTender =`);
-    console.log(this.selectedTender);
-    this.router.navigate(['/view', this.selectedTender.id]);
+  selectTender(selectedTender: Tender): void {
+    if (selectedTender) {
+      this.router.navigate(['/view', selectedTender.id]);
+    }
   }
 
 }

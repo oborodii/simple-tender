@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
@@ -24,7 +24,7 @@ export class TenderService extends TenderConfig {
   tenders: Tender[];
 
   // one selected tender
-  selectedTender: Tender;
+  selectedTender: Tender | null;
 
   // all locals from environment.ts
   locales: string[] = environment.locales;
@@ -81,8 +81,9 @@ export class TenderService extends TenderConfig {
   }
 
 
+  /** Get all tenders from tenders.json */
   getTenders(): Observable<Tender[]> {
-    return this.http.get<Tender[]>(this._FIREBASE_DB_URL).pipe(
+    return this.http.get<Tender[]>(this._FIREBASE_TENDERS_URL + '.json').pipe(
       map((response: { [key: string]: any }) => {
         return Object.keys(response)
           .map((key: string) => ({
@@ -94,8 +95,28 @@ export class TenderService extends TenderConfig {
   }
 
 
+  /** Get one tender by its id from tenders.json */
+  getTenderById(id: string): Observable<Tender | null> {
+    const url: string = this._FIREBASE_TENDERS_URL + `/${id}.json`;
+
+    return this.http.get<Tender>(url).pipe(
+      map((response: Tender) => {
+        if (response === null) {
+          return null;
+        } else {
+          return {
+            id: id,
+            ...response
+          };
+        }
+      })
+    );
+  }
+
+
+  /** Create one new tender in Firebase */
   createTender(tender: Tender): Observable<Tender> {
-    return this.http.post<any>(this._FIREBASE_DB_URL, tender).pipe(
+    return this.http.post<any>(this._FIREBASE_TENDERS_URL + '.json', tender).pipe(
       map((response: CreateTenderFirebaseResponse) => {
         const newTender: Tender = {
           ...tender,
