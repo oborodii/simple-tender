@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
 
@@ -17,7 +17,7 @@ import { TenderService } from '../../../tender.service';
   templateUrl: './tender-table.component.html',
   styleUrls: ['./tender-table.component.scss']
 })
-export class TenderTableComponent extends AbstractTenderComponent implements AfterViewInit {
+export class TenderTableComponent extends AbstractTenderComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -71,6 +71,11 @@ export class TenderTableComponent extends AbstractTenderComponent implements Aft
               protected tenderService: TenderService,
               private router: Router) {
     super(translateService, tenderService);
+  }
+
+
+  ngOnInit(): void {
+    this.tenders = [];
   }
 
 
