@@ -12,7 +12,7 @@ export interface Tender {
   title: string;                        // title
   description: string;                  // description
   status?: TenderStatus;                // 'draft' | 'active' | 'closed' | 'planned' | 'all'
-  user?: TenderUser;                    // user who created this tender
+  user?: TenderUser | null;             // user who created this tender
   isShowBestBet: boolean;               // to show the best bet or not
   stepValue: number;                    // step of the bet
   bestBet?: TenderBet;                  // the best bet

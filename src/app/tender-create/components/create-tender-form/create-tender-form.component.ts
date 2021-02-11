@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { map, switchMap } from 'rxjs/operators';
 
 import { TranslateService } from '@ngx-translate/core';
 
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../tender.service';
+import { AuthService } from '../../../shared/services/auth.service';
 import { Tender } from '../../../types/tender.type';
 import { TenderCurrency } from '../../../types/tender-currency.type';
 import { TenderUnit } from '../../../types/tender-unit.type';
+import { TenderUser } from '../../../types/tender-user.type';
 
 
 @Component({
@@ -43,14 +46,15 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
 
 
   constructor(protected translateService: TranslateService,
-              protected tenderService: TenderService) {
+              protected tenderService: TenderService,
+              private authService: AuthService
+  ) {
     super(translateService, tenderService);
   }
 
 
   onSubmit(): void {
     const tender: Tender = {
-      dateCreate: new Date(),
       dateStart: this.createTenderForm.value.dateStart,
       dateEnd: this.createTenderForm.value.dateEnd,
       title: this.createTenderForm.value.title,
@@ -63,19 +67,7 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
       unit: this.createTenderForm.value.unit
     };
 
-    this.subscriptions.add(
-      this.tenderService.createTender(tender).subscribe(
-        (newTender: Tender) => {
-          const prefixMessage: string = this.translate('CREATE-FORM.NEW_TENDER');
-          const suffixMessage: string = this.translate('CREATE-FORM.SUCCESSFULLY_CREATED');
-          const message: string = prefixMessage + ' "' + newTender.title + '" ' + suffixMessage;
-          this.tenderService.openSnackBar(message, this.SNACKBAR.SUCCESS);
-        },
-        () => {
-          const message: string = this.translate('CREATE-FORM.ERROR.CREATE_SERVER_ERROR');
-          this.tenderService.openSnackBar(message, this.SNACKBAR.ERROR);
-        }
-      ));
+    this.createTenderByCurrentUser(tender);
   }
 
 
@@ -114,6 +106,25 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
         });
         break;
     }
+  }
+
+
+  private createTenderByCurrentUser(tender: Tender): void {
+    this.subscriptions.add(
+      this.authService.getCurrentUser().pipe(
+        map((user: TenderUser | null) => tender.user = user),
+        switchMap(() => this.tenderService.createTender(tender))
+      ).subscribe((newTender: Tender) => {
+          const prefixMessage: string = this.translate('CREATE-FORM.NEW_TENDER');
+          const suffixMessage: string = this.translate('CREATE-FORM.SUCCESSFULLY_CREATED');
+          const message: string = prefixMessage + ' "' + newTender.title + '" ' + suffixMessage;
+          this.tenderService.openSnackBar(message, this.SNACKBAR.SUCCESS);
+        },
+        () => {
+          const message: string = this.translate('CREATE-FORM.ERROR.CREATE_SERVER_ERROR');
+          this.tenderService.openSnackBar(message, this.SNACKBAR.ERROR);
+        }
+      ));
   }
 
 }

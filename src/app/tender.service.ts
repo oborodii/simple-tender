@@ -12,7 +12,7 @@ import { TenderConfig } from './tender.config';
 import { Tender } from './types/tender.type';
 import { TenderCurrency } from './types/tender-currency.type';
 import { TenderUnit } from './types/tender-unit.type';
-import { CreateTenderFirebaseResponse } from './types/create-tender-firebase-response.type';
+import { CreateItemFirebaseResponse } from './types/create-item-firebase-response.type';
 
 
 @Injectable({
@@ -117,7 +117,7 @@ export class TenderService extends TenderConfig {
   /** Create one new tender in Firebase */
   createTender(tender: Tender): Observable<Tender> {
     return this.http.post<any>(this._FIREBASE_TENDERS_URL + '.json', tender).pipe(
-      map((response: CreateTenderFirebaseResponse) => {
+      map((response: CreateItemFirebaseResponse) => {
         const newTender: Tender = {
           ...tender,
           id: response.name,

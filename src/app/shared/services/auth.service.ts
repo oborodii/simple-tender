@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { TenderConfig } from '../../tender.config';
 import { TenderUser } from '../../types/tender-user.type';
 import { FirebaseAuthResponse } from '../../types/firebase-response.type';
+import { ResponseFirebaseUserPayload } from '../../types/response-firebase-user-payload.type';
 
 
 @Injectable({
@@ -40,6 +42,27 @@ export class AuthService extends TenderConfig {
 
   logout(): void {
     this.setToken(null);
+  }
+
+
+  /** Get one User by its id from users.json */
+  getCurrentUser(): Observable<TenderUser | null> {
+    const idToken: string | null = localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME);
+
+    return this.http.post<any>(this._FIREBASE_GET_USER_DATA_URL, {idToken}).pipe(
+      map((response: ResponseFirebaseUserPayload) => {
+        if (response) {
+          const user: TenderUser = response.users[0];
+          user.createdAt = new Date(Number(user.createdAt));
+          user.lastLoginAt = new Date(Number(user.lastLoginAt));
+          user.passwordUpdatedAt = new Date(Number(user.passwordUpdatedAt));
+          user.validSince = new Date(Number(user.validSince));
+          return user;
+        } else {
+          return null;
+        }
+      })
+    );
   }
 
 

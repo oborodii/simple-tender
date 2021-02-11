@@ -20,6 +20,7 @@ import { FirebaseAuthResponse } from '../../../types/firebase-response.type';
 export class SignUpComponent extends AbstractTenderComponent implements OnInit {
 
   loading: boolean = false;
+  phoneValidatorPattern: string = '[- +()0-9]{6,}';
 
   signupForm: FormGroup = new FormGroup({
     email: new FormControl(null, [
@@ -38,7 +39,7 @@ export class SignUpComponent extends AbstractTenderComponent implements OnInit {
       Validators.required
     ]),
     phone: new FormControl(null, [
-      Validators.pattern('[- +()0-9]{6,}')
+      Validators.pattern(this.phoneValidatorPattern)
     ])
   });
 
@@ -61,7 +62,7 @@ export class SignUpComponent extends AbstractTenderComponent implements OnInit {
       const user: TenderUser = {
         email: this.signupForm.value.email,
         password: this.signupForm.value.password,
-        displayName: this.signupForm.value.name + '' + this.signupForm.value.surname,
+        displayName: this.signupForm.value.name + ' ' + this.signupForm.value.surname,
         name: this.signupForm.value.name,           // TODO: delete
         surname: this.signupForm.value.surname,     // TODO: delete
         phone: this.signupForm.value.phone
