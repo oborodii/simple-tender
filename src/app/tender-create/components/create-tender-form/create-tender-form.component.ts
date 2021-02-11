@@ -59,12 +59,13 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
       dateEnd: this.createTenderForm.value.dateEnd,
       title: this.createTenderForm.value.title,
       description: this.createTenderForm.value.description,
-      status: 'draft',
       isShowBestBet: this.createTenderForm.value.isShowBestBet,
       stepValue: this.createTenderForm.value.stepValue,
       currency: this.createTenderForm.value.currency,
       quantity: this.createTenderForm.value.quantity,
-      unit: this.createTenderForm.value.unit
+      unit: this.createTenderForm.value.unit,
+      status: this.NEW_TENDER_DEFAULT_VALUE.STATUS,
+      bets: []
     };
 
     this.createTenderByCurrentUser(tender);

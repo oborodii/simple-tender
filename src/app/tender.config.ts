@@ -103,16 +103,16 @@ export class TenderConfig {
     MAX_LENGTH_DESCRIPTION: 4000,
 
     /** Launch date of the tender */
-    DATE_START: '2021-01-21T22:06',
+    DATE_START: '2021-02-12T22:06',
 
     /** End date of the tender */
-    DATE_END: '2021-01-29T22:06',
+    DATE_END: '2021-03-29T22:06',
 
     /** Tender title */
     TITLE: 'Test tender title',
 
     /** Tender description */
-    DESCRIPTION: 'Description for tender (test)',
+    DESCRIPTION: 'Description for new test tender',
 
     /** Default currency */
     CURRENCY: this._currencies[0],
@@ -127,7 +127,10 @@ export class TenderConfig {
     UNIT: this._units[0],
 
     /** To show the best bet or not */
-    IS_SHOW_BEST_BET: true
+    IS_SHOW_BEST_BET: true,
+
+    /** One of 'draft', 'active' or 'closed' */
+    STATUS: 'draft'
   };
 
 
