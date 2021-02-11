@@ -115,7 +115,7 @@
 		"ERROR": {
 			"EMAIL": "Некоректний формат email",
 			"EMAIL_REQUIRED": "Email треба заповнити",
-			"NAME_REQUIRED": "WARN_NO_TRANSLATION",
+			"NAME_REQUIRED": "Ім'я треба заповнити",
 			"PASSWORD_MIN_LENGTH": "Пароль надто короткий",
 			"PASSWORD_REQUIRED": "Пароль треба заповнити",
 			"PHONE_PATTERN": "Телефон заповнено неправильно",
