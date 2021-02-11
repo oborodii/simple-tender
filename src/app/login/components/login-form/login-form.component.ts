@@ -56,7 +56,6 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
         email: this.loginForm.value.email,
         password: this.loginForm.value.password
       };
-
       this.login(user);
     }
   }
@@ -85,9 +84,7 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
 
 
   private loginSuccessHandler(response: FirebaseAuthResponse): void {
-    console.log(`FirebaseAuthResponse =`);
-    console.log(response);
-    this.router.navigate(['/list']);
+    this.router.navigate([this.ROUTER_URL.LIST]);
     this.loading = false;
   }
 

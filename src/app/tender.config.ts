@@ -10,6 +10,7 @@ import { FirebaseErrorMessage } from './types/firebase-error-message.type';
 import { FirebaseConst } from './types/firebase-const.type';
 import { SnackBarTxtColor } from './types/snack-bar-txt-color.type';
 import { MaterialIcons } from './types/material-icons.type';
+import { RouterUrl } from './types/router-url.type';
 
 
 export class TenderConfig {
@@ -165,12 +166,20 @@ export class TenderConfig {
     WARNING: 'snack-bar-warning'
   };
 
-  readonly _MATERIAL_ICONS: MaterialIcons = {
+  readonly _MATERIAL_ICON: MaterialIcons = {
     ADD: 'add',
     SIGNUP: 'face',
     LOGIN: 'login',
     LOGOUT: 'logout',
     LIST: 'format_list_numbered'
+  };
+
+  readonly _ROUTER_URL: RouterUrl = {
+    LIST: '/' + environment.router_list_url,
+    CREATE: '/' + environment.router_create_url,
+    VIEW: '/' + environment.router_view_url,
+    LOGIN: '/' + environment.router_login_url,
+    SIGNUP: '/' + environment.router_signup_url
   };
 
 }

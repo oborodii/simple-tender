@@ -55,7 +55,8 @@ export class LayoutComponent extends AbstractTenderComponent implements OnInit {
   logout(event: Event): void {
     event.preventDefault();
     this.authService.logout();
-    this.router.navigate(['/login']);
+
+    this.router.navigate([this.ROUTER_URL.LOGIN]);
   }
 
 }

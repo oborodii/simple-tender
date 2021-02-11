@@ -67,9 +67,8 @@
 
           <mat-card-actions align="end">
             <!-- Sign Up button -->
-            <a mat-button routerLink="/signup"
-               routerLinkActive="active"
-               [routerLinkActiveOptions]="{exact:true}"
+            <a mat-button [routerLink]="ROUTER_URL.SIGNUP"
+               routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                [disabled]="loading"
                [color]="currentThemePalette">
               {{ 'MENU.SIGNUP' | translate }}

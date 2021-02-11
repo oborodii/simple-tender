@@ -14,6 +14,7 @@ import { LoginDefaultValue } from '../../../types/login-default-value.type';
 import { FirebaseErrorMessage } from '../../../types/firebase-error-message.type';
 import { SnackBarTxtColor } from '../../../types/snack-bar-txt-color.type';
 import { MaterialIcons } from '../../../types/material-icons.type';
+import { RouterUrl } from '../../../types/router-url.type';
 
 
 @Component({
@@ -68,8 +69,12 @@ export abstract class AbstractTenderComponent implements OnDestroy {
     return this.tenderService._SNACKBAR;
   }
 
-  get MATERIAL_ICONS(): MaterialIcons {
-    return this.tenderService._MATERIAL_ICONS;
+  get MATERIAL_ICON(): MaterialIcons {
+    return this.tenderService._MATERIAL_ICON;
+  }
+
+  get ROUTER_URL(): RouterUrl {
+    return this.tenderService._ROUTER_URL;
   }
 
   get selectedTender(): Tender | null {

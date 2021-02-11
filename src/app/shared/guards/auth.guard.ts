@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../services/auth.service';
 
 
@@ -20,7 +21,9 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       this.authService.logout();
-      this.router.navigate(['/login'], {
+
+      const url: string = '/' + environment.router_login_url;
+      this.router.navigate([url], {
         queryParams: {
           needAuth: true
         }

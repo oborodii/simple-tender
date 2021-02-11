@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -46,8 +46,7 @@ export class SignUpComponent extends AbstractTenderComponent implements OnInit {
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               private authService: AuthService,
-              protected router: Router,
-              private route: ActivatedRoute
+              protected router: Router
   ) {
     super(translateService, tenderService);
   }
@@ -91,9 +90,7 @@ export class SignUpComponent extends AbstractTenderComponent implements OnInit {
 
 
   private signupSuccessHandler(response: FirebaseAuthResponse): void {
-    console.log(`FirebaseAuthResponse =`);
-    console.log(response);
-    this.router.navigate(['/list']);
+    this.router.navigate([this.ROUTER_URL.LIST]);
     this.loading = false;
   }
 

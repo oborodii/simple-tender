@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { TenderUser } from '../../types/tender-user.type';
 import { TenderConfig } from '../../tender.config';
+import { TenderUser } from '../../types/tender-user.type';
 import { FirebaseAuthResponse } from '../../types/firebase-response.type';
 
 
@@ -18,8 +18,7 @@ export class AuthService extends TenderConfig {
   }
 
   constructor(private http: HttpClient,
-              private router: Router,
-  ) {
+              private router: Router) {
     super();
   }
 
@@ -29,16 +28,12 @@ export class AuthService extends TenderConfig {
     // whether or not to return an ID and refresh token
     // (should always be true for Firebase)
     user.returnSecureToken = true;
-
     return this.http.post<FirebaseAuthResponse>(this._FIREBASE_SIGNUP_URL, user);
   }
 
 
   login(user: TenderUser): Observable<FirebaseAuthResponse> {
-    // whether or not to return an ID and refresh token
-    // (should always be true for Firebase)
     user.returnSecureToken = true;
-
     return this.http.post<FirebaseAuthResponse>(this._FIREBASE_LOGIN_URL, user);
   }
 
@@ -55,7 +50,7 @@ export class AuthService extends TenderConfig {
       const expiresDate: Date = new Date(tokenFromLocalStorage);
       if (new Date() > expiresDate) {
         this.logout();
-        this.router.navigate(['/login']);
+        this.router.navigate([this._ROUTER_URL.LOGIN]);
         return null;
       }
       return localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME);

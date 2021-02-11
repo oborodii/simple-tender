@@ -8,14 +8,19 @@
 
     <!-- Vertical menu -->
     <mat-nav-list>
-      <a mat-list-item routerLink="/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <a mat-list-item [routerLink]="ROUTER_URL.LIST"
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
         {{ 'MENU.MAIN_PAGE' | translate }}
       </a>
-      <a *ngIf="isUserAuth" mat-list-item routerLink="/create" routerLinkActive="active"
-         [routerLinkActiveOptions]="{exact:true}">
+
+      <a mat-list-item [routerLink]="ROUTER_URL.CREATE"
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+         *ngIf="isUserAuth">
         {{ 'MENU.CREATE_NEW_TENDER' | translate }}
       </a>
-      <a mat-list-item routerLink="/view" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+
+      <a mat-list-item [routerLink]="ROUTER_URL.VIEW"
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         {{ 'MENU.VIEW_TENDER' | translate }}
       </a>
     </mat-nav-list>
@@ -24,8 +29,7 @@
   <mat-sidenav-content>
     <!-- Header -->
     <mat-toolbar [color]="currentThemePalette">
-      <button type="button" aria-label="Toggle sidenav"
-              mat-icon-button
+      <button type="button" mat-icon-button aria-label="Toggle sidenav"
               (click)="drawer.toggle()"
               *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
@@ -37,18 +41,20 @@
       <!-- Login/Logout -->
       <mat-nav-list class="list-horizontal">
         <ng-container *ngIf="!isUserAuth">
-          <a mat-list-item routerLink="/signup" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-            <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-              {{ MATERIAL_ICONS.SIGNUP }}
+          <a mat-list-item [routerLink]="ROUTER_URL.SIGNUP"
+             routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon class="icons" aria-hidden="false" aria-label="Sing up icon">
+              {{ MATERIAL_ICON.SIGNUP }}
             </mat-icon>
             <div class="menu-txt">
               {{ 'MENU.SIGNUP' | translate }}
             </div>
           </a>
 
-          <a mat-list-item routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-            <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-              {{ MATERIAL_ICONS.LOGIN }}
+          <a mat-list-item [routerLink]="ROUTER_URL.LOGIN"
+             routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon class="icons" aria-hidden="false" aria-label="Login icon">
+              {{ MATERIAL_ICON.LOGIN }}
             </mat-icon>
             <div class="menu-txt">
               {{ 'MENU.LOGIN' | translate }}
@@ -57,17 +63,19 @@
         </ng-container>
 
         <ng-container *ngIf="isUserAuth">
-          <a mat-list-item routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-            <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-              {{ MATERIAL_ICONS.ADD }}
+          <a mat-list-item [routerLink]="ROUTER_URL.CREATE"
+             routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon class="icons" aria-hidden="false" aria-label="Add icon">
+              {{ MATERIAL_ICON.ADD }}
             </mat-icon>
             <span class="menu-txt">
             {{ 'MENU.CREATE_NEW_TENDER' | translate }}
           </span>
           </a>
+
           <a mat-list-item (click)="logout($event)">
-            <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-              {{ MATERIAL_ICONS.LOGOUT }}
+            <mat-icon class="icons" aria-hidden="false" aria-label="Logout icon">
+              {{ MATERIAL_ICON.LOGOUT }}
             </mat-icon>
             <span class="menu-txt">
             {{ 'MENU.LOGOUT' | translate }}
@@ -83,4 +91,4 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-<st-footer>Loading footer...</st-footer>
+<st-footer>Loading...</st-footer>

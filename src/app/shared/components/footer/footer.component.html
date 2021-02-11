@@ -10,18 +10,21 @@
       <div class="spacer"></div>
 
       <mat-nav-list class="list-horizontal">
-        <a mat-list-item routerLink="/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-          <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-            {{ MATERIAL_ICONS.LIST }}
+        <a mat-list-item
+           [routerLink]="ROUTER_URL.LIST"
+           routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <mat-icon class="icons" aria-hidden="false" aria-label="List icon">
+            {{ MATERIAL_ICON.LIST }}
           </mat-icon>
           <span class="menu-txt">
             {{ 'MENU.LIST_OF_TENDERS' | translate }}
           </span>
         </a>
         <ng-container *ngIf="isUserAuth">
-          <a mat-list-item routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-            <mat-icon class="icons" aria-hidden="false" aria-label="Example user verified icon">
-              {{ MATERIAL_ICONS.ADD }}
+          <a mat-list-item [routerLink]="ROUTER_URL.CREATE"
+             routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon class="icons" aria-hidden="false" aria-label="Add icon">
+              {{ MATERIAL_ICON.ADD }}
             </mat-icon>
             <span class="menu-txt">
             {{ 'MENU.CREATE_NEW_TENDER' | translate }}

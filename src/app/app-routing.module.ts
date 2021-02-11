@@ -1,20 +1,38 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { environment } from '../environments/environment';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'list', pathMatch: 'full'},
-  {path: 'list', loadChildren: () => import('./tender-list/tender-list.module').then(m => m.TenderListModule)},
   {
-    path: 'create', loadChildren: () => import('./tender-create/tender-create.module').then(m => m.TenderCreateModule),
+    path: '',
+    redirectTo: environment.router_list_url,
+    pathMatch: 'full'
+  },
+  {
+    path: environment.router_list_url,
+    loadChildren: () => import('./tender-list/tender-list.module').then(m => m.TenderListModule)
+  },
+  {
+    path: environment.router_create_url,
+    loadChildren: () => import('./tender-create/tender-create.module').then(m => m.TenderCreateModule),
     canActivate: [AuthGuard]
   },
-  {path: 'view', loadChildren: () => import('./tender-view/tender-view.module').then(m => m.TenderViewModule)},
-  {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
-  {path: 'signup', loadChildren: () => import('./signup/signup.module').then(m => m.SignUpModule)},
+  {
+    path: environment.router_view_url,
+    loadChildren: () => import('./tender-view/tender-view.module').then(m => m.TenderViewModule)
+  },
+  {
+    path: environment.router_login_url,
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: environment.router_signup_url,
+    loadChildren: () => import('./signup/signup.module').then(m => m.SignUpModule)
+  },
   {path: '**', component: NotFoundComponent}
 ];
 

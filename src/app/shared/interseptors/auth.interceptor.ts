@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../services/auth.service';
 
 
@@ -30,7 +31,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
         if (err.status === 401) {
           this.authService.logout();
-          this.router.navigate(['/login'], {
+          const url: string = '/' + environment.router_login_url;
+          this.router.navigate([url], {
             queryParams: {
               permissionDeniedUnauthorized: true
             }

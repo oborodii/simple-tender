@@ -90,7 +90,7 @@ export class TenderTableComponent extends AbstractTenderComponent implements Aft
           this.tenders = tenders;
         },
         () => {
-          const message: string = this.translateService.instant('LIST.ERROR.GET_TENDERS_SERVER_ERROR');
+          const message: string = this.translate('LIST.ERROR.GET_TENDERS_SERVER_ERROR');
           this.tenderService.openSnackBar(message, this.SNACKBAR.ERROR);
           this.dataSource = new MatTableDataSource();
         })
@@ -110,7 +110,7 @@ export class TenderTableComponent extends AbstractTenderComponent implements Aft
 
   selectTender(selectedTender: Tender): void {
     if (selectedTender) {
-      this.router.navigate(['/view', selectedTender.id]);
+      this.router.navigate([this.ROUTER_URL.VIEW, selectedTender.id]);
     }
   }
 
