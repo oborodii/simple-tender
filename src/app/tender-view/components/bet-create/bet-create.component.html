@@ -1,0 +1,71 @@
+<form [formGroup]="betForm" novalidate (ngSubmit)="onSubmit()" class="bet-wrapper">
+  <p><strong>
+    {{ 'BET.FORM-TITLE' | translate }}:
+  </strong></p>
+
+  <!-- Bet Value -->
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+        <div matPrefix>{{ currencyCode }}</div>
+        <mat-label>{{ 'BET.BET_VALUE' | translate }}</mat-label>
+        <input matInput type="number" required
+               [min]="BET_DEFAULT_VALUE.MIN_COMMENT_LENGTH"
+               [max]="NEW_TENDER_DEFAULT_VALUE.MAX_STEP_VALUE"
+               (input)="setBetValueValidationError()"
+               formControlName="betValue">
+
+        <mat-error *ngIf="betForm.controls['betValue'].hasError('required')">
+          {{ 'BET.ERROR.REQUIRED_VALUE' | translate }}
+        </mat-error>
+
+        <mat-error *ngIf="betForm.controls['betValue'].hasError('lessBestBet')">
+          {{ 'BET.ERROR.LESS_BEST_BET' | translate }}
+        </mat-error>
+
+        <mat-error *ngIf="betForm.controls['betValue'].hasError('lessStepValue')">
+          {{ 'BET.ERROR.LESS_STEP_VALUE' | translate }}
+        </mat-error>
+
+        <mat-error *ngIf="betForm.controls['betValue'].hasError('incorrectMaxValue')">
+          {{ 'BET.ERROR.INCORRECT_MAX_VALUE' | translate }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Comment -->
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+        <mat-label>{{ 'BET.BET_COMMENT' | translate }}</mat-label>
+        <input matInput formControlName="comment">
+
+        <mat-error *ngIf="betForm.controls['comment'].hasError('minlength')">
+          {{ ('BET.ERROR.MIN_LENGTH_COMMENT' | translate) +
+        ' (' + betForm.get('comment')?.errors?.minlength['actualLength'] + '/' +
+        betForm.get('comment')?.errors?.minlength['requiredLength'] + ')' }}
+        </mat-error>
+
+        <mat-error *ngIf="betForm.controls['comment'].hasError('maxlength')">
+          {{ ('BET.ERROR.MAX_LENGTH_COMMENT' | translate) +
+        ' (' + betForm.get('comment')?.errors?.maxlength['actualLength'] + '/' +
+        betForm.get('comment')?.errors?.maxlength['requiredLength'] + ')' }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Submit button -->
+  <div class="row">
+    <div class="col">
+      <button mat-raised-button type="submit"
+              [disabled]="betForm.invalid"
+              [title]="betForm.invalid ? ('CREATE-FORM.ERROR.SUBMIT_BUTTON_DISABLED' | translate) : ''"
+              [color]="currentThemePalette"
+              class="submit-button">
+        {{ 'CREATE-FORM.SUBMIT_BUTTON' | translate }}
+      </button>
+    </div>
+  </div>
+</form>

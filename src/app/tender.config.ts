@@ -11,6 +11,7 @@ import { FirebaseConst } from './types/firebase-const.type';
 import { SnackBarTxtColor } from './types/snack-bar-txt-color.type';
 import { MaterialIcons } from './types/material-icons.type';
 import { RouterUrl } from './types/router-url.type';
+import { BetDefaultValue } from './types/bet-default-value.type';
 
 
 export class TenderConfig {
@@ -145,6 +146,23 @@ export class TenderConfig {
 
     /** Password default value */
     PASSWORD: null
+  };
+
+
+  /** Default values when creating a new tender */
+  readonly _BET_DEFAULT_VALUE: BetDefaultValue = {
+    /** Min/Max comment length */
+    MIN_COMMENT_LENGTH: 5,
+    MAX_COMMENT_LENGTH: 200,
+
+    /** The bet value maximum limit */
+    MAX_BET_VALUE: 1000000,
+
+    /** A bet default value */
+    VALUE: 0,
+
+    /** Comment for a bet default value */
+    COMMENT: null
   };
 
 

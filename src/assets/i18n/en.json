@@ -1,5 +1,18 @@
 {
 	"APP_TITLE": "Simple Tender 1.0",
+	"BET": {
+		"BET_COMMENT": "Comment for your bet (optional)",
+		"BET_VALUE": "Enter bet value",
+		"ERROR": {
+			"INCORRECT_MAX_VALUE": "The bet value is too large",
+			"LESS_BEST_BET": "Your bet is less than the best bet already made",
+			"LESS_STEP_VALUE": "Your bet is less than the bet step for this tender",
+			"MAX_LENGTH_COMMENT": "Comment is too long",
+			"MIN_LENGTH_COMMENT": "The comment is too short",
+			"REQUIRED_VALUE": "Bet value is required"
+		},
+		"FORM-TITLE": "Place a new bet"
+	},
 	"CREATE-FORM": {
 		"CURRENCY": "Currency",
 		"DATE_END": "Tender end date and time",

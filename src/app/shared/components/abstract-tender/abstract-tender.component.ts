@@ -15,6 +15,7 @@ import { FirebaseErrorMessage } from '../../../types/firebase-error-message.type
 import { SnackBarTxtColor } from '../../../types/snack-bar-txt-color.type';
 import { MaterialIcons } from '../../../types/material-icons.type';
 import { RouterUrl } from '../../../types/router-url.type';
+import { BetDefaultValue } from '../../../types/bet-default-value.type';
 
 
 @Component({
@@ -59,6 +60,10 @@ export abstract class AbstractTenderComponent implements OnDestroy {
 
   get LOGIN_DEFAULT_VALUE(): LoginDefaultValue {
     return this.tenderService._LOGIN_DEFAULT_VALUE;
+  }
+
+  get BET_DEFAULT_VALUE(): BetDefaultValue {
+    return this.tenderService._BET_DEFAULT_VALUE;
   }
 
   get FIREBASE_ERROR_MESSAGE(): FirebaseErrorMessage {

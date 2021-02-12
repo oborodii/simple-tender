@@ -1,5 +1,7 @@
 <div class="container-fluid">
   <div class="row">
+
+    <!-- Selected Tender -->
     <div class="col">
       <mat-card *ngIf="selectedTender && !loading; else spinner" class="form-style">
         <mat-card-header>
@@ -13,59 +15,69 @@
         </mat-card-header>
 
         <mat-card-content>
-          <mat-list>
-            <mat-list-item>
-              <strong>{{ 'VIEW_TENDER.DURATION' | translate }}</strong>:
-              {{ selectedTender.dateStart | date:'dd.MM.YYYY HH:mm' }} -
-              {{ selectedTender.dateEnd | date:'dd.MM.YYYY HH:mm' }}
-            </mat-list-item>
-            <mat-divider></mat-divider>
+          <div class="row">
+            <div class="col">
+              <mat-list>
+                <mat-list-item>
+                  <strong>{{ 'VIEW_TENDER.DURATION' | translate }}</strong>:
+                  {{ selectedTender.dateStart | date:'dd.MM.YYYY HH:mm' }} -
+                  {{ selectedTender.dateEnd | date:'dd.MM.YYYY HH:mm' }}
+                </mat-list-item>
+                <mat-divider></mat-divider>
 
-            <mat-list-item>
-              <strong>{{ 'VIEW_TENDER.DESCRIPTION' | translate }}</strong>:
-              {{ selectedTender.description }}
-            </mat-list-item>
-            <mat-divider></mat-divider>
+                <mat-list-item>
+                  <strong>{{ 'VIEW_TENDER.DESCRIPTION' | translate }}</strong>:
+                  {{ selectedTender.description }}
+                </mat-list-item>
+                <mat-divider></mat-divider>
 
-            <mat-list-item>
-              <strong>{{ 'VIEW_TENDER.BEST_BET' | translate }}</strong>:
-              <div *ngIf="selectedTender.bestBet; else noBestBet">
-                {{ selectedTender.bestBet + ' ' + selectedTender.currency.code }}
-              </div>
-              <ng-template #noBestBet>
-                {{ 'VIEW_TENDER.NO_BEST_BET' | translate }}
-              </ng-template>
-            </mat-list-item>
-            <mat-divider></mat-divider>
+                <mat-list-item>
+                  <strong>{{ 'VIEW_TENDER.BEST_BET' | translate }}</strong>:
+                  <div *ngIf="selectedTender.bestBet; else noBestBet">
+                    {{ selectedTender.bestBet + ' ' + selectedTender.currency.code }}
+                  </div>
+                  <ng-template #noBestBet>
+                    {{ 'VIEW_TENDER.NO_BEST_BET' | translate }}
+                  </ng-template>
+                </mat-list-item>
+                <mat-divider></mat-divider>
 
-            <mat-list-item>
-              <strong>{{ 'VIEW_TENDER.STEP_VALUE' | translate }}</strong>:
-              {{ selectedTender.stepValue + ' ' + selectedTender.currency.code }}
-            </mat-list-item>
-            <mat-divider></mat-divider>
+                <mat-list-item>
+                  <strong>{{ 'VIEW_TENDER.STEP_VALUE' | translate }}</strong>:
+                  {{ selectedTender.stepValue + ' ' + selectedTender.currency.code }}
+                </mat-list-item>
+                <mat-divider></mat-divider>
 
-            <mat-list-item>
-              <strong>{{ 'VIEW_TENDER.QUANTITY' | translate }}</strong>:
-              {{ selectedTender.quantity + ' ' + getLocalUnitCode(selectedTender.unit) }}
-            </mat-list-item>
-          </mat-list>
+                <mat-list-item>
+                  <strong>{{ 'VIEW_TENDER.QUANTITY' | translate }}</strong>:
+                  {{ selectedTender.quantity + ' ' + getLocalUnitCode(selectedTender.unit) }}
+                </mat-list-item>
+              </mat-list>
+            </div>
+
+            <!-- Place a new bet -->
+            <div class="col">
+              <st-bet-create></st-bet-create>
+            </div>
+          </div>
 
         </mat-card-content>
       </mat-card>
-
-      <ng-template #spinner>
-        <mat-card class="form-style">
-          <mat-card-subtitle>
-            {{ 'LOADING' | translate }}
-            <mat-spinner [color]="currentThemePalette"
-                         [diameter]="SPINNER_DIAMETER"
-                         [strokeWidth]="SPINNER_STROKE_WIDTH"
-                         class="mat-spinner">
-            </mat-spinner>
-          </mat-card-subtitle>
-        </mat-card>
-      </ng-template>
-
     </div>
   </div>
+
+  <!-- Loading... -->
+  <ng-template #spinner>
+    <mat-card class="form-style">
+      <mat-card-subtitle>
+        {{ 'LOADING' | translate }}
+        <mat-spinner [color]="currentThemePalette"
+                     [diameter]="SPINNER_DIAMETER"
+                     [strokeWidth]="SPINNER_STROKE_WIDTH"
+                     class="mat-spinner">
+        </mat-spinner>
+      </mat-card-subtitle>
+    </mat-card>
+  </ng-template>
+
 </div>
