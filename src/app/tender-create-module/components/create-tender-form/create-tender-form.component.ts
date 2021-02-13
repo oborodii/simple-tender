@@ -5,8 +5,8 @@ import { map, switchMap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
-import { TenderService } from '../../../tender.service';
-import { AuthService } from '../../../shared/services/auth.service';
+import { TenderService } from '../../../services/tender.service';
+import { AuthService } from '../../../services/auth.service';
 import { Tender } from '../../../types/tender.type';
 import { TenderCurrency } from '../../../types/tender-currency.type';
 import { TenderUnit } from '../../../types/tender-unit.type';

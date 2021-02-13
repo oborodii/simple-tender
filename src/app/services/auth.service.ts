@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { TenderConfig } from '../../tender.config';
-import { TenderUser } from '../../types/tender-user.type';
-import { FirebaseAuthResponse } from '../../types/firebase-response.type';
-import { ResponseFirebaseUserPayload } from '../../types/response-firebase-user-payload.type';
+import { TenderConfig } from '../tender.config';
+import { TenderUser } from '../types/tender-user.type';
+import { FirebaseAuthResponse } from '../types/firebase-response.type';
+import { ResponseFirebaseUserPayload } from '../types/response-firebase-user-payload.type';
 
 
 @Injectable({

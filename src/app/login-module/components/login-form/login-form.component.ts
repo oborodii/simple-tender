@@ -6,8 +6,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
-import { TenderService } from '../../../tender.service';
-import { AuthService } from '../../../shared/services/auth.service';
+import { TenderService } from '../../../services/tender.service';
+import { AuthService } from '../../../services/auth.service';
 import { TenderUser } from '../../../types/tender-user.type';
 import { FirebaseAuthResponse } from '../../../types/firebase-response.type';
 

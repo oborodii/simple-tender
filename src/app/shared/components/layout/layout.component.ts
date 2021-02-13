@@ -8,8 +8,8 @@ import { ThemePalette } from '@angular/material/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { environment } from '../../../../environments/environment';
-import { TenderService } from '../../../tender.service';
-import { AuthService } from '../../services/auth.service';
+import { TenderService } from '../../../services/tender.service';
+import { AuthService } from '../../../services/auth.service';
 import { AbstractTenderComponent } from '../abstract-tender/abstract-tender.component';
 
 

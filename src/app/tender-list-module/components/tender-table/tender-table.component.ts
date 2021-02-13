@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { Tender } from '../../../types/tender.type';
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
-import { TenderService } from '../../../tender.service';
+import { TenderService } from '../../../services/tender.service';
 
 
 @Component({

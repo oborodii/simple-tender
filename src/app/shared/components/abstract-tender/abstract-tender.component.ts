@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { ThemePalette } from '@angular/material/core';
 import { TranslateService } from '@ngx-translate/core';
 
-import { TenderService } from '../../../tender.service';
+import { TenderService } from '../../../services/tender.service';
 import { Tender } from '../../../types/tender.type';
 import { TenderCurrency } from '../../../types/tender-currency.type';
 import { TenderUnit } from '../../../types/tender-unit.type';

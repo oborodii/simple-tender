@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 
 import { AbstractTenderComponent } from '../abstract-tender/abstract-tender.component';
-import { TenderService } from '../../../tender.service';
+import { TenderService } from '../../../services/tender.service';
 
 
 @Component({

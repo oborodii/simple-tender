@@ -26,7 +26,7 @@ import { MissingTranslationService } from './classes/missing-translation-service
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { LanguageToggleComponent } from './components/language-toggle/language-toggle.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { MatPaginatorNgxTranslateService } from './services/mat-paginator-ngx-translate.service';
+import { MatPaginatorNgxTranslateService } from '../services/mat-paginator-ngx-translate.service';
 
 
 @NgModule({

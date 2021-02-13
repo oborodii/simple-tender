@@ -21,6 +21,7 @@ export class TenderConfig {
   readonly _FIREBASE_SIGNUP_URL: string = environment.firebase_signup_url + environment.apiKey;
   readonly _FIREBASE_GET_USER_DATA_URL: string = environment.firebase_lookup_url + environment.apiKey;
   readonly _FIREBASE_TENDERS_URL: string = environment.firebase_DB_url + 'tenders';
+  readonly _FIREBASE_BETS_URL: string = environment.firebase_DB_url + 'bets';
 
   /** Possible color palette values: 'primary' | 'accent' | 'warn' */
   readonly _currentThemePalette: ThemePalette = 'primary';

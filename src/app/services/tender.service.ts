@@ -7,12 +7,12 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { MatSnackBarRef } from '@angular/material/snack-bar/snack-bar-ref';
 import { TextOnlySnackBar } from '@angular/material/snack-bar/simple-snack-bar';
 
-import { environment } from '../environments/environment';
-import { TenderConfig } from './tender.config';
-import { Tender } from './types/tender.type';
-import { TenderCurrency } from './types/tender-currency.type';
-import { TenderUnit } from './types/tender-unit.type';
-import { CreateItemFirebaseResponse } from './types/create-item-firebase-response.type';
+import { environment } from '../../environments/environment';
+import { TenderConfig } from '../tender.config';
+import { Tender } from '../types/tender.type';
+import { TenderCurrency } from '../types/tender-currency.type';
+import { TenderUnit } from '../types/tender-unit.type';
+import { CreateItemFirebaseResponse } from '../types/create-item-firebase-response.type';
 
 
 @Injectable({

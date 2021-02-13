@@ -5,7 +5,7 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { TranslateService } from '@ngx-translate/core';
 
 import { files } from './example-data';
-import { TenderService } from '../../../tender.service';
+import { TenderService } from '../../../services/tender.service';
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 
 
