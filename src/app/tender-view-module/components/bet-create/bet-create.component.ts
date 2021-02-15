@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 import { TranslateService } from '@ngx-translate/core';
 
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../services/tender.service';
 import { AuthService } from '../../../services/auth.service';
-import { TenderBet } from '../../../types/tender-bet.type';
 import { Tender } from '../../../types/tender.type';
+import { TenderBet } from '../../../types/tender-bet.type';
+import { TenderUser } from '../../../types/tender-user.type';
 
 
 @Component({
@@ -55,42 +58,55 @@ export class BetCreateComponent extends AbstractTenderComponent {
 
 
   onSubmit(): void {
-    if (this.selectedTender) {
-      const bet: TenderBet = {
-        tenderId: this.selectedTender.id,
-        userId: 'qqqqqqqqqq',
-        dateTime: new Date(),
-        value: Number(this.betForm.value.betValue),
-        comment: this.betForm.value.comment
-      };
+    const tmpTender: Tender = this.selectedTender;
 
-      if (!this.selectedTender.bets) {
-        this.selectedTender.bets = [];
-      }
+    this.saveBetInTender().subscribe(
+      (editedTender: Tender) => {
+        this.selectedTender = editedTender;
 
-      this.selectedTender.bets.push(bet);
+        if (this.selectedTender && this.selectedTender.bestBet) {
+          this.betForm.controls.betValue.setValue(this.selectedTender.bestBet.value + this.selectedTender.stepValue);
+        }
 
-      this.subscriptions.add(
-        this.tenderService.editTender(this.selectedTender).subscribe(
-          (editedTender: Tender) => {
-            if (this.selectedTender) {
-              this.selectedTender.bestBet = bet;
-              if (this.selectedTender.bets) {
-                this.selectedTender.bets.push(bet);
-              } else {
-                this.selectedTender.bets = [];
-              }
-              this.betForm.controls.betValue.setValue(this.selectedTender.bestBet.value + this.selectedTender.stepValue);
-            }
+        console.log(`this.selectedTender = `);
+        console.log(this.selectedTender);
+      }, (err: HttpErrorResponse) => {
+        console.log(`err = `);
+        console.log(err);
+      });
+  }
 
-            console.log(`this.selectedTender = `);
-            console.log(this.selectedTender);
-          }, (err: HttpErrorResponse) => {
-            console.log(`err = `);
-            console.log(err);
-          })
-      );
-    }
+
+  private saveBetInTender(): Observable<Tender> {
+    return this.getBetWithUser().pipe(
+      switchMap((bet: TenderBet) => {
+          if (this.selectedTender.bets) {
+            this.selectedTender.bets.push(bet);
+          } else {
+            this.selectedTender.bets = [];
+          }
+          this.selectedTender.bestBet = bet;
+
+          return this.tenderService.editTender(this.selectedTender);
+        }
+      ));
+  }
+
+
+  private getBetWithUser(): Observable<TenderBet> {
+    return this.authService.getCurrentUser().pipe(
+      map((user: TenderUser | null) => {
+          const bet: TenderBet = {
+            tenderId: this.selectedTender.id,
+            userId: user?.localId,
+            userEmail: user?.email,
+            dateTime: new Date(),
+            value: Number(this.betForm.value.betValue),
+            comment: this.betForm.value.comment
+          };
+          return bet;
+        }
+      ));
   }
 
 

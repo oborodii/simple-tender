@@ -35,7 +35,6 @@ export class SelectedTenderComponent extends AbstractTenderComponent implements 
 
   private getSelectedTender(): void {
     this.loading = true;
-    this.selectedTender = null;
 
     this.route.params.pipe(
       switchMap((data: Params) => this.tenderService.getTenderById(data.id))

@@ -82,11 +82,11 @@ export abstract class AbstractTenderComponent implements OnDestroy {
     return this.tenderService._ROUTER_URL;
   }
 
-  get selectedTender(): Tender | null {
+  get selectedTender(): Tender {
     return this.tenderService.selectedTender;
   }
 
-  set selectedTender(value: Tender | null) {
+  set selectedTender(value: Tender) {
     this.tenderService.selectedTender = value;
   }
 

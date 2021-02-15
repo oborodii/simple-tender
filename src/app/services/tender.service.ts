@@ -24,7 +24,7 @@ export class TenderService extends TenderConfig {
   tenders: Tender[];
 
   // one selected tender
-  selectedTender: Tender | null;
+  selectedTender: Tender;
 
   // all locals from environment.ts
   locales: string[] = environment.locales;
