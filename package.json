@@ -24,7 +24,9 @@
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "@types/lodash": "^4.14.168",
     "bootstrap": "^4.6.0",
+    "lodash": "^4.17.20",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

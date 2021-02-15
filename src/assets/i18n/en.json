@@ -2,8 +2,10 @@
 	"APP_TITLE": "Simple Tender 1.0",
 	"BET": {
 		"BET_COMMENT": "Comment for your bet (optional)",
+		"BET_SAVED_SUCCESSFULLY": "Your bet was successfully saved on the server",
 		"BET_VALUE": "Enter bet value",
 		"ERROR": {
+			"FAILED_SAVE_BET": "Failed to save bid on server",
 			"INCORRECT_MAX_VALUE": "The bet value is too large",
 			"LESS_BEST_BET": "Your bet is less than the best bet already made",
 			"LESS_STEP_VALUE": "Your bet increase is less than the bet step for this tender",
