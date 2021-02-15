@@ -33,9 +33,9 @@
 
                 <mat-list-item>
                   <strong>{{ 'VIEW_TENDER.BEST_BET' | translate }}</strong>:
-                  <div *ngIf="selectedTender.bestBet; else noBestBet">
-                    {{ selectedTender.bestBet + ' ' + selectedTender.currency.code }}
-                  </div>
+                  <ng-container *ngIf="selectedTender.bestBet; else noBestBet">
+                    {{ selectedTender.bestBet.value + ' ' + selectedTender.currency.code }}
+                  </ng-container>
                   <ng-template #noBestBet>
                     {{ 'VIEW_TENDER.NO_BEST_BET' | translate }}
                   </ng-template>

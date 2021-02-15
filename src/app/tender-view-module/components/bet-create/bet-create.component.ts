@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { TranslateService } from '@ngx-translate/core';
 
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../services/tender.service';
 import { AuthService } from '../../../services/auth.service';
+import { TenderBet } from '../../../types/tender-bet.type';
+import { Tender } from '../../../types/tender.type';
 
 
 @Component({
@@ -13,7 +16,7 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './bet-create.component.html',
   styleUrls: ['./bet-create.component.scss']
 })
-export class BetCreateComponent extends AbstractTenderComponent implements OnInit {
+export class BetCreateComponent extends AbstractTenderComponent {
 
   get currencyCode(): string {
     return this.selectedTender ? this.selectedTender.currency.code : this.NEW_TENDER_DEFAULT_VALUE.CURRENCY.code;
@@ -33,8 +36,9 @@ export class BetCreateComponent extends AbstractTenderComponent implements OnIni
 
 
   betForm: FormGroup = new FormGroup({
-    betValue: new FormControl(this.defaultBetValue,
-      [Validators.required]),
+    betValue: new FormControl(this.defaultBetValue, [
+      Validators.required
+    ]),
     comment: new FormControl(this.BET_DEFAULT_VALUE.COMMENT, [
       Validators.minLength(this.BET_DEFAULT_VALUE.MIN_COMMENT_LENGTH),
       Validators.maxLength(this.BET_DEFAULT_VALUE.MAX_COMMENT_LENGTH)
@@ -50,11 +54,43 @@ export class BetCreateComponent extends AbstractTenderComponent implements OnIni
   }
 
 
-  ngOnInit(): void {
-  }
-
-
   onSubmit(): void {
+    if (this.selectedTender) {
+      const bet: TenderBet = {
+        tenderId: this.selectedTender.id,
+        userId: 'qqqqqqqqqq',
+        dateTime: new Date(),
+        value: Number(this.betForm.value.betValue),
+        comment: this.betForm.value.comment
+      };
+
+      if (!this.selectedTender.bets) {
+        this.selectedTender.bets = [];
+      }
+
+      this.selectedTender.bets.push(bet);
+
+      this.subscriptions.add(
+        this.tenderService.editTender(this.selectedTender).subscribe(
+          (editedTender: Tender) => {
+            if (this.selectedTender) {
+              this.selectedTender.bestBet = bet;
+              if (this.selectedTender.bets) {
+                this.selectedTender.bets.push(bet);
+              } else {
+                this.selectedTender.bets = [];
+              }
+              this.betForm.controls.betValue.setValue(this.selectedTender.bestBet.value + this.selectedTender.stepValue);
+            }
+
+            console.log(`this.selectedTender = `);
+            console.log(this.selectedTender);
+          }, (err: HttpErrorResponse) => {
+            console.log(`err = `);
+            console.log(err);
+          })
+      );
+    }
   }
 
 
@@ -69,7 +105,7 @@ export class BetCreateComponent extends AbstractTenderComponent implements OnIni
           });
           break;
 
-        case this.selectedTender.bestBet && this.defaultBetValue < currentBetValue:
+        case this.selectedTender.bestBet && currentBetValue < this.selectedTender.bestBet.value:
           this.betForm.controls.betValue.setErrors({
             lessBestBet: true,
           });

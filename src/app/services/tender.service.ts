@@ -114,7 +114,7 @@ export class TenderService extends TenderConfig {
   }
 
 
-  /** Create one new tender in Firebase */
+  /** Create a new tender in Firebase */
   createTender(tender: Tender): Observable<Tender> {
     return this.http.post<any>(this._FIREBASE_TENDERS_URL + '.json', tender).pipe(
       map((response: CreateItemFirebaseResponse) => {
@@ -123,6 +123,21 @@ export class TenderService extends TenderConfig {
           id: response.name,
           dateStart: new Date(tender.dateStart),
           dateEnd: new Date(tender.dateEnd)
+        };
+        return newTender;
+      })
+    );
+  }
+
+
+  /** Edit tender in Firebase */
+  editTender(tender: Tender): Observable<Tender> {
+    return this.http.patch<any>(this._FIREBASE_TENDERS_URL + `/${tender.id}.json`, tender).pipe(
+      map((response: Tender) => {
+        const newTender: Tender = {
+          ...tender,
+          dateStart: new Date(response.dateStart),
+          dateEnd: new Date(response.dateEnd)
         };
         return newTender;
       })

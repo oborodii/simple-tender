@@ -80,9 +80,9 @@
           {{ 'LIST.TABLE.TH.BEST_BET' | translate }}
         </th>
         <td mat-cell *matCellDef="let row">
-          <div *ngIf="row.bestBet; else noBestBet">
-            {{ row.bestBet + ' ' + row.currency.code }}
-          </div>
+          <ng-container *ngIf="row.bestBet; else noBestBet">
+            {{ row.bestBet.value + ' ' + row.currency.code }}
+          </ng-container>
           <ng-template #noBestBet>
             {{ 'LIST.TABLE.TH.NO_BEST_BET' | translate }}
           </ng-template>

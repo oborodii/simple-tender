@@ -6,12 +6,14 @@
 		"ERROR": {
 			"INCORRECT_MAX_VALUE": "The bet value is too large",
 			"LESS_BEST_BET": "Your bet is less than the best bet already made",
-			"LESS_STEP_VALUE": "Your bet is less than the bet step for this tender",
+			"LESS_STEP_VALUE": "Your bet increase is less than the bet step for this tender",
 			"MAX_LENGTH_COMMENT": "Comment is too long",
 			"MIN_LENGTH_COMMENT": "The comment is too short",
-			"REQUIRED_VALUE": "Bet value is required"
+			"REQUIRED_VALUE": "Bet value is required",
+			"SUBMIT_BUTTON_DISABLED": "The value of the bet must be at least the sum of the best bet and the step of the bet"
 		},
-		"FORM-TITLE": "Place a new bet"
+		"FORM-TITLE": "Your bet",
+		"SUBMIT_BUTTON": "Place a bet"
 	},
 	"CREATE-FORM": {
 		"CURRENCY": "Currency",
