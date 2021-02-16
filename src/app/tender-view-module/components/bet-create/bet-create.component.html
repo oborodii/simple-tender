@@ -1,7 +1,5 @@
 <form [formGroup]="betForm" novalidate (ngSubmit)="onSubmit()" class="bet-wrapper">
-  <p><strong>
-    {{ 'BET.FORM-TITLE' | translate }}:
-  </strong></p>
+  <p><strong>{{ 'BET.FORM-TITLE' | translate }}:</strong></p>
 
   <!-- Bet Value -->
   <div class="row">
@@ -10,8 +8,8 @@
         <div matPrefix>{{ currencyCode }}</div>
         <mat-label>{{ 'BET.BET_VALUE' | translate }}</mat-label>
         <input matInput type="number" required
-               [min]="BET_DEFAULT_VALUE.MIN_COMMENT_LENGTH"
-               [max]="NEW_TENDER_DEFAULT_VALUE.MAX_STEP_VALUE"
+               [min]="defaultBetValue"
+               [max]="BET_DEFAULT_VALUE.MAX_BET_VALUE"
                (input)="setBetValueValidationError()"
                formControlName="betValue">
 
@@ -39,7 +37,10 @@
     <div class="col">
       <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
         <mat-label>{{ 'BET.BET_COMMENT' | translate }}</mat-label>
-        <input matInput formControlName="comment">
+        <input matInput type="text"
+               [min]="BET_DEFAULT_VALUE.MIN_COMMENT_LENGTH"
+               [max]="BET_DEFAULT_VALUE.MAX_COMMENT_LENGTH"
+               formControlName="comment">
 
         <mat-error *ngIf="betForm.controls['comment'].hasError('minlength')">
           {{ ('BET.ERROR.MIN_LENGTH_COMMENT' | translate) +
@@ -60,7 +61,7 @@
   <div class="row">
     <div class="col">
       <button mat-raised-button type="submit"
-              [disabled]="betForm.invalid"
+              [disabled]="betForm.invalid || isDisabled"
               [title]="betForm.invalid ? ('BET.ERROR.SUBMIT_BUTTON_DISABLED' | translate) : ''"
               [color]="currentThemePalette"
               class="submit-button">

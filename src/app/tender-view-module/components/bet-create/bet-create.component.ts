@@ -24,6 +24,8 @@ export class BetCreateComponent extends AbstractTenderComponent {
   // a backup of the tender in case of an error on the server
   clonedSelectedTender: Tender = cloneDeep(this.selectedTender);
 
+  isDisabled: boolean = false;
+
   get currencyCode(): string {
     return this.selectedTender ? this.selectedTender.currency.code : this.NEW_TENDER_DEFAULT_VALUE.CURRENCY.code;
   }
@@ -42,10 +44,10 @@ export class BetCreateComponent extends AbstractTenderComponent {
 
 
   betForm: FormGroup = new FormGroup({
-    betValue: new FormControl(this.defaultBetValue, [
+    betValue: new FormControl({value: this.defaultBetValue, disabled: this.isDisabled}, [
       Validators.required
     ]),
-    comment: new FormControl(this.BET_DEFAULT_VALUE.COMMENT, [
+    comment: new FormControl({value: this.BET_DEFAULT_VALUE.COMMENT, disabled: this.isDisabled}, [
       Validators.minLength(this.BET_DEFAULT_VALUE.MIN_COMMENT_LENGTH),
       Validators.maxLength(this.BET_DEFAULT_VALUE.MAX_COMMENT_LENGTH)
     ]),
