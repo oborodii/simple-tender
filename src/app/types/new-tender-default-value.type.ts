@@ -1,6 +1,6 @@
 import { TenderCurrency } from './tender-currency.type';
 import { TenderUnit } from './tender-unit.type';
-import { TenderStatus } from './tender-status.type';
+import { TenderStatusName } from './tender-status-name.type';
 
 
 export interface NewTenderDefaultValue {
@@ -48,5 +48,5 @@ export interface NewTenderDefaultValue {
   readonly IS_SHOW_BEST_BET: boolean;
 
   /** One of 'draft', 'active' or 'closed' */
-  readonly STATUS: TenderStatus;
+  readonly STATUS: TenderStatusName;
 }

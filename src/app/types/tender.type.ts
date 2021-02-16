@@ -1,5 +1,5 @@
 import { TenderUser } from './tender-user.type';
-import { TenderStatus } from './tender-status.type';
+import { TenderStatusName } from './tender-status-name.type';
 import { TenderUnit } from './tender-unit.type';
 import { TenderCurrency } from './tender-currency.type';
 import { TenderBet } from './tender-bet.type';
@@ -11,7 +11,7 @@ export interface Tender {
   dateEnd: string | Date;               // end date of the tender
   title: string;                        // title
   description: string;                  // description
-  status?: TenderStatus;                // 'draft' | 'active' | 'closed' | 'planned' | 'all'
+  status?: TenderStatusName;            // 'draft' | 'active' | 'closed' | 'planned' | 'all'
   user?: TenderUser | null;             // user who created this tender
   isShowBestBet: boolean;               // to show the best bet or not
   stepValue: number;                    // step of the bet
