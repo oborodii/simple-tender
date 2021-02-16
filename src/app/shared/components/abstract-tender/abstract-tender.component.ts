@@ -5,6 +5,7 @@ import { ThemePalette } from '@angular/material/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { TenderService } from '../../../services/tender.service';
+import { AuthService } from '../../../services/auth.service';
 import { Tender } from '../../../types/tender.type';
 import { TenderCurrency } from '../../../types/tender-currency.type';
 import { TenderUnit } from '../../../types/tender-unit.type';
@@ -25,6 +26,10 @@ import { BetDefaultValue } from '../../../types/bet-default-value.type';
 export abstract class AbstractTenderComponent implements OnDestroy {
 
   subscriptions: Subscription = new Subscription();
+
+  get isUserAuth(): boolean {
+    return this.authService.isUserAuth;
+  }
 
   get LOCALE(): TenderLocale {
     return this.tenderService._LOCALE;
@@ -96,7 +101,8 @@ export abstract class AbstractTenderComponent implements OnDestroy {
 
 
   protected constructor(protected translateService: TranslateService,
-                        protected tenderService: TenderService
+                        protected tenderService: TenderService,
+                        protected authService: AuthService
   ) {
     this.translateService.use(this.currentLocale);
   }

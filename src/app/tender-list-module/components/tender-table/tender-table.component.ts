@@ -10,6 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Tender } from '../../../types/tender.type';
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../services/tender.service';
+import { AuthService } from '../../../services/auth.service';
 
 
 @Component({
@@ -69,8 +70,9 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
-              private router: Router) {
-    super(translateService, tenderService);
+              protected authService: AuthService,
+              protected router: Router) {
+    super(translateService, tenderService, authService);
   }
 
 

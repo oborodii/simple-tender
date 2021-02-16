@@ -37,11 +37,11 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
-              private authService: AuthService,
+              protected authService: AuthService,
               protected router: Router,
               private route: ActivatedRoute
   ) {
-    super(translateService, tenderService);
+    super(translateService, tenderService, authService);
   }
 
 

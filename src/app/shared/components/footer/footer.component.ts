@@ -16,9 +16,9 @@ export class FooterComponent extends AbstractTenderComponent {
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
-              private authService: AuthService
+              protected authService: AuthService
   ) {
-    super(translateService, tenderService);
+    super(translateService, tenderService, authService);
   }
 
 

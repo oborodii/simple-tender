@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { files } from './example-data';
 import { TenderService } from '../../../services/tender.service';
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
+import { AuthService } from '../../../services/auth.service';
 
 
 /** File node data with possible child nodes */
@@ -45,8 +46,9 @@ export class TreeComponent extends AbstractTenderComponent {
 
 
   constructor(protected translateService: TranslateService,
-              protected tenderService: TenderService) {
-    super(translateService, tenderService);
+              protected tenderService: TenderService,
+              protected authService: AuthService) {
+    super(translateService, tenderService, authService);
 
     this.treeFlattener = new MatTreeFlattener(
       this.transformer,

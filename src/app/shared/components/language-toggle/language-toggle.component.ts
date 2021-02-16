@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { AbstractTenderComponent } from '../abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../services/tender.service';
+import { AuthService } from '../../../services/auth.service';
 
 
 @Component({
@@ -16,8 +17,9 @@ export class LanguageToggleComponent extends AbstractTenderComponent {
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
+              protected authService: AuthService,
               protected router: Router) {
-    super(translateService, tenderService);
+    super(translateService, tenderService, authService);
   }
 
 

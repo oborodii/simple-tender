@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Tender } from '../../../types/tender.type';
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../services/tender.service';
+import { AuthService } from '../../../services/auth.service';
 
 
 @Component({
@@ -23,8 +24,9 @@ export class SelectedTenderComponent extends AbstractTenderComponent implements 
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
+              protected authService: AuthService,
               private route: ActivatedRoute) {
-    super(translateService, tenderService);
+    super(translateService, tenderService, authService);
   }
 
 

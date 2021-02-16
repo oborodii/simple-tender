@@ -1,7 +1,29 @@
+@import "src/app/shared/styles/variables";
+
 .bet-wrapper {
   margin: 15px 0 0 10px;
 }
 
 .submit-button {
   float: right;
+}
+
+.login-link {
+  font-size: $default-font-size;
+  color: $primary-bg-color;
+
+  .login-icon {
+    margin-top: 5px;
+    margin-left: -10px;
+    font-size: 1.2em;
+  }
+}
+
+.mat-spinner {
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.readonly-cursor {
+  cursor: wait;
 }

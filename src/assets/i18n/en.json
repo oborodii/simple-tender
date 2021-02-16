@@ -15,7 +15,9 @@
 			"SUBMIT_BUTTON_DISABLED": "The value of the bet must be at least the sum of the best bet and the step of the bet"
 		},
 		"FORM-TITLE": "Your bet",
-		"SUBMIT_BUTTON": "Place a bet"
+		"PLEASE_LOGIN": "Please login to place your bet",
+		"SUBMIT_BUTTON": "Place a bet",
+		"WAIT_SERVER_RESPONSE": "Wait for server response..."
 	},
 	"CREATE-FORM": {
 		"CURRENCY": "Currency",

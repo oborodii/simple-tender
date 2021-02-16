@@ -44,25 +44,30 @@ export class BetCreateComponent extends AbstractTenderComponent {
 
 
   betForm: FormGroup = new FormGroup({
-    betValue: new FormControl({value: this.defaultBetValue, disabled: this.isDisabled}, [
+    betValue: new FormControl(this.defaultBetValue, [
       Validators.required
     ]),
-    comment: new FormControl({value: this.BET_DEFAULT_VALUE.COMMENT, disabled: this.isDisabled}, [
+    comment: new FormControl(this.BET_DEFAULT_VALUE.COMMENT, [
       Validators.minLength(this.BET_DEFAULT_VALUE.MIN_COMMENT_LENGTH),
       Validators.maxLength(this.BET_DEFAULT_VALUE.MAX_COMMENT_LENGTH)
     ]),
   });
 
+  readonly SPINNER_DIAMETER: number = 19;
+  readonly SPINNER_STROKE_WIDTH: number = 1;
+
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
-              private authService: AuthService
+              protected authService: AuthService
   ) {
-    super(translateService, tenderService);
+    super(translateService, tenderService, authService);
   }
 
 
   onSubmit(): void {
+    this.isDisabled = true;
+
     this.subscriptions.add(
       this.saveBetInTender().subscribe(
         (editedTender: Tender) => {
@@ -72,10 +77,13 @@ export class BetCreateComponent extends AbstractTenderComponent {
             this.betForm.controls.betValue.setValue(this.selectedTender.bestBet.value + this.selectedTender.stepValue);
           }
           this.tenderService.openSnackBar(this.translate('BET.BET_SAVED_SUCCESSFULLY'), this.SNACKBAR.SUCCESS);
+
+          this.isDisabled = false;
         },
         () => {
           this.selectedTender = this.clonedSelectedTender;
-          this.tenderService.openSnackBar(this.translate('BET.FAILED_SAVE_BET'), this.SNACKBAR.ERROR);
+          this.tenderService.openSnackBar(this.translate('BET.ERROR.FAILED_SAVE_BET'), this.SNACKBAR.ERROR);
+          this.isDisabled = false;
         })
     );
   }

@@ -39,11 +39,11 @@ export class LayoutComponent extends AbstractTenderComponent implements OnInit {
 
   constructor(protected tenderService: TenderService,
               protected translateService: TranslateService,
-              private authService: AuthService,
+              protected authService: AuthService,
               private breakpointObserver: BreakpointObserver,
               private router: Router
   ) {
-    super(translateService, tenderService);
+    super(translateService, tenderService, authService);
   }
 
 

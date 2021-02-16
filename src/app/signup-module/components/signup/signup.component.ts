@@ -46,10 +46,10 @@ export class SignUpComponent extends AbstractTenderComponent implements OnInit {
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
-              private authService: AuthService,
+              protected authService: AuthService,
               protected router: Router
   ) {
-    super(translateService, tenderService);
+    super(translateService, tenderService, authService);
   }
 
 
