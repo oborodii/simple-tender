@@ -87,12 +87,16 @@ export class AuthService extends TenderConfig {
     if (response) {
       const tokenExpiresInMs: number = Number(response.expiresIn) * 1000;
       const expiresDate: number = new Date().getTime() + tokenExpiresInMs;
+      const idToken: string = response.idToken;
+      const userEmail: string = response.email;
 
-      localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME, response.idToken);
       localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME, String(expiresDate));
+      localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME, idToken);
+      localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_USER_EMAIL, userEmail);
     } else {
-      localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME);
       localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME);
+      localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME);
+      localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_USER_EMAIL);
     }
   }
 

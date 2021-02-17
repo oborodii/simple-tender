@@ -17,6 +17,7 @@
 		"FORM-TITLE": "Your bet",
 		"PLEASE_LOGIN": "Please login to place your bet",
 		"SUBMIT_BUTTON": "Place a bet",
+		"USER_CREATED_THIS_TENDER": "You cannot participate in your own tender",
 		"WAIT_SERVER_RESPONSE": "Wait for server response..."
 	},
 	"CREATE-FORM": {

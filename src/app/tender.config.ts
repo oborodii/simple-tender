@@ -179,6 +179,7 @@ export class TenderConfig {
   readonly _FIREBASE: FirebaseConst = {
     LOCAL_STORAGE_TOKEN_NAME: 'firebase-token',
     LOCAL_STORAGE_EXPIRES_TOKEN_NAME: 'firebase-token-expires',
+    LOCAL_STORAGE_USER_EMAIL: 'firebase-user-email'
   };
 
 

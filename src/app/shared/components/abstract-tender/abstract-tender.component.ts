@@ -17,6 +17,7 @@ import { SnackBarTxtColor } from '../../../types/snack-bar-txt-color.type';
 import { MaterialIcons } from '../../../types/material-icons.type';
 import { RouterUrl } from '../../../types/router-url.type';
 import { BetDefaultValue } from '../../../types/bet-default-value.type';
+import { FirebaseConst } from '../../../types/firebase-const.type';
 
 
 @Component({
@@ -77,6 +78,10 @@ export abstract class AbstractTenderComponent implements OnDestroy {
 
   get SNACKBAR(): SnackBarTxtColor {
     return this.tenderService._SNACKBAR;
+  }
+
+  get FIREBASE(): FirebaseConst {
+    return this.tenderService._FIREBASE;
   }
 
   get MATERIAL_ICON(): MaterialIcons {
