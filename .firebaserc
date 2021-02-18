@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "simpletender-aa98d": {
+      "hosting": {
+        "tender": [
+          "simpletender-aa98d"
+        ]
+      }
+    }
+  }
+}
