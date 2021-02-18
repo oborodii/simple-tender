@@ -17,9 +17,9 @@ import { BetDefaultValue } from './types/bet-default-value.type';
 export class TenderConfig {
 
   /** URLs */
-  readonly _FIREBASE_LOGIN_URL: string = environment.firebase_login_url + environment.apiKey;
-  readonly _FIREBASE_SIGNUP_URL: string = environment.firebase_signup_url + environment.apiKey;
-  readonly _FIREBASE_GET_USER_DATA_URL: string = environment.firebase_lookup_url + environment.apiKey;
+  readonly _FIREBASE_LOGIN_URL: string = environment.firebase_login_url + environment.firebaseConfig.apiKey;
+  readonly _FIREBASE_SIGNUP_URL: string = environment.firebase_signup_url + environment.firebaseConfig.apiKey;
+  readonly _FIREBASE_GET_USER_DATA_URL: string = environment.firebase_lookup_url + environment.firebaseConfig.apiKey;
   readonly _FIREBASE_TENDERS_URL: string = environment.firebase_DB_url + 'tenders';
 
   /** Possible color palette values: 'primary' | 'accent' | 'warn' */

@@ -1,10 +1,11 @@
 import { Locale } from './locale.type';
+import { FirebaseConfig } from './firebase-config.type';
 
 export interface Environment {
   production: boolean;
   locales: Locale[];
   defaultLocale: Locale;
-  apiKey: string;
+  firebaseConfig: FirebaseConfig;
   firebase_signup_url: string;
   firebase_lookup_url: string;
   firebase_login_url: string;
