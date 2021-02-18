@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -19,7 +19,7 @@ import { TenderUser } from '../../../types/tender-user.type';
   templateUrl: './bet-create.component.html',
   styleUrls: ['./bet-create.component.scss']
 })
-export class BetCreateComponent extends AbstractTenderComponent implements AfterViewInit {
+export class BetCreateComponent extends AbstractTenderComponent implements OnInit {
 
   // a backup of the tender in case of an error on the server
   clonedSelectedTender: Tender = cloneDeep(this.selectedTender);
@@ -67,7 +67,7 @@ export class BetCreateComponent extends AbstractTenderComponent implements After
   }
 
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.canUserPlaceBet = this.checkUserCanPlaceBetOnThisTender();
   }
 
@@ -132,11 +132,10 @@ export class BetCreateComponent extends AbstractTenderComponent implements After
   private saveBetInTender(): Observable<Tender> {
     return this.getBetWithUser().pipe(
       switchMap((bet: TenderBet) => {
-          if (this.selectedTender.bets) {
-            this.selectedTender.bets.push(bet);
-          } else {
+          if (!this.selectedTender.bets) {
             this.selectedTender.bets = [];
           }
+          this.selectedTender.bets.push(bet);
           this.selectedTender.bestBet = bet;
 
           return this.tenderService.editTender(this.selectedTender);
