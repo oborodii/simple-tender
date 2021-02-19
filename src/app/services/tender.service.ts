@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -49,7 +50,8 @@ export class TenderService extends TenderConfig {
 
 
   constructor(private http: HttpClient,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private db: AngularFireDatabase) {
     super();
   }
 
@@ -97,9 +99,7 @@ export class TenderService extends TenderConfig {
 
   /** Get one tender by its id from tenders.json */
   getTenderById(id: string): Observable<Tender | null> {
-    const url: string = this._FIREBASE_TENDERS_URL + `/${id}.json`;
-
-    return this.http.get<Tender>(url).pipe(
+    return (this.db.object(`tenders/${id}`).valueChanges() as Observable<Tender>).pipe(
       map((response: Tender) => {
         if (response === null) {
           return null;
