@@ -154,27 +154,12 @@ export class TenderService extends TenderConfig {
                horizontalPosition: MatSnackBarHorizontalPosition = 'right',
                verticalPosition: MatSnackBarVerticalPosition = 'top',
                action: string = 'X'): MatSnackBarRef<TextOnlySnackBar> {
-
-    const snackBarRef: MatSnackBarRef<TextOnlySnackBar> = this.snackBar.open(message, action, {
+    return this.snackBar.open(message, action, {
       panelClass: panelClass,
       duration: Number(duration),
       horizontalPosition: horizontalPosition,
       verticalPosition: verticalPosition
     });
-
-    // closed by timer (duration)
-    snackBarRef.afterDismissed().subscribe(
-      () => {
-        console.log('The snack-bar was dismissed');
-      });
-
-    // closed by user click
-    snackBarRef.onAction().subscribe(
-      () => {
-        console.log('The snack-bar action was triggered!');
-      });
-
-    return snackBarRef;
   }
 
 }
