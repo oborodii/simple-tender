@@ -50,48 +50,19 @@
               </div>
             </div>
 
-            <!-- Name -->
+            <!-- Displayed company name -->
             <div class="row">
               <div class="col">
                 <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
-                  <mat-label>{{ 'SIGNUP.NAME_LABEL' | translate }}</mat-label>
-                  <input matInput type="text" required formControlName="name">
+                  <mat-label>{{ 'SIGNUP.DISPLAY_NAME_LABEL' | translate }}</mat-label>
+                  <input matInput type="text" required formControlName="companyName">
 
-                  <mat-error *ngIf="signupForm.controls['name'].hasError('required')">
-                    {{ 'SIGNUP.ERROR.NAME_REQUIRED' | translate }}
+                  <mat-error *ngIf="signupForm.controls['companyName'].hasError('required')">
+                    {{ 'SIGNUP.ERROR.DISPLAY_NAME_REQUIRED' | translate }}
                   </mat-error>
                 </mat-form-field>
               </div>
             </div>
-
-            <!-- Surname -->
-            <div class="row">
-              <div class="col">
-                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
-                  <mat-label>{{ 'SIGNUP.SURNAME_LABEL' | translate }}</mat-label>
-                  <input matInput type="text" required formControlName="surname">
-
-                  <mat-error *ngIf="signupForm.controls['surname'].hasError('required')">
-                    {{ 'SIGNUP.ERROR.SURNAME_REQUIRED' | translate }}
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
-
-            <!-- Phone -->
-            <div class="row">
-              <div class="col">
-                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
-                  <mat-label>{{ 'SIGNUP.PHONE_LABEL' | translate }}</mat-label>
-                  <input matInput type="tel" formControlName="phone">
-
-                  <mat-error *ngIf="signupForm.controls['phone'].hasError('pattern')">
-                    {{ ('SIGNUP.ERROR.PHONE_PATTERN' | translate) }}
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
-
           </mat-card-content>
 
           <mat-card-actions align="end">

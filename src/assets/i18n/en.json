@@ -87,7 +87,7 @@
 				"ID": "id",
 				"INDEX": "#",
 				"NO_BEST_BET": "-",
-				"QUANTITY": "Quantity",
+				"QUANTITY": "Quantity of goods",
 				"STEP_VALUE": "Step Value",
 				"TITLE": "Title of tender"
 			},
@@ -131,24 +131,22 @@
 		"LABEL": "Select language"
 	},
 	"SIGNUP": {
+		"DISPLAY_NAME_LABEL": "The name of your company",
 		"EMAIL_LABEL": "Your email",
 		"ERROR": {
+			"DISPLAY_NAME_REQUIRED": "Company name is required",
 			"EMAIL": "Incorrect email format",
 			"EMAIL_REQUIRED": "Email is required",
-			"NAME_REQUIRED": "Name is required",
 			"PASSWORD_MIN_LENGTH": "Password is too short",
 			"PASSWORD_REQUIRED": "Password is required",
 			"PHONE_PATTERN": "The phone is filled incorrectly",
-			"SUBMIT_BUTTON_DISABLED": "Enter the correct login and password values, fill required fields",
-			"SURNAME_REQUIRED": "Surname is required"
+			"SUBMIT_BUTTON_DISABLED": "Enter the correct login and password values, fill required fields"
 		},
-		"FORM_TITLE": "Sign Up",
-		"NAME_LABEL": "Your name",
+		"FORM_TITLE": "Participant registration",
 		"NEED_AUTH": "You need to register to view this page",
 		"PASSWORD_LABEL": "Password",
 		"PHONE_LABEL": "Phone",
-		"SUBMIT": "Sign Up",
-		"SURNAME_LABEL": "Surname"
+		"SUBMIT": "Sign Up"
 	},
 	"SNACK-BAR": {
 		"BUTTON": {
@@ -167,7 +165,8 @@
 		"FAILED_TO_LOAD": "Failed to load tender with this id",
 		"ID": "id",
 		"NO_BEST_BET": "There are no bets yet",
-		"QUANTITY": "Quantity",
+		"NUMBER_OF_BETS": "Number of bets",
+		"QUANTITY": "Quantity of goods",
 		"STEP_VALUE": "Step value"
 	}
 }

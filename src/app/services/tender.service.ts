@@ -83,23 +83,24 @@ export class TenderService extends TenderConfig {
   }
 
 
-  /** Get all tenders from tenders.json */
+  /** Get list of tenders from Firebase in realtime */
   getTenders(): Observable<Tender[]> {
-    return this.http.get<Tender[]>(this._FIREBASE_TENDERS_URL + '.json').pipe(
-      map((response: { [key: string]: any }) => {
-        return Object.keys(response)
-          .map((key: string) => ({
-            id: key,
-            ...response[key]
-          }));
-      })
+    // snapshotChanges().map() is used to store 'key' as 'id'
+    return this.db.list(this._TENDERS_DB_TABLE_NAME).snapshotChanges().pipe(
+      map(changes => changes.map(c => ({
+        id: c.payload.key,
+        // @ts-ignore
+        ...c.payload.val()
+      })))
     );
   }
 
 
-  /** Get one tender by its id from tenders.json */
+  /** Get one tender by its id from tenders.json in realtime */
   getTenderById(id: string): Observable<Tender | null> {
-    return (this.db.object(`tenders/${id}`).valueChanges() as Observable<Tender>).pipe(
+    const path: string = this._TENDERS_DB_TABLE_NAME + `/${id}`;
+
+    return (this.db.object(path).valueChanges() as Observable<Tender>).pipe(
       map((response: Tender) => {
         if (response === null) {
           return null;
@@ -132,7 +133,9 @@ export class TenderService extends TenderConfig {
 
   /** Edit tender in Firebase */
   editTender(tender: Tender): Observable<Tender> {
-    return this.http.patch<any>(this._FIREBASE_TENDERS_URL + `/${tender.id}.json`, tender).pipe(
+    const url: string = this._FIREBASE_TENDERS_URL + `/${tender.id}.json`;
+
+    return this.http.patch<Tender>(url, tender).pipe(
       map((response: Tender) => {
         const newTender: Tender = {
           ...tender,

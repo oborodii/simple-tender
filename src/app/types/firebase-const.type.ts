@@ -2,4 +2,5 @@ export interface FirebaseConst {
   LOCAL_STORAGE_TOKEN_NAME: string;
   LOCAL_STORAGE_EXPIRES_TOKEN_NAME: string;
   LOCAL_STORAGE_USER_EMAIL: string;
+  LOCAL_STORAGE_USER_DISPLAY_NAME: string;
 }

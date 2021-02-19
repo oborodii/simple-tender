@@ -112,7 +112,7 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
 
   private createTenderByCurrentUser(tender: Tender): void {
     this.subscriptions.add(
-      this.authService.getCurrentUser().pipe(
+      this.authService.getAuthUser().pipe(
         map((user: TenderUser | null) => tender.user = user),
         switchMap(() => this.tenderService.createTender(tender))
       ).subscribe((newTender: Tender) => {

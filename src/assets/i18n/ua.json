@@ -87,7 +87,7 @@
 				"ID": "id",
 				"INDEX": "№",
 				"NO_BEST_BET": "-",
-				"QUANTITY": "Кількість",
+				"QUANTITY": "Кількість товару",
 				"STEP_VALUE": "Крок ставки",
 				"TITLE": "Назва тендеру"
 			},
@@ -131,24 +131,22 @@
 		"LABEL": "Виберіть мову"
 	},
 	"SIGNUP": {
+		"DISPLAY_NAME_LABEL": "Назва вашої компанії",
 		"EMAIL_LABEL": "Ваш email",
 		"ERROR": {
+			"DISPLAY_NAME_REQUIRED": "Назва компанії не заповнена",
 			"EMAIL": "Некоректний формат email",
 			"EMAIL_REQUIRED": "Email треба заповнити",
-			"NAME_REQUIRED": "Ім'я треба заповнити",
 			"PASSWORD_MIN_LENGTH": "Пароль надто короткий",
 			"PASSWORD_REQUIRED": "Пароль треба заповнити",
 			"PHONE_PATTERN": "Телефон заповнено неправильно",
-			"SUBMIT_BUTTON_DISABLED": "Введіть коректні значення логіну та паролю, заповніть поля, позначені зірочкою",
-			"SURNAME_REQUIRED": "Прізвище треба заповнити"
+			"SUBMIT_BUTTON_DISABLED": "Введіть коректні значення логіну та паролю, заповніть поля, позначені зірочкою"
 		},
-		"FORM_TITLE": "Реєстрація",
-		"NAME_LABEL": "Ваше Ім'я",
+		"FORM_TITLE": "Реєстрація учасника",
 		"NEED_AUTH": "Для перегляду цієї сторінки потрібно зареєструватися",
 		"PASSWORD_LABEL": "Пароль",
 		"PHONE_LABEL": "Телефон",
-		"SUBMIT": "Зареєструватися",
-		"SURNAME_LABEL": "Прізвище"
+		"SUBMIT": "Зареєструватися"
 	},
 	"SNACK-BAR": {
 		"BUTTON": {
@@ -167,7 +165,8 @@
 		"FAILED_TO_LOAD": "Не вдалося завантажити тендер з таким id",
 		"ID": "id",
 		"NO_BEST_BET": "Поки немає жодної ставки",
-		"QUANTITY": "Кількість",
+		"NUMBER_OF_BETS": "Кількість ставок",
+		"QUANTITY": "Кількість товару",
 		"STEP_VALUE": "Крок ставки"
 	}
 }

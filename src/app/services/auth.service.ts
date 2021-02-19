@@ -45,18 +45,26 @@ export class AuthService extends TenderConfig {
   }
 
 
-  /** Get one User by its id from users.json */
-  getCurrentUser(): Observable<TenderUser | null> {
+  /** Get already registered User */
+  getAuthUser(): Observable<TenderUser | null> {
     const idToken: string | null = localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME);
 
-    return this.http.post<any>(this._FIREBASE_GET_USER_DATA_URL, {idToken}).pipe(
+    return this.http.post<ResponseFirebaseUserPayload>(this._FIREBASE_GET_USER_DATA_URL, {idToken}).pipe(
       map((response: ResponseFirebaseUserPayload) => {
         if (response) {
           const user: TenderUser = response.users[0];
+
           user.createdAt = new Date(Number(user.createdAt));
           user.lastLoginAt = new Date(Number(user.lastLoginAt));
-          user.passwordUpdatedAt = new Date(Number(user.passwordUpdatedAt));
-          user.validSince = new Date(Number(user.validSince));
+          delete user.passwordUpdatedAt;
+          delete user.validSince;
+          delete user.emailVerified;
+          delete user.lastRefreshAt;
+          delete user.passwordHash;
+          delete user.passwordUpdatedAt;
+          delete user.providerUserInfo;
+          delete user.validSince;
+
           return user;
         } else {
           return null;
@@ -89,14 +97,17 @@ export class AuthService extends TenderConfig {
       const expiresDate: number = new Date().getTime() + tokenExpiresInMs;
       const idToken: string = response.idToken;
       const userEmail: string = response.email;
+      const userDisplayName = response.displayName;
 
       localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME, String(expiresDate));
       localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME, idToken);
       localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_USER_EMAIL, userEmail);
+      localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_USER_DISPLAY_NAME, String(userDisplayName));
     } else {
       localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME);
       localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME);
       localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_USER_EMAIL);
+      localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_USER_DISPLAY_NAME);
     }
   }
 

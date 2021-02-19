@@ -2,8 +2,8 @@
   <div class="row">
 
     <!-- Selected Tender -->
-    <div class="col">
-      <mat-card *ngIf="selectedTender && !loading; else spinner" class="form-style">
+    <div class="col" *ngIf="selectedTender && !loading; else spinner">
+      <mat-card class="form-style">
         <mat-card-header>
           <mat-card-title>
             {{ selectedTender.title }}
@@ -43,6 +43,17 @@
                 <mat-divider></mat-divider>
 
                 <mat-list-item>
+                  <strong>{{ 'VIEW_TENDER.NUMBER_OF_BETS' | translate }}</strong>:
+                  <ng-container *ngIf="selectedTender.bets; else noBets">
+                    {{ selectedTender.bets.length }}
+                  </ng-container>
+                  <ng-template #noBets>
+                    {{ 'VIEW_TENDER.NO_BEST_BET' | translate }}
+                  </ng-template>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+
+                <mat-list-item>
                   <strong>{{ 'VIEW_TENDER.STEP_VALUE' | translate }}</strong>:
                   {{ selectedTender.stepValue + ' ' + selectedTender.currency.code }}
                 </mat-list-item>
@@ -68,16 +79,18 @@
 
   <!-- Loading... -->
   <ng-template #spinner>
-    <mat-card class="form-style">
-      <mat-card-subtitle>
-        {{ 'LOADING' | translate }}
-        <mat-spinner [color]="currentThemePalette"
-                     [diameter]="SPINNER_DIAMETER"
-                     [strokeWidth]="SPINNER_STROKE_WIDTH"
-                     class="mat-spinner">
-        </mat-spinner>
-      </mat-card-subtitle>
-    </mat-card>
+    <div class="col">
+      <mat-card class="form-style">
+        <mat-card-subtitle>
+          {{ 'LOADING' | translate }}
+          <mat-spinner [color]="currentThemePalette"
+                       [diameter]="SPINNER_DIAMETER"
+                       [strokeWidth]="SPINNER_STROKE_WIDTH"
+                       class="mat-spinner">
+          </mat-spinner>
+        </mat-card-subtitle>
+      </mat-card>
+    </div>
   </ng-template>
 
 </div>

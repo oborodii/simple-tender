@@ -72,30 +72,6 @@ export class BetCreateComponent extends AbstractTenderComponent implements OnIni
   }
 
 
-  onSubmit(): void {
-    this.isDisabled = true;
-
-    this.subscriptions.add(
-      this.saveBetInTender().subscribe(
-        (editedTender: Tender) => {
-          this.selectedTender = editedTender;
-
-          if (this.selectedTender && this.selectedTender.bestBet) {
-            this.betForm.controls.betValue.setValue(this.selectedTender.bestBet.value + this.selectedTender.stepValue);
-          }
-          this.tenderService.openSnackBar(this.translate('BET.BET_SAVED_SUCCESSFULLY'), this.SNACKBAR.SUCCESS);
-
-          this.isDisabled = false;
-        },
-        () => {
-          this.selectedTender = this.clonedSelectedTender;
-          this.tenderService.openSnackBar(this.translate('BET.ERROR.FAILED_SAVE_BET'), this.SNACKBAR.ERROR);
-          this.isDisabled = false;
-        })
-    );
-  }
-
-
   setBetValueValidationError(): void {
     const currentBetValue: number = this.betForm.value.betValue;
 
@@ -129,33 +105,61 @@ export class BetCreateComponent extends AbstractTenderComponent implements OnIni
   }
 
 
+  onSubmit(): void {
+    this.isDisabled = true;
+
+    this.subscriptions.add(
+      this.saveBetInTender().subscribe(
+        (editedTender: Tender) => {
+          this.selectedTender = editedTender;
+
+          if (this.selectedTender && this.selectedTender.bestBet) {
+            this.betForm.controls.betValue.setValue(this.selectedTender.bestBet.value + this.selectedTender.stepValue);
+          }
+          this.tenderService.openSnackBar(this.translate('BET.BET_SAVED_SUCCESSFULLY'), this.SNACKBAR.SUCCESS);
+
+          this.isDisabled = false;
+        },
+        () => {
+          this.selectedTender = this.clonedSelectedTender;
+          this.tenderService.openSnackBar(this.translate('BET.ERROR.FAILED_SAVE_BET'), this.SNACKBAR.ERROR);
+          this.isDisabled = false;
+        })
+    );
+  }
+
+
   private saveBetInTender(): Observable<Tender> {
     return this.getBetWithUser().pipe(
-      switchMap((bet: TenderBet) => {
+      switchMap((bet: TenderBet | null) => {
           if (!this.selectedTender.bets) {
             this.selectedTender.bets = [];
           }
-          this.selectedTender.bets.push(bet);
-          this.selectedTender.bestBet = bet;
-
+          if (bet) {
+            this.selectedTender.bets.push(bet);
+            this.selectedTender.bestBet = bet;
+          }
           return this.tenderService.editTender(this.selectedTender);
         }
       ));
   }
 
 
-  private getBetWithUser(): Observable<TenderBet> {
-    return this.authService.getCurrentUser().pipe(
+  private getBetWithUser(): Observable<TenderBet | null> {
+    return this.authService.getAuthUser().pipe(
       map((user: TenderUser | null) => {
-          const bet: TenderBet = {
-            tenderId: this.selectedTender.id,
-            userId: user?.localId,
-            userEmail: user?.email,
-            dateTime: new Date(),
-            value: Number(this.betForm.value.betValue),
-            comment: this.betForm.value.comment
-          };
-          return bet;
+          if (user) {
+            const bet: TenderBet = {
+              tenderId: this.selectedTender.id,
+              user: user,
+              dateTime: new Date(),
+              value: Number(this.betForm.value.betValue),
+              comment: this.betForm.value.comment
+            };
+            return bet;
+          } else {
+            return null;
+          }
         }
       ));
   }

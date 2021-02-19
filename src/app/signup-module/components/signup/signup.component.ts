@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,10 +17,9 @@ import { FirebaseAuthResponse } from '../../../types/firebase-response.type';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignUpComponent extends AbstractTenderComponent implements OnInit {
+export class SignUpComponent extends AbstractTenderComponent {
 
   loading: boolean = false;
-  phoneValidatorPattern: string = '[- +()0-9]{6,}';
 
   signupForm: FormGroup = new FormGroup({
     email: new FormControl(null, [
@@ -32,14 +31,8 @@ export class SignUpComponent extends AbstractTenderComponent implements OnInit {
       Validators.minLength(this.LOGIN_DEFAULT_VALUE.MIN_PASSWORD_LENGTH),
       Validators.maxLength(this.LOGIN_DEFAULT_VALUE.MAX_PASSWORD_LENGTH),
     ]),
-    name: new FormControl(null, [
+    companyName: new FormControl(null, [
       Validators.required
-    ]),
-    surname: new FormControl(null, [
-      Validators.required
-    ]),
-    phone: new FormControl(null, [
-      Validators.pattern(this.phoneValidatorPattern)
     ])
   });
 
@@ -47,13 +40,8 @@ export class SignUpComponent extends AbstractTenderComponent implements OnInit {
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               protected authService: AuthService,
-              protected router: Router
-  ) {
+              protected router: Router) {
     super(translateService, tenderService, authService);
-  }
-
-
-  ngOnInit(): void {
   }
 
 
@@ -62,10 +50,7 @@ export class SignUpComponent extends AbstractTenderComponent implements OnInit {
       const user: TenderUser = {
         email: this.signupForm.value.email,
         password: this.signupForm.value.password,
-        displayName: this.signupForm.value.name + ' ' + this.signupForm.value.surname,
-        name: this.signupForm.value.name,           // TODO: delete
-        surname: this.signupForm.value.surname,     // TODO: delete
-        phone: this.signupForm.value.phone
+        displayName: this.signupForm.value.companyName,
       };
 
       this.signup(user);
@@ -80,7 +65,7 @@ export class SignUpComponent extends AbstractTenderComponent implements OnInit {
       this.authService.signup(user).subscribe(
         (response: FirebaseAuthResponse) => {
           this.authService.setToken(response);
-          this.signupSuccessHandler(response);
+          this.signupSuccessHandler();
         },
         (error: HttpErrorResponse) => {
           this.authService.logout();
@@ -90,7 +75,7 @@ export class SignUpComponent extends AbstractTenderComponent implements OnInit {
   }
 
 
-  private signupSuccessHandler(response: FirebaseAuthResponse): void {
+  private signupSuccessHandler(): void {
     this.router.navigate([this.ROUTER_URL.LIST]);
     this.loading = false;
   }

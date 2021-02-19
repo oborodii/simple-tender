@@ -16,11 +16,14 @@ import { BetDefaultValue } from './types/bet-default-value.type';
 
 export class TenderConfig {
 
+  /** The name of the tender table in the database */
+  readonly _TENDERS_DB_TABLE_NAME: string = 'tenders';
+
   /** URLs */
   readonly _FIREBASE_LOGIN_URL: string = environment.firebase_login_url + environment.firebaseConfig.apiKey;
   readonly _FIREBASE_SIGNUP_URL: string = environment.firebase_signup_url + environment.firebaseConfig.apiKey;
   readonly _FIREBASE_GET_USER_DATA_URL: string = environment.firebase_lookup_url + environment.firebaseConfig.apiKey;
-  readonly _FIREBASE_TENDERS_URL: string = environment.firebase_DB_url + 'tenders';
+  readonly _FIREBASE_TENDERS_URL: string = environment.firebase_DB_url + this._TENDERS_DB_TABLE_NAME;
 
   /** Possible color palette values: 'primary' | 'accent' | 'warn' */
   readonly _currentThemePalette: ThemePalette = 'primary';
@@ -178,7 +181,8 @@ export class TenderConfig {
   readonly _FIREBASE: FirebaseConst = {
     LOCAL_STORAGE_TOKEN_NAME: 'firebase-token',
     LOCAL_STORAGE_EXPIRES_TOKEN_NAME: 'firebase-token-expires',
-    LOCAL_STORAGE_USER_EMAIL: 'firebase-user-email'
+    LOCAL_STORAGE_USER_EMAIL: 'firebase-user-email',
+    LOCAL_STORAGE_USER_DISPLAY_NAME: 'firebase-user-display-name',
   };
 
 
