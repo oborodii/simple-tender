@@ -1,94 +1,92 @@
 <ng-container *ngIf="isUserAuth; else pleaseLogin">
-  <ng-container *ngIf="canUserPlaceBet; else userCreatedThisTender">
-    <form [formGroup]="betForm" novalidate (ngSubmit)="onSubmit()" class="bet-wrapper">
-      <p><strong>{{ 'BET.FORM-TITLE' | translate }}:</strong></p>
+  <form [formGroup]="betForm" novalidate (ngSubmit)="onSubmit()" class="bet-wrapper">
+    <p><strong>{{ 'BET.FORM-TITLE' | translate }}:</strong></p>
 
-      <!-- Bet Value -->
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
-            <div matPrefix>{{ currencyCode }}</div>
-            <mat-label>{{ 'BET.BET_VALUE' | translate }}</mat-label>
-            <input matInput type="number" required
-                   [readonly]="isDisabled"
-                   [class.readonly-cursor]="isDisabled"
-                   [title]="isDisabled ? ('BET.WAIT_SERVER_RESPONSE' | translate) : ''"
-                   [min]="defaultBetValue"
-                   [max]="BET_DEFAULT_VALUE.MAX_BET_VALUE"
-                   (input)="setBetValueValidationError()"
-                   formControlName="betValue">
+    <!-- Bet Value -->
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+          <div matPrefix>{{ currencyCode }}</div>
+          <mat-label>{{ 'BET.BET_VALUE' | translate }}</mat-label>
+          <input matInput type="number" required
+                 [readonly]="isDisabled"
+                 [class.readonly-cursor]="isDisabled"
+                 [title]="isDisabled ? ('BET.WAIT_SERVER_RESPONSE' | translate) : ''"
+                 [min]="defaultBetValue"
+                 [max]="BET_DEFAULT_VALUE.MAX_BET_VALUE"
+                 (input)="setBetValueValidationError()"
+                 formControlName="betValue">
 
-            <mat-error *ngIf="betForm.controls['betValue'].hasError('required')">
-              {{ 'BET.ERROR.REQUIRED_VALUE' | translate }}
-            </mat-error>
+          <mat-error *ngIf="betForm.controls['betValue'].hasError('required')">
+            {{ 'BET.ERROR.REQUIRED_VALUE' | translate }}
+          </mat-error>
 
-            <mat-error *ngIf="betForm.controls['betValue'].hasError('lessBestBet')">
-              {{ 'BET.ERROR.LESS_BEST_BET' | translate }}
-            </mat-error>
+          <mat-error *ngIf="betForm.controls['betValue'].hasError('lessBestBet')">
+            {{ 'BET.ERROR.LESS_BEST_BET' | translate }}
+          </mat-error>
 
-            <mat-error *ngIf="betForm.controls['betValue'].hasError('lessStepValue')">
-              {{ 'BET.ERROR.LESS_STEP_VALUE' | translate }}
-            </mat-error>
+          <mat-error *ngIf="betForm.controls['betValue'].hasError('lessStepValue')">
+            {{ 'BET.ERROR.LESS_STEP_VALUE' | translate }}
+          </mat-error>
 
-            <mat-error *ngIf="betForm.controls['betValue'].hasError('incorrectMaxValue')">
-              {{ 'BET.ERROR.INCORRECT_MAX_VALUE' | translate }}
-            </mat-error>
-          </mat-form-field>
-        </div>
+          <mat-error *ngIf="betForm.controls['betValue'].hasError('incorrectMaxValue')">
+            {{ 'BET.ERROR.INCORRECT_MAX_VALUE' | translate }}
+          </mat-error>
+        </mat-form-field>
       </div>
+    </div>
 
-      <!-- Comment -->
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
-            <mat-label>{{ 'BET.BET_COMMENT' | translate }}</mat-label>
-            <input matInput type="text"
-                   [readonly]="isDisabled"
-                   [class.readonly-cursor]="isDisabled"
-                   [title]="isDisabled ? ('BET.WAIT_SERVER_RESPONSE' | translate) : ''"
-                   [min]="BET_DEFAULT_VALUE.MIN_COMMENT_LENGTH"
-                   [max]="BET_DEFAULT_VALUE.MAX_COMMENT_LENGTH"
-                   formControlName="comment">
+    <!-- Comment -->
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+          <mat-label>{{ 'BET.BET_COMMENT' | translate }}</mat-label>
+          <input matInput type="text"
+                 [readonly]="isDisabled"
+                 [class.readonly-cursor]="isDisabled"
+                 [title]="isDisabled ? ('BET.WAIT_SERVER_RESPONSE' | translate) : ''"
+                 [min]="BET_DEFAULT_VALUE.MIN_COMMENT_LENGTH"
+                 [max]="BET_DEFAULT_VALUE.MAX_COMMENT_LENGTH"
+                 formControlName="comment">
 
-            <mat-error *ngIf="betForm.controls['comment'].hasError('minlength')">
-              {{ ('BET.ERROR.MIN_LENGTH_COMMENT' | translate) +
-            ' (' + betForm.get('comment')?.errors?.minlength['actualLength'] + '/' +
-            betForm.get('comment')?.errors?.minlength['requiredLength'] + ')' }}
-            </mat-error>
+          <mat-error *ngIf="betForm.controls['comment'].hasError('minlength')">
+            {{ ('BET.ERROR.MIN_LENGTH_COMMENT' | translate) +
+          ' (' + betForm.get('comment')?.errors?.minlength['actualLength'] + '/' +
+          betForm.get('comment')?.errors?.minlength['requiredLength'] + ')' }}
+          </mat-error>
 
-            <mat-error *ngIf="betForm.controls['comment'].hasError('maxlength')">
-              {{ ('BET.ERROR.MAX_LENGTH_COMMENT' | translate) +
-            ' (' + betForm.get('comment')?.errors?.maxlength['actualLength'] + '/' +
-            betForm.get('comment')?.errors?.maxlength['requiredLength'] + ')' }}
-            </mat-error>
-          </mat-form-field>
-        </div>
+          <mat-error *ngIf="betForm.controls['comment'].hasError('maxlength')">
+            {{ ('BET.ERROR.MAX_LENGTH_COMMENT' | translate) +
+          ' (' + betForm.get('comment')?.errors?.maxlength['actualLength'] + '/' +
+          betForm.get('comment')?.errors?.maxlength['requiredLength'] + ')' }}
+          </mat-error>
+        </mat-form-field>
       </div>
+    </div>
 
-      <!-- Submit button -->
-      <div class="row">
-        <div class="col">
-          <button mat-raised-button type="submit"
-                  [disabled]="betForm.invalid || isDisabled"
-                  [title]="betForm.invalid ? ('BET.ERROR.SUBMIT_BUTTON_DISABLED' | translate) : ''"
-                  [color]="currentThemePalette"
-                  class="submit-button">
-            <ng-container *ngIf="isDisabled">
-              <mat-spinner [color]="currentThemePalette"
-                           [diameter]="SPINNER_DIAMETER"
-                           [strokeWidth]="SPINNER_STROKE_WIDTH"
-                           class="mat-spinner">
-              </mat-spinner>
-              {{ 'BET.WAIT_SERVER_RESPONSE' | translate }}
-            </ng-container>
-            <ng-container *ngIf="!isDisabled">
-              {{ 'BET.SUBMIT_BUTTON' | translate }}
-            </ng-container>
-          </button>
-        </div>
+    <!-- Submit button -->
+    <div class="row">
+      <div class="col">
+        <button mat-raised-button type="submit"
+                [disabled]="betForm.invalid || isDisabled"
+                [title]="betForm.invalid ? ('BET.ERROR.SUBMIT_BUTTON_DISABLED' | translate) : ''"
+                [color]="currentThemePalette"
+                class="submit-button">
+          <ng-container *ngIf="isDisabled">
+            <mat-spinner [color]="currentThemePalette"
+                         [diameter]="SPINNER_DIAMETER"
+                         [strokeWidth]="SPINNER_STROKE_WIDTH"
+                         class="mat-spinner">
+            </mat-spinner>
+            {{ 'BET.WAIT_SERVER_RESPONSE' | translate }}
+          </ng-container>
+          <ng-container *ngIf="!isDisabled">
+            {{ 'BET.SUBMIT_BUTTON' | translate }}
+          </ng-container>
+        </button>
       </div>
-    </form>
-  </ng-container>
+    </div>
+  </form>
 </ng-container>
 
 <ng-template #pleaseLogin>
@@ -101,8 +99,4 @@
       {{ 'MENU.LOGIN' | translate }}
     </span>
   </a>
-</ng-template>
-
-<ng-template #userCreatedThisTender>
-  {{ 'BET.USER_CREATED_THIS_TENDER' | translate }}.
 </ng-template>

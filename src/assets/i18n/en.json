@@ -160,6 +160,7 @@
 	},
 	"VIEW_TENDER": {
 		"BEST_BET": "Best bet",
+		"CONTACTS": "Contacts",
 		"DESCRIPTION": "Description",
 		"DURATION": "Duration",
 		"FAILED_TO_LOAD": "Failed to load tender with this id",
@@ -167,6 +168,7 @@
 		"NO_BEST_BET": "There are no bets yet",
 		"NUMBER_OF_BETS": "Number of bets",
 		"QUANTITY": "Quantity of goods",
-		"STEP_VALUE": "Step value"
+		"STEP_VALUE": "Step value",
+		"TENDER_INITIATOR": "Initiator of the tender"
 	}
 }

@@ -63,17 +63,36 @@
                   <strong>{{ 'VIEW_TENDER.QUANTITY' | translate }}</strong>:
                   {{ selectedTender.quantity + ' ' + getLocalUnitCode(selectedTender.unit) }}
                 </mat-list-item>
+                <mat-divider></mat-divider>
+
+                <mat-list-item>
+                  <strong>{{ 'VIEW_TENDER.TENDER_INITIATOR' | translate }}</strong>:
+                  {{ selectedTender.user?.displayName }}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+
+                <mat-list-item>
+                  <strong>{{ 'VIEW_TENDER.CONTACTS' | translate }}</strong>:
+                  {{ selectedTender.user?.email }}
+                </mat-list-item>
               </mat-list>
             </div>
 
+
             <!-- Place a new bet -->
             <div class="col">
-              <st-bet-create></st-bet-create>
+              <ng-container *ngIf="!isCurrentUserCreatedThisTender; else userCreatedThisTender">
+                <st-bet-create></st-bet-create>
+              </ng-container>
+
+              <ng-template #userCreatedThisTender>
+                {{ 'BET.USER_CREATED_THIS_TENDER' | translate }}.
+              </ng-template>
             </div>
           </div>
-
         </mat-card-content>
       </mat-card>
+
     </div>
   </div>
 

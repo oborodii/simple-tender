@@ -18,8 +18,23 @@ import { AuthService } from '../../../services/auth.service';
 export class SelectedTenderComponent extends AbstractTenderComponent implements OnInit {
 
   loading: boolean;
+
   readonly SPINNER_DIAMETER: number = 120;
   readonly SPINNER_STROKE_WIDTH: number = 4;
+
+  get isCurrentUserCreatedThisTender(): boolean {
+    const userEmail: string | null = localStorage.getItem(this.FIREBASE.LOCAL_STORAGE_USER_EMAIL);
+
+    if (this.selectedTender && this.selectedTender.user) {
+      if (userEmail) {
+        return userEmail === this.selectedTender.user.email;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
 
 
   constructor(protected translateService: TranslateService,

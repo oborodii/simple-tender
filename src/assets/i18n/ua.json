@@ -160,6 +160,7 @@
 	},
 	"VIEW_TENDER": {
 		"BEST_BET": "Краща ставка",
+		"CONTACTS": "Контакти",
 		"DESCRIPTION": "Опис тендера",
 		"DURATION": "Тривалість",
 		"FAILED_TO_LOAD": "Не вдалося завантажити тендер з таким id",
@@ -167,6 +168,7 @@
 		"NO_BEST_BET": "Поки немає жодної ставки",
 		"NUMBER_OF_BETS": "Кількість ставок",
 		"QUANTITY": "Кількість товару",
-		"STEP_VALUE": "Крок ставки"
+		"STEP_VALUE": "Крок ставки",
+		"TENDER_INITIATOR": "Ініціатор тендера"
 	}
 }

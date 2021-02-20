@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -19,14 +19,12 @@ import { TenderUser } from '../../../types/tender-user.type';
   templateUrl: './bet-create.component.html',
   styleUrls: ['./bet-create.component.scss']
 })
-export class BetCreateComponent extends AbstractTenderComponent implements OnInit {
+export class BetCreateComponent extends AbstractTenderComponent {
 
   // a backup of the tender in case of an error on the server
   clonedSelectedTender: Tender = cloneDeep(this.selectedTender);
 
   isDisabled: boolean = false;
-
-  canUserPlaceBet: boolean = false;
 
   readonly SPINNER_DIAMETER: number = 19;
   readonly SPINNER_STROKE_WIDTH: number = 1;
@@ -64,11 +62,6 @@ export class BetCreateComponent extends AbstractTenderComponent implements OnIni
               protected authService: AuthService
   ) {
     super(translateService, tenderService, authService);
-  }
-
-
-  ngOnInit(): void {
-    this.canUserPlaceBet = this.checkUserCanPlaceBetOnThisTender();
   }
 
 
@@ -162,21 +155,6 @@ export class BetCreateComponent extends AbstractTenderComponent implements OnIni
           }
         }
       ));
-  }
-
-
-  private checkUserCanPlaceBetOnThisTender(): boolean {
-    const userEmail: string | null = localStorage.getItem(this.FIREBASE.LOCAL_STORAGE_USER_EMAIL);
-
-    if (this.selectedTender && this.selectedTender.user) {
-      if (userEmail) {
-        return userEmail !== this.selectedTender.user.email;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
   }
 
 }
