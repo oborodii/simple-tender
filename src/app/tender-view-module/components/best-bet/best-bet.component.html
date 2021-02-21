@@ -1,0 +1,46 @@
+<mat-card *ngIf="bestBet" class="best-bet-card">
+  <mat-card-header>
+    <mat-card-title>
+      {{ 'BEST_BET.TITLE' | translate }}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <mat-list>
+          <mat-list-item>
+            <strong>{{ 'BEST_BET.VALUE' | translate }}</strong>:
+            {{ bestBet.value + ' ' + currencyCode }}
+          </mat-list-item>
+          <mat-divider></mat-divider>
+
+          <ng-container *ngIf="bestBet.comment">
+            <mat-list-item>
+              <strong>{{ 'BEST_BET.COMMENT' | translate }}</strong>:
+              {{ bestBet.comment }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </ng-container>
+
+          <mat-list-item>
+            <strong>{{ 'BEST_BET.DATE_TIME' | translate }}</strong>:
+            {{ bestBet.dateTime | date:'dd.MM.YYYY HH:mm' }}
+          </mat-list-item>
+          <mat-divider></mat-divider>
+
+          <mat-list-item>
+            <strong>{{ 'BEST_BET.COMPANY_NAME' | translate }}</strong>:
+            {{ bestBet.user.displayName }}
+          </mat-list-item>
+          <mat-divider></mat-divider>
+
+          <mat-list-item>
+            <strong>{{ 'BEST_BET.COMPANY_EMAIL' | translate }}</strong>:
+            {{ bestBet.user.email }}
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

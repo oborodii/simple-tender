@@ -1,5 +1,13 @@
 {
 	"APP_TITLE": "Simple Tender 1.0",
+	"BEST_BET": {
+		"COMMENT": "The best bet comment",
+		"COMPANY_EMAIL": "Participating company email",
+		"COMPANY_NAME": "Participating company name",
+		"DATE_TIME": "When the bet was placed",
+		"TITLE": "The best bet for this tender",
+		"VALUE": "The best bet value"
+	},
 	"BET": {
 		"BET_COMMENT": "Comment for your bet (optional)",
 		"BET_SAVED_SUCCESSFULLY": "Your bet was successfully saved on the server",
@@ -167,6 +175,7 @@
 		"ID": "id",
 		"NO_BEST_BET": "There are no bets yet",
 		"NUMBER_OF_BETS": "Number of bets",
+		"PLACED_BETS_TITLE": "The following bids have been placed on your tender",
 		"QUANTITY": "Quantity of goods",
 		"STEP_VALUE": "Step value",
 		"TENDER_INITIATOR": "Initiator of the tender"

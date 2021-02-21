@@ -7,13 +7,15 @@ import { TenderViewRoutingModule } from './tender-view-routing.module';
 import { TreeComponent } from './components/tree/tree.component';
 import { SelectedTenderComponent } from './components/selected-tender/selected-tender.component';
 import { BetCreateComponent } from './components/bet-create/bet-create.component';
+import { BestBetComponent } from './components/best-bet/best-bet.component';
 
 
 @NgModule({
   declarations: [
     TreeComponent,
     SelectedTenderComponent,
-    BetCreateComponent
+    BetCreateComponent,
+    BestBetComponent
   ],
   imports: [
     TenderViewRoutingModule,

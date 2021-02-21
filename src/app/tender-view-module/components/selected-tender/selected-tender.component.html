@@ -93,6 +93,20 @@
         </mat-card-content>
       </mat-card>
 
+
+      <ng-container *ngIf="isCurrentUserCreatedThisTender">
+        <div class="bets-block-tittle">
+          <h2>{{ 'VIEW_TENDER.PLACED_BETS_TITLE' | translate }}:</h2>
+        </div>
+
+        <!-- The Best bet -->
+        <ng-container *ngIf="selectedTender.bestBet">
+          <st-best-bet [bestBet]="selectedTender.bestBet"
+                       [currencyCode]="selectedTender.currency ? selectedTender.currency.code : currencies[0].code">
+          </st-best-bet>
+        </ng-container>
+      </ng-container>
+
     </div>
   </div>
 

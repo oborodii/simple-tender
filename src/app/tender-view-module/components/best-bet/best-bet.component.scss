@@ -1,0 +1,8 @@
+@import "src/app/shared/styles/variables";
+
+.best-bet-card {
+  margin: 0 auto 20px auto;
+  width: $form-width;
+  max-width: $form-max-width;
+  background-color: $success-bg-color;
+}
