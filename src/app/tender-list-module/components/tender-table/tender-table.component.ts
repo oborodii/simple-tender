@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -33,10 +32,6 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
 
   readonly SPINNER_DIAMETER: number = 19;
   readonly SPINNER_STROKE_WIDTH: number = 1;
-
-  get currentThemePalette(): ThemePalette {
-    return this.tenderService._currentThemePalette;
-  }
 
   /** Real number of rows in the table */
   get dataLength(): number {
@@ -86,6 +81,23 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
   }
 
 
+  applyFilter(event: Event): void {
+    const filterValue: string = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+
+  selectTender(selectedTender: Tender): void {
+    if (selectedTender) {
+      this.router.navigate([this.ROUTER_URL.VIEW, selectedTender.id]);
+    }
+  }
+
+
   /** Load an array of all tenders from the server */
   private getTenders(): void {
     this.subscriptions.add(
@@ -102,23 +114,6 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
           this.dataSource = new MatTableDataSource();
         })
     );
-  }
-
-
-  applyFilter(event: Event): void {
-    const filterValue: string = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
-
-  selectTender(selectedTender: Tender): void {
-    if (selectedTender) {
-      this.router.navigate([this.ROUTER_URL.VIEW, selectedTender.id]);
-    }
   }
 
 }
