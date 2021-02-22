@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -47,8 +48,8 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
-              protected authService: AuthService
-  ) {
+              protected authService: AuthService,
+              protected router: Router) {
     super(translateService, tenderService, authService);
   }
 
@@ -120,6 +121,9 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
           const suffixMessage: string = this.translate('CREATE-FORM.SUCCESSFULLY_CREATED');
           const message: string = prefixMessage + ' "' + newTender.title + '" ' + suffixMessage;
           this.tenderService.openSnackBar(message, this.SNACKBAR.SUCCESS);
+          if (newTender) {
+            this.router.navigate([this.ROUTER_URL.VIEW, newTender.id]);
+          }
         },
         () => {
           const message: string = this.translate('CREATE-FORM.ERROR.CREATE_SERVER_ERROR');
