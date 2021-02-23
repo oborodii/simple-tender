@@ -12,6 +12,7 @@ import { SnackBarTxtColor } from './types/snack-bar-txt-color.type';
 import { MaterialIcons } from './types/material-icons.type';
 import { RouterUrl } from './types/router-url.type';
 import { BetDefaultValue } from './types/bet-default-value.type';
+import { TenderStatusesAll } from './types/tender-status.type';
 
 
 export class TenderConfig {
@@ -88,6 +89,12 @@ export class TenderConfig {
     }
   ];
 
+  readonly _TENDER_STATUSES_ALL: TenderStatusesAll = {
+    ACTIVE: 'active',
+    CLOSED: 'closed',
+    PLANNED: 'planned',
+  };
+
   /** Default values when creating a new tender */
   readonly _NEW_TENDER_DEFAULT_VALUE: NewTenderDefaultValue = {
     /** Min/Max value of the 'stepValue' field when creating a new tender */
@@ -134,7 +141,7 @@ export class TenderConfig {
     IS_SHOW_BEST_BET: true,
 
     /** One of 'draft', 'active' or 'closed' */
-    STATUS: 'draft'
+    STATUS: this._TENDER_STATUSES_ALL.ACTIVE
   };
 
 

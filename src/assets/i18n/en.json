@@ -25,6 +25,8 @@
 		"FORM-TITLE": "Your bet",
 		"PLEASE_LOGIN": "Please login to place your bet",
 		"SUBMIT_BUTTON": "Place a bet",
+		"TENDER_COMPLETED": "Tender completed, no more bids will be accepted",
+		"TENDER_PLANNED": "The tender has not started yet, bids are not accepted yet",
 		"USER_CREATED_THIS_TENDER": "You cannot participate in your own tender",
 		"WAIT_SERVER_RESPONSE": "Wait for server response..."
 	},
@@ -101,11 +103,11 @@
 				"BEST_BET": "Best bet",
 				"DATE_END": "End Date",
 				"DATE_START": "Start Date",
-				"DESCRIPTION": "Description",
 				"ID": "id",
 				"INDEX": "#",
 				"NO_BEST_BET": "-",
 				"QUANTITY": "Quantity of goods",
+				"STATUS": "Status",
 				"STEP_VALUE": "Step Value",
 				"TITLE": "Title of tender"
 			},
@@ -174,6 +176,29 @@
 			"BUTTON": {
 				"TITLE": "Duration"
 			}
+		}
+	},
+	"TIMER": {
+		"DAYS": {
+			"SMALL": "dd",
+			"TITLE": "Days"
+		},
+		"HOURS": {
+			"SMALL": "hh",
+			"TITLE": "Hours"
+		},
+		"MINUTES": {
+			"SMALL": "mm",
+			"TITLE": "Minutes"
+		},
+		"SECONDS": {
+			"SMALL": "ss",
+			"TITLE": "Seconds"
+		},
+		"STATUS": {
+			"ACTIVE": "The tender will continue",
+			"CLOSED": "Tender finished",
+			"PLANNED": "Left before the start of the tender"
 		}
 	},
 	"VIEW_TENDER": {

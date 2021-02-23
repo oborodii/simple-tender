@@ -100,10 +100,6 @@ export abstract class AbstractTenderComponent implements OnDestroy {
     this.tenderService.selectedTender = value;
   }
 
-  getLocalUnitCode(unit: TenderUnit): string {
-    return this.tenderService.getLocalUnitCode(unit);
-  }
-
 
   protected constructor(protected translateService: TranslateService,
                         protected tenderService: TenderService,
@@ -112,10 +108,26 @@ export abstract class AbstractTenderComponent implements OnDestroy {
     this.translateService.use(this.currentLocale);
   }
 
-
   translate(key: string): string {
     return this.translateService.instant(key);
   }
+
+  getLocalUnitCode(unit: TenderUnit): string {
+    return this.tenderService.getLocalUnitCode(unit);
+  }
+
+  isStatusClosed(tender: Tender): boolean {
+    return tender.status === this.tenderService._TENDER_STATUSES_ALL.CLOSED;
+  }
+
+  isStatusPlanned(tender: Tender): boolean {
+    return tender.status === this.tenderService._TENDER_STATUSES_ALL.PLANNED;
+  }
+
+  isStatusActive(tender: Tender): boolean {
+    return tender.status === this.tenderService._TENDER_STATUSES_ALL.ACTIVE;
+  }
+
 
 
   ngOnDestroy(): void {

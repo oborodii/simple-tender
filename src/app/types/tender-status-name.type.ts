@@ -1,1 +1,1 @@
-export type TenderStatusName = 'draft' | 'active' | 'closed' | 'planned' | 'all';
+export type TenderStatusName = 'active' | 'closed' | 'planned';

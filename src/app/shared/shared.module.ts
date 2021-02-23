@@ -27,12 +27,14 @@ import { MissingTranslationService } from './classes/missing-translation-service
 import { LanguageToggleComponent } from './components/language-toggle/language-toggle.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatPaginatorNgxTranslateService } from '../services/mat-paginator-ngx-translate.service';
+import { TimerComponent } from './components/timer/timer.component';
 
 
 @NgModule({
   declarations: [
     LanguageToggleComponent,
-    FooterComponent
+    FooterComponent,
+    TimerComponent
   ],
   imports: [
     CommonModule,
@@ -74,6 +76,7 @@ import { MatPaginatorNgxTranslateService } from '../services/mat-paginator-ngx-t
 
     LanguageToggleComponent,
     FooterComponent,
+    TimerComponent,
 
     MatInputModule,
     MatButtonModule,

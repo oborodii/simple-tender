@@ -1,0 +1,68 @@
+<div *ngIf="!timerDate">{{ 'LOADING' | translate }}</div>
+
+<div *ngIf="timerDate" class="timer">
+
+  <div class="status" *ngIf="timerTenderStatus === TENDER_STATUSES_ALL.CLOSED">
+    <div class="closed">
+      {{ 'TIMER.STATUS.CLOSED' | translate }}
+    </div>
+  </div>
+
+  <div class="status" *ngIf="timerTenderStatus === TENDER_STATUSES_ALL.ACTIVE
+                             || timerTenderStatus === TENDER_STATUSES_ALL.PLANNED">
+
+    <div *ngIf="isLegendShow && timerTenderStatus === TENDER_STATUSES_ALL.ACTIVE" class="active">
+      {{ 'TIMER.STATUS.ACTIVE' | translate }}:
+    </div>
+
+    <div *ngIf="isLegendShow && timerTenderStatus === TENDER_STATUSES_ALL.PLANNED" class="planned">
+      {{ 'TIMER.STATUS.PLANNED' | translate }}:
+    </div>
+
+    <div class="cell-wrapper" *ngIf="timerDate.days !== 0">
+      <div class="counter"
+           [title]="'TIMER.DAYS.TITLE' | translate"
+           [ngClass]="{'active': timerTenderStatus === TENDER_STATUSES_ALL.ACTIVE,
+                       'planned': timerTenderStatus === TENDER_STATUSES_ALL.PLANNED}">
+        {{ timerDate.days }}
+        <span class="title">
+            {{ 'TIMER.DAYS.SMALL' | translate }}
+        </span>
+      </div>
+    </div>
+
+    <div class="cell-wrapper" *ngIf="timerDate.days !== 0 || timerDate.hours !== 0">
+      <div class="counter"
+           [title]="'TIMER.HOURS.TITLE' | translate"
+           [ngClass]="{'active': timerTenderStatus === TENDER_STATUSES_ALL.ACTIVE,
+                       'planned': timerTenderStatus === TENDER_STATUSES_ALL.PLANNED}">
+        {{ timerDate.hours }}
+        <span class="title">
+            {{ 'TIMER.HOURS.SMALL' | translate }}
+        </span>
+      </div>
+    </div>
+
+    <div class="cell-wrapper">
+      <div class="counter" [title]="'TIMER.MINUTES.TITLE' | translate"
+           [ngClass]="{'active': timerTenderStatus === TENDER_STATUSES_ALL.ACTIVE,
+                       'planned': timerTenderStatus === TENDER_STATUSES_ALL.PLANNED}">
+        {{ timerDate.minutes }}
+        <span class="title">
+            {{ 'TIMER.MINUTES.SMALL' | translate }}
+        </span>
+      </div>
+    </div>
+
+    <div class="cell-wrapper">
+      <div class="counter" [title]="'TIMER.SECONDS.TITLE' | translate"
+           [ngClass]="{'active': timerTenderStatus === TENDER_STATUSES_ALL.ACTIVE,
+                       'planned': timerTenderStatus === TENDER_STATUSES_ALL.PLANNED}">
+        {{ timerDate.seconds }}
+        <span class="title">
+            {{ 'TIMER.SECONDS.SMALL' | translate }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

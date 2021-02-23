@@ -19,6 +19,13 @@
             <div class="col">
               <mat-list>
                 <mat-list-item>
+                  <st-timer [tender]="selectedTender" [isLegendShow]="false">
+                    {{ 'LOADING' | translate }}
+                  </st-timer>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+
+                <mat-list-item>
                   <strong>{{ 'VIEW_TENDER.DURATION' | translate }}</strong>:
                   {{ selectedTender.dateStart | date:'dd.MM.YYYY HH:mm' }} -
                   {{ selectedTender.dateEnd | date:'dd.MM.YYYY HH:mm' }}
@@ -80,12 +87,26 @@
 
             <!-- Place a new bet -->
             <div class="col">
-              <ng-container *ngIf="!isCurrentUserCreatedThisTender; else userCreatedThisTender">
-                <st-bet-create></st-bet-create>
+              <ng-container *ngIf="isStatusClosed(selectedTender); else tenderNotCompleted">
+                {{ 'BET.TENDER_COMPLETED' | translate }}.
               </ng-container>
 
-              <ng-template #userCreatedThisTender>
-                {{ 'BET.USER_CREATED_THIS_TENDER' | translate }}.
+              <ng-template #tenderNotCompleted>
+                <ng-container *ngIf="isStatusPlanned(selectedTender); else tenderNotPlanned">
+                  {{ 'BET.TENDER_PLANNED' | translate }}.
+                </ng-container>
+
+                <ng-template #tenderNotPlanned>
+                  <ng-container *ngIf="!isCurrentUserCreatedThisTender; else userCreatedThisTender">
+                    <st-bet-create>
+                      {{ 'LOADING' | translate }}.
+                    </st-bet-create>
+                  </ng-container>
+
+                  <ng-template #userCreatedThisTender>
+                    {{ 'BET.USER_CREATED_THIS_TENDER' | translate }}.
+                  </ng-template>
+                </ng-template>
               </ng-template>
             </div>
           </div>

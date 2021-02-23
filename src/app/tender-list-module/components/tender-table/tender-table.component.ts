@@ -55,7 +55,7 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
     'dateStart',
     'dateEnd',
     'title',
-    'description',
+    'timer',
     'bestBet',
     'stepValue',
     'quantity',
