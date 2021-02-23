@@ -28,6 +28,16 @@
 		"USER_CREATED_THIS_TENDER": "You cannot participate in your own tender",
 		"WAIT_SERVER_RESPONSE": "Wait for server response..."
 	},
+	"BET_TABLE": {
+		"COMMENT": "Comment",
+		"COMPANY_EMAIL": "Company email",
+		"COMPANY_NAME": "Participant name",
+		"DATE_TIME": "Date and time",
+		"INDEX": "#",
+		"NO_BET": "There is no bet",
+		"TABLE_TITLE": "All bets table",
+		"VALUE": "Bet value"
+	},
 	"CREATE-FORM": {
 		"CURRENCY": "Currency",
 		"DATE_END": "Tender end date and time",

@@ -8,6 +8,7 @@ import { TreeComponent } from './components/tree/tree.component';
 import { SelectedTenderComponent } from './components/selected-tender/selected-tender.component';
 import { BetCreateComponent } from './components/bet-create/bet-create.component';
 import { BestBetComponent } from './components/best-bet/best-bet.component';
+import { BetTableComponent } from './components/bet-table/bet-table.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BestBetComponent } from './components/best-bet/best-bet.component';
     TreeComponent,
     SelectedTenderComponent,
     BetCreateComponent,
-    BestBetComponent
+    BestBetComponent,
+    BetTableComponent
   ],
   imports: [
     TenderViewRoutingModule,

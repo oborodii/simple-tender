@@ -28,6 +28,16 @@
 		"USER_CREATED_THIS_TENDER": "Ви не можете приймати участь у власному тендері",
 		"WAIT_SERVER_RESPONSE": "Дочекайтеся відповіді сервера..."
 	},
+	"BET_TABLE": {
+		"COMMENT": "Коментар",
+		"COMPANY_EMAIL": "Email учасника",
+		"COMPANY_NAME": "Назва учасника",
+		"DATE_TIME": "Дата та час",
+		"INDEX": "№",
+		"NO_BET": "Немає жодної ставки",
+		"TABLE_TITLE": "Таблиця всіх ставок",
+		"VALUE": "Розмір ставки"
+	},
 	"CREATE-FORM": {
 		"CURRENCY": "Валюта",
 		"DATE_END": "Дата і час завершення",

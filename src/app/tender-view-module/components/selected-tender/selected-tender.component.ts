@@ -36,6 +36,10 @@ export class SelectedTenderComponent extends AbstractTenderComponent implements 
     }
   }
 
+  get currencyCode(): string {
+    return this.selectedTender.currency ? this.selectedTender.currency.code : this.currencies[0].code;
+  }
+
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,

@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { MatTableModule } from '@angular/material/table';
-
 import { SharedModule } from '../shared/shared.module';
 import { TenderListRoutingModule } from './tender-list-routing.module';
 import { TenderTableComponent } from './components/tender-table/tender-table.component';
@@ -13,9 +11,7 @@ import { TenderTableComponent } from './components/tender-table/tender-table.com
   ],
   imports: [
     TenderListRoutingModule,
-    SharedModule,
-
-    MatTableModule
+    SharedModule
   ]
 })
 export class TenderListModule {

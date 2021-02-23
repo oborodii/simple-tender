@@ -78,7 +78,6 @@
               </mat-list>
             </div>
 
-
             <!-- Place a new bet -->
             <div class="col">
               <ng-container *ngIf="!isCurrentUserCreatedThisTender; else userCreatedThisTender">
@@ -93,20 +92,26 @@
         </mat-card-content>
       </mat-card>
 
-
-      <ng-container *ngIf="isCurrentUserCreatedThisTender">
+      <!-- Information about the bets for initiator of the tender -->
+      <ng-container *ngIf="isCurrentUserCreatedThisTender
+                            && selectedTender.bestBet
+                            && selectedTender.bets
+                            && selectedTender.bets.length > 0">
         <div class="bets-block-tittle">
           <h2>{{ 'VIEW_TENDER.PLACED_BETS_TITLE' | translate }}:</h2>
         </div>
 
         <!-- The Best bet -->
-        <ng-container *ngIf="selectedTender.bestBet">
-          <st-best-bet [bestBet]="selectedTender.bestBet"
-                       [currencyCode]="selectedTender.currency ? selectedTender.currency.code : currencies[0].code">
-          </st-best-bet>
-        </ng-container>
-      </ng-container>
+        <st-best-bet [bestBet]="selectedTender.bestBet"
+                     [currencyCode]="currencyCode">
+        </st-best-bet>
 
+        <!-- Bet table -->
+        <st-bet-table [bets]="selectedTender.bets"
+                      [bestBet]="selectedTender.bestBet"
+                      [currencyCode]="currencyCode">
+        </st-bet-table>
+      </ng-container>
     </div>
   </div>
 
