@@ -20,11 +20,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateStore } from '@ngx-translate/core';
+import { createTranslateLoader } from './classes/create-translate-loader.function';
 
 import { environment } from '../../environments/environment';
-import { createTranslateLoader } from './classes/create-translate-loader.function';
 import { MissingTranslationService } from './classes/missing-translation-service.class';
-import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { LanguageToggleComponent } from './components/language-toggle/language-toggle.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatPaginatorNgxTranslateService } from '../services/mat-paginator-ngx-translate.service';
@@ -32,7 +31,6 @@ import { MatPaginatorNgxTranslateService } from '../services/mat-paginator-ngx-t
 
 @NgModule({
   declarations: [
-    SnackBarComponent,
     LanguageToggleComponent,
     FooterComponent
   ],
@@ -74,7 +72,6 @@ import { MatPaginatorNgxTranslateService } from '../services/mat-paginator-ngx-t
     ReactiveFormsModule,
     TranslateModule,
 
-    SnackBarComponent,
     LanguageToggleComponent,
     FooterComponent,
 
