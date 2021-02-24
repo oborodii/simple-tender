@@ -2,10 +2,12 @@
   .status {
     display: inline-block;
     font-size: 12px;
+    line-height: 1rem;
     color: grey;
     font-weight: normal;
 
     .cell-wrapper {
+      margin-top: 3px;
       display: inline-block;
       font-size: 14px;
       font-weight: 400;
@@ -20,7 +22,7 @@
       .counter {
         margin: 0 9px 0 0;
         display: inline-block;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 400;
       }
     }
