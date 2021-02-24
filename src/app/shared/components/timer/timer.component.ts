@@ -1,6 +1,6 @@
 import { Component, Input, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription, timer } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -33,8 +33,6 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
     return this.tenderService._TENDER_STATUSES_ALL;
   }
 
-  private timerSubscription$: Subscription;
-
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
@@ -47,9 +45,10 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
   ngOnInit(): void {
     this.initParams();
 
-    this.timerSubscription$ = this.startTimer().subscribe(
-      () => this.calculationTimer(new Date(this.tender.dateStart), new Date(this.tender.dateEnd))
-    );
+    this.subscriptions.add(
+      this.startTimer().subscribe(
+        () => this.calculationTimer(new Date(this.tender.dateStart), new Date(this.tender.dateEnd))
+      ));
   }
 
 
@@ -79,8 +78,8 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
     if ((endDate.getTime() - startDate.getTime() < 0) || (this.tender.status === this.TENDER_STATUSES_ALL.CLOSED)) {
       this.timerTenderStatus = this.TENDER_STATUSES_ALL.CLOSED;
 
-      if (this.timerSubscription$) {
-        this.timerSubscription$.unsubscribe();
+      if (this.subscriptions) {
+        this.subscriptions.unsubscribe();
       }
     } else {
       if (VAL_START_TIMER > 0) {
@@ -95,8 +94,8 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
 
           this.timerTenderStatus = this.TENDER_STATUSES_ALL.CLOSED;
 
-          if (this.timerSubscription$) {
-            this.timerSubscription$.unsubscribe();
+          if (this.subscriptions) {
+            this.subscriptions.unsubscribe();
           }
         } else {
           this.setDaysHoursMinutesSeconds(VAL_END_TIMER);
@@ -118,13 +117,6 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
 
     const VAL_TIMER_WITHOUT_MINUTES: number = VAL_TIMER_WITHOUT_HOURS - this.timerDate.minutes * 60 * 1000;
     this.timerDate.seconds = Math.floor(VAL_TIMER_WITHOUT_MINUTES / 1000);
-  }
-
-
-  ngOnDestroy(): void {
-    if (this.timerSubscription$) {
-      this.timerSubscription$.unsubscribe();
-    }
   }
 
 }
