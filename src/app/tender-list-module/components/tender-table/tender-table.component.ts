@@ -25,10 +25,12 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
   readonly PAGE_INDEX: number = 0;
 
   /** Number of items to display on a page. Defaulted to 10 */
-  readonly PAGE_SIZE: number = 5;
+  readonly PAGE_SIZE: number = 20;
 
   /** The set of provided page size options to display to the user */
-  readonly PAGE_SIZE_OPTION: number[] = [5, 10, 20, 25];
+  readonly PAGE_SIZE_OPTION: number[] = [20, 30, 50, 100];
+
+  readonly MAX_TITLE_LENGTH: number = 30;
 
   readonly SPINNER_DIAMETER: number = 19;
   readonly SPINNER_STROKE_WIDTH: number = 1;
@@ -52,8 +54,7 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered */
   displayedColumns: string[] = [
     'index',
-    'dateStart',
-    'dateEnd',
+    'dates',
     'title',
     'timer',
     'bestBet',
@@ -95,6 +96,18 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
     if (selectedTender) {
       this.router.navigate([this.ROUTER_URL.VIEW, selectedTender.id]);
     }
+  }
+
+
+  sliceTenderTitle(title: string): string {
+    if (title) {
+      if (title.length > this.MAX_TITLE_LENGTH) {
+        return title.slice(0, this.MAX_TITLE_LENGTH) + '...';
+      } else {
+        return title;
+      }
+    }
+    return '-';
   }
 
 
