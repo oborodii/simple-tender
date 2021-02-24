@@ -116,19 +116,6 @@ export abstract class AbstractTenderComponent implements OnDestroy {
     return this.tenderService.getLocalUnitCode(unit);
   }
 
-  isStatusClosed(tender: Tender): boolean {
-    return tender.status === this.tenderService._TENDER_STATUSES_ALL.CLOSED;
-  }
-
-  isStatusPlanned(tender: Tender): boolean {
-    return tender.status === this.tenderService._TENDER_STATUSES_ALL.PLANNED;
-  }
-
-  isStatusActive(tender: Tender): boolean {
-    return tender.status === this.tenderService._TENDER_STATUSES_ALL.ACTIVE;
-  }
-
-
 
   ngOnDestroy(): void {
     if (this.subscriptions) {

@@ -139,9 +139,6 @@ export class TenderConfig {
 
     /** To show the best bet or not */
     IS_SHOW_BEST_BET: true,
-
-    /** One of 'draft', 'active' or 'closed' */
-    STATUS: this._TENDER_STATUSES_ALL.ACTIVE
   };
 
 

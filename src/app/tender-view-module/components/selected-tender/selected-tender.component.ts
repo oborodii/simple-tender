@@ -8,6 +8,7 @@ import { Tender } from '../../../types/tender.type';
 import { AbstractTenderComponent } from '../../../shared/components/abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../services/tender.service';
 import { AuthService } from '../../../services/auth.service';
+import { TenderStatusName } from '../../../types/tender-status-name.type';
 
 
 @Component({
@@ -18,6 +19,8 @@ import { AuthService } from '../../../services/auth.service';
 export class SelectedTenderComponent extends AbstractTenderComponent implements OnInit {
 
   loading: boolean;
+
+  tenderStatus: TenderStatusName;
 
   readonly SPINNER_DIAMETER: number = 120;
   readonly SPINNER_STROKE_WIDTH: number = 4;
@@ -40,6 +43,14 @@ export class SelectedTenderComponent extends AbstractTenderComponent implements 
     return this.selectedTender.currency ? this.selectedTender.currency.code : this.currencies[0].code;
   }
 
+  get isStatusClosed(): boolean {
+    return this.tenderStatus === this.tenderService._TENDER_STATUSES_ALL.CLOSED;
+  }
+
+  get isStatusPlanned(): boolean {
+    return this.tenderStatus === this.tenderService._TENDER_STATUSES_ALL.PLANNED;
+  }
+
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
@@ -51,6 +62,11 @@ export class SelectedTenderComponent extends AbstractTenderComponent implements 
 
   ngOnInit(): void {
     this.getSelectedTender();
+  }
+
+
+  setTenderStatus(event: TenderStatusName): void {
+    this.tenderStatus = event;
   }
 
 

@@ -19,7 +19,9 @@
             <div class="col">
               <mat-list>
                 <mat-list-item>
-                  <st-timer [tender]="selectedTender" [isLegendShow]="false">
+                  <st-timer [tender]="selectedTender"
+                            [isLegendShow]="false"
+                            (tenderStatusEmitter)="setTenderStatus($event)">
                     {{ 'LOADING' | translate }}
                   </st-timer>
                 </mat-list-item>
@@ -87,12 +89,12 @@
 
             <!-- Place a new bet -->
             <div class="col">
-              <ng-container *ngIf="isStatusClosed(selectedTender); else tenderNotCompleted">
+              <ng-container *ngIf="isStatusClosed; else tenderNotCompleted">
                 {{ 'BET.TENDER_COMPLETED' | translate }}.
               </ng-container>
 
               <ng-template #tenderNotCompleted>
-                <ng-container *ngIf="isStatusPlanned(selectedTender); else tenderNotPlanned">
+                <ng-container *ngIf="isStatusPlanned; else tenderNotPlanned">
                   {{ 'BET.TENDER_PLANNED' | translate }}.
                 </ng-container>
 

@@ -65,7 +65,6 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
       currency: this.createTenderForm.value.currency,
       quantity: this.createTenderForm.value.quantity,
       unit: this.createTenderForm.value.unit,
-      status: this.NEW_TENDER_DEFAULT_VALUE.STATUS,
       bets: []
     };
 

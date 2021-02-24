@@ -1,7 +1,5 @@
 import { TenderCurrency } from './tender-currency.type';
 import { TenderUnit } from './tender-unit.type';
-import { TenderStatusName } from './tender-status-name.type';
-
 
 export interface NewTenderDefaultValue {
   /** Min/Max value of the 'stepValue' field when creating a new tender */
@@ -46,7 +44,4 @@ export interface NewTenderDefaultValue {
 
   /** To show the best bet or not */
   readonly IS_SHOW_BEST_BET: boolean;
-
-  /** One of 'draft', 'active' or 'closed' */
-  readonly STATUS: TenderStatusName;
 }

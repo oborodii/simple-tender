@@ -23,7 +23,7 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
   @Input() tender: Tender;
   @Input() isLegendShow: boolean = true;
 
-  @Output() timeEvent: EventEmitter<number> = new EventEmitter<number>();
+  @Output() tenderStatusEmitter: EventEmitter<TenderStatusName> = new EventEmitter<TenderStatusName>();
 
   timerDate: TenderTimer;
 
@@ -60,7 +60,7 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
       seconds: 0
     };
 
-    this.timerTenderStatus = this.tender.status as TenderStatusName;
+    // this.timerTenderStatus = this.tender.status as TenderStatusName;
   }
 
 
@@ -75,7 +75,7 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
     const VAL_START_TIMER: number = startDate.getTime() - CURRENT_DATE.getTime();
     const VAL_END_TIMER: number = endDate.getTime() - CURRENT_DATE.getTime();
 
-    if ((endDate.getTime() - startDate.getTime() < 0) || (this.tender.status === this.TENDER_STATUSES_ALL.CLOSED)) {
+    if (endDate.getTime() - startDate.getTime() < 0) {
       this.timerTenderStatus = this.TENDER_STATUSES_ALL.CLOSED;
 
       if (this.subscriptions) {
@@ -103,6 +103,8 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
         }
       }
     }
+
+    this.tenderStatusEmitter.emit(this.timerTenderStatus);
   }
 
 
