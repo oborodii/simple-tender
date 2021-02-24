@@ -36,7 +36,7 @@
 
       <!-- Dates Column -->
       <ng-container matColumnDef="dates">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <th mat-header-cell *matHeaderCellDef>
           {{ 'LIST.TABLE.TH.DATES' | translate }}
         </th>
         <td mat-cell *matCellDef="let row">
@@ -58,7 +58,7 @@
 
       <!-- Timer Column -->
       <ng-container matColumnDef="timer">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <th mat-header-cell *matHeaderCellDef>
           {{ 'LIST.TABLE.TH.STATUS' | translate }}
         </th>
         <td mat-cell *matCellDef="let row">
@@ -90,6 +90,16 @@
         </th>
         <td mat-cell *matCellDef="let row">
           {{ row.stepValue + ' ' + row.currency.code }}
+        </td>
+      </ng-container>
+
+      <!-- Initiator company name Column -->
+      <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'LIST.TABLE.TH.COMPANY_NAME' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.user.displayName }}
         </td>
       </ng-container>
 

@@ -59,6 +59,7 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
     'timer',
     'bestBet',
     'stepValue',
+    'user',
     'quantity',
     'id'
   ];
