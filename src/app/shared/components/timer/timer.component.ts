@@ -59,8 +59,6 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
       minutes: 0,
       seconds: 0
     };
-
-    // this.timerTenderStatus = this.tender.status as TenderStatusName;
   }
 
 

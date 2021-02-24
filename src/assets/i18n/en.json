@@ -214,6 +214,7 @@
 		"NUMBER_OF_BETS": "Number of bets",
 		"PLACED_BETS_TITLE": "The following bids have been placed on your tender",
 		"QUANTITY": "Quantity of goods",
+		"STATUS": "Status",
 		"STEP_VALUE": "Step value",
 		"TENDER_INITIATOR": "Initiator of the tender"
 	}

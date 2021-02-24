@@ -19,9 +19,11 @@
             <div class="col">
               <mat-list>
                 <mat-list-item>
+                  <strong>{{ 'VIEW_TENDER.STATUS' | translate }}</strong>:
                   <st-timer [tender]="selectedTender"
-                            [isLegendShow]="false"
-                            (tenderStatusEmitter)="setTenderStatus($event)">
+                            [isLegendShow]="true"
+                            (tenderStatusEmitter)="setTenderStatus($event)"
+                            class="timer">
                     {{ 'LOADING' | translate }}
                   </st-timer>
                 </mat-list-item>
