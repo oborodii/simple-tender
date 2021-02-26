@@ -60,6 +60,18 @@ export abstract class AbstractTenderComponent implements OnDestroy {
     return this.tenderService._currentThemePalette;
   }
 
+  get MAX_STR_LENGTH(): number {
+    return this.tenderService._MAX_STR_LENGTH;
+  }
+
+  get TIME_FORMAT_FULL(): string {
+    return this.tenderService._TIME_FORMAT_FULL;
+  }
+
+  get TIME_FORMAT_SMALL(): string {
+    return this.tenderService._TIME_FORMAT_SMALL;
+  }
+
   get NEW_TENDER_DEFAULT_VALUE(): NewTenderDefaultValue {
     return this.tenderService._NEW_TENDER_DEFAULT_VALUE;
   }
@@ -108,12 +120,28 @@ export abstract class AbstractTenderComponent implements OnDestroy {
     this.translateService.use(this.currentLocale);
   }
 
+
   translate(key: string): string {
     return this.translateService.instant(key);
   }
 
+
   getLocalUnitCode(unit: TenderUnit): string {
     return this.tenderService.getLocalUnitCode(unit);
+  }
+
+
+  sliceStrLength(str: string, maxStrLength: number = this.MAX_STR_LENGTH): string {
+    const START_POSITION: number = 0;
+
+    if (str) {
+      if (str.length > maxStrLength) {
+        return str.slice(START_POSITION, maxStrLength) + '...';
+      } else {
+        return str;
+      }
+    }
+    return '-';
   }
 
 

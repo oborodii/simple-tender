@@ -1,3 +1,9 @@
+@import "src/app/shared/styles/variables";
+
+.mat-card {
+  margin-bottom: $content-margin-bottom;
+}
+
 .full-width-table {
   width: 100%;
 }
@@ -5,7 +11,7 @@
 .loading {
   margin: 0;
   display: inline-block;
-  font-size: 12px;
+  font-size: $default-font-size;
   font-weight: normal;
 }
 

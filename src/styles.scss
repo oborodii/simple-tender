@@ -15,9 +15,15 @@ body {
 }
 
 .form-style {
-  margin: 20px auto 60px auto;
+  margin: 20px auto $content-margin-bottom auto;
   width: $form-width;
   max-width: $form-max-width;
+}
+
+.table-style {
+  margin: 20px auto $content-margin-bottom auto;
+  width: $table-max-width;
+  max-width: $table-max-width;
 }
 
 .row {

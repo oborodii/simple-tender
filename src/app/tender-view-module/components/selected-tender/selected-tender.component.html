@@ -31,8 +31,8 @@
 
                 <mat-list-item>
                   <strong>{{ 'VIEW_TENDER.DURATION' | translate }}</strong>:
-                  {{ selectedTender.dateStart | date:'dd.MM.YYYY HH:mm' }} -
-                  {{ selectedTender.dateEnd | date:'dd.MM.YYYY HH:mm' }}
+                  {{ selectedTender.dateStart | date:TIME_FORMAT_SMALL }} -
+                  {{ selectedTender.dateEnd | date:TIME_FORMAT_SMALL }}
                 </mat-list-item>
                 <mat-divider></mat-divider>
 
@@ -118,13 +118,11 @@
       </mat-card>
 
       <!-- Information about the bets for initiator of the tender -->
-      <ng-container *ngIf="isCurrentUserCreatedThisTender
+      <div *ngIf="isCurrentUserCreatedThisTender
                             && selectedTender.bestBet
                             && selectedTender.bets
-                            && selectedTender.bets.length > 0">
-        <div class="bets-block-tittle">
-          <h2>{{ 'VIEW_TENDER.PLACED_BETS_TITLE' | translate }}:</h2>
-        </div>
+                            && selectedTender.bets.length > 0"
+           class="bets-block-tittle">
 
         <!-- The Best bet -->
         <st-best-bet [bestBet]="selectedTender.bestBet"
@@ -136,7 +134,7 @@
                       [bestBet]="selectedTender.bestBet"
                       [currencyCode]="currencyCode">
         </st-bet-table>
-      </ng-container>
+      </div>
     </div>
   </div>
 

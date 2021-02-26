@@ -16,16 +16,16 @@
           <mat-divider></mat-divider>
 
           <ng-container *ngIf="bestBet.comment">
-            <mat-list-item>
+            <mat-list-item [title]="bestBet.comment && bestBet.comment.length > MAX_STR_LENGTH ? bestBet.comment : ''">
               <strong>{{ 'BEST_BET.COMMENT' | translate }}</strong>:
-              {{ bestBet.comment }}
+              {{ sliceStrLength(bestBet.comment) }}
             </mat-list-item>
             <mat-divider></mat-divider>
           </ng-container>
 
           <mat-list-item>
             <strong>{{ 'BEST_BET.DATE_TIME' | translate }}</strong>:
-            {{ bestBet.dateTime | date:'dd.MM.YYYY HH:mm' }}
+            {{ bestBet.dateTime | date:TIME_FORMAT_FULL }}
           </mat-list-item>
           <mat-divider></mat-divider>
 

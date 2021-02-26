@@ -30,8 +30,6 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
   /** The set of provided page size options to display to the user */
   readonly PAGE_SIZE_OPTION: number[] = [20, 30, 50, 100];
 
-  readonly MAX_TITLE_LENGTH: number = 30;
-
   readonly SPINNER_DIAMETER: number = 19;
   readonly SPINNER_STROKE_WIDTH: number = 1;
 
@@ -100,16 +98,6 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
   }
 
 
-  sliceTenderTitle(title: string): string {
-    if (title) {
-      if (title.length > this.MAX_TITLE_LENGTH) {
-        return title.slice(0, this.MAX_TITLE_LENGTH) + '...';
-      } else {
-        return title;
-      }
-    }
-    return '-';
-  }
 
 
   /** Load an array of all tenders from the server */

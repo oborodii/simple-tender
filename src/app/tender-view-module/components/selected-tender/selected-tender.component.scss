@@ -14,7 +14,7 @@ mat-card-content {
 }
 
 .bets-block-tittle {
-  margin: 0 auto 20px auto;
+  margin: (30px - $content-margin-bottom) auto 15px auto;
   width: $form-width;
   max-width: $form-max-width;
 }

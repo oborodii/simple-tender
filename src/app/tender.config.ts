@@ -29,6 +29,12 @@ export class TenderConfig {
   /** Possible color palette values: 'primary' | 'accent' | 'warn' */
   readonly _currentThemePalette: ThemePalette = 'primary';
 
+  /** Maximum string length for titles, comments, etc */
+  readonly _MAX_STR_LENGTH: number = 30;
+
+  readonly _TIME_FORMAT_FULL: string = 'dd.MM.YYYY HH:mm:ss';
+  readonly _TIME_FORMAT_SMALL: string = 'dd.MM.YYYY HH:mm';
+
   /** All locales in application */
   readonly _LOCALE: TenderLocale = {
     UA: 'ua',
