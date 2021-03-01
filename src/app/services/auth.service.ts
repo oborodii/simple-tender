@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
 import { TenderConfig } from '../tender.config';
 import { TenderUser } from '../types/tender-user.type';
-import { FirebaseAuthResponse } from '../types/firebase-response.type';
+import { FirebaseAuthResponse } from '../types/firebase-auth-response.type';
 import { ResponseFirebaseUserPayload } from '../types/response-firebase-user-payload.type';
+import { FirebaseRefreshTokenResponse } from '../types/firebase-refresh-token-response.type';
 
 
 @Injectable({
@@ -42,6 +44,16 @@ export class AuthService extends TenderConfig {
 
   logout(): void {
     this.setToken(null);
+  }
+
+
+  navigateToMainPage(): void {
+    const url: string = '/' + environment.router_login_url;
+    this.router.navigate([url], {
+      queryParams: {
+        needAuth: true
+      }
+    });
   }
 
 
@@ -93,21 +105,41 @@ export class AuthService extends TenderConfig {
 
   setToken(response: FirebaseAuthResponse | null): void {
     if (response) {
-      const tokenExpiresInMs: number = Number(response.expiresIn) * 1000;
-      const expiresDate: number = new Date().getTime() + tokenExpiresInMs;
-      const idToken: string = response.idToken;
-      const userEmail: string = response.email;
-      const userDisplayName = response.displayName;
-
-      localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME, String(expiresDate));
-      localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME, idToken);
-      localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_USER_EMAIL, userEmail);
-      localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_USER_DISPLAY_NAME, String(userDisplayName));
+      if (response.expiresIn) {
+        const tokenExpiresInMs: number = Number(response.expiresIn) * 1000;
+        const expiresDate: number = new Date().getTime() + tokenExpiresInMs;
+        localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME, String(expiresDate));
+      }
+      if (response.idToken) {
+        localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME, response.idToken);
+      }
+      if (response.refreshToken) {
+        localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_REFRESH_TOKEN_NAME, response.refreshToken);
+      }
+      if (response.email) {
+        localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_USER_EMAIL_NAME, response.email);
+      }
+      if (response.displayName) {
+        localStorage.setItem(this._FIREBASE.LOCAL_STORAGE_USER_DISPLAY_NAME, String(response.displayName));
+      }
     } else {
       localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME);
       localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME);
-      localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_USER_EMAIL);
+      localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_REFRESH_TOKEN_NAME);
+      localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_USER_EMAIL_NAME);
       localStorage.removeItem(this._FIREBASE.LOCAL_STORAGE_USER_DISPLAY_NAME);
+    }
+  }
+
+
+  refreshToken(refreshToken: string): Observable<FirebaseRefreshTokenResponse | null> {
+    if (refreshToken) {
+      return this.http.post<FirebaseRefreshTokenResponse>(this._FIREBASE_REFRESH_TOKEN_URL, {
+        grant_type: this._FIREBASE.REFRESH_TOKEN_GRANT_TYPE_NAME,
+        refresh_token: refreshToken
+      });
+    } else {
+      return of(null);
     }
   }
 

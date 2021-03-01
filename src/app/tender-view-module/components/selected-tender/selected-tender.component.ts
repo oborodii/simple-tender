@@ -26,7 +26,7 @@ export class SelectedTenderComponent extends AbstractTenderComponent implements 
   readonly SPINNER_STROKE_WIDTH: number = 4;
 
   get isCurrentUserCreatedThisTender(): boolean {
-    const userEmail: string | null = localStorage.getItem(this.FIREBASE.LOCAL_STORAGE_USER_EMAIL);
+    const userEmail: string | null = localStorage.getItem(this.FIREBASE.LOCAL_STORAGE_USER_EMAIL_NAME);
 
     if (this.selectedTender && this.selectedTender.user) {
       if (userEmail) {

@@ -98,8 +98,6 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
   }
 
 
-
-
   /** Load an array of all tenders from the server */
   private getTenders(): void {
     this.subscriptions.add(

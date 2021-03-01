@@ -22,6 +22,7 @@ export class TenderConfig {
 
   /** URLs */
   readonly _FIREBASE_LOGIN_URL: string = environment.firebase_login_url + environment.firebaseConfig.apiKey;
+  readonly _FIREBASE_REFRESH_TOKEN_URL: string = environment.firebase_refresh_url + environment.firebaseConfig.apiKey;
   readonly _FIREBASE_SIGNUP_URL: string = environment.firebase_signup_url + environment.firebaseConfig.apiKey;
   readonly _FIREBASE_GET_USER_DATA_URL: string = environment.firebase_lookup_url + environment.firebaseConfig.apiKey;
   readonly _FIREBASE_TENDERS_URL: string = environment.firebase_DB_url + this._TENDERS_DB_TABLE_NAME;
@@ -40,6 +41,12 @@ export class TenderConfig {
     UA: 'ua',
     EN: 'en',
   };
+
+  // How often to check if the token has expired (in milliseconds):
+  readonly _TIMER_PERIOD_MS: number = 540000;           // 9 min
+
+  // Token lifetime limit, after which you need to get a new token (in milliseconds):
+  readonly _TOKEN_EXPIRES_LIMIT_MS: number = 1200000;   // 20 min
 
   /** All currencies used in the application */
   readonly _currencies: TenderCurrency[] = [
@@ -190,9 +197,11 @@ export class TenderConfig {
 
   readonly _FIREBASE: FirebaseConst = {
     LOCAL_STORAGE_TOKEN_NAME: 'firebase-token',
+    LOCAL_STORAGE_REFRESH_TOKEN_NAME: 'firebase-refresh-token',
     LOCAL_STORAGE_EXPIRES_TOKEN_NAME: 'firebase-token-expires',
-    LOCAL_STORAGE_USER_EMAIL: 'firebase-user-email',
+    LOCAL_STORAGE_USER_EMAIL_NAME: 'firebase-user-email',
     LOCAL_STORAGE_USER_DISPLAY_NAME: 'firebase-user-display-name',
+    REFRESH_TOKEN_GRANT_TYPE_NAME: 'refresh_token'
   };
 
 

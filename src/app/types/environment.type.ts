@@ -9,6 +9,7 @@ export interface Environment {
   firebase_signup_url: string;
   firebase_lookup_url: string;
   firebase_login_url: string;
+  firebase_refresh_url: string;
   firebase_DB_url: string;
   router_list_url: string;
   router_create_url: string;

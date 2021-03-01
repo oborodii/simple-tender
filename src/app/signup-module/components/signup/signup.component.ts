@@ -9,7 +9,7 @@ import { AbstractTenderComponent } from '../../../shared/components/abstract-ten
 import { TenderService } from '../../../services/tender.service';
 import { AuthService } from '../../../services/auth.service';
 import { TenderUser } from '../../../types/tender-user.type';
-import { FirebaseAuthResponse } from '../../../types/firebase-response.type';
+import { FirebaseAuthResponse } from '../../../types/firebase-auth-response.type';
 
 
 @Component({
