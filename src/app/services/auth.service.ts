@@ -48,7 +48,7 @@ export class AuthService extends TenderConfig {
 
 
   navigateToMainPage(): void {
-    const url: string = '/' + environment.router_login_url;
+    const url: string = '/' + environment.routerPath.login;
     this.router.navigate([url], {
       queryParams: {
         needAuth: true

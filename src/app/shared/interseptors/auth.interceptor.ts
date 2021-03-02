@@ -40,7 +40,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
           if (err.status === 401 || isInvalidRefreshToken || isInvalidToken) {
             this.authService.logout();
-            const url: string = '/' + environment.router_login_url;
+            const url: string = '/' + environment.routerPath.login;
             this.router.navigate([url], {
               queryParams: {
                 permissionDeniedUnauthorized: true

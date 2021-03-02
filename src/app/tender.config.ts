@@ -21,11 +21,11 @@ export class TenderConfig {
   readonly _TENDERS_DB_TABLE_NAME: string = 'tenders';
 
   /** URLs */
-  readonly _FIREBASE_LOGIN_URL: string = environment.firebase_login_url + environment.firebaseConfig.apiKey;
-  readonly _FIREBASE_REFRESH_TOKEN_URL: string = environment.firebase_refresh_url + environment.firebaseConfig.apiKey;
-  readonly _FIREBASE_SIGNUP_URL: string = environment.firebase_signup_url + environment.firebaseConfig.apiKey;
-  readonly _FIREBASE_GET_USER_DATA_URL: string = environment.firebase_lookup_url + environment.firebaseConfig.apiKey;
-  readonly _FIREBASE_TENDERS_URL: string = environment.firebase_DB_url + this._TENDERS_DB_TABLE_NAME;
+  readonly _FIREBASE_LOGIN_URL: string = environment.firebaseUrl.login + environment.firebaseConfig.apiKey;
+  readonly _FIREBASE_REFRESH_TOKEN_URL: string = environment.firebaseUrl.refresh + environment.firebaseConfig.apiKey;
+  readonly _FIREBASE_SIGNUP_URL: string = environment.firebaseUrl.signup + environment.firebaseConfig.apiKey;
+  readonly _FIREBASE_GET_USER_DATA_URL: string = environment.firebaseUrl.lookup + environment.firebaseConfig.apiKey;
+  readonly _FIREBASE_TENDERS_URL: string = environment.firebaseUrl.DB + this._TENDERS_DB_TABLE_NAME;
 
   /** Possible color palette values: 'primary' | 'accent' | 'warn' */
   readonly _currentThemePalette: ThemePalette = 'primary';
@@ -217,11 +217,11 @@ export class TenderConfig {
   };
 
   readonly _ROUTER_URL: RouterUrl = {
-    LIST: '/' + environment.router_list_url,
-    CREATE: '/' + environment.router_create_url,
-    VIEW: '/' + environment.router_view_url,
-    LOGIN: '/' + environment.router_login_url,
-    SIGNUP: '/' + environment.router_signup_url
+    LIST: '/' + environment.routerPath.list,
+    CREATE: '/' + environment.routerPath.create,
+    VIEW: '/' + environment.routerPath.view,
+    LOGIN: '/' + environment.routerPath.login,
+    SIGNUP: '/' + environment.routerPath.signup
   };
 
 }

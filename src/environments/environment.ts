@@ -17,16 +17,20 @@ export const environment: Environment = {
     messagingSenderId: '260420599916',
     appId: '1:260420599916:web:bf99bd27d52549fc36d849'
   },
-  firebase_signup_url: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
-  firebase_lookup_url: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=',
-  firebase_login_url: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
-  firebase_refresh_url: 'https://securetoken.googleapis.com/v1/token?key=',
-  firebase_DB_url: 'https://simpletender-aa98d-default-rtdb.firebaseio.com/',
-  router_list_url: 'list',
-  router_create_url: 'create',
-  router_view_url: 'view',
-  router_login_url: 'login',
-  router_signup_url: 'signup'
+  firebaseUrl: {
+    signup: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
+    lookup: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=',
+    login: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
+    refresh: 'https://securetoken.googleapis.com/v1/token?key=',
+    DB: 'https://simpletender-aa98d-default-rtdb.firebaseio.com/',
+  },
+  routerPath: {
+    list: 'list',
+    create: 'create',
+    view: 'view',
+    login: 'login',
+    signup: 'signup'
+  }
 };
 
 /*
