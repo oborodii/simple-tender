@@ -20,7 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateStore } from '@ngx-translate/core';
-import { createTranslateLoader } from './classes/create-translate-loader.function';
+import { createTranslateLoader } from './functions/create-translate-loader.function';
 
 import { environment } from '../../environments/environment';
 import { MissingTranslationService } from './classes/missing-translation-service.class';
