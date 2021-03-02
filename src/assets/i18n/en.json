@@ -127,7 +127,7 @@
 		},
 		"FORM_TITLE": "Login",
 		"LOGIN_SUCCESS": "Welcome to the site!",
-		"NEED_AUTH": "You have to enter your login and password to view this page",
+		"NEED_AUTH": "Authorisation Error! Please enter your login and password",
 		"PASSWORD_LABEL": "Your password",
 		"SUBMIT": "Submit"
 	},

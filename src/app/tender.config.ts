@@ -42,12 +42,6 @@ export class TenderConfig {
     EN: 'en',
   };
 
-  // How often to check if the token has expired (in milliseconds):
-  readonly _TIMER_PERIOD_MS: number = 540000;           // 9 min
-
-  // Token lifetime limit, after which you need to get a new token (in milliseconds):
-  readonly _TOKEN_EXPIRES_LIMIT_MS: number = 1200000;   // 20 min
-
   /** All currencies used in the application */
   readonly _currencies: TenderCurrency[] = [
     {
@@ -192,7 +186,9 @@ export class TenderConfig {
     TOO_MANY_ATTEMPTS: 'TOO_MANY_ATTEMPTS',
     USER_DISABLED: 'USER_DISABLED',
     EMAIL_EXISTS: 'EMAIL_EXISTS',
-    OPERATION_NOT_ALLOWED: 'OPERATION_NOT_ALLOWED'
+    OPERATION_NOT_ALLOWED: 'OPERATION_NOT_ALLOWED',
+    INVALID_REFRESH_TOKEN: 'INVALID_REFRESH_TOKEN',
+    INVALID_ID_TOKEN: 'INVALID_ID_TOKEN'
   };
 
   readonly _FIREBASE: FirebaseConst = {

@@ -32,14 +32,6 @@ export class LayoutComponent extends AbstractTenderComponent implements OnInit {
     return this.authService.isUserAuth;
   }
 
-  get TIMER_PERIOD_MS(): number {
-    return this.authService._TIMER_PERIOD_MS;
-  }
-
-  get TOKEN_EXPIRES_LIMIT_MS(): number {
-    return this.authService._TOKEN_EXPIRES_LIMIT_MS;
-  }
-
   get currentThemePalette(): ThemePalette {
     return this.tenderService._currentThemePalette;
   }
@@ -68,8 +60,14 @@ export class LayoutComponent extends AbstractTenderComponent implements OnInit {
 
 
   private refreshTokenByTimer(): void {
+    // How often to check if the token has expired (in milliseconds):
+    const TIMER_PERIOD_MS: number = 540000;           // 9 min
+
+    // Token lifetime limit, after which you need to get a new token (in milliseconds):
+    const TOKEN_EXPIRES_LIMIT_MS: number = 1200000;   // 20 min
+
     this.subscriptions.add(
-      timer(0, this.TIMER_PERIOD_MS).pipe(
+      timer(0, TIMER_PERIOD_MS).pipe(
         switchMap(() => {
           const refreshToken: string | null = localStorage.getItem(this.FIREBASE.LOCAL_STORAGE_REFRESH_TOKEN_NAME);
           const expiresDateInLocalStorage: string | null = localStorage.getItem(this.FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME);
@@ -79,8 +77,8 @@ export class LayoutComponent extends AbstractTenderComponent implements OnInit {
             const expiresDate: Date = new Date(Number(expiresDateInLocalStorage));
 
             // If token expires in 'TOKEN_EXPIRES_LIMIT_MS' milliseconds:
-            const remainder: number = expiresDate.getTime() - currentDate.getTime();
-            if (remainder < this.TOKEN_EXPIRES_LIMIT_MS) {
+            const millisecondsLeft: number = expiresDate.getTime() - currentDate.getTime();
+            if (millisecondsLeft < TOKEN_EXPIRES_LIMIT_MS) {
               return this.authService.refreshToken(refreshToken);
             } else {
               return of(null);

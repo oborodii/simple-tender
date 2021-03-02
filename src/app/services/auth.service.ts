@@ -90,7 +90,7 @@ export class AuthService extends TenderConfig {
     const tokenFromLocalStorage: string | null = localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_EXPIRES_TOKEN_NAME);
 
     if (tokenFromLocalStorage) {
-      const expiresDate: Date = new Date(tokenFromLocalStorage);
+      const expiresDate: Date = new Date(Number(tokenFromLocalStorage));
       if (new Date() > expiresDate) {
         this.logout();
         this.router.navigate([this._ROUTER_URL.LOGIN]);

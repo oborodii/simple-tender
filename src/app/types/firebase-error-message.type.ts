@@ -5,4 +5,6 @@ export interface FirebaseErrorMessage {
   USER_DISABLED: string;
   EMAIL_EXISTS: string;
   OPERATION_NOT_ALLOWED: string;
+  INVALID_REFRESH_TOKEN: string;
+  INVALID_ID_TOKEN: string;
 }
