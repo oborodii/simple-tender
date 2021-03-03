@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable, of, timer } from 'rxjs';
 import { map, shareReplay, switchMap } from 'rxjs/operators';
 
@@ -40,9 +39,7 @@ export class LayoutComponent extends AbstractTenderComponent implements OnInit {
   constructor(protected tenderService: TenderService,
               protected translateService: TranslateService,
               protected authService: AuthService,
-              private breakpointObserver: BreakpointObserver,
-              private router: Router
-  ) {
+              private breakpointObserver: BreakpointObserver) {
     super(translateService, tenderService, authService);
   }
 
@@ -50,12 +47,6 @@ export class LayoutComponent extends AbstractTenderComponent implements OnInit {
   ngOnInit(): void {
     this.translateService.use(environment.defaultLocale);
     this.refreshTokenByTimer();
-  }
-
-
-  logout(): void {
-    this.authService.logout();
-    this.router.navigate([this.ROUTER_URL.LOGIN]);
   }
 
 

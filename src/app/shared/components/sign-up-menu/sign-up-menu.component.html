@@ -1,0 +1,23 @@
+<a mat-list-item
+   [routerLink]="ROUTER_URL.SIGNUP"
+   routerLinkActive="active"
+   [routerLinkActiveOptions]="{exact: true}">
+  <mat-icon class="icons" aria-hidden="false" aria-label="Sing up icon">
+    {{ MATERIAL_ICON.SIGNUP }}
+  </mat-icon>
+  <div class="menu-txt">
+    {{ 'MENU.SIGNUP' | translate }}
+  </div>
+</a>
+
+<a mat-list-item
+   [routerLink]="ROUTER_URL.LOGIN"
+   routerLinkActive="active"
+   [routerLinkActiveOptions]="{exact: true}">
+  <mat-icon class="icons" aria-hidden="false" aria-label="Login icon">
+    {{ MATERIAL_ICON.LOGIN }}
+  </mat-icon>
+  <div class="menu-txt">
+    {{ 'MENU.LOGIN' | translate }}
+  </div>
+</a>

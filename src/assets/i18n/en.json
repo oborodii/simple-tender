@@ -140,6 +140,7 @@
 	},
 	"MENU": {
 		"CREATE_NEW_TENDER": "Create a new tender",
+		"HELLO": "Hello",
 		"LABEL": "Menu",
 		"LIST_OF_TENDERS": "List of tenders",
 		"LOGIN": "Login",

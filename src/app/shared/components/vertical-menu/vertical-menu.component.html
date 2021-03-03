@@ -1,0 +1,16 @@
+<mat-nav-list>
+  <a mat-list-item
+     [routerLink]="ROUTER_URL.LIST"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{exact:true}">
+    {{ 'MENU.MAIN_PAGE' | translate }}
+  </a>
+
+  <a mat-list-item
+     *ngIf="isUserAuth"
+     [routerLink]="ROUTER_URL.CREATE"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{exact: true}">
+    {{ 'MENU.CREATE_NEW_TENDER' | translate }}
+  </a>
+</mat-nav-list>

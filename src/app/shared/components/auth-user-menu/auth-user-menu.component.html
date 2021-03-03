@@ -1,0 +1,29 @@
+<ng-container *ngIf="companyName">
+  <button mat-button [matMenuTriggerFor]="menu" class="company-name">
+    {{ 'MENU.HELLO' | translate }},
+    <strong>{{ companyName }}</strong>
+  </button>
+
+  <mat-menu #menu="matMenu" xPosition="before">
+    <!-- Create a new tender -->
+    <a mat-menu-item [routerLink]="ROUTER_URL.CREATE"
+       routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <mat-icon class="icons" aria-hidden="false" aria-label="Add icon">
+        {{ MATERIAL_ICON.ADD }}
+      </mat-icon>
+      <span class="menu-txt">
+        {{ 'MENU.CREATE_NEW_TENDER' | translate }}
+      </span>
+    </a>
+
+    <!-- Logout -->
+    <button mat-menu-item (click)="logout()">
+      <mat-icon class="icons" aria-hidden="false" aria-label="Logout icon">
+        {{ MATERIAL_ICON.LOGOUT }}
+      </mat-icon>
+      <span class="menu-txt">
+        {{ 'MENU.LOGOUT' | translate }}
+      </span>
+    </button>
+  </mat-menu>
+</ng-container>

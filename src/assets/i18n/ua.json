@@ -138,6 +138,7 @@
 	},
 	"MENU": {
 		"CREATE_NEW_TENDER": "Cтворити новий тендер",
+		"HELLO": "Привіт",
 		"LABEL": "Меню",
 		"LIST_OF_TENDERS": "Перелік тендерів",
 		"LOGIN": "Логін",

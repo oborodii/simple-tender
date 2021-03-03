@@ -7,18 +7,7 @@
                class="sidenav">
 
     <!-- Vertical menu -->
-    <mat-nav-list>
-      <a mat-list-item [routerLink]="ROUTER_URL.LIST"
-         routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-        {{ 'MENU.MAIN_PAGE' | translate }}
-      </a>
-
-      <a mat-list-item [routerLink]="ROUTER_URL.CREATE"
-         routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-         *ngIf="isUserAuth">
-        {{ 'MENU.CREATE_NEW_TENDER' | translate }}
-      </a>
-    </mat-nav-list>
+    <st-vertical-menu></st-vertical-menu>
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -29,54 +18,20 @@
               *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+
       <div>{{ 'APP_TITLE' | translate }}</div>
 
       <div class="spacer"></div>
 
-      <!-- Login/Logout -->
+      <!-- Login/Logout menu -->
       <mat-nav-list class="list-horizontal">
-        <ng-container *ngIf="!isUserAuth">
-          <a mat-list-item [routerLink]="ROUTER_URL.SIGNUP"
-             routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <mat-icon class="icons" aria-hidden="false" aria-label="Sing up icon">
-              {{ MATERIAL_ICON.SIGNUP }}
-            </mat-icon>
-            <div class="menu-txt">
-              {{ 'MENU.SIGNUP' | translate }}
-            </div>
-          </a>
-
-          <a mat-list-item [routerLink]="ROUTER_URL.LOGIN"
-             routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <mat-icon class="icons" aria-hidden="false" aria-label="Login icon">
-              {{ MATERIAL_ICON.LOGIN }}
-            </mat-icon>
-            <div class="menu-txt">
-              {{ 'MENU.LOGIN' | translate }}
-            </div>
-          </a>
+        <ng-container *ngIf="isUserAuth; else authNeed">
+          <st-auth-user-menu></st-auth-user-menu>
         </ng-container>
 
-        <ng-container *ngIf="isUserAuth">
-          <a mat-list-item [routerLink]="ROUTER_URL.CREATE"
-             routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <mat-icon class="icons" aria-hidden="false" aria-label="Add icon">
-              {{ MATERIAL_ICON.ADD }}
-            </mat-icon>
-            <span class="menu-txt">
-            {{ 'MENU.CREATE_NEW_TENDER' | translate }}
-          </span>
-          </a>
-
-          <a mat-list-item (click)="logout()">
-            <mat-icon class="icons" aria-hidden="false" aria-label="Logout icon">
-              {{ MATERIAL_ICON.LOGOUT }}
-            </mat-icon>
-            <span class="menu-txt">
-            {{ 'MENU.LOGOUT' | translate }}
-          </span>
-          </a>
-        </ng-container>
+        <ng-template #authNeed>
+          <st-sign-up-menu></st-sign-up-menu>
+        </ng-template>
       </mat-nav-list>
     </mat-toolbar>
 
@@ -92,4 +47,5 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-<st-footer>Loading...</st-footer>
+<!-- Footer -->
+<st-footer></st-footer>

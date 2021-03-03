@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateStore } from '@ngx-translate/core';
 import { createTranslateLoader } from './functions/create-translate-loader.function';
@@ -28,13 +29,19 @@ import { LanguageToggleComponent } from './components/language-toggle/language-t
 import { FooterComponent } from './components/footer/footer.component';
 import { MatPaginatorNgxTranslateService } from '../services/mat-paginator-ngx-translate.service';
 import { TimerComponent } from './components/timer/timer.component';
+import { AuthUserMenuComponent } from './components/auth-user-menu/auth-user-menu.component';
+import { SignUpMenuComponent } from './components/sign-up-menu/sign-up-menu.component';
+import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.component';
 
 
 @NgModule({
   declarations: [
     LanguageToggleComponent,
     FooterComponent,
-    TimerComponent
+    TimerComponent,
+    AuthUserMenuComponent,
+    SignUpMenuComponent,
+    VerticalMenuComponent
   ],
   imports: [
     CommonModule,
@@ -67,7 +74,8 @@ import { TimerComponent } from './components/timer/timer.component';
     MatSortModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatTableModule
+    MatTableModule,
+    MatMenuModule
   ],
   exports: [
     CommonModule,
@@ -77,6 +85,9 @@ import { TimerComponent } from './components/timer/timer.component';
     LanguageToggleComponent,
     FooterComponent,
     TimerComponent,
+    AuthUserMenuComponent,
+    SignUpMenuComponent,
+    VerticalMenuComponent,
 
     MatInputModule,
     MatButtonModule,
@@ -91,7 +102,8 @@ import { TimerComponent } from './components/timer/timer.component';
     MatSortModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatTableModule
+    MatTableModule,
+    MatMenuModule
   ],
   providers: [
     TranslateStore,
