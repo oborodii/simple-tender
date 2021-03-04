@@ -1,4 +1,4 @@
-<div *ngIf="timerDate && timerTenderStatus" class="timer">
+<div *ngIf="isTimerLoaded" class="timer">
 
   <div class="status" *ngIf="timerTenderStatus === TENDER_STATUSES_ALL.CLOSED">
     <div class="closed">

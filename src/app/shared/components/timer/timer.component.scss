@@ -1,42 +1,49 @@
+@import "src/app/shared/styles/variables";
+
 .timer {
+  width: $timer-cell-width;
+
   .status {
     display: inline-block;
-    font-size: 12px;
+    font-size: $timer-status-font-size;
     line-height: 1rem;
     color: grey;
-    font-weight: normal;
+    font-weight: $normal-font-weight;
 
     .cell-wrapper {
       margin-top: 3px;
       display: inline-block;
-      font-size: 14px;
-      font-weight: 400;
+      font-size: $timer-status-font-size;
+      font-weight: $normal-font-weight;
 
       .title {
         display: inline-block;
         font-size: 10px;
         color: grey;
-        font-weight: normal;
+        font-weight: $normal-font-weight;
       }
 
       .counter {
         margin: 0 9px 0 0;
         display: inline-block;
         font-size: 16px;
-        font-weight: 400;
+        font-weight: $normal-font-weight;
       }
     }
   }
 }
 
 .active {
+  font-size: $timer-status-font-size;
   color: green;
 }
 
 .closed {
+  font-size: $timer-status-font-size;
   color: #ca0000;
 }
 
 .planned {
+  font-size: $timer-status-font-size;
   color: blueviolet;
 }

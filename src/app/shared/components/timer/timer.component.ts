@@ -34,6 +34,10 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
     return this.tenderService._TENDER_STATUSES_ALL;
   }
 
+  get isTimerLoaded(): boolean {
+    return this.timerDate && Boolean(this.timerTenderStatus);
+  }
+
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
@@ -76,31 +80,33 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
     const VAL_START_TIMER: number = startDate.getTime() - CURRENT_DATE.getTime();
     const VAL_END_TIMER: number = endDate.getTime() - CURRENT_DATE.getTime();
 
-    if (endDate.getTime() - startDate.getTime() < 0) {
-      this.timerTenderStatus = this.TENDER_STATUSES_ALL.CLOSED;
+    if (this.timerDate) {
+      if (endDate.getTime() - startDate.getTime() < 0) {
+        this.timerTenderStatus = this.TENDER_STATUSES_ALL.CLOSED;
 
-      if (this.subscriptions) {
-        this.subscriptions.unsubscribe();
-      }
-    } else {
-      if (VAL_START_TIMER > 0) {
-        this.setDaysHoursMinutesSeconds(VAL_START_TIMER);
-        this.timerTenderStatus = this.TENDER_STATUSES_ALL.PLANNED;
+        if (this.subscriptions) {
+          this.subscriptions.unsubscribe();
+        }
       } else {
-        if (VAL_END_TIMER < 0) {
-          this.timerDate.days = 0;
-          this.timerDate.hours = 0;
-          this.timerDate.minutes = 0;
-          this.timerDate.seconds = 0;
-
-          this.timerTenderStatus = this.TENDER_STATUSES_ALL.CLOSED;
-
-          if (this.subscriptions) {
-            this.subscriptions.unsubscribe();
-          }
+        if (VAL_START_TIMER > 0) {
+          this.setDaysHoursMinutesSeconds(VAL_START_TIMER);
+          this.timerTenderStatus = this.TENDER_STATUSES_ALL.PLANNED;
         } else {
-          this.setDaysHoursMinutesSeconds(VAL_END_TIMER);
-          this.timerTenderStatus = this.TENDER_STATUSES_ALL.ACTIVE;
+          if (VAL_END_TIMER < 0) {
+            this.timerDate.days = 0;
+            this.timerDate.hours = 0;
+            this.timerDate.minutes = 0;
+            this.timerDate.seconds = 0;
+
+            this.timerTenderStatus = this.TENDER_STATUSES_ALL.CLOSED;
+
+            if (this.subscriptions) {
+              this.subscriptions.unsubscribe();
+            }
+          } else {
+            this.setDaysHoursMinutesSeconds(VAL_END_TIMER);
+            this.timerTenderStatus = this.TENDER_STATUSES_ALL.ACTIVE;
+          }
         }
       }
     }
