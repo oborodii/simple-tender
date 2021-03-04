@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -21,8 +22,10 @@ export class AuthUserMenuComponent extends AbstractTenderComponent implements On
   constructor(protected tenderService: TenderService,
               protected translateService: TranslateService,
               protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta,
               private router: Router) {
-    super(translateService, tenderService, authService);
+    super(translateService, tenderService, authService, title, meta);
   }
 
 

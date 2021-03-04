@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 import { map, switchMap } from 'rxjs/operators';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -19,7 +20,7 @@ import { TenderUser } from '../../../types/tender-user.type';
   templateUrl: './create-tender-form.component.html',
   styleUrls: ['./create-tender-form.component.scss']
 })
-export class CreateTenderFormComponent extends AbstractTenderComponent {
+export class CreateTenderFormComponent extends AbstractTenderComponent implements OnInit {
 
   createTenderForm: FormGroup = new FormGroup({
     dateStart: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.DATE_START),
@@ -49,8 +50,16 @@ export class CreateTenderFormComponent extends AbstractTenderComponent {
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta,
               protected router: Router) {
-    super(translateService, tenderService, authService);
+    super(translateService, tenderService, authService, title, meta);
+  }
+
+
+  ngOnInit(): void {
+    this.setPageTitle('PAGE_TITLE.CREATE_TENDER');
+    this.setPageDescription('PAGE_DESCRIPTION.CREATE_TENDER');
   }
 
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
@@ -59,9 +60,10 @@ export class BetCreateComponent extends AbstractTenderComponent {
 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
-              protected authService: AuthService
-  ) {
-    super(translateService, tenderService, authService);
+              protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta) {
+    super(translateService, tenderService, authService, title, meta);
   }
 
 

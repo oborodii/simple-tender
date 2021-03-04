@@ -213,7 +213,8 @@ export class TenderConfig {
     SIGNUP: 'face',
     LOGIN: 'login',
     LOGOUT: 'logout',
-    LIST: 'format_list_numbered'
+    LIST: 'format_list_numbered',
+    NOT_FOUND: 'sentiment_dissatisfied'
   };
 
   readonly _ROUTER_URL: RouterUrl = {

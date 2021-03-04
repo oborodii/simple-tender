@@ -7,8 +7,9 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { LayoutComponent } from './shared/components/layout/layout.component';
 import { AuthInterceptor } from './shared/interseptors/auth.interceptor';
+import { LayoutComponent } from './shared/components/layout/layout.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -19,7 +20,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
 
 @NgModule({
   declarations: [
-    LayoutComponent
+    LayoutComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

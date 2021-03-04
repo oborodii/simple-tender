@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -16,8 +17,10 @@ export class SignUpMenuComponent extends AbstractTenderComponent {
 
   constructor(protected tenderService: TenderService,
               protected translateService: TranslateService,
-              protected authService: AuthService) {
-    super(translateService, tenderService, authService);
+              protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta) {
+    super(translateService, tenderService, authService, title, meta);
   }
 
 }

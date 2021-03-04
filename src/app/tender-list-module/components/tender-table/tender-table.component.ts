@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 import { TranslateService } from '@ngx-translate/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -72,13 +73,17 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta,
               protected router: Router) {
-    super(translateService, tenderService, authService);
+    super(translateService, tenderService, authService, title, meta);
   }
 
 
   ngOnInit(): void {
     this.tenders = [];
+    this.setPageTitle('PAGE_TITLE.LIST');
+    this.setPageDescription('PAGE_DESCRIPTION.LIST');
   }
 
 

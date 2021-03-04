@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { Observable, of, timer } from 'rxjs';
 import { map, shareReplay, switchMap } from 'rxjs/operators';
 
@@ -39,8 +40,10 @@ export class LayoutComponent extends AbstractTenderComponent implements OnInit {
   constructor(protected tenderService: TenderService,
               protected translateService: TranslateService,
               protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta,
               private breakpointObserver: BreakpointObserver) {
-    super(translateService, tenderService, authService);
+    super(translateService, tenderService, authService, title, meta);
   }
 
 

@@ -5,7 +5,9 @@
     </h1>
   </mat-card-title>
   <mat-card-content>
-    <div class="material-icons smile-icon">sentiment_dissatisfied</div>
+    <div class="material-icons smile-icon">
+      {{ MATERIAL_ICON.NOT_FOUND }}
+    </div>
     <p>
       {{ 'NOT_FOUND.PAGE_NOT_FOUND' | translate }}.
       <a [routerLink]="ROUTER_URL.LIST" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">

@@ -1,7 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
+import { ThemePalette } from '@angular/material/core';
 import { Subscription } from 'rxjs';
 
-import { ThemePalette } from '@angular/material/core';
 import { TranslateService } from '@ngx-translate/core';
 
 import { TenderService } from '../../../services/tender.service';
@@ -115,14 +116,36 @@ export abstract class AbstractTenderComponent implements OnDestroy {
 
   protected constructor(protected translateService: TranslateService,
                         protected tenderService: TenderService,
-                        protected authService: AuthService
-  ) {
+                        protected authService: AuthService,
+                        protected title: Title,
+                        protected meta: Meta) {
     this.translateService.use(this.currentLocale);
   }
 
 
   translate(key: string): string {
     return this.translateService.instant(key);
+  }
+
+
+  // Set <title>...</title>
+  setPageTitle(key: string): void {
+    this.translateService.get([key, 'APP_TITLE']).subscribe(
+      (translations: any) => {
+        this.title.setTitle(translations[key] + ' | ' + translations.APP_TITLE);
+      });
+  }
+
+
+  // Set <meta name="description" content="...">
+  setPageDescription(key: string): void {
+    this.translateService.get(key).subscribe(
+      (translations: any) => {
+        this.meta.updateTag({
+          name: 'description',
+          content: translations
+        });
+      });
   }
 
 

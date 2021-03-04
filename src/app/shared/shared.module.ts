@@ -24,7 +24,6 @@ import { MissingTranslationHandler, TranslateLoader, TranslateModule, TranslateS
 import { createTranslateLoader } from './functions/create-translate-loader.function';
 
 import { environment } from '../../environments/environment';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MissingTranslationService } from './classes/missing-translation-service.class';
 import { LanguageToggleComponent } from './components/language-toggle/language-toggle.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -37,7 +36,6 @@ import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.
 
 @NgModule({
   declarations: [
-    NotFoundComponent,
     LanguageToggleComponent,
     FooterComponent,
     TimerComponent,
@@ -84,7 +82,6 @@ import { VerticalMenuComponent } from './components/vertical-menu/vertical-menu.
     ReactiveFormsModule,
     TranslateModule,
 
-    NotFoundComponent,
     LanguageToggleComponent,
     FooterComponent,
     TimerComponent,

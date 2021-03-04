@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 import { switchMap } from 'rxjs/operators';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -55,13 +56,17 @@ export class SelectedTenderComponent extends AbstractTenderComponent implements 
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta,
               private route: ActivatedRoute) {
-    super(translateService, tenderService, authService);
+    super(translateService, tenderService, authService, title, meta);
   }
 
 
   ngOnInit(): void {
     this.getSelectedTender();
+    this.setPageTitle('PAGE_TITLE.SELECTED_TENDER');
+    this.setPageDescription('PAGE_DESCRIPTION.SELECTED_TENDER');
   }
 
 

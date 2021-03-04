@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Meta, Title } from '@angular/platform-browser';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -38,14 +39,17 @@ export class LoginFormComponent extends AbstractTenderComponent implements OnIni
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta,
               protected router: Router,
-              private route: ActivatedRoute
-  ) {
-    super(translateService, tenderService, authService);
+              private route: ActivatedRoute) {
+    super(translateService, tenderService, authService, title, meta);
   }
 
 
   ngOnInit(): void {
+    this.setPageTitle('PAGE_TITLE.LOGIN');
+    this.setPageDescription('PAGE_DESCRIPTION.LOGIN');
     this.isShowWarningMessage();
   }
 

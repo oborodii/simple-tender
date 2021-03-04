@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Meta, Title } from '@angular/platform-browser';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -17,7 +18,7 @@ import { FirebaseAuthResponse } from '../../../types/firebase-auth-response.type
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignUpComponent extends AbstractTenderComponent {
+export class SignUpComponent extends AbstractTenderComponent implements OnInit {
 
   loading: boolean = false;
 
@@ -40,8 +41,16 @@ export class SignUpComponent extends AbstractTenderComponent {
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta,
               protected router: Router) {
-    super(translateService, tenderService, authService);
+    super(translateService, tenderService, authService, title, meta);
+  }
+
+
+  ngOnInit(): void {
+    this.setPageTitle('PAGE_TITLE.SIGNUP');
+    this.setPageDescription('PAGE_DESCRIPTION.SIGNUP');
   }
 
 

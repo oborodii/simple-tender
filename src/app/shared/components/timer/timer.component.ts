@@ -1,5 +1,6 @@
 import { Component, Input, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 import { Observable, timer } from 'rxjs';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -37,8 +38,10 @@ export class TimerComponent extends AbstractTenderComponent implements OnInit, O
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta,
               protected router: Router) {
-    super(translateService, tenderService, authService);
+    super(translateService, tenderService, authService, title, meta);
   }
 
 

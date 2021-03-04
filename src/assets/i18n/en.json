@@ -154,6 +154,22 @@
 		"GO_TO_MAIN_PAGE": "Go to main page",
 		"PAGE_NOT_FOUND": "This page has been deleted or never existed"
 	},
+	"PAGE_DESCRIPTION": {
+		"CREATE_TENDER": "Specify the required parameters of your tender and plan the date and time of a new tender",
+		"LIST": "Select the tender you want from the table and take part in it",
+		"LOGIN": "You can log in using your login and password",
+		"NOT_FOUND": "This page has already been deleted or never existed",
+		"SELECTED_TENDER": "Place a bet on the selected tender until it is completed",
+		"SIGNUP": "You need to sign up to be able to place bets and create your own tenders"
+	},
+	"PAGE_TITLE": {
+		"CREATE_TENDER": "Create a new tender",
+		"LIST": "List of all tenders",
+		"LOGIN": "Log in",
+		"NOT_FOUND": "Error 404",
+		"SELECTED_TENDER": "Detailed information about the tender",
+		"SIGNUP": "Sign up"
+	},
 	"SELECT-LANGUAGE": {
 		"LABEL": "Select language"
 	},

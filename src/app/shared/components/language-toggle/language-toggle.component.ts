@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 import { AbstractTenderComponent } from '../abstract-tender/abstract-tender.component';
 import { TenderService } from '../../../services/tender.service';
@@ -18,8 +19,10 @@ export class LanguageToggleComponent extends AbstractTenderComponent {
   constructor(protected translateService: TranslateService,
               protected tenderService: TenderService,
               protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta,
               protected router: Router) {
-    super(translateService, tenderService, authService);
+    super(translateService, tenderService, authService, title, meta);
   }
 
 

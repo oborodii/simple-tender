@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
-import { RouterUrl } from '../../../types/router-url.type';
+import { TranslateService } from '@ngx-translate/core';
+
 import { TenderService } from '../../../services/tender.service';
-import { MaterialIcons } from '../../../types/material-icons.type';
+import { AuthService } from '../../../services/auth.service';
+import { AbstractTenderComponent } from '../abstract-tender/abstract-tender.component';
 
 
 @Component({
@@ -10,17 +13,19 @@ import { MaterialIcons } from '../../../types/material-icons.type';
   templateUrl: './not-found.component.html',
   styleUrls: ['./not-found.component.scss']
 })
-export class NotFoundComponent {
+export class NotFoundComponent extends AbstractTenderComponent implements OnInit {
 
-  get ROUTER_URL(): RouterUrl {
-    return this.tenderService._ROUTER_URL;
+  constructor(protected translateService: TranslateService,
+              protected tenderService: TenderService,
+              protected authService: AuthService,
+              protected title: Title,
+              protected meta: Meta) {
+    super(translateService, tenderService, authService, title, meta);
   }
 
-  get MATERIAL_ICON(): MaterialIcons {
-    return this.tenderService._MATERIAL_ICON;
-  }
-
-  constructor(private tenderService: TenderService) {
+  ngOnInit(): void {
+    this.setPageTitle('PAGE_TITLE.NOT_FOUND');
+    this.setPageDescription('PAGE_DESCRIPTION.NOT_FOUND');
   }
 
 }

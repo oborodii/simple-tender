@@ -4,4 +4,5 @@ export interface MaterialIcons {
   LOGIN: string;
   LOGOUT: string;
   LIST: string;
+  NOT_FOUND: string;
 }
