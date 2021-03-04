@@ -1,6 +1,6 @@
 import { TenderUser } from './tender-user.type';
 
-export interface ResponseFirebaseUserPayload {
+export interface FirebaseUserPayloadResponse {
   kind: string;
   users: TenderUser[];
 }

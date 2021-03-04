@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 import { TenderConfig } from '../tender.config';
 import { TenderUser } from '../types/tender-user.type';
 import { FirebaseAuthResponse } from '../types/firebase-auth-response.type';
-import { ResponseFirebaseUserPayload } from '../types/response-firebase-user-payload.type';
+import { FirebaseUserPayloadResponse } from '../types/firebase-user-payload-response.type';
 import { FirebaseRefreshTokenResponse } from '../types/firebase-refresh-token-response.type';
 
 
@@ -61,8 +61,8 @@ export class AuthService extends TenderConfig {
   getAuthUser(): Observable<TenderUser | null> {
     const idToken: string | null = localStorage.getItem(this._FIREBASE.LOCAL_STORAGE_TOKEN_NAME);
 
-    return this.http.post<ResponseFirebaseUserPayload>(this._FIREBASE_GET_USER_DATA_URL, {idToken}).pipe(
-      map((response: ResponseFirebaseUserPayload) => {
+    return this.http.post<FirebaseUserPayloadResponse>(this._FIREBASE_GET_USER_DATA_URL, {idToken}).pipe(
+      map((response: FirebaseUserPayloadResponse) => {
         if (response) {
           const user: TenderUser = response.users[0];
 
