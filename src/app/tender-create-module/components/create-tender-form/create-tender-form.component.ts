@@ -22,6 +22,11 @@ import { TenderUser } from '../../../types/tender-user.type';
 })
 export class CreateTenderFormComponent extends AbstractTenderComponent implements OnInit {
 
+  isDisabled: boolean = false;
+
+  readonly SPINNER_DIAMETER: number = 19;
+  readonly SPINNER_STROKE_WIDTH: number = 1;
+
   createTenderForm: FormGroup = new FormGroup({
     dateStart: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.DATE_START),
     dateEnd: new FormControl(this.NEW_TENDER_DEFAULT_VALUE.DATE_END),
@@ -64,6 +69,8 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
 
 
   onSubmit(): void {
+    this.isDisabled = true;
+
     const tender: Tender = {
       dateStart: this.createTenderForm.value.dateStart,
       dateEnd: this.createTenderForm.value.dateEnd,
@@ -132,10 +139,12 @@ export class CreateTenderFormComponent extends AbstractTenderComponent implement
           if (newTender) {
             this.router.navigate([this.ROUTER_URL.VIEW, newTender.id]);
           }
+          this.isDisabled = false;
         },
         () => {
           const message: string = this.translate('CREATE-FORM.ERROR.CREATE_SERVER_ERROR');
           this.tenderService.openSnackBar(message, this.SNACKBAR.ERROR);
+          this.isDisabled = false;
         }
       ));
   }

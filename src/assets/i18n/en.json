@@ -74,7 +74,8 @@
 		"SUCCESSFULLY_CREATED": "successfully created",
 		"TENDER_DESCRIPTION": "Description",
 		"TENDER_TITLE": "Tender title",
-		"UNIT": "Units of goods"
+		"UNIT": "Units of goods",
+		"WAIT_SERVER_RESPONSE": "Wait for server response..."
 	},
 	"FIREBASE": {
 		"EMAIL_EXISTS": "The email address is already in use by another account",

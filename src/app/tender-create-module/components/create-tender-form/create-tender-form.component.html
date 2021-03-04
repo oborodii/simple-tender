@@ -14,7 +14,11 @@
             <mat-label>
               {{ 'CREATE-FORM.DATE_START' | translate }}
             </mat-label>
-            <input type="datetime-local" matInput required formControlName="dateStart">
+            <input type="datetime-local" matInput required
+                   [readonly]="isDisabled"
+                   [class.readonly-cursor]="isDisabled"
+                   [title]="isDisabled ? ('CREATE-FORM.WAIT_SERVER_RESPONSE' | translate) : ''"
+                   formControlName="dateStart">
           </mat-form-field>
         </div>
 
@@ -24,7 +28,11 @@
             <mat-label>
               {{ 'CREATE-FORM.DATE_END' | translate }}
             </mat-label>
-            <input type="datetime-local" matInput required formControlName="dateEnd">
+            <input type="datetime-local" matInput required
+                   [readonly]="isDisabled"
+                   [class.readonly-cursor]="isDisabled"
+                   [title]="isDisabled ? ('CREATE-FORM.WAIT_SERVER_RESPONSE' | translate) : ''"
+                   formControlName="dateEnd">
           </mat-form-field>
         </div>
       </div>
@@ -34,7 +42,11 @@
         <div class="col">
           <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
             <mat-label>{{ 'CREATE-FORM.TENDER_TITLE' | translate }}</mat-label>
-            <input matInput required formControlName="title">
+            <input matInput required
+                   [readonly]="isDisabled"
+                   [class.readonly-cursor]="isDisabled"
+                   [title]="isDisabled ? ('CREATE-FORM.WAIT_SERVER_RESPONSE' | translate) : ''"
+                   formControlName="title">
 
             <mat-error *ngIf="createTenderForm.controls['title'].hasError('required')">
               {{ 'CREATE-FORM.ERROR.TITLE' | translate }}
@@ -61,7 +73,13 @@
         <div class="col">
           <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
             <mat-label>{{ 'CREATE-FORM.TENDER_DESCRIPTION' | translate }}</mat-label>
-            <textarea matInput required rows="5" formControlName="description"></textarea>
+            <textarea matInput required
+                      [readonly]="isDisabled"
+                      [class.readonly-cursor]="isDisabled"
+                      [title]="isDisabled ? ('CREATE-FORM.WAIT_SERVER_RESPONSE' | translate) : ''"
+                      rows="5"
+                      formControlName="description">
+            </textarea>
 
             <mat-error *ngIf="createTenderForm.controls['description'].hasError('required')">
               {{ 'CREATE-FORM.ERROR.DESCRIPTION' | translate }}
@@ -94,6 +112,9 @@
             <input matInput
                    type="number"
                    required
+                   [readonly]="isDisabled"
+                   [class.readonly-cursor]="isDisabled"
+                   [title]="isDisabled ? ('CREATE-FORM.WAIT_SERVER_RESPONSE' | translate) : ''"
                    [min]="NEW_TENDER_DEFAULT_VALUE.MIN_STEP_VALUE"
                    [max]="NEW_TENDER_DEFAULT_VALUE.MAX_STEP_VALUE"
                    (input)="minMaxSetError('stepValue')"
@@ -143,8 +164,11 @@
             <input matInput
                    type="number"
                    required
+                   [readonly]="isDisabled"
+                   [class.readonly-cursor]="isDisabled"
                    [min]="NEW_TENDER_DEFAULT_VALUE.MIN_QUANTITY"
                    [max]="NEW_TENDER_DEFAULT_VALUE.MAX_QUANTITY"
+                   [title]="isDisabled ? ('CREATE-FORM.WAIT_SERVER_RESPONSE' | translate) : ''"
                    (input)="minMaxSetError('quantity')"
                    formControlName="quantity">
             <div matSuffix>
@@ -195,16 +219,24 @@
     </mat-card-content>
 
     <mat-card-actions align="end">
-      <!-- submit button -->
-      <button mat-raised-button
-              type="submit"
-              [disabled]="createTenderForm.invalid"
+      <!-- Submit button -->
+      <button mat-raised-button type="submit"
+              [disabled]="createTenderForm.invalid || isDisabled"
               [title]="createTenderForm.invalid ? ('CREATE-FORM.ERROR.SUBMIT_BUTTON_DISABLED' | translate) : ''"
               [color]="currentThemePalette">
-        {{ 'CREATE-FORM.SUBMIT_BUTTON' | translate }}
+        <ng-container *ngIf="isDisabled; else placeBet">
+          <mat-spinner [color]="currentThemePalette"
+                       [diameter]="SPINNER_DIAMETER"
+                       [strokeWidth]="SPINNER_STROKE_WIDTH"
+                       class="mat-spinner">
+          </mat-spinner>
+          {{ 'CREATE-FORM.WAIT_SERVER_RESPONSE' | translate }}
+        </ng-container>
+        <ng-template #placeBet>
+          {{ 'CREATE-FORM.SUBMIT_BUTTON' | translate }}
+        </ng-template>
       </button>
     </mat-card-actions>
-
   </mat-card>
 </form>
 

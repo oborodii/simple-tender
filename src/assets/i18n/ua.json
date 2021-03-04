@@ -74,7 +74,8 @@
 		"SUCCESSFULLY_CREATED": "успішно створено",
 		"TENDER_DESCRIPTION": "Опис тендера",
 		"TENDER_TITLE": "Заголовок",
-		"UNIT": "Одиниці вимірювання товару"
+		"UNIT": "Одиниці вимірювання товару",
+		"WAIT_SERVER_RESPONSE": "Дочекайтеся відповіді сервера..."
 	},
 	"FIREBASE": {
 		"EMAIL_EXISTS": "Цей email вже використовується іншим обліковим записом",
