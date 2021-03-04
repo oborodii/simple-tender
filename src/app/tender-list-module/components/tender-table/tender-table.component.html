@@ -1,6 +1,6 @@
 <mat-card class="table-style">
   <mat-card-title>
-    {{ 'LIST.TABLE.TITLE' | translate }}
+    <h1>{{ 'LIST.TABLE.TITLE' | translate }}</h1>
     <div *ngIf="!dataSource" class="loading">
       <mat-spinner [color]="currentThemePalette"
                    [diameter]="SPINNER_DIAMETER"

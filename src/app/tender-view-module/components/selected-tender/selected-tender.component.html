@@ -2,7 +2,7 @@
 <mat-card *ngIf="selectedTender && !loading; else spinner" class="form-style">
   <mat-card-header>
     <mat-card-title>
-      {{ selectedTender.title }}
+      <h1>{{ selectedTender.title }}</h1>
     </mat-card-title>
     <mat-card-subtitle>
       {{ 'VIEW_TENDER.ID' | translate }}:

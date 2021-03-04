@@ -1,90 +1,81 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
+<!-- Warning message -->
+<div class="warning-message" *ngIf="isNeedAuth">
+  <mat-toolbar color="warn">
+    <div class="warning-text">
+      {{ 'LOGIN.NEED_AUTH' | translate }}
+    </div>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="closeWarningMessage()" class="icon" aria-label="Clear">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
 
-      <!-- Warning message -->
-      <div class="warning-message" *ngIf="isNeedAuth">
-        <mat-toolbar color="warn">
-          <span class="warning-text">
-            {{ 'LOGIN.NEED_AUTH' | translate }}
-          </span>
-          <span class="spacer"></span>
-          <button mat-icon-button (click)="closeWarningMessage()" class="icon" aria-label="Clear">
-            <mat-icon>clear</mat-icon>
-          </button>
-        </mat-toolbar>
+<!-- Login Form -->
+<form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()" class="form-style">
+  <mat-card>
+    <mat-card-title>
+      <h1>{{ 'LOGIN.FORM_TITLE' | translate }}</h1>
+    </mat-card-title>
+
+    <mat-card-content>
+      <!-- Email as Login -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+            <mat-label>{{ 'LOGIN.EMAIL_LABEL' | translate }}</mat-label>
+            <input matInput type="email" required formControlName="email">
+
+            <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+              {{ 'LOGIN.ERROR.EMAIL_REQUIRED' | translate }}
+            </mat-error>
+
+            <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+              {{ 'LOGIN.ERROR.EMAIL' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
       </div>
 
-      <!-- Login Form -->
-      <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()" class="form-style">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>
-              <label>{{ 'LOGIN.FORM_TITLE' | translate }}</label>
-            </mat-card-title>
-          </mat-card-header>
+      <!-- Password -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
+            <mat-label>{{ 'LOGIN.PASSWORD_LABEL' | translate }}</mat-label>
+            <input matInput type="password" required formControlName="password">
 
-          <mat-card-content>
-            <!-- Email as Login -->
-            <div class="row">
-              <div class="col">
-                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
-                  <mat-label>{{ 'LOGIN.EMAIL_LABEL' | translate }}</mat-label>
-                  <input matInput type="email" required formControlName="email">
+            <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+              {{ 'LOGIN.ERROR.PASSWORD' | translate }}
+            </mat-error>
 
-                  <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
-                    {{ 'LOGIN.ERROR.EMAIL_REQUIRED' | translate }}
-                  </mat-error>
+            <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">
+              {{ ('LOGIN.ERROR.PASSWORD_MIN_LENGTH' | translate) +
+            ' (' + loginForm.get('password')?.errors?.minlength['actualLength'] + '/' +
+            loginForm.get('password')?.errors?.minlength['requiredLength'] + ')' }}
+            </mat-error>
 
-                  <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
-                    {{ 'LOGIN.ERROR.EMAIL' | translate }}
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
 
-            <!-- Password -->
-            <div class="row">
-              <div class="col">
-                <mat-form-field class="full-width" appearance="outline" [color]="currentThemePalette">
-                  <mat-label>{{ 'LOGIN.PASSWORD_LABEL' | translate }}</mat-label>
-                  <input matInput type="password" required formControlName="password">
+    <mat-card-actions align="end">
+      <!-- Sign Up button -->
+      <a mat-button [routerLink]="ROUTER_URL.SIGNUP"
+         routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+         [disabled]="loading"
+         [color]="currentThemePalette">
+        {{ 'MENU.SIGNUP' | translate }}
+      </a>
 
-                  <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-                    {{ 'LOGIN.ERROR.PASSWORD' | translate }}
-                  </mat-error>
-
-                  <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">
-                    {{ ('LOGIN.ERROR.PASSWORD_MIN_LENGTH' | translate) +
-                  ' (' + loginForm.get('password')?.errors?.minlength['actualLength'] + '/' +
-                  loginForm.get('password')?.errors?.minlength['requiredLength'] + ')' }}
-                  </mat-error>
-
-                </mat-form-field>
-              </div>
-            </div>
-          </mat-card-content>
-
-          <mat-card-actions align="end">
-            <!-- Sign Up button -->
-            <a mat-button [routerLink]="ROUTER_URL.SIGNUP"
-               routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-               [disabled]="loading"
-               [color]="currentThemePalette">
-              {{ 'MENU.SIGNUP' | translate }}
-            </a>
-
-            <!-- Submit button -->
-            <button mat-raised-button
-                    type="submit"
-                    [disabled]="loginForm.invalid || loading"
-                    [title]="loginForm.invalid ? ('LOGIN.ERROR.SUBMIT_BUTTON_DISABLED' | translate) : ''"
-                    [color]="currentThemePalette">
-              {{ 'LOGIN.SUBMIT' | translate }}
-            </button>
-          </mat-card-actions>
-        </mat-card>
-      </form>
-    </div>
-  </div>
-</div>
+      <!-- Submit button -->
+      <button mat-raised-button
+              type="submit"
+              [disabled]="loginForm.invalid || loading"
+              [title]="loginForm.invalid ? ('LOGIN.ERROR.SUBMIT_BUTTON_DISABLED' | translate) : ''"
+              [color]="currentThemePalette">
+        {{ 'LOGIN.SUBMIT' | translate }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

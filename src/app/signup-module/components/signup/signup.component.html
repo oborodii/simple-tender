@@ -1,11 +1,9 @@
 <!-- Sign up Form -->
 <form [formGroup]="signupForm" novalidate (ngSubmit)="onSubmit()" class="form-style">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        <label>{{ 'SIGNUP.FORM_TITLE' | translate }}</label>
-      </mat-card-title>
-    </mat-card-header>
+    <mat-card-title>
+      <h1>{{ 'SIGNUP.FORM_TITLE' | translate }}</h1>
+    </mat-card-title>
 
     <mat-card-content>
       <!-- Email as Login -->

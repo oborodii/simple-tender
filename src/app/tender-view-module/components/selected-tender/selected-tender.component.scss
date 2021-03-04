@@ -1,5 +1,11 @@
 @import "src/app/shared/styles/variables";
 
+mat-card-title {
+  h1 {
+    margin-left: 0;
+  }
+}
+
 mat-card-content {
   mat-list {
     mat-list-item {
