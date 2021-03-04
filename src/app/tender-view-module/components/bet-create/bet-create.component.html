@@ -72,7 +72,7 @@
                 [title]="betForm.invalid ? ('BET.ERROR.SUBMIT_BUTTON_DISABLED' | translate) : ''"
                 [color]="currentThemePalette"
                 class="submit-button">
-          <ng-container *ngIf="isDisabled">
+          <ng-container *ngIf="isDisabled; else placeBet">
             <mat-spinner [color]="currentThemePalette"
                          [diameter]="SPINNER_DIAMETER"
                          [strokeWidth]="SPINNER_STROKE_WIDTH"
@@ -80,9 +80,9 @@
             </mat-spinner>
             {{ 'BET.WAIT_SERVER_RESPONSE' | translate }}
           </ng-container>
-          <ng-container *ngIf="!isDisabled">
+          <ng-template #placeBet>
             {{ 'BET.SUBMIT_BUTTON' | translate }}
-          </ng-container>
+          </ng-template>
         </button>
       </div>
     </div>
