@@ -37,9 +37,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    NotFoundComponent
-  ],
+  declarations: [],
   imports: [
     RouterModule.forRoot(routes)
   ],

@@ -1,1 +1,16 @@
-<h1>Page not found</h1>
+<mat-card class="mat-card text-center">
+  <mat-card-title>
+    <h1>
+      {{ 'NOT_FOUND.ERROR_404' | translate }}
+    </h1>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="material-icons smile-icon">sentiment_dissatisfied</div>
+    <p>
+      {{ 'NOT_FOUND.PAGE_NOT_FOUND' | translate }}.
+      <a [routerLink]="ROUTER_URL.LIST" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        {{ 'NOT_FOUND.GO_TO_MAIN_PAGE' | translate }}
+      </a>?
+    </p>
+  </mat-card-content>
+</mat-card>

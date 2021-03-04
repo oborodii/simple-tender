@@ -149,6 +149,11 @@
 		"SIGNUP": "Sign Up",
 		"VIEW_TENDER": "View tender"
 	},
+	"NOT_FOUND": {
+		"ERROR_404": "Error 404. Page not found",
+		"GO_TO_MAIN_PAGE": "Go to main page",
+		"PAGE_NOT_FOUND": "This page has been deleted or never existed"
+	},
 	"SELECT-LANGUAGE": {
 		"LABEL": "Select language"
 	},

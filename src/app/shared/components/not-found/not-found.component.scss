@@ -1,0 +1,10 @@
+@import "src/app/shared/styles/variables";
+
+.mat-card {
+  margin: 20px auto $content-margin-bottom auto;
+}
+
+.smile-icon {
+  font-size: 400px;
+  color: $primary-bg-color;
+}
