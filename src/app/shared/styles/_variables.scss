@@ -3,7 +3,9 @@ $main-txt-color: black;
 $mat-sidenav-txt-color: white;
 $default-font-size: 1.0em;
 $footer-font-size: 0.6em;
+$timer-status-font-size: 0.99em;
 $strong-font-weight: 500;
+$normal-font-weight: 400;
 
 /* Material Snack bar */
 $snack-bar-txt-color-default: white;
@@ -25,3 +27,6 @@ $content-margin-bottom: 80px;
 /* Table style */
 $table-width: 100%;
 $table-max-width: 100%;
+
+/* Timer style */
+$timer-cell-width: 220px;

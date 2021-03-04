@@ -27,10 +27,10 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
   readonly PAGE_INDEX: number = 0;
 
   /** Number of items to display on a page. Defaulted to 10 */
-  readonly PAGE_SIZE: number = 20;
+  readonly PAGE_SIZE: number = 5;
 
   /** The set of provided page size options to display to the user */
-  readonly PAGE_SIZE_OPTION: number[] = [20, 30, 50, 100];
+  readonly PAGE_SIZE_OPTION: number[] = [5, 20, 50, 100];
 
   readonly SPINNER_DIAMETER: number = 19;
   readonly SPINNER_STROKE_WIDTH: number = 1;
