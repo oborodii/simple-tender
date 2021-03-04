@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 
-import { TranslateService } from '@ngx-translate/core';
-
-import { TenderService } from '../../../services/tender.service';
-import { AbstractTenderComponent } from '../abstract-tender/abstract-tender.component';
 import { AuthService } from '../../../services/auth.service';
 
 
@@ -12,18 +9,23 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent extends AbstractTenderComponent {
+export class FooterComponent {
 
-  constructor(protected translateService: TranslateService,
-              protected tenderService: TenderService,
-              protected authService: AuthService
-  ) {
-    super(translateService, tenderService, authService);
+  yearNow: string = String(new Date().getFullYear());
+
+  get APP_CREATION_YEAR(): string {
+    return this.authService.APP_CREATION_YEAR;
   }
 
+  get currentThemePalette(): ThemePalette {
+    return this.authService._currentThemePalette;
+  }
 
-  get isUserAuth(): boolean {
-    return this.authService.isUserAuth;
+  constructor(private authService: AuthService) {
+  }
+
+  isShowCurrentYear(): boolean {
+    return Number(this.APP_CREATION_YEAR) - Number(this.yearNow) > 0;
   }
 
 }

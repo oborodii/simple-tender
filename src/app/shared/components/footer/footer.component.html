@@ -2,39 +2,15 @@
   <mat-toolbar [color]="currentThemePalette">
     <mat-toolbar-row>
       <div class="footer-txt">
-        © 2021
+        © {{ APP_CREATION_YEAR }}
+        <ng-container *ngIf="isShowCurrentYear()">
+          - {{ yearNow }}
+        </ng-container>
         {{ 'APP_TITLE' | translate }}.
         {{ 'FOOTER.COPYRIGHT' | translate }}
       </div>
-
       <div class="spacer"></div>
-
-      <mat-nav-list class="list-horizontal">
-        <a mat-list-item
-           [routerLink]="ROUTER_URL.LIST"
-           routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <mat-icon class="icons" aria-hidden="false" aria-label="List icon">
-            {{ MATERIAL_ICON.LIST }}
-          </mat-icon>
-          <span class="menu-txt">
-            {{ 'MENU.LIST_OF_TENDERS' | translate }}
-          </span>
-        </a>
-        <ng-container *ngIf="isUserAuth">
-          <a mat-list-item [routerLink]="ROUTER_URL.CREATE"
-             routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <mat-icon class="icons" aria-hidden="false" aria-label="Add icon">
-              {{ MATERIAL_ICON.ADD }}
-            </mat-icon>
-            <span class="menu-txt">
-            {{ 'MENU.CREATE_NEW_TENDER' | translate }}
-          </span>
-          </a>
-        </ng-container>
-      </mat-nav-list>
-
-      <st-language-toggle>Loading...</st-language-toggle>
-
+      <st-language-toggle></st-language-toggle>
     </mat-toolbar-row>
   </mat-toolbar>
 </footer>

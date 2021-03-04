@@ -224,4 +224,6 @@ export class TenderConfig {
     SIGNUP: '/' + environment.routerPath.signup
   };
 
+  readonly APP_CREATION_YEAR: string = '2021';
+
 }

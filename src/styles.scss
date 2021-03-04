@@ -30,15 +30,6 @@ strong {
   max-width: $table-max-width;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.col {
-  flex: 1;
-}
-
 .spacer {
   flex: 1 1 auto;
 }
