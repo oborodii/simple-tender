@@ -1,8 +1,6 @@
 @import "src/app/shared/styles/variables";
 
 .timer {
-  width: $timer-cell-width;
-
   .status {
     display: inline-block;
     font-size: $timer-status-font-size;

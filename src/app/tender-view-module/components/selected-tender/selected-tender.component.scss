@@ -1,11 +1,5 @@
 @import "src/app/shared/styles/variables";
 
-mat-card-title {
-  h1 {
-    margin-left: 0;
-  }
-}
-
 mat-card-content {
   mat-list {
     mat-list-item {
@@ -23,8 +17,4 @@ mat-card-content {
   margin: (30px - $content-margin-bottom) auto 15px auto;
   width: $form-width;
   max-width: $form-max-width;
-}
-
-.timer {
-  margin-left: 7px;
 }

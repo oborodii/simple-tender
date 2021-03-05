@@ -1,6 +1,6 @@
 <!-- Selected Tender -->
 <mat-card *ngIf="selectedTender && !loading; else spinner" class="form-style">
-  <mat-card-header>
+  <mat-card-header class="ml-n2">
     <mat-card-title>
       <h1>{{ selectedTender.title }}</h1>
     </mat-card-title>
@@ -12,81 +12,124 @@
 
   <mat-card-content>
     <div class="row">
-      <div class="col">
-        <mat-list>
-          <mat-list-item>
+      <div class="col-sm-7 pl-4">
+        <!-- Status/Timer -->
+        <div class="row align-items-center">
+          <div class="col-sm-4 pb-0 pt-3 p-sm-3">
             <strong>{{ 'VIEW_TENDER.STATUS' | translate }}</strong>:
+          </div>
+          <div class="col-sm-8 p-3">
             <st-timer [tender]="selectedTender"
                       [isLegendShow]="true"
-                      (tenderStatusEmitter)="setTenderStatus($event)"
-                      class="timer">
+                      (tenderStatusEmitter)="setTenderStatus($event)">
               {{ 'LOADING' | translate }}
             </st-timer>
-          </mat-list-item>
-          <mat-divider></mat-divider>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
 
-          <mat-list-item>
+        <!-- Duration -->
+        <div class="row align-items-center">
+          <div class="col-sm-4 pb-0 pt-3 p-sm-3">
             <strong>{{ 'VIEW_TENDER.DURATION' | translate }}</strong>:
+          </div>
+          <div class="col-sm-8 p-3">
             {{ selectedTender.dateStart | date:TIME_FORMAT_SMALL }} -
             {{ selectedTender.dateEnd | date:TIME_FORMAT_SMALL }}
-          </mat-list-item>
-          <mat-divider></mat-divider>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
 
-          <mat-list-item>
+        <!-- Description -->
+        <div class="row align-items-center">
+          <div class="col-sm-4 pb-0 pt-3 p-sm-3">
             <strong>{{ 'VIEW_TENDER.DESCRIPTION' | translate }}</strong>:
+          </div>
+          <div class="col-sm-8 p-3">
             {{ selectedTender.description }}
-          </mat-list-item>
-          <mat-divider></mat-divider>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
 
-          <mat-list-item>
+        <!-- The Best Bet -->
+        <div class="row align-items-center">
+          <div class="col-sm-4 pb-0 pt-3 p-sm-3">
             <strong>{{ 'VIEW_TENDER.BEST_BET' | translate }}</strong>:
+          </div>
+          <div class="col-sm-8 p-3">
             <ng-container *ngIf="selectedTender.bestBet; else noBestBet">
               {{ selectedTender.bestBet.value + ' ' + selectedTender.currency.code }}
             </ng-container>
             <ng-template #noBestBet>
               {{ 'VIEW_TENDER.NO_BEST_BET' | translate }}
             </ng-template>
-          </mat-list-item>
-          <mat-divider></mat-divider>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
 
-          <mat-list-item>
+        <!-- Number of bets -->
+        <div class="row align-items-center">
+          <div class="col-sm-4 pb-0 pt-3 p-sm-3">
             <strong>{{ 'VIEW_TENDER.NUMBER_OF_BETS' | translate }}</strong>:
+          </div>
+          <div class="col-sm-8 p-3">
             <ng-container *ngIf="selectedTender.bets; else noBets">
               {{ selectedTender.bets.length }}
             </ng-container>
             <ng-template #noBets>
               {{ 'VIEW_TENDER.NO_BEST_BET' | translate }}
             </ng-template>
-          </mat-list-item>
-          <mat-divider></mat-divider>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
 
-          <mat-list-item>
+        <!-- Step value -->
+        <div class="row align-items-center">
+          <div class="col-sm-4 pb-0 pt-3 p-sm-3">
             <strong>{{ 'VIEW_TENDER.STEP_VALUE' | translate }}</strong>:
+          </div>
+          <div class="col-sm-8 p-3">
             {{ selectedTender.stepValue + ' ' + selectedTender.currency.code }}
-          </mat-list-item>
-          <mat-divider></mat-divider>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
 
-          <mat-list-item>
+        <!-- Quantity -->
+        <div class="row align-items-center">
+          <div class="col-sm-4 pb-0 pt-3 p-sm-3">
             <strong>{{ 'VIEW_TENDER.QUANTITY' | translate }}</strong>:
+          </div>
+          <div class="col-sm-8 p-3">
             {{ selectedTender.quantity + ' ' + getLocalUnitCode(selectedTender.unit) }}
-          </mat-list-item>
-          <mat-divider></mat-divider>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
 
-          <mat-list-item>
+        <!-- Company name -->
+        <div class="row align-items-center">
+          <div class="col-sm-4 pb-0 pt-3 p-sm-3">
             <strong>{{ 'VIEW_TENDER.TENDER_INITIATOR' | translate }}</strong>:
+          </div>
+          <div class="col-sm-8 p-3">
             {{ selectedTender.user?.displayName }}
-          </mat-list-item>
-          <mat-divider></mat-divider>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
 
-          <mat-list-item>
+        <!-- Company email -->
+        <div class="row align-items-center">
+          <div class="col-sm-4 pb-0 pt-3 p-sm-3">
             <strong>{{ 'VIEW_TENDER.CONTACTS' | translate }}</strong>:
+          </div>
+          <div class="col-sm-8 p-3">
             {{ selectedTender.user?.email }}
-          </mat-list-item>
-        </mat-list>
+          </div>
+        </div>
+        <mat-divider class="d-sm-none"></mat-divider>
       </div>
 
       <!-- Place a new bet -->
-      <div class="col">
+      <div class="col-sm-5 mt-3 mt-sm-0">
         <ng-container *ngIf="isStatusClosed; else tenderNotCompleted">
           {{ 'BET.TENDER_COMPLETED' | translate }}.
         </ng-container>
