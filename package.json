@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "start": "ng serve --open --port=4201",
-    "build": "ng build",
+    "build": "ng build --prod",
+    "deploy": "ng build --prod && firebase deploy",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
