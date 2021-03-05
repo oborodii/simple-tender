@@ -118,6 +118,10 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
       this.defaultSortParams = sort;
     }
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+
     this.dataSource.data = this.tenders.sort((tender1: Tender, tender2: Tender) => {
       const isAsc = sort.direction === 'asc';
 
@@ -130,10 +134,10 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
           let bestBet1: number = 0;
           let bestBet2: number = 0;
           if (tender1.bestBet) {
-            bestBet1 = Number(tender1.bestBet);
+            bestBet1 = Number(tender1.bestBet.value);
           }
           if (tender2.bestBet) {
-            bestBet2 = Number(tender2.bestBet);
+            bestBet2 = Number(tender2.bestBet.value);
           }
           return compare(bestBet1, bestBet2, isAsc);
         case 'stepValue':
