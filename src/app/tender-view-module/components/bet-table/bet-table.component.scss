@@ -4,15 +4,11 @@
   margin-bottom: $content-margin-bottom;
 }
 
-.full-width-table {
-  width: 100%;
-}
-
 .loading {
   margin: 0;
   display: inline-block;
   font-size: $default-font-size;
-  font-weight: normal;
+  font-weight: $normal-font-weight;
 }
 
 .mat-spinner {
@@ -21,6 +17,6 @@
 }
 
 .best-bet {
-  font-weight: bold;
+  font-weight: $strong-font-weight;
   color: green;
 }
