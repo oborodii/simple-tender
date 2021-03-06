@@ -65,8 +65,16 @@ export abstract class AbstractTenderComponent implements OnDestroy {
     return this.tenderService._MAX_STR_LENGTH;
   }
 
-  get TIME_FORMAT_FULL(): string {
-    return this.tenderService._TIME_FORMAT_FULL;
+  get DATE_TIME_FORMAT_FULL(): string {
+    return this.tenderService._DATE_TIME_FORMAT_FULL;
+  }
+
+  get DATE_TIME_FORMAT_SMALL(): string {
+    return this.tenderService._DATE_TIME_FORMAT_SMALL;
+  }
+
+  get DATE_FORMAT(): string {
+    return this.tenderService._DATE_FORMAT;
   }
 
   get TIME_FORMAT_SMALL(): string {

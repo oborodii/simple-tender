@@ -54,14 +54,14 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered */
   displayedColumns: string[] = [
     'index',
-    'dates',
+    'dateStart',
+    'dateEnd',
     'title',
     'timer',
-    'bestBet',
+    'bets',
     'stepValue',
     'user',
-    'quantity',
-    'id'
+    'quantity'
   ];
 
 
@@ -130,16 +130,10 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
           return compare(String(tender1.dateStart), String(tender2.dateStart), isAsc);
         case 'title':
           return compare(String(tender1.title), String(tender2.title), isAsc);
-        case 'bestBet':
-          let bestBet1: number = 0;
-          let bestBet2: number = 0;
-          if (tender1.bestBet) {
-            bestBet1 = Number(tender1.bestBet.value);
-          }
-          if (tender2.bestBet) {
-            bestBet2 = Number(tender2.bestBet.value);
-          }
-          return compare(bestBet1, bestBet2, isAsc);
+        case 'bets':
+          const betsLength1: number = tender1.bets ? tender1.bets.length : 0;
+          const betsLength2: number = tender2.bets ? tender2.bets.length : 0;
+          return compare(betsLength1, betsLength2, isAsc);
         case 'stepValue':
           return compare(Number(tender1.stepValue), Number(tender2.stepValue), isAsc);
         case 'user':
@@ -154,8 +148,6 @@ export class TenderTableComponent extends AbstractTenderComponent implements OnI
           return compare(user1, user2, isAsc);
         case 'quantity':
           return compare(String(tender1.quantity), String(tender2.quantity), isAsc);
-        case 'id':
-          return compare(String(tender1.id), String(tender2.id), isAsc);
         default:
           return 0;
       }

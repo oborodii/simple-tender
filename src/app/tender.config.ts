@@ -31,10 +31,12 @@ export class TenderConfig {
   readonly _currentThemePalette: ThemePalette = 'primary';
 
   /** Maximum string length for titles, comments, etc */
-  readonly _MAX_STR_LENGTH: number = 30;
+  readonly _MAX_STR_LENGTH: number = 50;
 
-  readonly _TIME_FORMAT_FULL: string = 'dd.MM.YYYY HH:mm:ss';
-  readonly _TIME_FORMAT_SMALL: string = 'dd.MM.YYYY HH:mm';
+  readonly _DATE_TIME_FORMAT_FULL: string = 'dd.MM.YYYY HH:mm:ss';
+  readonly _DATE_TIME_FORMAT_SMALL: string = 'dd.MM.YYYY HH:mm';
+  readonly _DATE_FORMAT: string = 'dd.MM.YYYY';
+  readonly _TIME_FORMAT_SMALL: string = 'HH:mm';
 
   /** All locales in application */
   readonly _LOCALE: TenderLocale = {

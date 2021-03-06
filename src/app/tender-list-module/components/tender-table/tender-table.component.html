@@ -27,100 +27,102 @@
            class="full-width-table" aria-label="Tenders">
       <!-- Index Column -->
       <ng-container matColumnDef="index">
-        <th mat-header-cell *matHeaderCellDef>
+        <th mat-header-cell *matHeaderCellDef class="p-2">
           {{ 'LIST.TABLE.TH.INDEX' | translate }}
         </th>
-        <td mat-cell *matCellDef="let idx = index;">
+        <td mat-cell *matCellDef="let idx = index;" class="p-2">
           {{ idx + 1 }}
         </td>
       </ng-container>
 
-      <!-- Dates Column -->
-      <ng-container matColumnDef="dates">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          {{ 'LIST.TABLE.TH.DATES' | translate }}
+      <!-- Date Start Column -->
+      <ng-container matColumnDef="dateStart">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-2">
+          {{ 'LIST.TABLE.TH.DATE_START' | translate }}
         </th>
-        <td mat-cell *matCellDef="let row">
-          <div>{{ row.dateStart | date:TIME_FORMAT_SMALL }} -</div>
+        <td mat-cell *matCellDef="let row" class="p-2">
+          <div>{{ row.dateStart | date:DATE_FORMAT }}</div>
+          <div>{{ row.dateStart | date:TIME_FORMAT_SMALL }}</div>
+        </td>
+      </ng-container>
+
+      <!-- Date End Column -->
+      <ng-container matColumnDef="dateEnd">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-2">
+          {{ 'LIST.TABLE.TH.DATE_END' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let row" class="p-2">
+          <div>{{ row.dateEnd | date:DATE_FORMAT }}</div>
           <div>{{ row.dateEnd | date:TIME_FORMAT_SMALL }}</div>
         </td>
       </ng-container>
 
       <!-- Title Column -->
       <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-2">
           {{ 'LIST.TABLE.TH.TITLE' | translate }}
         </th>
         <td mat-cell *matCellDef="let row"
-            [title]="row.title && row.title.length > MAX_STR_LENGTH ? row.title : ''">
+            [title]="row.title && row.title.length > MAX_STR_LENGTH ? row.title : ''"
+            class="p-2">
           {{ sliceStrLength(row.title) }}
         </td>
       </ng-container>
 
-      <!-- Timer Column -->
+      <!-- Timer/Status Column -->
       <ng-container matColumnDef="timer">
-        <th mat-header-cell *matHeaderCellDef>
+        <th mat-header-cell *matHeaderCellDef class="p-2">
           {{ 'LIST.TABLE.TH.STATUS' | translate }}
         </th>
-        <td mat-cell *matCellDef="let row" class="timer">
+        <td mat-cell *matCellDef="let row" class="timer p-2">
           <st-timer [tender]="row" [isLegendShow]="true">
             {{ 'LOADING' | translate }}
           </st-timer>
         </td>
       </ng-container>
 
-      <!-- Expected Value Column -->
-      <ng-container matColumnDef="bestBet">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          {{ 'LIST.TABLE.TH.BEST_BET' | translate }}
+      <!-- Number of bets -->
+      <ng-container matColumnDef="bets">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-2">
+          {{ 'LIST.TABLE.TH.BETS' | translate }}
         </th>
-        <td mat-cell *matCellDef="let row">
-          <ng-container *ngIf="row.bestBet; else noBestBet">
-            {{ row.bestBet.value + ' ' + row.currency.code }}
+        <td mat-cell *matCellDef="let row" class="p-2">
+          <ng-container *ngIf="row.bets; else noBets">
+            {{ row.bets.length }}
           </ng-container>
-          <ng-template #noBestBet>
-            {{ 'LIST.TABLE.TH.NO_BEST_BET' | translate }}
+          <ng-template #noBets>
+            {{ 'LIST.TABLE.TH.NO_BETS' | translate }}
           </ng-template>
         </td>
       </ng-container>
 
       <!-- Step Value Column -->
       <ng-container matColumnDef="stepValue">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-2">
           {{ 'LIST.TABLE.TH.STEP_VALUE' | translate }}
         </th>
-        <td mat-cell *matCellDef="let row">
+        <td mat-cell *matCellDef="let row" class="p-2">
           {{ row.stepValue + ' ' + row.currency.code }}
         </td>
       </ng-container>
 
       <!-- Initiator company name Column -->
       <ng-container matColumnDef="user">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-2">
           {{ 'LIST.TABLE.TH.COMPANY_NAME' | translate }}
         </th>
-        <td mat-cell *matCellDef="let row">
+        <td mat-cell *matCellDef="let row" class="p-2">
           {{ row.user.displayName }}
         </td>
       </ng-container>
 
       <!-- Quantity Column -->
       <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-2">
           {{ 'LIST.TABLE.TH.QUANTITY' | translate }}
         </th>
-        <td mat-cell *matCellDef="let row">
+        <td mat-cell *matCellDef="let row" class="p-2">
           {{ row.quantity + ' ' + getLocalUnitCode(row.unit) }}
-        </td>
-      </ng-container>
-
-      <!-- id Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          {{ 'LIST.TABLE.TH.ID' | translate }}
-        </th>
-        <td mat-cell *matCellDef="let row">
-          {{ row.id }}
         </td>
       </ng-container>
 
