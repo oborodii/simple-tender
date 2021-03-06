@@ -30,7 +30,7 @@ export class TenderConfig {
   /** Possible color palette values: 'primary' | 'accent' | 'warn' */
   readonly _currentThemePalette: ThemePalette = 'primary';
 
-  /** Maximum string length for titles, comments, etc */
+  /** Maximum string length for titles and comments */
   readonly _MAX_STR_LENGTH: number = 50;
 
   readonly _DATE_TIME_FORMAT_FULL: string = 'dd.MM.YYYY HH:mm:ss';
@@ -123,10 +123,10 @@ export class TenderConfig {
     MAX_LENGTH_DESCRIPTION: 4000,
 
     /** Launch date of the tender */
-    DATE_START: '2021-02-12T22:06',
+    DATE_START: '2021-03-06T00:00',
 
     /** End date of the tender */
-    DATE_END: '2021-03-29T22:06',
+    DATE_END: '2021-04-30T23:00',
 
     /** Tender title */
     TITLE: 'Test tender title',
@@ -169,7 +169,7 @@ export class TenderConfig {
   readonly _BET_DEFAULT_VALUE: BetDefaultValue = {
     /** Min/Max comment length */
     MIN_COMMENT_LENGTH: 5,
-    MAX_COMMENT_LENGTH: 200,
+    MAX_COMMENT_LENGTH: 120,
 
     /** The bet value maximum limit */
     MAX_BET_VALUE: 1000000,
