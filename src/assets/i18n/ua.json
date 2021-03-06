@@ -229,6 +229,7 @@
 		"DESCRIPTION": "Опис тендера",
 		"DURATION": "Тривалість",
 		"FAILED_TO_LOAD": "Не вдалося завантажити тендер з таким id",
+		"HIDDEN_BY_CREATOR": "Приховано",
 		"ID": "id",
 		"NO_BEST_BET": "Поки немає жодної ставки",
 		"NUMBER_OF_BETS": "Кількість ставок",

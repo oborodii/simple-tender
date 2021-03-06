@@ -231,6 +231,7 @@
 		"DESCRIPTION": "Description",
 		"DURATION": "Duration",
 		"FAILED_TO_LOAD": "Failed to load tender with this id",
+		"HIDDEN_BY_CREATOR": "Hidden",
 		"ID": "id",
 		"NO_BEST_BET": "There are no bets yet",
 		"NUMBER_OF_BETS": "Number of bets",

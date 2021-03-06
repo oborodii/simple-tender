@@ -70,6 +70,21 @@ export class SelectedTenderComponent extends AbstractTenderComponent implements 
   }
 
 
+  showBestBet(): string {
+    let result: string = this.translate('VIEW_TENDER.NO_BEST_BET');
+
+    if (this.selectedTender.bestBet) {
+      if (this.isCurrentUserCreatedThisTender || this.selectedTender.isShowBestBet) {
+        result = this.selectedTender.bestBet.value + ' ' + this.selectedTender.currency.code;
+      } else {
+        result = this.translate('VIEW_TENDER.HIDDEN_BY_CREATOR');
+      }
+    }
+
+    return result;
+  }
+
+
   setTenderStatus(event: TenderStatusName): void {
     this.tenderStatus = event;
   }
