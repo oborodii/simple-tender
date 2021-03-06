@@ -26,7 +26,7 @@
         </th>
         <td mat-cell *matCellDef="let row">
           <div [class.best-bet]="isBetTheBest(row)">
-            {{ row.dateTime | date:TIME_FORMAT_FULL }}
+            {{ row.dateTime | date:DATE_TIME_FORMAT_FULL }}
           </div>
         </td>
       </ng-container>
