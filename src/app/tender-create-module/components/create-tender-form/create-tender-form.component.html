@@ -172,7 +172,7 @@
                    (input)="minMaxSetError('quantity')"
                    formControlName="quantity">
             <div matSuffix>
-              {{ getLocalUnitCode(createTenderForm.controls['unit']?.value) }}
+              {{ getLocalUnitCode(createTenderForm.controls['unit'].value) }}
             </div>
 
             <mat-error *ngIf="createTenderForm.controls['quantity'].hasError('required')">

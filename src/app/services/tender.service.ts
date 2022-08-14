@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { MatSnackBarRef } from '@angular/material/snack-bar/snack-bar-ref';
-import { TextOnlySnackBar } from '@angular/material/snack-bar/simple-snack-bar';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarRef,
+  MatSnackBarVerticalPosition,
+  TextOnlySnackBar
+} from '@angular/material/snack-bar';
 
 import { environment } from '../../environments/environment';
 import { TenderConfig } from '../tender.config';
