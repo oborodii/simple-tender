@@ -3,9 +3,7 @@
     <mat-toolbar-row>
       <div class="footer-txt">
         © {{ APP_CREATION_YEAR }}
-        <ng-container *ngIf="isShowCurrentYear()">
-          - {{ yearNow }}
-        </ng-container>
+        - {{ yearNow }}
         {{ 'APP_TITLE' | translate }}.
         {{ 'FOOTER.COPYRIGHT' | translate }}
       </div>

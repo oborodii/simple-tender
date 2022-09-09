@@ -24,8 +24,4 @@ export class FooterComponent {
   constructor(private authService: AuthService) {
   }
 
-  isShowCurrentYear(): boolean {
-    return Number(this.APP_CREATION_YEAR) - Number(this.yearNow) > 0;
-  }
-
 }
