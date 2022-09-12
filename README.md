@@ -1,11 +1,11 @@
 # Simple Tender 1.0
 
 **Simple Tender 1.0** is a real-time web application written in Angular/TypeScript/HTML/SCSS. 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3. 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14. 
 Also used 
-[Angular Material 11](https://material.angular.io/), 
-[AngularFire 6](https://github.com/angular/angularfire),
-[ngx-translate 13](http://www.ngx-translate.com/),
+[Angular Material 14](https://material.angular.io/), 
+[AngularFire 7](https://github.com/angular/angularfire),
+[ngx-translate 14](http://www.ngx-translate.com/),
 [Bootstrap 4](https://getbootstrap.com/docs/4.6/getting-started/introduction/), 
 etc.
 
