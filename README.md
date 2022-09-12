@@ -11,7 +11,7 @@ etc.
 
 Google Firebase Real-time Database is used as a backend and as a hosting.
 
-Project on GitHub: [https://github.com/aborodij/simple-tender](https://github.com/aborodij/simple-tender)
+Project on GitHub: [https://github.com/oborodii/simple-tender](https://github.com/oborodii/simple-tender)
 
 ## Demo
 [Go to **Simple Tender 1.0** app demo](https://simpletender-aa98d.web.app/)
